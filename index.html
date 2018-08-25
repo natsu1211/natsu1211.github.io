@@ -51,6 +51,44 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Menlo:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -59,17 +97,17 @@
 <link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-72x72.png?v=6.4.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=6.4.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=6.4.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
 
+  <link rel="manifest" href="/images/manifest.json">
 
 
 
@@ -108,18 +146,18 @@
 
   <meta name="description" content="no game no life">
 <meta property="og:type" content="website">
-<meta property="og:title" content="常夏">
+<meta property="og:title" content="EverSummer">
 <meta property="og:url" content="http://natsu1211.com/index.html">
-<meta property="og:site_name" content="常夏">
+<meta property="og:site_name" content="EverSummer">
 <meta property="og:description" content="no game no life">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常夏">
+<meta name="twitter:title" content="EverSummer">
 <meta name="twitter:description" content="no game no life">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="常夏" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="EverSummer" type="application/atom+xml" />
 
 
 
@@ -134,7 +172,7 @@
   };
 </script>
 
-  <title>常夏</title>
+  <title>EverSummer</title>
   
 
 
@@ -193,7 +231,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">常夏</span>
+        <span class="site-title">EverSummer</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -313,11 +351,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
       <meta itemprop="description" content="no game no life">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/lambda.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="常夏">
+      <meta itemprop="name" content="EverSummer">
     </span>
 
     
@@ -371,7 +409,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-25 01:18:31" itemprop="dateModified" datetime="2018-08-25T01:18:31+09:00">2018-08-25</time>
+                <time title="修改时间：2018-08-25 23:53:53" itemprop="dateModified" datetime="2018-08-25T23:53:53+09:00">2018-08-25</time>
               
             
           </span>
@@ -473,7 +511,8 @@
 <h3 id="注意事项">注意事项</h3>
 <h4 id="数组作为参数">数组作为参数</h4>
 <p>通常情况下数组类型会退化为指针类型，但是在模板函数的参数是数组的引用的时候情况就不同了。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp; param)</span></span>;                   <span class="comment">// 引用参数的模板</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> name[] = <span class="string">"J. P. Briggs"</span>;</span><br><span class="line">f(name);                            <span class="comment">// 传递数组给f</span></span><br></pre></td></tr></table></figure></p>
-<p>T最后推导出来的实际的类型就是数组。类型推导包括了数组的长度，所以在这个例子里面，T被推导成了const char [13]，函数f的参数（数组的引用）被推导成了const char (&amp;)[13]。 #### 函数作为参数 函数也会退化为函数指针， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>， <span class="keyword">double</span>)</span></span>;    <span class="comment">// someFunc是一个函数</span></span><br><span class="line">                                <span class="comment">// 类型是void(int, double)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(T param)</span></span>;               <span class="comment">// 在f1中 参数直接按值传递</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(T&amp; param)</span></span>;              <span class="comment">// 在f2中 参数是按照引用传递</span></span><br><span class="line"></span><br><span class="line">f1(someFunc);                   <span class="comment">// param被推导成函数指针</span></span><br><span class="line">                                <span class="comment">// 类型是void(*)(int, double)</span></span><br><span class="line"></span><br><span class="line">f2(someFunc);                   <span class="comment">// param被推导成函数引用</span></span><br><span class="line">                                <span class="comment">// 类型是void(&amp;)(int, double)</span></span><br></pre></td></tr></table></figure></p>
+<p>T最后推导出来的实际的类型就是数组。类型推导包括了数组的长度，所以在这个例子里面，T被推导成了const char [13]，函数f的参数（数组的引用）被推导成了const char (&amp;)[13]。<br>
+#### 函数作为参数 函数也会退化为函数指针， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>， <span class="keyword">double</span>)</span></span>;    <span class="comment">// someFunc是一个函数</span></span><br><span class="line">                                <span class="comment">// 类型是void(int, double)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(T param)</span></span>;               <span class="comment">// 在f1中 参数直接按值传递</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(T&amp; param)</span></span>;              <span class="comment">// 在f2中 参数是按照引用传递</span></span><br><span class="line"></span><br><span class="line">f1(someFunc);                   <span class="comment">// param被推导成函数指针</span></span><br><span class="line">                                <span class="comment">// 类型是void(*)(int, double)</span></span><br><span class="line"></span><br><span class="line">f2(someFunc);                   <span class="comment">// param被推导成函数引用</span></span><br><span class="line">                                <span class="comment">// 类型是void(&amp;)(int, double)</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="总结">总结</h3>
 <ul>
 <li>在模板类型推导的时候，有引用特性的参数的引用特性会被忽略</li>
@@ -552,7 +591,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.gif"
+                src="/images/lambda.png"
                 alt="natsu1211" />
             
               <p class="site-author-name" itemprop="name">natsu1211</p>
