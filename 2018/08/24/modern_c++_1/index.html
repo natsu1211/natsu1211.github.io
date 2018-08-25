@@ -152,7 +152,7 @@
 <meta property="og:site_name" content="EverSummer">
 <meta property="og:description" content="Item1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。 对于以下函数模板声明（伪代码）， template&amp;lt;typename T&amp;gt;void f(Param">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-25T14:53:53.261Z">
+<meta property="og:updated_time" content="2018-08-25T16:48:12.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读薄Effective Modern C++ (Item1)">
 <meta name="twitter:description" content="Item1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。 对于以下函数模板声明（伪代码）， template&amp;lt;typename T&amp;gt;void f(Param">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-25 23:53:53" itemprop="dateModified" datetime="2018-08-25T23:53:53+09:00">2018-08-25</time>
+                <time title="修改时间：2018-08-26 01:48:12" itemprop="dateModified" datetime="2018-08-26T01:48:12+09:00">2018-08-26</time>
               
             
           </span>
@@ -430,7 +430,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
 
                 
                 
@@ -514,8 +514,9 @@
 <h3 id="注意事项">注意事项</h3>
 <h4 id="数组作为参数">数组作为参数</h4>
 <p>通常情况下数组类型会退化为指针类型，但是在模板函数的参数是数组的引用的时候情况就不同了。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp; param)</span></span>;                   <span class="comment">// 引用参数的模板</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> name[] = <span class="string">"J. P. Briggs"</span>;</span><br><span class="line">f(name);                            <span class="comment">// 传递数组给f</span></span><br></pre></td></tr></table></figure></p>
-<p>T最后推导出来的实际的类型就是数组。类型推导包括了数组的长度，所以在这个例子里面，T被推导成了const char [13]，函数f的参数（数组的引用）被推导成了const char (&amp;)[13]。<br>
-#### 函数作为参数 函数也会退化为函数指针， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>， <span class="keyword">double</span>)</span></span>;    <span class="comment">// someFunc是一个函数</span></span><br><span class="line">                                <span class="comment">// 类型是void(int, double)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(T param)</span></span>;               <span class="comment">// 在f1中 参数直接按值传递</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(T&amp; param)</span></span>;              <span class="comment">// 在f2中 参数是按照引用传递</span></span><br><span class="line"></span><br><span class="line">f1(someFunc);                   <span class="comment">// param被推导成函数指针</span></span><br><span class="line">                                <span class="comment">// 类型是void(*)(int, double)</span></span><br><span class="line"></span><br><span class="line">f2(someFunc);                   <span class="comment">// param被推导成函数引用</span></span><br><span class="line">                                <span class="comment">// 类型是void(&amp;)(int, double)</span></span><br></pre></td></tr></table></figure></p>
+<p>T最后推导出来的实际的类型就是数组。类型推导包括了数组的长度，所以在这个例子里面，T被推导成了const char [13]，函数f的参数（数组的引用）被推导成了const char (&amp;)[13]。</p>
+<h4 id="函数作为参数">函数作为参数</h4>
+<p>函数也会退化为函数指针， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>， <span class="keyword">double</span>)</span></span>;    <span class="comment">// someFunc是一个函数</span></span><br><span class="line">                                <span class="comment">// 类型是void(int, double)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(T param)</span></span>;               <span class="comment">// 在f1中 参数直接按值传递</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(T&amp; param)</span></span>;              <span class="comment">// 在f2中 参数是按照引用传递</span></span><br><span class="line"></span><br><span class="line">f1(someFunc);                   <span class="comment">// param被推导成函数指针</span></span><br><span class="line">                                <span class="comment">// 类型是void(*)(int, double)</span></span><br><span class="line"></span><br><span class="line">f2(someFunc);                   <span class="comment">// param被推导成函数引用</span></span><br><span class="line">                                <span class="comment">// 类型是void(&amp;)(int, double)</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="总结">总结</h3>
 <ul>
 <li>在模板类型推导的时候，有引用特性的参数的引用特性会被忽略</li>
@@ -793,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item1-理解模板类型推导p9-p18"><span class="nav-number">1.</span> <span class="nav-text">Item1 理解模板类型推导（p9-p18）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">1.1.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数组作为参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">数组作为参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item1-理解模板类型推导p9-p18"><span class="nav-number">1.</span> <span class="nav-text">Item1 理解模板类型推导（p9-p18）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">1.1.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数组作为参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">数组作为参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作为参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数作为参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
