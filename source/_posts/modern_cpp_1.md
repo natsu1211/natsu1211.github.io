@@ -85,7 +85,7 @@ f(rx);                      // rx是左值，所以T是const int&
                             // param的类型也是const int&
 
 f(27);                      // 27是右值，所以T是int
-                            // 所以param的类型是int&&
+                            // param的类型是int&&
 ```
 
 对于3，param是pass-by-value的，这意味着param是的一份全新的拷贝。和之前一样，如果expr的类型是个引用，将会忽略引用的部分。接下来const，volatile修饰符也要忽略掉。这是有道理的，因为传递过来的参数不能修改不代表它的拷贝不能被修改。    
