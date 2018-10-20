@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://natsu1211.com/2018/10/20/modern-cpp-4/</loc>
+    
+    <lastmod>2018-10-20T10:32:55.896Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://natsu1211.com/2018/08/29/modern-cpp-2/</loc>
     
     <lastmod>2018-10-20T10:32:13.063Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://natsu1211.com/2018/10/19/modern-cpp-3/</loc>
     
     <lastmod>2018-10-20T10:31:55.862Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://natsu1211.com/2018/10/20/modern-cpp-4/</loc>
-    
-    <lastmod>2018-10-20T10:31:45.396Z</lastmod>
     
   </url>
   
