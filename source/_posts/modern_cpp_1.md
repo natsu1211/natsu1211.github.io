@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item1)
+title: 读薄Effective Modern C++ (Item1 理解模板类型推导)
 date: 2018-08-24 01:27:34
 tags: 
 - c++

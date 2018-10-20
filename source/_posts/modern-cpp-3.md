@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item3)
+title: 读薄Effective Modern C++ (Item3 理解decltype)
 date: 2018-10-19 00:33:48
 tags:
 - c++
@@ -82,7 +82,7 @@ decltype(auto) f2()
 }
 ```
 f2返回了一个局部变量的引用！这当然是我们不愿意看到的。        
-   
+
 ### 总结         
 - decltype几乎总是不加修改的返回变量或表达式的类型
 - 对于类型为T并且不是单纯变量名的左值表达式，decltype总是返回T&
