@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://natsu1211.com/"/>
-  <updated>2018-10-19T17:48:50.451Z</updated>
+  <updated>2018-10-20T10:29:44.888Z</updated>
   <id>http://natsu1211.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>modern-cpp-4</title>
+    <link href="http://natsu1211.com/2018/10/20/modern-cpp-4/"/>
+    <id>http://natsu1211.com/2018/10/20/modern-cpp-4/</id>
+    <published>2018-10-20T08:46:42.000Z</published>
+    <updated>2018-10-20T10:29:44.888Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="item4-知道如何查看类型推导-p30---p29">Item4 知道如何查看类型推导 (p30 - p29)</h2><p>通常来说有三种办法，</p><h3 id="ide">IDE</h3><p>在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。<br>对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。<br><a id="more"></a></p><h3 id="编译器诊断">编译器诊断</h3><p>一个有效的让编译器展示类型的办法就是故意制造编译问题。 首先声明一个类模板，但是并不定义这个模板：</p><p>template<typename t=""> // 声明TD class TD; // TD == “Type Displayer” 尝试实例化这个模板会导致错误信息，因为没有模板的实现。想看变量被推导的类型，只要尝试去使用这些类型去实例化TD：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TD&lt;<span class="keyword">decltype</span>(x)&gt; xType;                  <span class="comment">// 引起的错误</span></span><br><span class="line">TD&lt;<span class="keyword">decltype</span>(y)&gt; yType;                  <span class="comment">// 包含了x和y的类型</span></span><br></pre></td></tr></table></figure></typename></p><p>我使用的变量名字的形式variableNameType是因为这样有利于输出的错误信息可以帮助我定位我要寻找的信息。对上面的代码，我的一个编译器输出了诊断信息，其中的一部分如下： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: aggregate 'TD&lt;int&gt; xType' has incomplete type and cannot be defined</span><br><span class="line">error: aggregate 'TD&lt;const int *&gt; yType' has incomplete type and cannot be defined</span><br></pre></td></tr></table></figure></p><p>另一个编译器提供相同的信息，但是格式不太一样： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: 'xType' uses undefined class 'TD&lt;int&gt;'</span><br><span class="line">error: 'yType' uses undefined class 'TD&lt;const int *&gt;'</span><br></pre></td></tr></table></figure></p><p>排除格式的区别，基本所有的编译器都会在这种代码的技术中输出有用的错误信息。</p><h3 id="运行时输出">运行时输出</h3><p>可以使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(x).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// display types for</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(y).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// x and y</span></span><br></pre></td></tr></table></figure></p><p>这是基于对类似于x或者y运算typeid可以得到一个std::type_info对象，std::type_info有一个成员函数，name可以提供一个C风格的字符串，代表了类型的名字。但是遗憾的是输出通常并不是完全可靠。<br>Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来查看变量或函数的类型<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/type_index.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line">    <span class="keyword">using</span> boost::typeindex::type_id_with_cvr;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show T</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"T = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;T&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show param's type</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"param = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;<span class="keyword">decltype</span>(param)&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>按照以下方法使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Widget&gt; createVec();    <span class="comment">// 工厂方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> vw = createVec();        <span class="comment">// init vw w/factory return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!vw.empty()) &#123;</span><br><span class="line">    f(&amp;vw[<span class="number">0</span>]);                      <span class="comment">// 调用f</span></span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>在GNU和Clang的编译器下面，Boost.TypeIndex输出准确的结果： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = Widget <span class="keyword">const</span>*</span><br><span class="line">param = Widget <span class="keyword">const</span>* <span class="keyword">const</span>&amp;</span><br></pre></td></tr></table></figure></p><p>微软的编译器实际上输出的结果是一样的： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = class Widget <span class="keyword">const</span> *</span><br><span class="line">param = class Widget <span class="keyword">const</span> * <span class="keyword">const</span> &amp;</span><br></pre></td></tr></table></figure></p><p>以上三种方法可以灵活使用。</p><h3 id="总结">总结</h3><ul><li>类型推导的结果常常可以通过IDE的编辑器，编译器错误输出信息和Boost.TypeIndex库的结果中得到</li><li>一些工具的结果不一定有帮助性也不一定准确，所以对C++标准的类型推导法则加以理解是很有必要的</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;item4-知道如何查看类型推导-p30---p29&quot;&gt;Item4 知道如何查看类型推导 (p30 - p29)&lt;/h2&gt;
+&lt;p&gt;通常来说有三种办法，&lt;/p&gt;
+&lt;h3 id=&quot;ide&quot;&gt;IDE&lt;/h3&gt;
+&lt;p&gt;在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。&lt;br&gt;
+对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="读书笔记" scheme="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="c++" scheme="http://natsu1211.com/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>读薄Effective Modern C++ (Item3)</title>
