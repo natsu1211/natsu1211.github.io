@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="Item4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+  <meta name="description" content="Item5 优先使用auto而非显式类型声明 (p37 - p42) 比起显式声明，auto声明有几点优势。  能够避免局部变量未初始化的问题 int x1;                   // potentially uninitializedauto x2;                  // error! initializer requiredauto x3 = 0;">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (Item4 知道如何查看类型推导)">
-<meta property="og:url" content="http://natsu1211.com/2018/10/20/modern-cpp-4/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">
+<meta property="og:url" content="http://natsu1211.com/2018/10/20/modern-cpp-5/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="Item4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+<meta property="og:description" content="Item5 优先使用auto而非显式类型声明 (p37 - p42) 比起显式声明，auto声明有几点优势。  能够避免局部变量未初始化的问题 int x1;                   // potentially uninitializedauto x2;                  // error! initializer requiredauto x3 = 0;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-20T10:37:34.028Z">
+<meta property="og:updated_time" content="2018-10-21T08:58:03.048Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (Item4 知道如何查看类型推导)">
-<meta name="twitter:description" content="Item4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">
+<meta name="twitter:description" content="Item5 优先使用auto而非显式类型声明 (p37 - p42) 比起显式声明，auto声明有几点优势。  能够避免局部变量未初始化的问题 int x1;                   // potentially uninitializedauto x2;                  // error! initializer requiredauto x3 = 0;">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="http://natsu1211.com/2018/10/20/modern-cpp-4/"/>
+  <link rel="canonical" href="http://natsu1211.com/2018/10/20/modern-cpp-5/"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (Item4 知道如何查看类型推导) | EverSummer</title>
+  <title>读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明) | EverSummer</title>
   
 
 
@@ -347,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/10/20/modern-cpp-4/">
+    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/10/20/modern-cpp-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -364,7 +364,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item4 知道如何查看类型推导)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)
               
             
           </h2>
@@ -389,12 +389,24 @@
                 
               
 
-              <time title="创建时间：2018-10-20 17:46:42 / 修改时间：19:37:34" itemprop="dateCreated datePublished" datetime="2018-10-20T17:46:42+09:00">2018-10-20</time>
+              <time title="创建时间：2018-10-20 19:37:28" itemprop="dateCreated datePublished" datetime="2018-10-20T19:37:28+09:00">2018-10-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-21 17:58:03" itemprop="dateModified" datetime="2018-10-21T17:58:03+09:00">2018-10-21</time>
               
             
           </span>
@@ -433,10 +445,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/20/modern-cpp-4/#comments" itemprop="discussionUrl">
+                <a href="/2018/10/20/modern-cpp-5/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/10/20/modern-cpp-4/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/10/20/modern-cpp-5/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -464,32 +476,30 @@
       
 
       
-        <h2 id="item4-知道如何查看类型推导-p30---p35">Item4 知道如何查看类型推导 (p30 - p35)</h2>
-<p>通常来说有三种办法，</p>
-<h3 id="ide">IDE</h3>
-<p>在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。<br>
-对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。<br>
-<a id="more"></a></p>
-<h3 id="编译器诊断">编译器诊断</h3>
-<p>一个有效的让编译器展示类型的办法就是故意制造编译问题。 首先声明一个类模板，但是并不定义这个模板： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                    <span class="comment">// 声明TD</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TD</span>;</span>                               <span class="comment">// TD == "Type Displayer"</span></span><br></pre></td></tr></table></figure></p>
-<p>尝试实例化这个模板会导致错误信息，因为没有模板的实现。想看变量被推导的类型，只要尝试去使用这些类型去实例化TD：<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TD&lt;<span class="keyword">decltype</span>(x)&gt; xType;                  <span class="comment">// 引起的错误</span></span><br><span class="line">TD&lt;<span class="keyword">decltype</span>(y)&gt; yType;                  <span class="comment">// 包含了x和y的类型</span></span><br></pre></td></tr></table></figure></p>
-<p>我使用的变量名字的形式variableNameType是因为这样有利于输出的错误信息可以帮助我定位我要寻找的信息。对上面的代码，我的一个编译器输出了诊断信息，其中的一部分如下： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: aggregate 'TD&lt;int&gt; xType' has incomplete type and cannot be defined</span><br><span class="line">error: aggregate 'TD&lt;const int *&gt; yType' has incomplete type and cannot be defined</span><br></pre></td></tr></table></figure></p>
-<p>另一个编译器提供相同的信息，但是格式不太一样： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: 'xType' uses undefined class 'TD&lt;int&gt;'</span><br><span class="line">error: 'yType' uses undefined class 'TD&lt;const int *&gt;'</span><br></pre></td></tr></table></figure></p>
-<p>排除格式的区别，基本所有的编译器都会在这种代码的技术中输出有用的错误信息。</p>
-<h3 id="运行时输出">运行时输出</h3>
-<p>可以使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(x).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// display types for</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(y).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// x and y</span></span><br></pre></td></tr></table></figure></p>
-<p>这是基于对类似于x或者y运算typeid可以得到一个std::type_info对象，std::type_info有一个成员函数，name可以提供一个C风格的字符串，代表了类型的名字。但是遗憾的是输出通常并不是完全可靠。<br>
-Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来查看变量或函数的类型<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/type_index.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line">    <span class="keyword">using</span> boost::typeindex::type_id_with_cvr;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show T</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"T = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;T&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show param's type</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"param = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;<span class="keyword">decltype</span>(param)&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>按照以下方法使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Widget&gt; createVec();    <span class="comment">// 工厂方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> vw = createVec();        <span class="comment">// init vw w/factory return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!vw.empty()) &#123;</span><br><span class="line">    f(&amp;vw[<span class="number">0</span>]);                      <span class="comment">// 调用f</span></span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在GNU和Clang的编译器下面，Boost.TypeIndex输出准确的结果： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = Widget <span class="keyword">const</span>*</span><br><span class="line">param = Widget <span class="keyword">const</span>* <span class="keyword">const</span>&amp;</span><br></pre></td></tr></table></figure></p>
-<p>微软的编译器实际上输出的结果是一样的： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = class Widget <span class="keyword">const</span> *</span><br><span class="line">param = class Widget <span class="keyword">const</span> * <span class="keyword">const</span> &amp;</span><br></pre></td></tr></table></figure></p>
-<p>以上三种方法可以灵活使用。</p>
+        <h2 id="item5-优先使用auto而非显式类型声明-p37---p42">Item5 优先使用auto而非显式类型声明 (p37 - p42)</h2>
+<p>比起显式声明，auto声明有几点优势。</p>
+<ol type="1">
+<li>能够避免局部变量未初始化的问题 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> x1;                   <span class="comment">// potentially uninitialized</span></span><br><span class="line"><span class="keyword">auto</span> x2;                  <span class="comment">// error! initializer required</span></span><br><span class="line"><span class="keyword">auto</span> x3 = <span class="number">0</span>;              <span class="comment">// fine, x's value is well-defined</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<a id="more"></a>
+<ol start="2" type="1">
+<li>可以表示无法显式写出的类型（只有编译器知道的类型） <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> dereUPLess =                           <span class="comment">// comparison func.</span></span><br><span class="line">    [](<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Widget&gt;&amp; p1,   <span class="comment">// for Widgets</span></span><br><span class="line">        <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Widget&gt;&amp; p2)  <span class="comment">// pointed to by</span></span><br><span class="line">    &#123; <span class="keyword">return</span> *p1 &lt; *p2&#125;;                    <span class="comment">// std::unique_ptrs</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>c++14中可以在lambda的参数中使用auto，使得代码更加简洁。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> derefLess =                            <span class="comment">// C++14 comparison</span></span><br><span class="line">[](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p1,                          <span class="comment">// function for</span></span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2)                          <span class="comment">// values pointed</span></span><br><span class="line">&#123; <span class="keyword">return</span> *p1 &lt; *p2; &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>另外，使用auto来保存lambda表达式，比使用std::function更加节省内存，调用效率也更加的高。</p>
+<ol start="3" type="1">
+<li>可以避免类型截断 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">unsigned</span> sz = v.size();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>sz的类型实际上不是unsigned，而是std::vector<int>::size_type。这在64位的系统上可能会产生问题，应为unsinged是32位的。</int></p>
+<ol start="4" type="1">
+<li>更加易于重构 当变量或返回值使用auto的地方无需任何对应。</li>
+</ol>
+<p>auto会使得类型声明不是那么一目了然和，这是很多人犹豫使用auto的原因，但是IDE得辅助能帮我们缓解这些问题。 另外还有一些auto无法做出正确推导的情况。<br>
+auto的使用并不是强制的，如果最终觉得显式声明更加易读可维护，可以继续使用传统的显式声明，但是要记住auto的这些优势来做出选择。</p>
 <h3 id="总结">总结</h3>
 <ul>
-<li>类型推导的结果常常可以通过IDE的编辑器，编译器错误输出信息和Boost.TypeIndex库的结果中得到</li>
-<li>一些工具的结果不一定有帮助性也不一定准确，所以对C++标准的类型推导法则加以理解是很有必要的</li>
+<li>auto变量一定要被初始化，并且对由于类型不匹配引起的兼容和效率问题有免疫力，可以简单代码重构，一般会比显式的声明类型敲击更少的键盘</li>
+<li>auto变量也受限于条款2和条款6中描述的陷阱</li>
 </ul>
 
       
@@ -545,7 +555,7 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/10/20/modern-cpp-4/" title="读薄Effective Modern C++ (Item4 知道如何查看类型推导)">http://natsu1211.com/2018/10/20/modern-cpp-4/</a>
+    <a href="http://natsu1211.com/2018/10/20/modern-cpp-5/" title="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">http://natsu1211.com/2018/10/20/modern-cpp-5/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -571,8 +581,8 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/19/modern-cpp-3/" rel="next" title="读薄Effective Modern C++ (Item3 理解decltype)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item3 理解decltype)
+              <a href="/2018/10/20/modern-cpp-4/" rel="next" title="读薄Effective Modern C++ (Item4 知道如何查看类型推导)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item4 知道如何查看类型推导)
               </a>
             
           </div>
@@ -580,10 +590,6 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/20/modern-cpp-5/" rel="prev" title="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">
-                读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -781,7 +787,7 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item4-知道如何查看类型推导-p30---p35"><span class="nav-number">1.</span> <span class="nav-text">Item4 知道如何查看类型推导 (p30 - p35)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ide"><span class="nav-number">1.1.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译器诊断"><span class="nav-number">1.2.</span> <span class="nav-text">编译器诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时输出"><span class="nav-number">1.3.</span> <span class="nav-text">运行时输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item5-优先使用auto而非显式类型声明-p37---p42"><span class="nav-number">1.</span> <span class="nav-text">Item5 优先使用auto而非显式类型声明 (p37 - p42)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -970,9 +976,9 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://natsu1211.com/2018/10/20/modern-cpp-4/';
-        this.page.identifier = '2018/10/20/modern-cpp-4/';
-        this.page.title = '读薄Effective Modern C++ (Item4 知道如何查看类型推导)';
+        this.page.url = 'http://natsu1211.com/2018/10/20/modern-cpp-5/';
+        this.page.identifier = '2018/10/20/modern-cpp-5/';
+        this.page.title = '读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
