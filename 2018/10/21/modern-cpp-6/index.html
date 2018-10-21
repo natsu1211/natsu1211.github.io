@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="Item2 理解auto类型推导（p18-p23） auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。">
+  <meta name="description" content="Item6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (Item2 理解auto类型推导)">
-<meta property="og:url" content="http://natsu1211.com/2018/08/29/modern-cpp-2/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)">
+<meta property="og:url" content="http://natsu1211.com/2018/10/21/modern-cpp-6/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="Item2 理解auto类型推导（p18-p23） auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。">
+<meta property="og:description" content="Item6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-20T10:32:13.063Z">
+<meta property="og:updated_time" content="2018-10-21T10:53:47.886Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (Item2 理解auto类型推导)">
-<meta name="twitter:description" content="Item2 理解auto类型推导（p18-p23） auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)">
+<meta name="twitter:description" content="Item6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="http://natsu1211.com/2018/08/29/modern-cpp-2/"/>
+  <link rel="canonical" href="http://natsu1211.com/2018/10/21/modern-cpp-6/"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (Item2 理解auto类型推导) | EverSummer</title>
+  <title>读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化) | EverSummer</title>
   
 
 
@@ -347,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/08/29/modern-cpp-2/">
+    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/10/21/modern-cpp-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -364,7 +364,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item2 理解auto类型推导)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)
               
             
           </h2>
@@ -389,24 +389,12 @@
                 
               
 
-              <time title="创建时间：2018-08-29 01:07:46" itemprop="dateCreated datePublished" datetime="2018-08-29T01:07:46+09:00">2018-08-29</time>
+              <time title="创建时间：2018-10-21 17:59:29 / 修改时间：19:53:47" itemprop="dateCreated datePublished" datetime="2018-10-21T17:59:29+09:00">2018-10-21</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-20 19:32:13" itemprop="dateModified" datetime="2018-10-20T19:32:13+09:00">2018-10-20</time>
               
             
           </span>
@@ -445,10 +433,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/29/modern-cpp-2/#comments" itemprop="discussionUrl">
+                <a href="/2018/10/21/modern-cpp-6/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/29/modern-cpp-2/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/10/21/modern-cpp-6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -476,26 +464,19 @@
       
 
       
-        <h2 id="item2-理解auto类型推导p18-p23">Item2 理解auto类型推导（p18-p23）</h2>
-<p>auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。</p>
-<a id="more"></a>
-<p>具体的对应规则如下， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> x = <span class="number">27</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> cx = x;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span>&amp; rx = x;</span><br></pre></td></tr></table></figure></p>
-<p>对应 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                <span class="comment">// 推导x的类型的</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func_for_x</span><span class="params">(T param)</span></span>;           <span class="comment">// 概念上的模板</span></span><br><span class="line"></span><br><span class="line">func_for_x(<span class="number">27</span>);                     <span class="comment">// 概念上的调用：</span></span><br><span class="line">                                    <span class="comment">// param的类型就是x的类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func_for_cx</span><span class="params">(<span class="keyword">const</span> T param)</span></span>;    <span class="comment">// 推导cx的概念上的模板</span></span><br><span class="line"></span><br><span class="line">func_for_cx(x);                     <span class="comment">// 概念调用：param的推导类型就是cx的类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func_for_rx</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span>;   <span class="comment">// 推导rx概念上的模板</span></span><br><span class="line"></span><br><span class="line">func_for_rx(x);                     <span class="comment">// 概念调用：param的推导类型就是rx的类型</span></span><br></pre></td></tr></table></figure></p>
-<p>特殊情况：<br>
-使用C++11新加入的统一初始化时， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> x3 = &#123;<span class="number">27</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> x4&#123; <span class="number">27</span> &#125;;</span><br></pre></td></tr></table></figure></p>
-<p>相当于声明了一个类型为std::intializer_list<int>的变量，这个变量包含了一个单一的元素27。</int></p>
-<p>对待花括号初始化的行为是auto唯一和模板类型推导不一样的地方。当auto声明变量被使用一对花括号初始化，推导的类型是std::intializer_list的一个实例。但是如果相同的初始化递给相同的模板，类型推导会失败，代码不能编译。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> x = &#123; <span class="number">11</span>, <span class="number">23</span>, <span class="number">9</span> &#125;;             <span class="comment">// x的类型是</span></span><br><span class="line">                                    <span class="comment">// std::initializer_list&lt;int&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                <span class="comment">// 和x的声明等价的</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T param)</span></span>;                    <span class="comment">// 模板</span></span><br><span class="line"></span><br><span class="line">f(&#123; <span class="number">11</span>, <span class="number">23</span>, <span class="number">9</span> &#125;);                   <span class="comment">// 错误的！没办法推导T的类型</span></span><br></pre></td></tr></table></figure></p>
-<p>但是，如果你明确模板的param的类型是一个不知道T类型的std::initializer_list<t>： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;T&gt; initList)</span></span>;</span><br><span class="line"></span><br><span class="line">f(&#123; <span class="number">11</span>, <span class="number">23</span>, <span class="number">9</span> &#125;);                   <span class="comment">// T被推导成int，initList的</span></span><br><span class="line">                                    <span class="comment">// 类型是std::initializer_list&lt;int&gt;</span></span><br></pre></td></tr></table></figure></t></p>
-<p>所以auto和模板类型推导的本质区别就是auto假设花括号初始化代表的是std::initializer_list，但是模板类型推导却不是。</p>
-<p>对于C++11，这就是auto类型推导规则的全部了。但是对于C++14来说，故事还要继续。C++14允许auto表示推导的函数返回值（参看Item3），而且C++14的lambda可能会在参数声明里面使用auto。但是，这里的auto的规则是模板的类型推导，而不是auto的类型推导。所以一个使用auto声明的返回值的函数，返回一个花括号初始化就无法编译。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">createInitList</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;             <span class="comment">// 编译错误：不能推导出&#123; 1, 2, 3 &#125;的类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在C++14的lambda里面，当auto用在参数类型声明的时候也是如此：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="keyword">auto</span> resetV =  [&amp;v](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; newValue) &#123; v = newValue; &#125;    <span class="comment">// C++14</span></span><br><span class="line">resetV(&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;);                <span class="comment">// 编译错误，不能推导出&#123; 1, 2, 3 &#125;的类型</span></span><br></pre></td></tr></table></figure>
-<h4 id="总结">总结</h4>
+        <h2 id="item6-当auto推导出非预期类型时应当使用显式的类型初始化">Item6 当auto推导出非预期类型时应当使用显式的类型初始化</h2>
+<p>使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。<br>
+<a id="more"></a> 例如假设有一个函数接受一个Widget返回一个std::vector<bool>，其中每个bool表征Widget是否接受一个特定的特性： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; features(<span class="keyword">const</span> Widget&amp; w);</span><br></pre></td></tr></table></figure></bool></p>
+<p>进一步的，假设第五个bit表示Widget是否有高优先级。我们可以这样写代码： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Widget w;</span><br><span class="line">…</span><br><span class="line"><span class="keyword">bool</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是个高优先级的？</span></span><br><span class="line">…</span><br><span class="line">processWidget(w, highPriority);             <span class="comment">// 配合优先级处理w</span></span><br></pre></td></tr></table></figure></p>
+<p>但是，如果写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是个高优先级的？</span></span><br></pre></td></tr></table></figure></p>
+<p>就会出现问题，此时highPriority的类型并不是<code>bool</code>，而是<code>std::vector&lt;bool&gt;::reference</code>。之前的代码能够工作是由于存在<code>std::vector&lt;bool&gt;::reference</code>到<code>bool</code>的隐式转换。</p>
+<p>也就是说，我们要避免使用下面的代码的形式： <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">auto someVar = expression of <span class="string">"invisible"</span><span class="built_in"> proxy </span>class type;</span><br></pre></td></tr></table></figure></p>
+<p>这种时候应该做一个显式的类型转换。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = <span class="keyword">static_cast</span>&lt;<span class="keyword">bool</span>&gt;(features(w)[<span class="number">5</span>]);</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结">总结</h3>
 <ul>
-<li>auto类型推导通常和模板类型推导类似，但是auto类型推导假定花括号初始化代表的类型是std::initializer_list，但是模板类型推导却不是这样。<br>
+<li>代理类型会导致auto推导出错误的类型<br>
 </li>
-<li>auto在函数返回值或者lambda参数里面执行模板的类型推导，而不是通常意义的auto类型推导</li>
+<li>显式的强制类型转换能够使auto推导出期望的类型</li>
 </ul>
 
       
@@ -551,7 +532,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/08/29/modern-cpp-2/" title="读薄Effective Modern C++ (Item2 理解auto类型推导)">http://natsu1211.com/2018/08/29/modern-cpp-2/</a>
+    <a href="http://natsu1211.com/2018/10/21/modern-cpp-6/" title="读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)">http://natsu1211.com/2018/10/21/modern-cpp-6/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -577,8 +558,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/24/modern_cpp_1/" rel="next" title="读薄Effective Modern C++ (Item1 理解模板类型推导)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item1 理解模板类型推导)
+              <a href="/2018/10/20/modern-cpp-5/" rel="next" title="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)
               </a>
             
           </div>
@@ -586,10 +567,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/19/modern-cpp-3/" rel="prev" title="读薄Effective Modern C++ (Item3 理解decltype)">
-                读薄Effective Modern C++ (Item3 理解decltype) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -787,7 +764,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item2-理解auto类型推导p18-p23"><span class="nav-number">1.</span> <span class="nav-text">Item2 理解auto类型推导（p18-p23）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.0.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item6-当auto推导出非预期类型时应当使用显式的类型初始化"><span class="nav-number">1.</span> <span class="nav-text">Item6 当auto推导出非预期类型时应当使用显式的类型初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -976,9 +953,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://natsu1211.com/2018/08/29/modern-cpp-2/';
-        this.page.identifier = '2018/08/29/modern-cpp-2/';
-        this.page.title = '读薄Effective Modern C++ (Item2 理解auto类型推导)';
+        this.page.url = 'http://natsu1211.com/2018/10/21/modern-cpp-6/';
+        this.page.identifier = '2018/10/21/modern-cpp-6/';
+        this.page.title = '读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

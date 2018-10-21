@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://natsu1211.com/"/>
-  <updated>2018-10-21T08:58:03.048Z</updated>
+  <updated>2018-10-21T10:53:47.886Z</updated>
   <id>http://natsu1211.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)</title>
+    <link href="http://natsu1211.com/2018/10/21/modern-cpp-6/"/>
+    <id>http://natsu1211.com/2018/10/21/modern-cpp-6/</id>
+    <published>2018-10-21T08:59:29.000Z</published>
+    <updated>2018-10-21T10:53:47.886Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="item6-当auto推导出非预期类型时应当使用显式的类型初始化">Item6 当auto推导出非预期类型时应当使用显式的类型初始化</h2><p>使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。<br><a id="more"></a> 例如假设有一个函数接受一个Widget返回一个std::vector<bool>，其中每个bool表征Widget是否接受一个特定的特性： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; features(<span class="keyword">const</span> Widget&amp; w);</span><br></pre></td></tr></table></figure></bool></p><p>进一步的，假设第五个bit表示Widget是否有高优先级。我们可以这样写代码： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Widget w;</span><br><span class="line">…</span><br><span class="line"><span class="keyword">bool</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是个高优先级的？</span></span><br><span class="line">…</span><br><span class="line">processWidget(w, highPriority);             <span class="comment">// 配合优先级处理w</span></span><br></pre></td></tr></table></figure></p><p>但是，如果写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是个高优先级的？</span></span><br></pre></td></tr></table></figure></p><p>就会出现问题，此时highPriority的类型并不是<code>bool</code>，而是<code>std::vector&lt;bool&gt;::reference</code>。之前的代码能够工作是由于存在<code>std::vector&lt;bool&gt;::reference</code>到<code>bool</code>的隐式转换。</p><p>也就是说，我们要避免使用下面的代码的形式： <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">auto someVar = expression of <span class="string">"invisible"</span><span class="built_in"> proxy </span>class type;</span><br></pre></td></tr></table></figure></p><p>这种时候应该做一个显式的类型转换。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = <span class="keyword">static_cast</span>&lt;<span class="keyword">bool</span>&gt;(features(w)[<span class="number">5</span>]);</span><br></pre></td></tr></table></figure></p><h3 id="总结">总结</h3><ul><li>代理类型会导致auto推导出错误的类型<br></li><li>显式的强制类型转换能够使auto推导出期望的类型</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;item6-当auto推导出非预期类型时应当使用显式的类型初始化&quot;&gt;Item6 当auto推导出非预期类型时应当使用显式的类型初始化&lt;/h2&gt;
+&lt;p&gt;使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="读书笔记" scheme="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="c++" scheme="http://natsu1211.com/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)</title>
