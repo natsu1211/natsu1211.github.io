@@ -19,9 +19,10 @@ categories:
 ### 编译器诊断
 一个有效的让编译器展示类型的办法就是故意制造编译问题。
 首先声明一个类模板，但是并不定义这个模板：
-
+```cpp
 template<typename T>                    // 声明TD
 class TD;                               // TD == "Type Displayer"
+```
 尝试实例化这个模板会导致错误信息，因为没有模板的实现。想看变量被推导的类型，只要尝试去使用这些类型去实例化TD：           
 ```cpp
 TD<decltype(x)> xType;                  // 引起的错误
