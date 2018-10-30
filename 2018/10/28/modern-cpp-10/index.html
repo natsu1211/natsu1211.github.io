@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="Item5 优先使用auto而非显式类型声明 (p37 - p42) 比起显式声明，auto声明有几点优势。  能够避免局部变量未初始化的问题 int x1;                   // potentially uninitializedauto x2;                  // error! initializer requiredauto x3 = 0;">
+  <meta name="description" content="Item10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">
-<meta property="og:url" content="http://natsu1211.com/2018/10/20/modern-cpp-5/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta property="og:url" content="http://natsu1211.com/2018/10/28/modern-cpp-10/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="Item5 优先使用auto而非显式类型声明 (p37 - p42) 比起显式声明，auto声明有几点优势。  能够避免局部变量未初始化的问题 int x1;                   // potentially uninitializedauto x2;                  // error! initializer requiredauto x3 = 0;">
+<meta property="og:description" content="Item10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-21T08:58:03.048Z">
+<meta property="og:updated_time" content="2018-10-30T15:45:09.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">
-<meta name="twitter:description" content="Item5 优先使用auto而非显式类型声明 (p37 - p42) 比起显式声明，auto声明有几点优势。  能够避免局部变量未初始化的问题 int x1;                   // potentially uninitializedauto x2;                  // error! initializer requiredauto x3 = 0;">
+<meta name="twitter:title" content="读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta name="twitter:description" content="Item10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="http://natsu1211.com/2018/10/20/modern-cpp-5/"/>
+  <link rel="canonical" href="http://natsu1211.com/2018/10/28/modern-cpp-10/"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明) | EverSummer</title>
+  <title>读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/10/20/modern-cpp-5/">
+    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/10/28/modern-cpp-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-10-20 19:37:28" itemprop="dateCreated datePublished" datetime="2018-10-20T19:37:28+09:00">2018-10-20</time>
+              <time title="创建时间：2018-10-28 02:18:56" itemprop="dateCreated datePublished" datetime="2018-10-28T02:18:56+09:00">2018-10-28</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-21 17:58:03" itemprop="dateModified" datetime="2018-10-21T17:58:03+09:00">2018-10-21</time>
+                <time title="修改时间：2018-10-31 00:45:09" itemprop="dateModified" datetime="2018-10-31T00:45:09+09:00">2018-10-31</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/20/modern-cpp-5/#comments" itemprop="discussionUrl">
+                <a href="/2018/10/28/modern-cpp-10/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/10/20/modern-cpp-5/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/10/28/modern-cpp-10/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,30 +468,23 @@
       
 
       
-        <h2 id="item5-优先使用auto而非显式类型声明-p37---p42">Item5 优先使用auto而非显式类型声明 (p37 - p42)</h2>
-<p>比起显式声明，auto声明有几点优势。</p>
-<ol type="1">
-<li>能够避免局部变量未初始化的问题 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> x1;                   <span class="comment">// potentially uninitialized</span></span><br><span class="line"><span class="keyword">auto</span> x2;                  <span class="comment">// error! initializer required</span></span><br><span class="line"><span class="keyword">auto</span> x3 = <span class="number">0</span>;              <span class="comment">// fine, x's value is well-defined</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<a id="more"></a>
-<ol start="2" type="1">
-<li>可以表示无法显式写出的类型（只有编译器知道的类型） <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> dereUPLess =                           <span class="comment">// comparison func.</span></span><br><span class="line">    [](<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Widget&gt;&amp; p1,   <span class="comment">// for Widgets</span></span><br><span class="line">        <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Widget&gt;&amp; p2)  <span class="comment">// pointed to by</span></span><br><span class="line">    &#123; <span class="keyword">return</span> *p1 &lt; *p2&#125;;                    <span class="comment">// std::unique_ptrs</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>c++14中可以在lambda的参数中使用auto，使得代码更加简洁。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> derefLess =                            <span class="comment">// C++14 comparison</span></span><br><span class="line">[](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; p1,                          <span class="comment">// function for</span></span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p2)                          <span class="comment">// values pointed</span></span><br><span class="line">&#123; <span class="keyword">return</span> *p1 &lt; *p2; &#125;;</span><br></pre></td></tr></table></figure></p>
-<p>另外，使用auto来保存lambda表达式，比使用std::function更加节省内存，调用效率也更加的高。</p>
-<ol start="3" type="1">
-<li>可以避免类型截断 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">unsigned</span> sz = v.size();</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>sz的类型实际上不是unsigned，而是std::vector<int>::size_type。这在64位的系统上可能会产生问题，应为unsinged是32位的。</int></p>
-<ol start="4" type="1">
-<li>更加易于重构 当变量或返回值使用auto的地方无需任何对应。</li>
-</ol>
-<p>auto会使得类型声明不是那么一目了然和，这是很多人犹豫使用auto的原因，但是IDE得辅助能帮我们缓解这些问题。 另外还有一些auto无法做出正确推导的情况。<br>
-auto的使用并不是强制的，如果最终觉得显式声明更加易读可维护，可以继续使用传统的显式声明，但是要记住auto的这些优势来做出选择。</p>
-<h3 id="总结">总结</h3>
+        <h2 id="item10-优先使用有作用域的enmus而不是无作用域的enum">Item10 优先使用有作用域的enmus而不是无作用域的enum</h2>
+<p>一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义： <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red&#125;;                 <span class="comment">// black, white, red 和</span></span><br><span class="line">	                                             <span class="comment">// Color  同属一个作用域</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                              <span class="comment">// 错误！因为 white</span></span><br><span class="line">	                                             <span class="comment">// 在这个作用域已经被声明过</span></span><br></pre></td></tr></table></figure></p>
+<p>而enum class则不会有该问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;; <span class="comment">// black, white, red</span></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                     <span class="comment">// fine</span></span><br><span class="line">Color c = white;                        <span class="comment">// error!</span></span><br><span class="line">Color c = Color::white;                 <span class="comment">// fine</span></span><br><span class="line"><span class="keyword">auto</span> c = Color::white;                  <span class="comment">// fine</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的理由已经足够让我们选择enum class，但是enum class还有一个优势，它的枚举元素是强类型的。 对于无作用域的enum，枚举元素可以隐式转换为数值类型，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//能通过编译！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//能通过编译！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个表示颜色的变量能够和double类型作比较，以及能用隐式转换为std::size_t类型，显然不是我们所期望的，使用enum class的话就能达到我们期望的效果， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = Color::red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//编译错误！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//编译错误！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果确实需要进行类型转换，可以用static_cast进行显式转换。</p>
+<p>有些时候，无作用域的enum的枚举项能够隐式转换为整数的特性会比较方便使用，比如作为有意义的索引值， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UserInfo = <span class="built_in">std</span>::tuple&lt;<span class="built_in">std</span>::<span class="built_in">string</span>,</span><br><span class="line">                           <span class="built_in">std</span>::<span class="built_in">string</span>,        <span class="comment">// email</span></span><br><span class="line">                           <span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; ;      <span class="comment">// reputation</span></span><br><span class="line"><span class="keyword">enum</span> UserInfoFields &#123; uiName, uiEmail, uiReputation &#125;;</span><br><span class="line">UserInfo uInfo;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">auto</span> val1 = <span class="built_in">std</span>::get&lt;<span class="number">1</span>&gt;(uInfo);       <span class="comment">// 不清楚索引1对应的数据是什么</span></span><br><span class="line"><span class="keyword">auto</span> val2 = <span class="built_in">std</span>::get&lt;uiEmail&gt;(uInfo); <span class="comment">// 隐式转换为1，清楚的知道是获取email字段</span></span><br></pre></td></tr></table></figure></p>
+<p>而enum class因为无法隐式转换，需要写成， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;<span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt;(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure></p>
+<p>但是这种写法的可读性不是太好，我们可以提供一个转换函数来增加可读性， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> E&gt;    <span class="comment">// C++14 constexpr auto</span></span><br><span class="line">toUType(E enumerator) <span class="keyword">noexcept</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">underlying_type_t</span>&lt;E&gt;&gt;(enumerator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;toUType(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
 <ul>
-<li>auto变量一定要被初始化，并且对由于类型不匹配引起的兼容和效率问题有免疫力，可以简单代码重构，一般会比显式的声明类型敲击更少的键盘</li>
-<li>auto变量也受限于条款2和条款6中描述的陷阱</li>
+<li>C++98风格的enum是没有作用域的enum</li>
+<li>有作用域的枚举体的枚举元素仅仅对枚举体内部可见。只能通过类型转换（cast）转换为其他类型</li>
+<li>有作用域和没有作用域的enum都支持指定潜在类型。有作用域的enum的默认潜在类型是int。没有作用域的enum没有默认的潜在类型。</li>
+<li>有作用域的enum总是可以前置声明的。没有作用域的enum只有当指定潜在类型时才可以前置声明。</li>
 </ul>
 
       
@@ -547,7 +540,7 @@ auto的使用并不是强制的，如果最终觉得显式声明更加易读可�
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/10/20/modern-cpp-5/" title="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">http://natsu1211.com/2018/10/20/modern-cpp-5/</a>
+    <a href="http://natsu1211.com/2018/10/28/modern-cpp-10/" title="读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)">http://natsu1211.com/2018/10/28/modern-cpp-10/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -573,8 +566,8 @@ auto的使用并不是强制的，如果最终觉得显式声明更加易读可�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/modern-cpp-4/" rel="next" title="读薄Effective Modern C++ (Item4 知道如何查看类型推导)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item4 知道如何查看类型推导)
+              <a href="/2018/10/27/modern-cpp-9/" rel="next" title="读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)
               </a>
             
           </div>
@@ -582,10 +575,6 @@ auto的使用并不是强制的，如果最终觉得显式声明更加易读可�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/21/modern-cpp-6/" rel="prev" title="读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)">
-                读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -783,7 +772,7 @@ auto的使用并不是强制的，如果最终觉得显式声明更加易读可�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item5-优先使用auto而非显式类型声明-p37---p42"><span class="nav-number">1.</span> <span class="nav-text">Item5 优先使用auto而非显式类型声明 (p37 - p42)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item10-优先使用有作用域的enmus而不是无作用域的enum"><span class="nav-number">1.</span> <span class="nav-text">Item10 优先使用有作用域的enmus而不是无作用域的enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -972,9 +961,9 @@ auto的使用并不是强制的，如果最终觉得显式声明更加易读可�
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://natsu1211.com/2018/10/20/modern-cpp-5/';
-        this.page.identifier = '2018/10/20/modern-cpp-5/';
-        this.page.title = '读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)';
+        this.page.url = 'http://natsu1211.com/2018/10/28/modern-cpp-10/';
+        this.page.identifier = '2018/10/28/modern-cpp-10/';
+        this.page.title = '读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

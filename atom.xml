@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://natsu1211.com/"/>
-  <updated>2018-10-27T09:10:08.226Z</updated>
+  <updated>2018-10-30T15:45:09.559Z</updated>
   <id>http://natsu1211.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)</title>
+    <link href="http://natsu1211.com/2018/10/28/modern-cpp-10/"/>
+    <id>http://natsu1211.com/2018/10/28/modern-cpp-10/</id>
+    <published>2018-10-27T17:18:56.000Z</published>
+    <updated>2018-10-30T15:45:09.559Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="item10-优先使用有作用域的enmus而不是无作用域的enum">Item10 优先使用有作用域的enmus而不是无作用域的enum</h2><p>一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义： <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red&#125;;                 <span class="comment">// black, white, red 和</span></span><br><span class="line">                                             <span class="comment">// Color  同属一个作用域</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                              <span class="comment">// 错误！因为 white</span></span><br><span class="line">                                             <span class="comment">// 在这个作用域已经被声明过</span></span><br></pre></td></tr></table></figure></p><p>而enum class则不会有该问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;; <span class="comment">// black, white, red</span></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                     <span class="comment">// fine</span></span><br><span class="line">Color c = white;                        <span class="comment">// error!</span></span><br><span class="line">Color c = Color::white;                 <span class="comment">// fine</span></span><br><span class="line"><span class="keyword">auto</span> c = Color::white;                  <span class="comment">// fine</span></span><br></pre></td></tr></table></figure></p><p>上面的理由已经足够让我们选择enum class，但是enum class还有一个优势，它的枚举元素是强类型的。 对于无作用域的enum，枚举元素可以隐式转换为数值类型，</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//能通过编译！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//能通过编译！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>一个表示颜色的变量能够和double类型作比较，以及能用隐式转换为std::size_t类型，显然不是我们所期望的，使用enum class的话就能达到我们期望的效果， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = Color::red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//编译错误！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//编译错误！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>如果确实需要进行类型转换，可以用static_cast进行显式转换。</p><p>有些时候，无作用域的enum的枚举项能够隐式转换为整数的特性会比较方便使用，比如作为有意义的索引值， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UserInfo = <span class="built_in">std</span>::tuple&lt;<span class="built_in">std</span>::<span class="built_in">string</span>,</span><br><span class="line">                           <span class="built_in">std</span>::<span class="built_in">string</span>,        <span class="comment">// email</span></span><br><span class="line">                           <span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; ;      <span class="comment">// reputation</span></span><br><span class="line"><span class="keyword">enum</span> UserInfoFields &#123; uiName, uiEmail, uiReputation &#125;;</span><br><span class="line">UserInfo uInfo;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">auto</span> val1 = <span class="built_in">std</span>::get&lt;<span class="number">1</span>&gt;(uInfo);       <span class="comment">// 不清楚索引1对应的数据是什么</span></span><br><span class="line"><span class="keyword">auto</span> val2 = <span class="built_in">std</span>::get&lt;uiEmail&gt;(uInfo); <span class="comment">// 隐式转换为1，清楚的知道是获取email字段</span></span><br></pre></td></tr></table></figure></p><p>而enum class因为无法隐式转换，需要写成， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;<span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt;(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure></p><p>但是这种写法的可读性不是太好，我们可以提供一个转换函数来增加可读性， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> E&gt;    <span class="comment">// C++14 constexpr auto</span></span><br><span class="line">toUType(E enumerator) <span class="keyword">noexcept</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">underlying_type_t</span>&lt;E&gt;&gt;(enumerator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;toUType(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure><h2 id="总结">总结</h2><ul><li>C++98风格的enum是没有作用域的enum</li><li>有作用域的枚举体的枚举元素仅仅对枚举体内部可见。只能通过类型转换（cast）转换为其他类型</li><li>有作用域和没有作用域的enum都支持指定潜在类型。有作用域的enum的默认潜在类型是int。没有作用域的enum没有默认的潜在类型。</li><li>有作用域的enum总是可以前置声明的。没有作用域的enum只有当指定潜在类型时才可以前置声明。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;item10-优先使用有作用域的enmus而不是无作用域的enum&quot;&gt;Item10 优先使用有作用域的enmus而不是无作用域的enum&lt;/h2&gt;
+&lt;p&gt;一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="读书笔记" scheme="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="c++" scheme="http://natsu1211.com/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)</title>
