@@ -11,6 +11,7 @@ categories:
 ## Item11 优先使用delete关键字删除函数而不是不实现的私有函数 
 有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。
 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。
+<!-- more -->
 ```cpp
 template <class charT, class traits = char_traits<charT> >
 class basic_ios :public ios_base {
@@ -78,7 +79,6 @@ public:
 private:
     template<>                                       // 错误！
     void processPointer<void>(void*)
-
 };
 ```
 因为一个成员函数模板的某个偏特化，拥有不同于模板主体的访问权限是不被允许的。
