@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://natsu1211.com/tags/index.html</loc>
+    
+    <lastmod>2018-11-04T14:38:15.056Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://natsu1211.com/2018/11/04/modern-cpp-12/</loc>
+    
+    <lastmod>2018-11-04T14:22:20.087Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://natsu1211.com/2018/11/01/modern-cpp-11/</loc>
     
     <lastmod>2018-11-04T14:02:58.467Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://natsu1211.com/2018/10/28/modern-cpp-10/</loc>
     
     <lastmod>2018-10-30T15:45:09.559Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://natsu1211.com/tags/index.html</loc>
-    
-    <lastmod>2018-10-27T17:53:15.355Z</lastmod>
     
   </url>
   
