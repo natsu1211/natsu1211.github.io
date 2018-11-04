@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="Item1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。">
+  <meta name="description" content="Item11 优先使用delete关键字删除函数而不是不实现的私有函数 有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (Item1 理解模板类型推导)">
-<meta property="og:url" content="http://natsu1211.com/2018/08/24/modern_cpp_1/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数)">
+<meta property="og:url" content="http://natsu1211.com/2018/11/01/modern-cpp-11/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="Item1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。">
+<meta property="og:description" content="Item11 优先使用delete关键字删除函数而不是不实现的私有函数 有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-20T10:32:04.157Z">
+<meta property="og:updated_time" content="2018-11-04T14:02:58.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (Item1 理解模板类型推导)">
-<meta name="twitter:description" content="Item1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数)">
+<meta name="twitter:description" content="Item11 优先使用delete关键字删除函数而不是不实现的私有函数 有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="http://natsu1211.com/2018/08/24/modern_cpp_1/"/>
+  <link rel="canonical" href="http://natsu1211.com/2018/11/01/modern-cpp-11/"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (Item1 理解模板类型推导) | EverSummer</title>
+  <title>读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/08/24/modern_cpp_1/">
+    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/11/01/modern-cpp-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item1 理解模板类型推导)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-08-24 01:27:34" itemprop="dateCreated datePublished" datetime="2018-08-24T01:27:34+09:00">2018-08-24</time>
+              <time title="创建时间：2018-11-01 00:22:48" itemprop="dateCreated datePublished" datetime="2018-11-01T00:22:48+09:00">2018-11-01</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-20 19:32:04" itemprop="dateModified" datetime="2018-10-20T19:32:04+09:00">2018-10-20</time>
+                <time title="修改时间：2018-11-04 23:02:58" itemprop="dateModified" datetime="2018-11-04T23:02:58+09:00">2018-11-04</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/24/modern_cpp_1/#comments" itemprop="discussionUrl">
+                <a href="/2018/11/01/modern-cpp-11/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/24/modern_cpp_1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/11/01/modern-cpp-11/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,35 +468,21 @@
       
 
       
-        <h2 id="item1-理解模板类型推导p9-p18">Item1 理解模板类型推导（p9-p18）</h2>
-<p>C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。</p>
-<a id="more"></a>
-<p>对于以下函数模板声明（伪代码）， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(ParamType param)</span></span>;</span><br></pre></td></tr></table></figure></p>
-<p>以及它的调用 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">f(expr)</span><br></pre></td></tr></table></figure></p>
-<p>在编译时，编译器使用传递来的expr推导出T和ParamType，通常T和ParamType不是一个类型，因为ParamType通常会带上类型修饰符。例如 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">f(x);</span><br><span class="line"><span class="comment">// T is int, ParamType is const int&amp;</span></span><br></pre></td></tr></table></figure></p>
-<p>T的类型由expr和ParamType共同来决定，有3种可能，<br>
-1. ParamType是一个指针或者引用，但是不是一个通用引用（Universal Reference）<br>
-2. ParamType是一个通用引用<br>
-3. ParamType不是指针也不是引用</p>
-<p>对于1，如果expr的类型是个引用，忽略引用的部分。然后利用expr的类型和ParamType对比去判断T的类型。<br>
-例： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp; param)</span></span>;           <span class="comment">// param是一个引用类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// x是一个int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;           <span class="comment">// cx是一个const int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;          <span class="comment">// rx是const int的引用</span></span><br><span class="line"></span><br><span class="line">f(x);                       <span class="comment">// T是int，param的类型时int&amp;</span></span><br><span class="line"></span><br><span class="line">f(cx);                      <span class="comment">// T是const int，</span></span><br><span class="line">                            <span class="comment">// param的类型是const int&amp;</span></span><br><span class="line">f(rx);                      <span class="comment">// T是const int</span></span><br><span class="line">                            <span class="comment">// param的类型时const int&amp;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T* param)</span></span>;           <span class="comment">// param是一个指针</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *px = &amp;x;         <span class="comment">// px是一个指向const int x的指针</span></span><br><span class="line"></span><br><span class="line">f(&amp;x);                      <span class="comment">// T是int，param的类型是int*</span></span><br><span class="line"></span><br><span class="line">f(px);                      <span class="comment">// T是const int</span></span><br><span class="line">                            <span class="comment">// param的类型时const int*</span></span><br></pre></td></tr></table></figure>
-<p>对于2，如果expr是一个左值，T和ParamType都会被推导成左值引用。这是模板类型T被推导成一个引用的唯一情况。如果expr是一个右值，那么就执行“普通”的法则（第一种情况）。Item23和Item24会对这种情况进行详尽的解释。<br>
-例： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; param)</span></span>;          <span class="comment">// param现在是一个通用的引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;           <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;          <span class="comment">// 和之前一样</span></span><br><span class="line"></span><br><span class="line">f(x);                       <span class="comment">// x是左值，所以T是int&amp;</span></span><br><span class="line">                            <span class="comment">// param的类型也是int&amp;</span></span><br><span class="line"></span><br><span class="line">f(cx);                      <span class="comment">// cx是左值，所以T是const int&amp;</span></span><br><span class="line">                            <span class="comment">// param的类型也是const int&amp;</span></span><br><span class="line"></span><br><span class="line">f(rx);                      <span class="comment">// rx是左值，所以T是const int&amp;</span></span><br><span class="line">                            <span class="comment">// param的类型也是const int&amp;</span></span><br><span class="line"></span><br><span class="line">f(<span class="number">27</span>);                      <span class="comment">// 27是右值，所以T是int</span></span><br><span class="line">                            <span class="comment">// param的类型是int&amp;&amp;</span></span><br></pre></td></tr></table></figure></p>
-<p>对于3，param是pass-by-value的，这意味着param是的一份全新的拷贝。和之前一样，如果expr的类型是个引用，将会忽略引用的部分。接下来const，volatile修饰符也要忽略掉。这是有道理的，因为传递过来的参数不能修改不代表它的拷贝不能被修改。<br>
-例： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;           <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;          <span class="comment">// 和之前一样</span></span><br><span class="line"></span><br><span class="line">f(x);                       <span class="comment">// T和param的类型都是int</span></span><br><span class="line"></span><br><span class="line">f(cx);                      <span class="comment">// T和param的类型也都是int</span></span><br><span class="line"></span><br><span class="line">f(rx);                      <span class="comment">// T和param的类型还都是int</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="注意事项">注意事项</h3>
-<h4 id="数组作为参数">数组作为参数</h4>
-<p>通常情况下数组类型会退化为指针类型，但是在模板函数的参数是数组的引用的时候情况就不同了。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp; param)</span></span>;                   <span class="comment">// 引用参数的模板</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> name[] = <span class="string">"J. P. Briggs"</span>;</span><br><span class="line">f(name);                            <span class="comment">// 传递数组给f</span></span><br></pre></td></tr></table></figure></p>
-<p>T最后推导出来的实际的类型就是数组。类型推导包括了数组的长度，所以在这个例子里面，T被推导成了const char [13]，函数f的参数（数组的引用）被推导成了const char (&amp;)[13]。</p>
-<h4 id="函数作为参数">函数作为参数</h4>
-<p>函数也会退化为函数指针， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>， <span class="keyword">double</span>)</span></span>;    <span class="comment">// someFunc是一个函数</span></span><br><span class="line">                                <span class="comment">// 类型是void(int, double)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(T param)</span></span>;               <span class="comment">// 在f1中 参数直接按值传递</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(T&amp; param)</span></span>;              <span class="comment">// 在f2中 参数是按照引用传递</span></span><br><span class="line"></span><br><span class="line">f1(someFunc);                   <span class="comment">// param被推导成函数指针</span></span><br><span class="line">                                <span class="comment">// 类型是void(*)(int, double)</span></span><br><span class="line"></span><br><span class="line">f2(someFunc);                   <span class="comment">// param被推导成函数引用</span></span><br><span class="line">                                <span class="comment">// 类型是void(&amp;)(int, double)</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="item11-优先使用delete关键字删除函数而不是不实现的私有函数">Item11 优先使用delete关键字删除函数而不是不实现的私有函数</h2>
+<p>有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。 <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">charT</span>, <span class="title">class</span> <span class="title">traits</span> = <span class="title">char_traits</span>&lt;charT&gt; &gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">basic_ios</span> :</span><span class="keyword">public</span> ios_base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	basic_ios(<span class="keyword">const</span> basic_ios&amp; );                   <span class="comment">// 没有定义</span></span><br><span class="line">	basic_ios&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> basic_ios&amp;);         <span class="comment">// 没有定义</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>而C++11提供了delete关键字来更好的完成这个任务。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">charT</span>, <span class="title">class</span> <span class="title">traits</span> = <span class="title">char_traits</span>&lt;charT&gt; &gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">basic_ios</span> :</span> <span class="keyword">public</span> ios_base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    basic_ios(<span class="keyword">const</span> basic_ios&amp; ) = <span class="keyword">delete</span>;</span><br><span class="line">    basic_ios&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> basic_ios&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>任何代码试图调用该函数都会引发一个编译错误，而不是链接错误，这是delete关键字的优势之一。</p>
+<p>delete关键字的另一个优势是，任何函数都可以被标记为delete，而私有函数首先必须是个类的成员函数。比如我们有一个判断一个int是否为幸运数字的简单函数， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLucky</span><span class="params">(<span class="keyword">int</span> number)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>因为C++中很多类型都能隐式转换为int，所以以下调用也是合法的， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(isLucky(<span class="string">'a'</span>)) ...              <span class="comment">// a 是否是幸运数字？</span></span><br><span class="line"><span class="keyword">if</span>(isLucky(ture)) ...             <span class="comment">// 返回true?</span></span><br><span class="line"><span class="keyword">if</span>(isLucky(<span class="number">3.5</span>)) ...              <span class="comment">// 我们是否应该在检查它是否幸运之前裁剪为3？</span></span><br></pre></td></tr></table></figure></p>
+<p>但是有些转换不是我们期望的，这时就可以将不需要的重载标记为delete， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLucky</span><span class="params">(<span class="keyword">int</span> number)</span></span>;           <span class="comment">// 原本的函数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLucky</span><span class="params">(<span class="keyword">char</span>)</span> </span>= <span class="keyword">delete</span>;        <span class="comment">// 拒绝char类型</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLucky</span><span class="params">(<span class="keyword">bool</span>)</span> </span>= <span class="keyword">delete</span>;        <span class="comment">// 拒绝bool类型</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isLucky</span><span class="params">(<span class="keyword">double</span>)</span> </span>= <span class="keyword">delete</span>;      <span class="comment">// 拒绝double和float类型</span></span><br></pre></td></tr></table></figure></p>
+<p>delete还可以用来禁止特定的模板实现，这也是私有函数无法做到的。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processPointer</span><span class="params">(T* ptr)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>在指针的家族中，有两个特殊的指针。一个是void* 指针，因为没有办法对它们解引用，递增或者递减它们。另一个是char* 指针，因为它们往往表示指向C类型的字符串，而不是指向独立字符的指针。这些特殊情况经常需要特殊处理，在processPointer模板中，我们希望能拒绝这两种指针，可以用以下方法来简单的实现， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="keyword">void</span> processPointer&lt;<span class="keyword">const</span> <span class="keyword">void</span>&gt;(<span class="keyword">const</span> <span class="keyword">void</span>*) = <span class="keyword">delete</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="keyword">void</span> processPointer&lt;<span class="keyword">const</span> <span class="keyword">char</span>&gt;(<span class="keyword">const</span> <span class="keyword">char</span>*) = <span class="keyword">delete</span>;</span><br></pre></td></tr></table></figure></p>
+<p>而以下的方法则行不通， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">processPointer</span><span class="params">(T* ptr)</span></span></span><br><span class="line"><span class="function">    </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">template</span>&lt;&gt;                                       <span class="comment">// 错误！</span></span><br><span class="line">    <span class="keyword">void</span> processPointer&lt;<span class="keyword">void</span>&gt;(<span class="keyword">void</span>*)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>因为一个成员函数模板的某个偏特化，拥有不同于模板主体的访问权限是不被允许的。</p>
 <h3 id="总结">总结</h3>
 <ul>
-<li>在模板类型推导的时候，有引用特性的参数的引用特性会被忽略</li>
-<li>在推导通用引用参数的时候，左值会被特殊处理</li>
-<li>在推导按值传递的参数时候，const和volatile参数会被视为非const和非volatile</li>
-<li>在模板类型推导的时候，参数如果是数组或者函数名称，他们会被退化成指针，除非是用在初始化引用类型</li>
+<li>优先使用删除函数而不是私有而不定义的函数</li>
+<li>任何函数都可以被声明为删除，包括非成员函数和模板函数</li>
 </ul>
 
       
@@ -552,7 +538,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/08/24/modern_cpp_1/" title="读薄Effective Modern C++ (Item1 理解模板类型推导)">http://natsu1211.com/2018/08/24/modern_cpp_1/</a>
+    <a href="http://natsu1211.com/2018/11/01/modern-cpp-11/" title="读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数)">http://natsu1211.com/2018/11/01/modern-cpp-11/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -578,15 +564,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/10/28/modern-cpp-10/" rel="next" title="读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/29/modern-cpp-2/" rel="prev" title="读薄Effective Modern C++ (Item2 理解auto类型推导)">
-                读薄Effective Modern C++ (Item2 理解auto类型推导) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -784,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item1-理解模板类型推导p9-p18"><span class="nav-number">1.</span> <span class="nav-text">Item1 理解模板类型推导（p9-p18）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">1.1.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数组作为参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">数组作为参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作为参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数作为参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item11-优先使用delete关键字删除函数而不是不实现的私有函数"><span class="nav-number">1.</span> <span class="nav-text">Item11 优先使用delete关键字删除函数而不是不实现的私有函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -973,9 +959,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://natsu1211.com/2018/08/24/modern_cpp_1/';
-        this.page.identifier = '2018/08/24/modern_cpp_1/';
-        this.page.title = '读薄Effective Modern C++ (Item1 理解模板类型推导)';
+        this.page.url = 'http://natsu1211.com/2018/11/01/modern-cpp-11/';
+        this.page.identifier = '2018/11/01/modern-cpp-11/';
+        this.page.title = '读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
