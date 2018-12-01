@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://natsu1211.com/"/>
-  <updated>2018-11-04T14:22:20.087Z</updated>
+  <updated>2018-12-01T09:48:05.566Z</updated>
   <id>http://natsu1211.com/</id>
   
   <author>
@@ -17,21 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>读薄Effective Modern C++ (Item13 优先使用const_iterator而不是iterator)</title>
+    <link href="http://natsu1211.com/2018/11/21/modern-cpp-13/"/>
+    <id>http://natsu1211.com/2018/11/21/modern-cpp-13/</id>
+    <published>2018-11-20T15:21:26.000Z</published>
+    <updated>2018-12-01T09:48:05.566Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="item13-优先使用const_iterator而不是iterator">Item13 优先使用const_iterator而不是iterator</h2><p>const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。<br><a id="more"></a></p><p>比如我们想在vector中找到1983并把它替换成1998，我们会写下以下代码, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it =</span><br><span class="line">    <span class="built_in">std</span>::find(values.begin(),values.end(), <span class="number">1983</span>);</span><br><span class="line">values.insert(it, <span class="number">1998</span>);</span><br></pre></td></tr></table></figure></p><p>这里因为并不会改变itertor所指向的数据，const_iterator应当是更合适的选择，然而在C++98中，std::find等函数只接受非const的iterator，并且没有简单的办法从非const容器获得const_iterator，在C++98中使用const_iterator只是自寻烦恼。<br>然而情况在C++11中大有不同，const_iterator容易获取并且容易使用。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values; <span class="comment">// as before ...</span></span><br><span class="line"><span class="keyword">auto</span> it = <span class="built_in">std</span>::find(values.cbegin(),values.cend(), <span class="number">1983</span>); <span class="comment">// and cend</span></span><br><span class="line">values.insert(it, <span class="number">1998</span>);<span class="comment">// use cbegin</span></span><br></pre></td></tr></table></figure></p><p>需要注意的是，当你需要写出更为泛型的代码的时候，C++11对const_iterator的支持可能会略显不足， 比如我们要写一个在容器中寻找元素并进行替换的泛型函数，原生C数组，我们会希望使用非成员函数的版本来获取迭代器。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> C, <span class="keyword">typename</span> V&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">findAndInsert</span><span class="params">(C&amp; container, <span class="keyword">const</span> V&amp; targetVal, <span class="keyword">const</span> V&amp; insertVal)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cbegin;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cend;</span><br><span class="line">    <span class="keyword">const</span> V&amp; targetVal,</span><br><span class="line">    <span class="keyword">const</span> V&amp; insertVal)</span><br><span class="line">    <span class="keyword">auto</span> it = <span class="built_in">std</span>::find(cbegin(container), cend(container), targetVal);</span><br><span class="line">    container.insert(it, insertVal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>上面的代码需要C++14才会工作，因为C++11中没有提供cbegin和cend的非成员函数版本。 我们可以自己为C++11添加， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">C</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">auto</span> <span class="title">cbegin</span>(<span class="title">const</span> <span class="title">C</span>&amp; <span class="title">container</span>)-&gt;<span class="title">decltype</span>(<span class="title">std</span>:</span>:begin(container))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::begin(container);        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="总结">总结</h2><ul><li>优先使用const_iterator而不是iterator</li><li>在泛型代码中，优先使用非成员函数版本的begin, end, rbegin ,rend函数</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;item13-优先使用const_iterator而不是iterator&quot;&gt;Item13 优先使用const_iterator而不是iterator&lt;/h2&gt;
+&lt;p&gt;const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="读书笔记" scheme="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="c++" scheme="http://natsu1211.com/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
     <title>读薄Effective Modern C++ (Item12 优先使用delete关键字删除函数而不是不实现的私有函数)</title>
     <link href="http://natsu1211.com/2018/11/04/modern-cpp-12/"/>
     <id>http://natsu1211.com/2018/11/04/modern-cpp-12/</id>
     <published>2018-11-04T14:17:23.000Z</published>
-    <updated>2018-11-04T14:22:20.087Z</updated>
+    <updated>2018-12-01T09:15:59.730Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="item12">Item12</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="item12-优先使用delete关键字删除函数而不是不实现的私有函数">Item12 优先使用delete关键字删除函数而不是不实现的私有函数</h2><p>类，继承与虚函数是C++实现面向对象的基础。在子类中覆盖掉父类中对应的虚函数，以此来实现多态。override关键字可以用来显式标识虚函数覆盖，表明该函数在子类中有不同于父类的实现。 <a id="more"></a></p><p>如果要使用覆盖的函数，必须满足以下条件： - 父类中的函数被声明为virtual。 - 父类中和子类中的函数名称必须是完全一致的（除了虚析构函数）。 - 父类中和子类中的函数的参数类型必须完全一致。 - 父类中和子类中的函数的常量特性必须完全一致。 - 父类中和子类中的函数的返回值类型和异常声明必须兼容。 C++11中，附加了一个条件，虽然它并不太常用， - 函数的引用修饰符（reference qualifiers）必须完全一致。</p><p>对覆盖函数的这些要求意味着，一个小的错误会产生一个很大不同的结果。在覆盖函数中出现的错误通常并不会引起编译错误，所以不容易察觉。比如以下的例子， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf1</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf2</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf3</span><span class="params">()</span> &amp;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mf4</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line">irtual</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf1</span><span class="params">()</span></span>; <span class="comment">// 不是const函数</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf2</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> x)</span></span>; <span class="comment">// 参数类型不是int</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf3</span><span class="params">()</span> &amp;&amp;</span>; <span class="comment">// 引用修饰符不是左值引用</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mf4</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// 没有声明为virtual</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>子类并没有对父类的函数进行覆盖，而是重新定义了新的函数，这显然不是我们期望的。 因为虚函数覆盖是如此容易出错，所以C++11提供了override关键字来显式表示这是一个虚函数覆盖，如果不符合覆盖的条件，则会产生编译错误。 还有一点好处是，override关键字是上下文相关的，只在函数声明的末尾起效。也就是说以下C++98时代的代码不会产生编译错误， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Warning</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">override</span><span class="params">()</span></span>; <span class="comment">// 名为override的函数</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 在C++98和C++11中意义相同</span></span><br></pre></td></tr></table></figure></p><h2 id="总结">总结</h2><ul><li>使用override来标识函数覆盖。</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;item12&quot;&gt;Item12&lt;/h2&gt;
-
-      
+      &lt;h2 id=&quot;item12-优先使用delete关键字删除函数而不是不实现的私有函数&quot;&gt;Item12 优先使用delete关键字删除函数而不是不实现的私有函数&lt;/h2&gt;
+&lt;p&gt;类，继承与虚函数是C++实现面向对象的基础。在子类中覆盖掉父类中对应的虚函数，以此来实现多态。override关键字可以用来显式标识虚函数覆盖，表明该函数在子类中有不同于父类的实现。
     
     </summary>
     
