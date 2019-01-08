@@ -8,9 +8,9 @@ categories:
 - [读书笔记]
 ---
 
-## 条款9 优先使用别名声明而不是typedef 
+## 条款9 优先使用别名声明而不是typedef
 
-C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成
+C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成
 ```cpp
 // FP等价于一个函数指针，这个函数的参数是一个int类型和
 // std::string常量类型，没有返回值
@@ -19,7 +19,7 @@ typedef void (*FP)(int, const std::string&);      // typedef
 // 同上
 using FP = void (*)(int, const std::string&);     // 别名声明
 ```
-也许别名声明看起来可读性更好，但是这并不足以成为放弃typedef使用别名声明的决定性理由。别名声明的真正优势并不在这，而在于它能够定义模板别名，
+也许别名声明看起来可读性更好，但是这并不足以成为放弃typedef使用别名声明的决定性理由。别名声明的真正优势并不在这，而在于它能够定义模板别名，
 <!-- more -->
 
 typedef需要新定义一个模板类来模拟实现模板别名功能，
@@ -48,7 +48,7 @@ private:                                        // 作为一个数据成员
 	...
 };
 ```
-因为无法知道名称MyAllocList<T>::type究竟是一个类型，还是一个变量，所以需要加上typename来明确表明这是一个类型。而别名声明则没有冗余的typename和::type，
+因为无法知道名称MyAllocList<T>::type究竟是一个类型，还是一个变量，所以需要加上typename来明确表明这是一个类型。而别名声明则没有冗余的typename和::type，
 ```cpp
 template<typname T>                             
 using MyAllocList = std::list<T, MyAlloc<T>>;   // 和以前一样

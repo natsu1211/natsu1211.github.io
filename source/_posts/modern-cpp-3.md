@@ -39,7 +39,7 @@ if(v[0] == 0)               // decltype(v[0]) is int&f
 ```
 
 decltype在我们无法显式的写出某个表达式的类型时候特别有用，
-例如我们要写一个获取列表容器在某个位置上的元素的泛型函数，我们无法知道这个容器内部的元素是什么类型，c++11中，我们可以借助尾置返回语法写出以下代码，
+例如我们要写一个获取列表容器在某个位置上的元素的泛型函数，我们无法知道这个容器内部的元素是什么类型，c++11中，我们可以借助尾置返回语法写出以下代码，
 ```cpp
 template<typename Container, typename Index>    // final
 auto                                            // C++11
@@ -63,7 +63,7 @@ decltype(auto) access(Container&& c, Index i)
 Widget w;
 const Widget& cw = w; // cw的类型为const Widget&
 auto myWidget1 = cw;  // auto类型推导，myWidget1的类型为Widget
-decltype(auto) myWidget2 = cw; // decltype类型推导，myWidget2的类型为const Widget&
+decltype(auto) myWidget2 = cw; // decltype类型推导，myWidget2的类型为const Widget&
 ```
 
 需要注意的情况是，decltype会将具有类型T的左值表达式的类型推导为T&，
@@ -84,7 +84,7 @@ decltype(auto) f2()
 f2返回了一个局部变量的引用！这当然是我们不愿意看到的。        
 
 ### 总结         
-- decltype几乎总是不加修改的返回变量或表达式的类型
+- decltype几乎总是不加修改的返回变量或表达式的类型
 - 对于类型为T并且不是单纯变量名的左值表达式，decltype总是返回T&
 - C++14支持decltype(auto)语法，使用decltype的规则进行类型推导
 
