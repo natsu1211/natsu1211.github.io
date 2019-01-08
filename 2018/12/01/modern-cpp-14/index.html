@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
+  <meta name="description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
 <meta property="og:url" content="http://natsu1211.com/2018/12/01/modern-cpp-14/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
+<meta property="og:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T16:11:00.122Z">
+<meta property="og:updated_time" content="2019-01-08T16:58:15.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
-<meta name="twitter:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
+<meta name="twitter:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
 
 
 
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 01:11:00" itemprop="dateModified" datetime="2019-01-09T01:11:00+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 01:58:15" itemprop="dateModified" datetime="2019-01-09T01:58:15+09:00">2019-01-09</time>
               
             
           </span>
@@ -468,12 +468,16 @@
       
 
       
-        <h2 id="条款14-使用noexcept修饰不抛出异常的函数">条款14 使用noexcept修饰不抛出异常的函数</h2>
+        <h2 id="条款14-使用noexcept修饰不抛出异常的函数">条款14 使用noexcept修饰不抛出异常的函数</h2>
 <p>C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">func</span> <span class="params">(<span class="keyword">char</span> param)</span> <span class="title">throw</span> <span class="params">(<span class="keyword">int</span>, <span class="keyword">char</span>, exception)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。<br>
 异常规范是如此严格，并且由于难以知道该函数中调用的函数可能会抛出什么类型的异常，导致异常规范难以使用，在C++11中已经被废弃。<br>
 <a id="more"></a> C++11认为对函数真正有用的信息是该函数究竟会不会抛出异常，因而引入了noexcept关键字,用于标识函数不会抛出异常。而C++98中需要使用<code>throw()</code>, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="title">throw</span><span class="params">()</span></span>; <span class="comment">// no exceptions from f: C++98 style </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="keyword">noexcept</span></span>; <span class="comment">// no exceptions from f: C++11 style</span></span><br></pre></td></tr></table></figure></p>
-<p>相比于C++98的<code>throw()</code>，<code>noexcept</code>主要有两个优势， 1. 能够获得最大限度的编译器优化。标记为noexcept的函数，优化器可能无须保持调用栈,并且也无须保证object按照构造时相反的顺序被析构。而throw()则没有这些被优化的机会。 2. 标准库的一些函数，针对noexcept函数进行了优化，能够获得更好的性能。比如std::vector::push_back函数，为了保证异常安全性，只有在确保元素的move操作符不会抛出异常，亦即被标记为noexcept的时候，才会使用move操作代替copy操作。</p>
+<p>相比于C++98的<code>throw()</code>，<code>noexcept</code>主要有两个优势，</p>
+<ol type="1">
+<li>能够获得最大限度的编译器优化。标记为noexcept的函数，优化器可能无须保持调用栈,并且也无须保证object按照构造时相反的顺序被析构。而throw()则没有这些被优化的机会。</li>
+<li>标准库的一些函数，针对noexcept函数进行了优化，能够获得更好的性能。比如std::vector::push_back函数，为了保证异常安全性，只有在确保元素的move操作符不会抛出异常，亦即被标记为noexcept的时候，才会使用move操作代替copy操作。</li>
+</ol>
 <p>然而需要注意的是noexcept是函数签名的一部分。也就是说，一旦决定使用noexcept标记函数并公开，你将很难再改变它，因为从函数签名中删除noexcept的改动将是破坏性的。<br>
 另外需要注意的是，大多数函数是异常中立(exception-neutral)的，很多函数本身并不抛出异常，但是它内部调用的函数却会抛出异常，这类函数并不适合被标记为noexcept。 最后，因为历史遗留原因，编译器并不会对在noexcept函数中调用非noexcept函数进行报错和警告。比如std名称空间中的C标准库函数就没有标记为noexcept，即使它们的实现并不会抛出异常。</p>
 <h2 id="总结">总结</h2>
@@ -768,7 +772,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款14-使用noexcept修饰不抛出异常的函数"><span class="nav-number">1.</span> <span class="nav-text">条款14 使用noexcept修饰不抛出异常的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款14-使用noexcept修饰不抛出异常的函数"><span class="nav-number">1.</span> <span class="nav-text">条款14 使用noexcept修饰不抛出异常的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
