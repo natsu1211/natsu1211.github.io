@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="Item10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+  <meta name="description" content="条款10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta property="og:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
 <meta property="og:url" content="http://natsu1211.com/2018/10/28/modern-cpp-10/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="Item10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+<meta property="og:description" content="条款10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T15:45:09.559Z">
+<meta property="og:updated_time" content="2019-01-08T15:24:01.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)">
-<meta name="twitter:description" content="Item10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta name="twitter:description" content="条款10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum) | EverSummer</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)
               
             
           </h2>
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-31 00:45:09" itemprop="dateModified" datetime="2018-10-31T00:45:09+09:00">2018-10-31</time>
+                <time title="修改时间：2019-01-09 00:24:01" itemprop="dateModified" datetime="2019-01-09T00:24:01+09:00">2019-01-09</time>
               
             
           </span>
@@ -468,7 +468,7 @@
       
 
       
-        <h2 id="item10-优先使用有作用域的enmus而不是无作用域的enum">Item10 优先使用有作用域的enmus而不是无作用域的enum</h2>
+        <h2 id="条款10-优先使用有作用域的enmus而不是无作用域的enum">条款10 优先使用有作用域的enmus而不是无作用域的enum</h2>
 <p>一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义： <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red&#125;;                 <span class="comment">// black, white, red 和</span></span><br><span class="line">	                                             <span class="comment">// Color  同属一个作用域</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                              <span class="comment">// 错误！因为 white</span></span><br><span class="line">	                                             <span class="comment">// 在这个作用域已经被声明过</span></span><br></pre></td></tr></table></figure></p>
 <p>而enum class则不会有该问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;; <span class="comment">// black, white, red</span></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                     <span class="comment">// fine</span></span><br><span class="line">Color c = white;                        <span class="comment">// error!</span></span><br><span class="line">Color c = Color::white;                 <span class="comment">// fine</span></span><br><span class="line"><span class="keyword">auto</span> c = Color::white;                  <span class="comment">// fine</span></span><br></pre></td></tr></table></figure></p>
 <p>上面的理由已经足够让我们选择enum class，但是enum class还有一个优势，它的枚举元素是强类型的。 对于无作用域的enum，枚举元素可以隐式转换为数值类型，</p>
@@ -540,7 +540,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/10/28/modern-cpp-10/" title="读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)">http://natsu1211.com/2018/10/28/modern-cpp-10/</a>
+    <a href="http://natsu1211.com/2018/10/28/modern-cpp-10/" title="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">http://natsu1211.com/2018/10/28/modern-cpp-10/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -566,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/27/modern-cpp-9/" rel="next" title="读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)
+              <a href="/2018/10/27/modern-cpp-9/" rel="next" title="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
               </a>
             
           </div>
@@ -576,8 +576,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/01/modern-cpp-11/" rel="prev" title="读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数)">
-                读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/01/modern-cpp-11/" rel="prev" title="读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)">
+                读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -662,7 +662,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -776,7 +776,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item10-优先使用有作用域的enmus而不是无作用域的enum"><span class="nav-number">1.</span> <span class="nav-text">Item10 优先使用有作用域的enmus而不是无作用域的enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款10-优先使用有作用域的enmus而不是无作用域的enum"><span class="nav-number">1.</span> <span class="nav-text">条款10 优先使用有作用域的enmus而不是无作用域的enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -803,7 +803,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -967,7 +967,7 @@
       var disqus_config = function () {
         this.page.url = 'http://natsu1211.com/2018/10/28/modern-cpp-10/';
         this.page.identifier = '2018/10/28/modern-cpp-10/';
-        this.page.title = '读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)';
+        this.page.title = '读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

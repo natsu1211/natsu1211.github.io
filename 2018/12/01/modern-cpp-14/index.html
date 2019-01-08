@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款7 区分()与{}初始化 c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。">
+  <meta name="description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款7 区分()与{}初始化)">
-<meta property="og:url" content="http://natsu1211.com/2018/10/21/modern-cpp-7/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
+<meta property="og:url" content="http://natsu1211.com/2018/12/01/modern-cpp-14/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款7 区分()与{}初始化 c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。">
+<meta property="og:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T15:22:14.435Z">
+<meta property="og:updated_time" content="2019-01-08T15:42:43.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款7 区分()与{}初始化)">
-<meta name="twitter:description" content="条款7 区分()与{}初始化 c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
+<meta name="twitter:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="http://natsu1211.com/2018/10/21/modern-cpp-7/"/>
+  <link rel="canonical" href="http://natsu1211.com/2018/12/01/modern-cpp-14/"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款7 区分()与{}初始化) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/10/21/modern-cpp-7/">
+    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/12/01/modern-cpp-14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款7 区分()与{}初始化)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-10-21 19:57:37" itemprop="dateCreated datePublished" datetime="2018-10-21T19:57:37+09:00">2018-10-21</time>
+              <time title="创建时间：2018-12-01 18:49:51" itemprop="dateCreated datePublished" datetime="2018-12-01T18:49:51+09:00">2018-12-01</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 00:22:14" itemprop="dateModified" datetime="2019-01-09T00:22:14+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 00:42:43" itemprop="dateModified" datetime="2019-01-09T00:42:43+09:00">2019-01-09</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/21/modern-cpp-7/#comments" itemprop="discussionUrl">
+                <a href="/2018/12/01/modern-cpp-14/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/10/21/modern-cpp-7/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/12/01/modern-cpp-14/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,27 +468,20 @@
       
 
       
-        <h2 id="条款7-区分与初始化">条款7 区分()与{}初始化</h2>
-<p>c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。 <a id="more"></a> 首先，初始化一个变量一般有4种方法， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">x</span><span class="params">(<span class="number">0</span>)</span></span>;     <span class="comment">// ()初始化</span></span><br><span class="line"><span class="keyword">int</span> y = <span class="number">0</span>;    <span class="comment">// =初始化</span></span><br><span class="line"><span class="keyword">int</span> z&#123;<span class="number">0</span>&#125;;     <span class="comment">// &#123;&#125;初始化</span></span><br><span class="line"><span class="keyword">int</span> z = &#123;<span class="number">0</span>&#125;;  <span class="comment">// =&#123;&#125;初始化，可以认为和&#123;&#125;没有区别</span></span><br></pre></td></tr></table></figure></p>
-<p>统一初始化可以用来直接初始化std容器，原子变量，非静态类成员变量，这些都是()初始化做不到的。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v&#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span> &#125;;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai1&#123; <span class="number">0</span> &#125;; <span class="comment">//没问题</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai2(<span class="number">0</span>);   <span class="comment">//没问题</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai3 = <span class="number">0</span>;  <span class="comment">//错误！</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x&#123; <span class="number">0</span> &#125;; <span class="comment">//没问题</span></span><br><span class="line">    <span class="keyword">int</span> y = <span class="number">0</span>;  <span class="comment">//没问题</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">z</span><span class="params">(<span class="number">0</span>)</span></span>;   <span class="comment">//错误！</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>另外，统一初始化可以避免()初始化的一些问题。</p>
-<p>能够避免类型截断， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> x, y, z;</span><br><span class="line"><span class="keyword">int</span> sum1&#123; x + y + z &#125;; <span class="comment">// error!</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum2</span><span class="params">(x + y + z)</span></span>; <span class="comment">// okay (截断为int)</span></span><br><span class="line"><span class="keyword">int</span> sum3 = x + y + z; <span class="comment">// okay</span></span><br></pre></td></tr></table></figure></p>
-<p>还能够避免most vexing parse（能够解释为函数声明的表达式就认为它是函数声明）， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Widget <span class="title">w1</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">//调用Widget的构造函数，参数为10</span></span><br><span class="line"><span class="function">Widget <span class="title">w2</span><span class="params">()</span></span>;   <span class="comment">//most vexing parse, 解释为函数声明！</span></span><br><span class="line">Widget w3&#123;&#125;;   <span class="comment">//调用Widget的无参构造函数</span></span><br></pre></td></tr></table></figure></p>
-<p>但是统一初始化也有其自身的缺点，因为{}本质上是std::initializer_list，在某些场合会产生让人预想不到的结果，比如Item2中介绍的模板类型推导中关于std::initializer_list的问题。<br>
-另外，如果定义了接受std::initializer_list类型的构造函数，编译器在做重载决议时会尽量的将{}决议到那个构造函数上，即使有其他看起来类型更为匹配的构造函数。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  Widget(<span class="keyword">int</span> i, <span class="keyword">bool</span> b);</span><br><span class="line">  Widget(<span class="keyword">int</span> i, <span class="keyword">double</span> d);</span><br><span class="line">  Widget(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="keyword">long</span> <span class="keyword">double</span>&gt; il); <span class="comment">//新增</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Widget <span class="title">w1</span><span class="params">(<span class="number">10</span>, <span class="literal">true</span>)</span></span>; <span class="comment">//调用第一个构造函数</span></span><br><span class="line">Widget w2&#123;<span class="number">10</span>, <span class="literal">true</span>&#125;; <span class="comment">//调用第三个构造函数，10和true被转换为long double</span></span><br><span class="line"><span class="function">Widget <span class="title">w3</span><span class="params">(<span class="number">10</span>, <span class="number">5.0</span>)</span></span>;  <span class="comment">//调用第二个构造函数</span></span><br><span class="line">Widget w4&#123;<span class="number">10</span>, <span class="number">5.0</span>&#125;;  <span class="comment">//调用第三个构造函数，10和5.0被转换为long double</span></span><br></pre></td></tr></table></figure></p>
-<p>更令人吃惊的是看似为拷贝和移动构造的初始化，也会被那个std::initializer_list版本的构造函数给“劫持”。</p>
-<p>但是如果没有到std::initializer<t>中类型T的转换，则会被重载为正常的版本， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">     Widget(<span class="keyword">int</span> i, <span class="keyword">bool</span> b);               <span class="comment">// as before</span></span><br><span class="line">     Widget(<span class="keyword">int</span> i, <span class="keyword">double</span> d);             <span class="comment">// as before</span></span><br><span class="line">     Widget(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; il);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Widget <span class="title">w1</span><span class="params">(<span class="number">10</span>, <span class="literal">true</span>)</span></span>; <span class="comment">//调用第一个构造函数</span></span><br><span class="line">Widget w2&#123;<span class="number">10</span>, <span class="literal">true</span>&#125;; <span class="comment">//调用第一个构造函数，10和true无法转换为std::string</span></span><br><span class="line"><span class="function">Widget <span class="title">w3</span><span class="params">(<span class="number">10</span>, <span class="number">5.0</span>)</span></span>;  <span class="comment">//调用第二个构造函数</span></span><br><span class="line">Widget w4&#123;<span class="number">10</span>, <span class="number">5.0</span>&#125;;  <span class="comment">//调用第二个构造函数，10和5.0无法转换为std::string</span></span><br></pre></td></tr></table></figure></t></p>
-<p>构造函数没有参数的情况下， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  Widget();</span><br><span class="line">  Widget(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; il);</span><br><span class="line">  ... </span><br><span class="line">&#125;;</span><br><span class="line">Widget w1;     <span class="comment">//无参构造函数</span></span><br><span class="line">Widget w2&#123;&#125;;   <span class="comment">//无参构造函数</span></span><br><span class="line"><span class="function">Widget <span class="title">w3</span><span class="params">()</span></span>;   <span class="comment">//most vexing parse</span></span><br><span class="line"><span class="function">Widget <span class="title">w4</span><span class="params">(&#123;&#125;)</span></span>; <span class="comment">//std::initializer_list&lt;int&gt;版本</span></span><br><span class="line">Widget w5&#123;&#123;&#125;&#125;; <span class="comment">//std::initializer_list&lt;int&gt;版本</span></span><br></pre></td></tr></table></figure></p>
-<p>有时，对()和{}初始化的选择会产生截然不同的结果，比如std::vector， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1(<span class="number">10</span>, <span class="number">20</span>); <span class="comment">// 含有10个元素，值都为20</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2&#123;<span class="number">10</span>, <span class="number">20</span>&#125;; <span class="comment">// 含有2个元素，值为10，20</span></span><br></pre></td></tr></table></figure></p>
-<p>这是一个典型的设计失误，容易造成用户的误用。类的设计者应当尽量让()与{}初始化表现的一致。这也强烈的暗示我们，没有充分的理由，不要为类添加接受std::initializer_list的构造函数。</p>
-<p>作为类的用户，我们应当坚持一种初始化的方法，只在()和{}表现不同的时候选择正确的初始化。而作为类的作者，特别是需要在泛型类中初始化T的局部变量的时候，没有绝对正确的做法，因为没有办法知道T的具体类型。</p>
-<h3 id="总结">总结</h3>
+        <h2 id="条款14-使用noexcept修饰不抛出异常的函数">条款14 使用noexcept修饰不抛出异常的函数</h2>
+<p>C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">func</span> <span class="params">(<span class="keyword">char</span> param)</span> <span class="title">throw</span> <span class="params">(<span class="keyword">int</span>, <span class="keyword">char</span>, exception)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。<br>
+异常规范是如此严格，并且由于难以知道该函数中调用的函数可能会抛出什么类型的异常，导致异常规范难以使用，在C++11中已经被废弃。<br>
+<a id="more"></a> C++11认为对函数真正有用的信息是该函数究竟会不会抛出异常，因而引入了noexcept关键字,用于标识函数不会抛出异常。而C++98中需要使用<code>throw()</code>, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="title">throw</span><span class="params">()</span></span>; <span class="comment">// no exceptions from f: C++98 style </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="keyword">noexcept</span></span>; <span class="comment">// no exceptions from f: C++11 style</span></span><br></pre></td></tr></table></figure></p>
+<p>相比于C++98的<code>throw()</code>，<code>noexcept</code>主要有两个优势， 1. 能够获得最大限度的编译器优化。标记为noexcept的函数，优化器可能无须保持调用栈,并且也无须保证object按照构造时相反的顺序被析构。而throw()则没有这些被优化的机会。 2. 标准库的一些函数，针对noexcept函数进行了优化，能够获得更好的性能。比如std::vector::push_back函数，为了保证异常安全性，只有在确保元素的move操作符不会抛出异常，亦即被标记为noexcept的时候，才会使用move操作代替copy操作。</p>
+<p>然而需要注意的是noexcept是函数签名的一部分。也就是说，一旦决定使用noexcept标记函数并公开，你将很难再改变它，因为从函数签名中删除noexcept的改动将是破坏性的。<br>
+另外需要注意的是，大多数函数是异常中立(exception-neutral)的，很多函数本身并不抛出异常，但是它内部调用的函数却会抛出异常，这类函数并不适合被标记为noexcept。 最后，因为历史遗留原因，编译器并不会对在noexcept函数中调用非noexcept函数进行报错和警告。比如std名称空间中的C标准库函数就没有标记为noexcept，即使它们的实现并不会抛出异常。</p>
+<h2 id="总结">总结</h2>
 <ul>
-<li>统一初始化是适用范围最广的初始化语法，它能够避免类型截断和most vertex parse</li>
-<li>在构造函数的重载决议时，{}会匹配到std::initializer_list参数，即使有其它看起来更为匹配的构造函数</li>
-<li>在模板类中选择一种初始化方法不是一件简单的事</li>
+<li>noexcept是函数接口的一部分，这意味着使用者依赖于它。</li>
+<li>比起非noexcept函数，noexcept函数更有可能被优化。</li>
+<li>noexcept对move操作，swap函数，析构函数非常重要。</li>
+<li>大多数函数是异常中立的。</li>
 </ul>
 
       
@@ -544,7 +537,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/10/21/modern-cpp-7/" title="读薄Effective Modern C++ (条款7 区分()与{}初始化)">http://natsu1211.com/2018/10/21/modern-cpp-7/</a>
+    <a href="http://natsu1211.com/2018/12/01/modern-cpp-14/" title="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">http://natsu1211.com/2018/12/01/modern-cpp-14/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -570,8 +563,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/21/modern-cpp-6/" rel="next" title="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)
+              <a href="/2018/11/21/modern-cpp-13/" rel="next" title="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)
               </a>
             
           </div>
@@ -580,8 +573,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/27/modern-cpp-8/" rel="prev" title="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
-                读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/06/modern-cpp-15/" rel="prev" title="读薄Effective Modern C++ (条款15 尽可能的使用constexpr)">
+                读薄Effective Modern C++ (条款15 尽可能的使用constexpr) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -780,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款7-区分与初始化"><span class="nav-number">1.</span> <span class="nav-text">条款7 区分()与{}初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款14-使用noexcept修饰不抛出异常的函数"><span class="nav-number">1.</span> <span class="nav-text">条款14 使用noexcept修饰不抛出异常的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -969,9 +962,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://natsu1211.com/2018/10/21/modern-cpp-7/';
-        this.page.identifier = '2018/10/21/modern-cpp-7/';
-        this.page.title = '读薄Effective Modern C++ (条款7 区分()与{}初始化)';
+        this.page.url = 'http://natsu1211.com/2018/12/01/modern-cpp-14/';
+        this.page.identifier = '2018/12/01/modern-cpp-14/';
+        this.page.title = '读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

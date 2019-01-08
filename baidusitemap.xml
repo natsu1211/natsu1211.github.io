@@ -4,12 +4,58 @@
 
     
   <url>
-    <loc>http://natsu1211.com/2018/11/21/modern-cpp-13/</loc>
-    <lastmod>2018-12-01T09:48:05.566Z</lastmod>
+    <loc>http://natsu1211.com/2018/08/24/modern_cpp-1/</loc>
+    <lastmod>2019-01-08T15:42:53.271Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item13 优先使用const_iterator而不是iterator)</title>
-        <pubTime>2018-11-20T15:21:26.000Z</pubTime>
+        <title>读薄Effective Modern C++ (条款1 理解模板类型推导)</title>
+        <pubTime>2018-08-23T16:27:34.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+             
+              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://natsu1211.com/2018/12/01/modern-cpp-14/</loc>
+    <lastmod>2019-01-08T15:42:43.041Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)</title>
+        <pubTime>2018-12-01T09:49:51.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+             
+              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://natsu1211.com/2019/01/06/modern-cpp-15/</loc>
+    <lastmod>2019-01-08T15:41:51.293Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款15 尽可能的使用constexpr)</title>
+        <pubTime>2019-01-06T12:47:15.000Z</pubTime>
         
         <tag>c++</tag>
          
@@ -28,10 +74,10 @@
     
   <url>
     <loc>http://natsu1211.com/2018/11/04/modern-cpp-12/</loc>
-    <lastmod>2018-12-01T09:15:59.730Z</lastmod>
+    <lastmod>2019-01-08T15:28:10.957Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item12 优先使用delete关键字删除函数而不是不实现的私有函数)</title>
+        <title>读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)</title>
         <pubTime>2018-11-04T14:17:23.000Z</pubTime>
         
         <tag>c++</tag>
@@ -49,13 +95,35 @@
     </url>
 
     
+  <url>
+    <loc>http://natsu1211.com/2018/11/21/modern-cpp-13/</loc>
+    <lastmod>2019-01-08T15:26:16.475Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)</title>
+        <pubTime>2018-11-20T15:21:26.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+             
+              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://natsu1211.com/2018/11/01/modern-cpp-11/</loc>
-    <lastmod>2018-11-04T14:02:58.467Z</lastmod>
+    <lastmod>2019-01-08T15:24:13.446Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item11 优先使用delete关键字删除函数而不是不实现的私有函数)</title>
+        <title>读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)</title>
         <pubTime>2018-10-31T15:22:48.000Z</pubTime>
         
         <tag>c++</tag>
@@ -75,10 +143,10 @@
     
   <url>
     <loc>http://natsu1211.com/2018/10/28/modern-cpp-10/</loc>
-    <lastmod>2018-10-30T15:45:09.559Z</lastmod>
+    <lastmod>2019-01-08T15:24:01.844Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item10 优先使用有作用域的enum而不是无作用域的enum)</title>
+        <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)</title>
         <pubTime>2018-10-27T17:18:56.000Z</pubTime>
         
         <tag>c++</tag>
@@ -96,13 +164,12 @@
     </url>
 
     
-    
   <url>
     <loc>http://natsu1211.com/2018/10/27/modern-cpp-9/</loc>
-    <lastmod>2018-10-27T09:10:08.226Z</lastmod>
+    <lastmod>2019-01-08T15:23:40.745Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)</title>
+        <title>读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)</title>
         <pubTime>2018-10-27T07:15:51.000Z</pubTime>
         
         <tag>c++</tag>
@@ -122,10 +189,10 @@
     
   <url>
     <loc>http://natsu1211.com/2018/10/27/modern-cpp-8/</loc>
-    <lastmod>2018-10-27T07:14:57.543Z</lastmod>
+    <lastmod>2019-01-08T15:22:26.637Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL)</title>
+        <title>读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)</title>
         <pubTime>2018-10-26T15:35:12.000Z</pubTime>
         
         <tag>c++</tag>
@@ -145,10 +212,10 @@
     
   <url>
     <loc>http://natsu1211.com/2018/10/21/modern-cpp-7/</loc>
-    <lastmod>2018-10-25T18:13:12.359Z</lastmod>
+    <lastmod>2019-01-08T15:22:14.435Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item7 区分()与{}初始化)</title>
+        <title>读薄Effective Modern C++ (条款7 区分()与{}初始化)</title>
         <pubTime>2018-10-21T10:57:37.000Z</pubTime>
         
         <tag>c++</tag>
@@ -168,10 +235,10 @@
     
   <url>
     <loc>http://natsu1211.com/2018/10/21/modern-cpp-6/</loc>
-    <lastmod>2018-10-21T10:57:15.660Z</lastmod>
+    <lastmod>2019-01-08T15:21:23.294Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)</title>
+        <title>读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)</title>
         <pubTime>2018-10-21T08:59:29.000Z</pubTime>
         
         <tag>c++</tag>
@@ -191,10 +258,10 @@
     
   <url>
     <loc>http://natsu1211.com/2018/10/20/modern-cpp-5/</loc>
-    <lastmod>2018-10-21T08:58:03.048Z</lastmod>
+    <lastmod>2019-01-08T15:20:06.065Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)</title>
+        <title>读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)</title>
         <pubTime>2018-10-20T10:37:28.000Z</pubTime>
         
         <tag>c++</tag>
@@ -214,10 +281,10 @@
     
   <url>
     <loc>http://natsu1211.com/2018/10/20/modern-cpp-4/</loc>
-    <lastmod>2018-10-20T10:37:34.028Z</lastmod>
+    <lastmod>2019-01-08T15:19:40.314Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item4 知道如何查看类型推导)</title>
+        <title>读薄Effective Modern C++ (条款4 知道如何查看类型推导)</title>
         <pubTime>2018-10-20T08:46:42.000Z</pubTime>
         
         <tag>c++</tag>
@@ -236,11 +303,34 @@
 
     
   <url>
-    <loc>http://natsu1211.com/2018/08/29/modern-cpp-2/</loc>
-    <lastmod>2018-10-20T10:32:13.063Z</lastmod>
+    <loc>http://natsu1211.com/2018/10/19/modern-cpp-3/</loc>
+    <lastmod>2019-01-08T15:18:44.518Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (Item2 理解auto类型推导)</title>
+        <title>读薄Effective Modern C++ (条款3 理解decltype)</title>
+        <pubTime>2018-10-18T15:33:48.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+             
+              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://natsu1211.com/2018/08/29/modern-cpp-2/</loc>
+    <lastmod>2019-01-08T15:18:34.776Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款2 理解auto类型推导)</title>
         <pubTime>2018-08-28T16:07:46.000Z</pubTime>
         
         <tag>c++</tag>
@@ -258,49 +348,5 @@
     </url>
 
     
-  <url>
-    <loc>http://natsu1211.com/2018/08/24/modern_cpp_1/</loc>
-    <lastmod>2018-10-20T10:32:04.157Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++ (Item1 理解模板类型推导)</title>
-        <pubTime>2018-08-23T16:27:34.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
-             
-              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>http://natsu1211.com/2018/10/19/modern-cpp-3/</loc>
-    <lastmod>2018-10-20T10:31:55.862Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++ (Item3 理解decltype)</title>
-        <pubTime>2018-10-18T15:33:48.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
-             
-              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
 </urlset>

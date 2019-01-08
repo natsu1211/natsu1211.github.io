@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="Item8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类">
+  <meta name="description" content="条款8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL)">
+<meta property="og:title" content="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
 <meta property="og:url" content="http://natsu1211.com/2018/10/27/modern-cpp-8/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="Item8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类">
+<meta property="og:description" content="条款8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-27T07:14:57.543Z">
+<meta property="og:updated_time" content="2019-01-08T15:22:26.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL)">
-<meta name="twitter:description" content="Item8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
+<meta name="twitter:description" content="条款8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内">
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL) | EverSummer</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)
               
             
           </h2>
@@ -381,12 +381,24 @@
                 
               
 
-              <time title="创建时间：2018-10-27 00:35:12 / 修改时间：16:14:57" itemprop="dateCreated datePublished" datetime="2018-10-27T00:35:12+09:00">2018-10-27</time>
+              <time title="创建时间：2018-10-27 00:35:12" itemprop="dateCreated datePublished" datetime="2018-10-27T00:35:12+09:00">2018-10-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-09 00:22:26" itemprop="dateModified" datetime="2019-01-09T00:22:26+09:00">2019-01-09</time>
               
             
           </span>
@@ -456,7 +468,7 @@
       
 
       
-        <h2 id="item8-优先使用nullptr而不是0和null">Item8 优先使用nullptr而不是0和NULL</h2>
+        <h2 id="条款8-优先使用nullptr而不是0和null">条款8 优先使用nullptr而不是0和NULL</h2>
 <p>使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。</p>
 <p>nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内部定义了转换操作符，可以隐式的转换为所有的原始的指针类型。 <a id="more"></a></p>
 <p>在函数重载决议时，nullptr可以避免错误的类型重载。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span>)</span></span>;  <span class="comment">// 函数f的三个重载</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">bool</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">void</span>*)</span></span>;</span><br><span class="line"></span><br><span class="line">f(<span class="number">0</span>);         <span class="comment">// 调用 f(int)，而非f(void*)</span></span><br><span class="line"></span><br><span class="line">f(<span class="literal">NULL</span>);      <span class="comment">// 可能无法编译，可能调用f(int)</span></span><br><span class="line">              <span class="comment">// 不可能调用 f(void*)</span></span><br><span class="line">f(nulltpr);   <span class="comment">// 调用 f(void*)</span></span><br></pre></td></tr></table></figure></p>
@@ -521,7 +533,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/10/27/modern-cpp-8/" title="读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL)">http://natsu1211.com/2018/10/27/modern-cpp-8/</a>
+    <a href="http://natsu1211.com/2018/10/27/modern-cpp-8/" title="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">http://natsu1211.com/2018/10/27/modern-cpp-8/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -547,8 +559,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/21/modern-cpp-7/" rel="next" title="读薄Effective Modern C++ (Item7 区分()与{}初始化)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item7 区分()与{}初始化)
+              <a href="/2018/10/21/modern-cpp-7/" rel="next" title="读薄Effective Modern C++ (条款7 区分()与{}初始化)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款7 区分()与{}初始化)
               </a>
             
           </div>
@@ -557,8 +569,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/27/modern-cpp-9/" rel="prev" title="读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)">
-                读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/27/modern-cpp-9/" rel="prev" title="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
+                读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -643,7 +655,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -757,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item8-优先使用nullptr而不是0和null"><span class="nav-number">1.</span> <span class="nav-text">Item8 优先使用nullptr而不是0和NULL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款8-优先使用nullptr而不是0和null"><span class="nav-number">1.</span> <span class="nav-text">条款8 优先使用nullptr而不是0和NULL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -784,7 +796,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -948,7 +960,7 @@
       var disqus_config = function () {
         this.page.url = 'http://natsu1211.com/2018/10/27/modern-cpp-8/';
         this.page.identifier = '2018/10/27/modern-cpp-8/';
-        this.page.title = '读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL)';
+        this.page.title = '读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="Item6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
+  <meta name="description" content="条款6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)">
+<meta property="og:title" content="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">
 <meta property="og:url" content="http://natsu1211.com/2018/10/21/modern-cpp-6/index.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="Item6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
+<meta property="og:description" content="条款6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-21T10:57:15.660Z">
+<meta property="og:updated_time" content="2019-01-08T15:21:23.294Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)">
-<meta name="twitter:description" content="Item6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">
+<meta name="twitter:description" content="条款6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化) | EverSummer</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)
               
             
           </h2>
@@ -381,12 +381,24 @@
                 
               
 
-              <time title="创建时间：2018-10-21 17:59:29 / 修改时间：19:57:15" itemprop="dateCreated datePublished" datetime="2018-10-21T17:59:29+09:00">2018-10-21</time>
+              <time title="创建时间：2018-10-21 17:59:29" itemprop="dateCreated datePublished" datetime="2018-10-21T17:59:29+09:00">2018-10-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-09 00:21:23" itemprop="dateModified" datetime="2019-01-09T00:21:23+09:00">2019-01-09</time>
               
             
           </span>
@@ -456,11 +468,11 @@
       
 
       
-        <h2 id="item6-当auto推导出非预期类型时应当使用显式的类型初始化">Item6 当auto推导出非预期类型时应当使用显式的类型初始化</h2>
+        <h2 id="条款6-当auto推导出非预期类型时应当使用显式的类型初始化">条款6 当auto推导出非预期类型时应当使用显式的类型初始化</h2>
 <p>使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。<br>
 <a id="more"></a> 例如假设有一个函数接受一个Widget返回一个std::vector<bool>，其中每个bool表征Widget是否接受一个特定的特性： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; features(<span class="keyword">const</span> Widget&amp; w);</span><br></pre></td></tr></table></figure></bool></p>
-<p>进一步的，假设第五个bit表示Widget是否有高优先级。我们可以这样写代码： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Widget w;</span><br><span class="line">…</span><br><span class="line"><span class="keyword">bool</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是个高优先级的？</span></span><br><span class="line">…</span><br><span class="line">processWidget(w, highPriority);             <span class="comment">// 配合优先级处理w</span></span><br></pre></td></tr></table></figure></p>
-<p>但是，如果写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是个高优先级的？</span></span><br></pre></td></tr></table></figure></p>
+<p>进一步的，假设第五个bit表示Widget是否有高优先级。我们可以这样写代码： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Widget w;</span><br><span class="line">…</span><br><span class="line"><span class="keyword">bool</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是高优先级的？</span></span><br><span class="line">…</span><br><span class="line">processWidget(w, highPriority);             <span class="comment">// 配合优先级处理w</span></span><br></pre></td></tr></table></figure></p>
+<p>但是，如果写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是高优先级的？</span></span><br></pre></td></tr></table></figure></p>
 <p>就会出现问题，此时highPriority的类型并不是<code>bool</code>，而是<code>std::vector&lt;bool&gt;::reference</code>。之前的代码能够工作是由于存在<code>std::vector&lt;bool&gt;::reference</code>到<code>bool</code>的隐式转换。</p>
 <p>也就是说，我们要避免使用下面的代码的形式： <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">auto someVar = expression of <span class="string">"invisible"</span><span class="built_in"> proxy </span>class type;</span><br></pre></td></tr></table></figure></p>
 <p>这种时候应该做一个显式的类型转换。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = <span class="keyword">static_cast</span>&lt;<span class="keyword">bool</span>&gt;(features(w)[<span class="number">5</span>]);</span><br></pre></td></tr></table></figure></p>
@@ -524,7 +536,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://natsu1211.com/2018/10/21/modern-cpp-6/" title="读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)">http://natsu1211.com/2018/10/21/modern-cpp-6/</a>
+    <a href="http://natsu1211.com/2018/10/21/modern-cpp-6/" title="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">http://natsu1211.com/2018/10/21/modern-cpp-6/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -550,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/modern-cpp-5/" rel="next" title="读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)
+              <a href="/2018/10/20/modern-cpp-5/" rel="next" title="读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)
               </a>
             
           </div>
@@ -560,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/21/modern-cpp-7/" rel="prev" title="读薄Effective Modern C++ (Item7 区分()与{}初始化)">
-                读薄Effective Modern C++ (Item7 区分()与{}初始化) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/21/modern-cpp-7/" rel="prev" title="读薄Effective Modern C++ (条款7 区分()与{}初始化)">
+                读薄Effective Modern C++ (条款7 区分()与{}初始化) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -646,7 +658,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -760,7 +772,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#item6-当auto推导出非预期类型时应当使用显式的类型初始化"><span class="nav-number">1.</span> <span class="nav-text">Item6 当auto推导出非预期类型时应当使用显式的类型初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款6-当auto推导出非预期类型时应当使用显式的类型初始化"><span class="nav-number">1.</span> <span class="nav-text">条款6 当auto推导出非预期类型时应当使用显式的类型初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -787,7 +799,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -951,7 +963,7 @@
       var disqus_config = function () {
         this.page.url = 'http://natsu1211.com/2018/10/21/modern-cpp-6/';
         this.page.identifier = '2018/10/21/modern-cpp-6/';
-        this.page.title = '读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)';
+        this.page.title = '读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
