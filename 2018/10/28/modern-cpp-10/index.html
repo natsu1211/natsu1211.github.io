@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Menlo:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-72x72.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=6.4.0">
+
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="条款10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+<meta name="keywords" content="c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta property="og:url" content="http://natsu1211.com/2018/10/28/modern-cpp-10/index.html">
+<meta property="og:site_name" content="EverSummer">
+<meta property="og:description" content="条款10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-08T16:11:14.275Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta name="twitter:description" content="条款10 优先使用有作用域的enmus而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="EverSummer" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://natsu1211.com/2018/10/28/modern-cpp-10/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum) | EverSummer</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">EverSummer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">no game no life</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://natsu1211.com/2018/10/28/modern-cpp-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="natsu1211">
+      <meta itemprop="description" content="no game no life">
+      <meta itemprop="image" content="/images/lambda.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EverSummer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-28 02:18:56" itemprop="dateCreated datePublished" datetime="2018-10-28T02:18:56+09:00">2018-10-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-09 01:11:14" itemprop="dateModified" datetime="2019-01-09T01:11:14+09:00">2019-01-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/28/modern-cpp-10/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/10/28/modern-cpp-10/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="条款10-优先使用有作用域的enmus而不是无作用域的enum">条款10 优先使用有作用域的enmus而不是无作用域的enum</h2>
+<p>一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义： <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red&#125;;                 <span class="comment">// black, white, red 和</span></span><br><span class="line">	                                             <span class="comment">// Color  同属一个作用域</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                              <span class="comment">// 错误！因为 white</span></span><br><span class="line">	                                             <span class="comment">// 在这个作用域已经被声明过</span></span><br></pre></td></tr></table></figure></p>
+<p>而enum class则不会有该问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;; <span class="comment">// black, white, red</span></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                     <span class="comment">// fine</span></span><br><span class="line">Color c = white;                        <span class="comment">// error!</span></span><br><span class="line">Color c = Color::white;                 <span class="comment">// fine</span></span><br><span class="line"><span class="keyword">auto</span> c = Color::white;                  <span class="comment">// fine</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的理由已经足够让我们选择enum class，但是enum class还有一个优势，它的枚举元素是强类型的。 对于无作用域的enum，枚举元素可以隐式转换为数值类型，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//能通过编译！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//能通过编译！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个表示颜色的变量能够和double类型作比较，以及能用隐式转换为std::size_t类型，显然不是我们所期望的，使用enum class的话就能达到我们期望的效果， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = Color::red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//编译错误！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//编译错误！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果确实需要进行类型转换，可以用static_cast进行显式转换。</p>
+<p>有些时候，无作用域的enum的枚举项能够隐式转换为整数的特性会比较方便使用，比如作为有意义的索引值， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UserInfo = <span class="built_in">std</span>::tuple&lt;<span class="built_in">std</span>::<span class="built_in">string</span>,</span><br><span class="line">                           <span class="built_in">std</span>::<span class="built_in">string</span>,        <span class="comment">// email</span></span><br><span class="line">                           <span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; ;      <span class="comment">// reputation</span></span><br><span class="line"><span class="keyword">enum</span> UserInfoFields &#123; uiName, uiEmail, uiReputation &#125;;</span><br><span class="line">UserInfo uInfo;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">auto</span> val1 = <span class="built_in">std</span>::get&lt;<span class="number">1</span>&gt;(uInfo);       <span class="comment">// 不清楚索引1对应的数据是什么</span></span><br><span class="line"><span class="keyword">auto</span> val2 = <span class="built_in">std</span>::get&lt;uiEmail&gt;(uInfo); <span class="comment">// 隐式转换为1，清楚的知道是获取email字段</span></span><br></pre></td></tr></table></figure></p>
+<p>而enum class因为无法隐式转换，需要写成， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;<span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt;(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure></p>
+<p>但是这种写法的可读性不是太好，我们可以提供一个转换函数来增加可读性， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> E&gt;    <span class="comment">// C++14 constexpr auto</span></span><br><span class="line">toUType(E enumerator) <span class="keyword">noexcept</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">underlying_type_t</span>&lt;E&gt;&gt;(enumerator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;toUType(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<ul>
+<li>C++98风格的enum是没有作用域的enum</li>
+<li>有作用域的枚举体的枚举元素仅仅对枚举体内部可见。只能通过类型转换（cast）转换为其他类型</li>
+<li>有作用域和没有作用域的enum都支持指定潜在类型。有作用域的enum的默认潜在类型是int。没有作用域的enum没有默认的潜在类型。</li>
+<li>有作用域的enum总是可以前置声明的。没有作用域的enum只有当指定潜在类型时才可以前置声明。</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持是我持续创作的动力！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="natsu1211 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpeg" alt="natsu1211 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>natsu1211</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://natsu1211.com/2018/10/28/modern-cpp-10/" title="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">http://natsu1211.com/2018/10/28/modern-cpp-10/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/27/modern-cpp-9/" rel="next" title="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/01/modern-cpp-11/" rel="prev" title="读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)">
+                读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/lambda.png"
+                alt="natsu1211" />
+            
+              <p class="site-author-name" itemprop="name">natsu1211</p>
+              <p class="site-description motion-element" itemprop="description">no game no life</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/natsu1211" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:longyutao1211@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qiita.com/natsu1211" title="qiita" target="_blank">qiita</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款10-优先使用有作用域的enmus而不是无作用域的enum"><span class="nav-number">1.</span> <span class="nav-text">条款10 优先使用有作用域的enmus而不是无作用域的enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">natsu1211</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" rel="external nofollow" href="https://github.com"><b>Github</b></a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://http-natsu1211-com.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://natsu1211.com/2018/10/28/modern-cpp-10/';
+        this.page.identifier = '2018/10/28/modern-cpp-10/';
+        this.page.title = '读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://http-natsu1211-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
