@@ -2,7 +2,7 @@
 title: 读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)
 date: 2018-10-27 00:35:12
 tags:
-- c++
+- [c++]
 categories:
 - [编程语言]
 - [读书笔记]

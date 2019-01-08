@@ -2,7 +2,7 @@
 title: 读薄Effective Modern C++ (条款15 尽可能的使用constexpr)
 date: 2019-01-06 21:47:15
 tags:
-- c++
+- [c++]
 categories:
 - [编程语言]
 - [读书笔记]
@@ -63,7 +63,6 @@ constexpr Point p2(28.8, 5.3);  // 也正确
 
 同时我们也可以写出操作这些编译期对象的constexpr函数，
 ```cpp
-// 返回p的映像（C++14）
 constexpr Point reflection(const Point &p) noexcept
 {
     Point result;     // create non-const Point

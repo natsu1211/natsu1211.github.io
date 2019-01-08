@@ -2,7 +2,7 @@
 title: 读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)
 date: 2018-11-01 00:22:48
 tags:
-- c++
+- [c++]
 categories:
 - [编程语言]
 - [读书笔记]

@@ -2,7 +2,7 @@
 title: 读薄Effective Modern C++ (条款2 理解auto类型推导)
 date: 2018-08-29 01:07:46
 tags:
-- c++
+- [c++]
 categories:
 - [编程语言]
 - [读书笔记]

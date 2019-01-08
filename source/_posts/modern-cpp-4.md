@@ -2,7 +2,7 @@
 title: 读薄Effective Modern C++ (条款4 知道如何查看类型推导)
 date: 2018-10-20 17:46:42
 tags: 
-- c++
+- [c++]
 categories:
 - [编程语言]
 - [读书笔记]

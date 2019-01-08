@@ -2,7 +2,7 @@
 title: 读薄Effective Modern C++ (条款3 理解decltype)
 date: 2018-10-19 00:33:48
 tags:
-- c++
+- [c++]
 categories:
 - [编程语言]
 - [读书笔记]
