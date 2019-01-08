@@ -4,14 +4,37 @@
 
     
   <url>
+    <loc>http://natsu1211.com/2018/10/28/modern-cpp-10/</loc>
+    <lastmod>2019-01-08T16:11:14.275Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)</title>
+        <pubTime>2018-10-27T17:18:56.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+             
+              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://natsu1211.com/2018/11/01/modern-cpp-11/</loc>
-    <lastmod>2019-01-08T16:09:19.491Z</lastmod>
+    <lastmod>2019-01-08T16:11:11.352Z</lastmod>
     <data>
         <display>
         <title>读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)</title>
         <pubTime>2018-10-31T15:22:48.000Z</pubTime>
         
-        <tag>cpp</tag>
+        <tag>c++</tag>
          
          
            
@@ -28,13 +51,13 @@
     
   <url>
     <loc>http://natsu1211.com/2018/11/04/modern-cpp-12/</loc>
-    <lastmod>2019-01-08T16:09:15.279Z</lastmod>
+    <lastmod>2019-01-08T16:11:09.343Z</lastmod>
     <data>
         <display>
         <title>读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)</title>
         <pubTime>2018-11-04T14:17:23.000Z</pubTime>
         
-        <tag>cpp</tag>
+        <tag>c++</tag>
          
          
            
@@ -48,57 +71,10 @@
     </data>
     </url>
 
-    
-  <url>
-    <loc>http://natsu1211.com/2019/01/06/modern-cpp-15/</loc>
-    <lastmod>2019-01-08T16:09:03.603Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++ (条款15 尽可能的使用constexpr)</title>
-        <pubTime>2019-01-06T12:47:15.000Z</pubTime>
-        
-        <tag>cpp</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
-             
-              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://natsu1211.com/2018/12/01/modern-cpp-14/</loc>
-    <lastmod>2019-01-08T16:08:57.381Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)</title>
-        <pubTime>2018-12-01T09:49:51.000Z</pubTime>
-        
-        <tag>cpp</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
-             
-              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
     
   <url>
     <loc>http://natsu1211.com/2018/11/21/modern-cpp-13/</loc>
-    <lastmod>2019-01-08T15:47:06.791Z</lastmod>
+    <lastmod>2019-01-08T16:11:01.451Z</lastmod>
     <data>
         <display>
         <title>读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)</title>
@@ -120,12 +96,12 @@
 
     
   <url>
-    <loc>http://natsu1211.com/2018/10/28/modern-cpp-10/</loc>
-    <lastmod>2019-01-08T15:46:44.962Z</lastmod>
+    <loc>http://natsu1211.com/2018/12/01/modern-cpp-14/</loc>
+    <lastmod>2019-01-08T16:11:00.122Z</lastmod>
     <data>
         <display>
-        <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)</title>
-        <pubTime>2018-10-27T17:18:56.000Z</pubTime>
+        <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)</title>
+        <pubTime>2018-12-01T09:49:51.000Z</pubTime>
         
         <tag>c++</tag>
          
@@ -141,6 +117,30 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://natsu1211.com/2019/01/06/modern-cpp-15/</loc>
+    <lastmod>2019-01-08T16:10:58.624Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款15 尽可能的使用constexpr)</title>
+        <pubTime>2019-01-06T12:47:15.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="http://natsu1211.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+             
+              <breadCrumb title="读书笔记" url="http://natsu1211.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://natsu1211.com/2018/10/27/modern-cpp-9/</loc>
