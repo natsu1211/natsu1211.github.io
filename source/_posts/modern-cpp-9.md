@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item9 优先使用别名声明而不是typedef)
+title: 读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
 date: 2018-10-27 16:15:51
 tags:
 - c++
@@ -8,7 +8,7 @@ categories:
 - [读书笔记]
 ---
 
-## Item9 优先使用别名声明而不是typedef 
+## 条款9 优先使用别名声明而不是typedef 
 
 C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成
 ```cpp
@@ -41,12 +41,12 @@ MyAllocList<Widget> lw;                         // 客户代码
 
 特别当你在另一个模板类中使用该类型别名的时候，对比typedef，别名声明语法的优势则显得更加明显，
 ```cpp
-	template<typename T>                            // Widget<T> 包含
-	class Widget{                                   // 一个 MyAloocList<T>
-	private:                                        // 作为一个数据成员
-	  typename MyAllocList<T>::type list;
-	  ...
-    };
+template<typename T>                            // Widget<T> 包含
+class Widget{                                   // 一个 MyAloocList<T>
+private:                                        // 作为一个数据成员
+	typename MyAllocList<T>::type list;
+	...
+};
 ```
 因为无法知道名称MyAllocList<T>::type究竟是一个类型，还是一个变量，所以需要加上typename来明确表明这是一个类型。而别名声明则没有冗余的typename和::type，
 ```cpp

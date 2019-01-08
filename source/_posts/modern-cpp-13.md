@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item13 优先使用const_iterator而不是iterator)
+title: 读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)
 date: 2018-11-21 00:21:26
 tags:
 - c++
@@ -7,10 +7,10 @@ categories:
 - [编程语言]
 - [读书笔记]
 ---
-Item 13: 优先使用const_iterator而不是iterator
-（对此条款可持保留意见。）
+## 条款13 优先使用const_iterator而不是iterator
 
 const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。      
+<!-- more -->
    
 比如我们想在vector中找到1983并把它替换成1998，我们会写下以下代码,
 ```cpp

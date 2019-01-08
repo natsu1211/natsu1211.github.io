@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item8 优先使用nullptr而不是0和NULL)
+title: 读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)
 date: 2018-10-27 00:35:12
 tags:
 - c++
@@ -8,7 +8,7 @@ categories:
 - [读书笔记]
 ---
 
-## Item8 优先使用nullptr而不是0和NULL 
+## 条款8 优先使用nullptr而不是0和NULL 
 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。
 
 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内部定义了转换操作符，可以隐式的转换为所有的原始的指针类型。

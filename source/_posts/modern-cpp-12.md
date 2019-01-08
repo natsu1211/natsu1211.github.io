@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item12 优先使用delete关键字删除函数而不是不实现的私有函数)
+title: 读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)
 date: 2018-11-04 23:17:23
 tags:
 - c++
@@ -8,9 +8,10 @@ categories:
 - [读书笔记]
 ---
 
-## Item12 
+## 条款12 将覆盖函数(overriding function)声明为override
 
 类，继承与虚函数是C++实现面向对象的基础。在子类中覆盖掉父类中对应的虚函数，以此来实现多态。override关键字可以用来显式标识虚函数覆盖，表明该函数在子类中有不同于父类的实现。
+<!-- more -->
 
 如果要使用覆盖的函数，必须满足以下条件：
 - 父类中的函数被声明为virtual。

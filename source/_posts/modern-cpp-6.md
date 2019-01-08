@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item6 当auto推导出非预期类型时应当使用显式的类型初始化)
+title: 读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)
 date: 2018-10-21 17:59:29
 tags:
 - c++
@@ -8,7 +8,7 @@ categories:
 - [读书笔记]
 ---
 
-## Item6 当auto推导出非预期类型时应当使用显式的类型初始化
+## 条款6 当auto推导出非预期类型时应当使用显式的类型初始化
 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。      
 <!-- more -->
 例如假设有一个函数接受一个Widget返回一个std::vector<bool>，其中每个bool表征Widget是否接受一个特定的特性：
@@ -19,14 +19,14 @@ std::vector<bool> features(const Widget& w);
 ```cpp
 Widget w;
 …
-bool highPriority = features(w)[5];         // w是不是个高优先级的？
+bool highPriority = features(w)[5];         // w是不是高优先级的？
 …
 processWidget(w, highPriority);             // 配合优先级处理w
 ```
 
 但是，如果写成
 ```cpp
-auto highPriority = features(w)[5];         // w是不是个高优先级的？
+auto highPriority = features(w)[5];         // w是不是高优先级的？
 ```
 就会出现问题，此时highPriority的类型并不是`bool`，而是`std::vector<bool>::reference`。之前的代码能够工作是由于存在`std::vector<bool>::reference`到`bool`的隐式转换。
 

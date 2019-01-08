@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item3 理解decltype)
+title: 读薄Effective Modern C++ (条款3 理解decltype)
 date: 2018-10-19 00:33:48
 tags:
 - c++
@@ -8,7 +8,7 @@ categories:
 - [读书笔记]
 ---
 
-## Item3 理解decltype (p23 - p29)
+## 条款3 理解decltype (p23 - p29)
 decltype返回一个变量名或表达式的类型。和auto推导相比，它大多数时候只是如实的返回变量或表达式的类型，但是也有一些特殊情况。
 <!-- more -->
 正常情况下，没有任何意外。

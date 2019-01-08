@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item4 知道如何查看类型推导)
+title: 读薄Effective Modern C++ (条款4 知道如何查看类型推导)
 date: 2018-10-20 17:46:42
 tags: 
 - c++
@@ -8,7 +8,7 @@ categories:
 - [读书笔记]
 ---
 
-## Item4 知道如何查看类型推导 (p30 - p35)
+## 条款4 知道如何查看类型推导 (p30 - p35)
 通常来说有三种办法，            
 
 ### IDE

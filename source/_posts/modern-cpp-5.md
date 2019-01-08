@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item5 优先使用auto而非显式类型声明)
+title: 读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)
 date: 2018-10-20 19:37:28
 tags: 
 - c++
@@ -8,7 +8,7 @@ categories:
 - [读书笔记]
 ---
 
-## Item5 优先使用auto而非显式类型声明 (p37 - p42)
+## 条款5 优先使用auto而非显式类型声明 (p37 - p42)
 
 比起显式声明，auto声明有几点优势。 
 

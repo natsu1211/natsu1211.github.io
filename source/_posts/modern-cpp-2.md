@@ -1,5 +1,5 @@
 ---
-title: 读薄Effective Modern C++ (Item2 理解auto类型推导)
+title: 读薄Effective Modern C++ (条款2 理解auto类型推导)
 date: 2018-08-29 01:07:46
 tags:
 - c++
@@ -8,7 +8,7 @@ categories:
 - [读书笔记]
 ---
 
-## Item2 理解auto类型推导（p18-p23）
+## 条款2 理解auto类型推导（p18-p23）
 auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。
 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。
 

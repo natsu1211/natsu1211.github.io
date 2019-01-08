@@ -1,14 +1,14 @@
 ---
-title: 读薄Effective Modern C++ (Item1 理解模板类型推导)
+title: 读薄Effective Modern C++ (条款1 理解模板类型推导)
 date: 2018-08-24 01:27:34
 tags: 
-- c++
+- [c++]
 categories:
 - [编程语言]
 - [读书笔记]
 ---
 
-## Item1 理解模板类型推导（p9-p18）
+## 条款1 理解模板类型推导（p9-p18）
 C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。      
 
 <!-- more -->
