@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款13 优先使用const_iterator而不是iterator const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。">
+  <meta name="description" content="条款3 理解decltype (p23 - p29) decltype返回一个变量名或表达式的类型。和auto推导相比，它大多数时候只是如实的返回变量或表达式的类型，但是也有一些特殊情况。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">
-<meta property="og:url" content="https://natsu1211.com/2018/11/21/modern-cpp-13/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款3 理解decltype)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-3.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款13 优先使用const_iterator而不是iterator const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。">
+<meta property="og:description" content="条款3 理解decltype (p23 - p29) decltype返回一个变量名或表达式的类型。和auto推导相比，它大多数时候只是如实的返回变量或表达式的类型，但是也有一些特殊情况。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T16:59:38.454Z">
+<meta property="og:updated_time" content="2019-01-08T17:04:25.180Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">
-<meta name="twitter:description" content="条款13 优先使用const_iterator而不是iterator const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款3 理解decltype)">
+<meta name="twitter:description" content="条款3 理解decltype (p23 - p29) decltype返回一个变量名或表达式的类型。和auto推导相比，它大多数时候只是如实的返回变量或表达式的类型，但是也有一些特殊情况。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/2018/11/21/modern-cpp-13/"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-3.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款3 理解decltype) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/2018/11/21/modern-cpp-13/">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款3 理解decltype)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-11-21 00:21:26" itemprop="dateCreated datePublished" datetime="2018-11-21T00:21:26+09:00">2018-11-21</time>
+              <time title="创建时间：2018-10-19 00:33:48" itemprop="dateCreated datePublished" datetime="2018-10-19T00:33:48+09:00">2018-10-19</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 01:59:38" itemprop="dateModified" datetime="2019-01-09T01:59:38+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 02:04:25" itemprop="dateModified" datetime="2019-01-09T02:04:25+09:00">2019-01-09</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/21/modern-cpp-13/#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-3.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/11/21/modern-cpp-13/" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-3.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,18 +468,18 @@
       
 
       
-        <h2 id="条款13-优先使用const_iterator而不是iterator">条款13 优先使用const_iterator而不是iterator</h2>
-<p>const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。<br>
-<a id="more"></a></p>
-<p>比如我们想在vector中找到1983并把它替换成1998，我们会写下以下代码, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it =</span><br><span class="line">    <span class="built_in">std</span>::find(values.begin(),values.end(), <span class="number">1983</span>);</span><br><span class="line">values.insert(it, <span class="number">1998</span>);</span><br></pre></td></tr></table></figure></p>
-<p>这里因为并不会改变itertor所指向的数据，const_iterator应当是更合适的选择，然而在C++98中，std::find等函数只接受非const的iterator，并且没有简单的办法从非const容器获得const_iterator，在C++98中使用const_iterator只是自寻烦恼。<br>
-然而情况在C++11中大有不同，const_iterator容易获取并且容易使用。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values; <span class="comment">// as before ...</span></span><br><span class="line"><span class="keyword">auto</span> it = <span class="built_in">std</span>::find(values.cbegin(),values.cend(), <span class="number">1983</span>); <span class="comment">// and cend</span></span><br><span class="line">values.insert(it, <span class="number">1998</span>);<span class="comment">// use cbegin</span></span><br></pre></td></tr></table></figure></p>
-<p>需要注意的是，当你需要写出更为泛型的代码的时候，C++11对const_iterator的支持可能会略显不足， 比如我们要写一个在容器中寻找元素并进行替换的泛型函数，原生C数组，我们会希望使用非成员函数的版本来获取迭代器。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> C, <span class="keyword">typename</span> V&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">findAndInsert</span><span class="params">(C&amp; container, <span class="keyword">const</span> V&amp; targetVal, <span class="keyword">const</span> V&amp; insertVal)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cbegin;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cend;</span><br><span class="line">    <span class="keyword">const</span> V&amp; targetVal,</span><br><span class="line">    <span class="keyword">const</span> V&amp; insertVal)</span><br><span class="line">    <span class="keyword">auto</span> it = <span class="built_in">std</span>::find(cbegin(container), cend(container), targetVal);</span><br><span class="line">    container.insert(it, insertVal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码需要C++14才会工作，因为C++11中没有提供cbegin和cend的非成员函数版本。 我们可以自己为C++11添加， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">C</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">auto</span> <span class="title">cbegin</span>(<span class="title">const</span> <span class="title">C</span>&amp; <span class="title">container</span>)-&gt;<span class="title">decltype</span>(<span class="title">std</span>:</span>:begin(container))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::begin(container);        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="总结">总结</h2>
+        <h2 id="条款3-理解decltype-p23---p29">条款3 理解decltype (p23 - p29)</h2>
+<p>decltype返回一个变量名或表达式的类型。和auto推导相比，它大多数时候只是如实的返回变量或表达式的类型，但是也有一些特殊情况。 <a id="more"></a> 正常情况下，没有任何意外。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">0</span>;            <span class="comment">// decltype(i) is const int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> Widget&amp; w)</span></span>;    <span class="comment">// decltype(w) is const Widget&amp;</span></span><br><span class="line">                            <span class="comment">// decltype(f) is bool(const Widget&amp;)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;               <span class="comment">// decltype(Point::x) is int</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Widget w;                   <span class="comment">// decltype(w) is Widget</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (f(w)) ...               <span class="comment">// decltype(f(w)) is bool</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;        <span class="comment">// simplified version of std::vector</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">vector</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    T&amp; <span class="keyword">operator</span>[](<span class="built_in">std</span>::<span class="keyword">size_t</span> index);</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;              <span class="comment">// decltype(v) is vector&lt;int&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span>(v[<span class="number">0</span>] == <span class="number">0</span>)               <span class="comment">// decltype(v[0]) is int&amp;f</span></span><br></pre></td></tr></table></figure></p>
+<p>decltype在我们无法显式的写出某个表达式的类型时候特别有用， 例如我们要写一个获取列表容器在某个位置上的元素的泛型函数，我们无法知道这个容器内部的元素是什么类型，c++11中，我们可以借助尾置返回语法写出以下代码， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Container, <span class="keyword">typename</span> Index&gt;    <span class="comment">// final</span></span><br><span class="line"><span class="keyword">auto</span>                                            <span class="comment">// C++11</span></span><br><span class="line">access(Container&amp;&amp; c, Index i)                  <span class="comment">// version</span></span><br><span class="line">-&gt; <span class="keyword">decltype</span>(<span class="built_in">std</span>::forward&lt;Container&gt;(c)[i]</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::forward&lt;Container&gt;(c)[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>c++14中我们可以写成， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Container, <span class="keyword">typename</span> Index&gt;</span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) access(Container&amp;&amp; c, Index i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::forward&lt;Container&gt;(c)[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代表用decltype的规则来进行类型推导。 该语法不止可以用于函数的返回类型推导，还可以用于变量的类型推导。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Widget w;</span><br><span class="line"><span class="keyword">const</span> Widget&amp; cw = w; <span class="comment">// cw的类型为const Widget&amp;</span></span><br><span class="line"><span class="keyword">auto</span> myWidget1 = cw;  <span class="comment">// auto类型推导，myWidget1的类型为Widget</span></span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) myWidget2 = cw; <span class="comment">// decltype类型推导，myWidget2的类型为const Widget&amp;</span></span><br></pre></td></tr></table></figure></p>
+<p>需要注意的情况是，decltype会将具有类型T的左值表达式的类型推导为T&amp;， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) f1()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> x;        <span class="comment">// f1返回类型为int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) f2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> (x);     <span class="comment">// f2返回类型为int&amp;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>f2返回了一个局部变量的引用！这当然是我们不愿意看到的。</p>
+<h3 id="总结">总结</h3>
 <ul>
-<li>优先使用const_iterator而不是iterator</li>
-<li>在泛型代码中，优先使用非成员函数版本的begin, end, rbegin ,rend函数</li>
+<li>decltype几乎总是不加修改的返回变量或表达式的类型</li>
+<li>对于类型为T并且不是单纯变量名的左值表达式，decltype总是返回T&amp;</li>
+<li>C++14支持decltype(auto)语法，使用decltype的规则进行类型推导</li>
 </ul>
 
       
@@ -535,7 +535,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/2018/11/21/modern-cpp-13/" title="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">https://natsu1211.com/2018/11/21/modern-cpp-13/</a>
+    <a href="https://natsu1211.com/modern-cpp-3.html" title="读薄Effective Modern C++ (条款3 理解decltype)">https://natsu1211.com/modern-cpp-3.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -561,8 +561,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/04/modern-cpp-12/" rel="next" title="读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)
+              <a href="/modern-cpp-2.html" rel="next" title="读薄Effective Modern C++ (条款2 理解auto类型推导)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款2 理解auto类型推导)
               </a>
             
           </div>
@@ -571,8 +571,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/01/modern-cpp-14/" rel="prev" title="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
-                读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数) <i class="fa fa-chevron-right"></i>
+              <a href="/modern-cpp-4.html" rel="prev" title="读薄Effective Modern C++ (条款4 知道如何查看类型推导)">
+                读薄Effective Modern C++ (条款4 知道如何查看类型推导) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -766,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款13-优先使用const_iterator而不是iterator"><span class="nav-number">1.</span> <span class="nav-text">条款13 优先使用const_iterator而不是iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款3-理解decltype-p23---p29"><span class="nav-number">1.</span> <span class="nav-text">条款3 理解decltype (p23 - p29)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -955,9 +955,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/2018/11/21/modern-cpp-13/';
-        this.page.identifier = '2018/11/21/modern-cpp-13/';
-        this.page.title = '读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-3.html';
+        this.page.identifier = 'modern-cpp-3.html';
+        this.page.title = '读薄Effective Modern C++ (条款3 理解decltype)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

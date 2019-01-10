@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款15 尽可能的使用constexpr constexpr可以说是c++11中最让人困惑的关键字，它用来修饰变量或函数，表明该变量或函数的值能够在编译期获得。这些变量和函数可以用于需要一个常量表达式（constant expression）的地方。例如， int sz;   // 非constexpr变量...constexpr auto arraySize1 = sz;   // 错误，编译">
+  <meta name="description" content="条款10 优先使用有作用域的enmu而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款15 尽可能的使用constexpr)">
-<meta property="og:url" content="https://natsu1211.com/2019/01/06/modern-cpp-15/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-10.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款15 尽可能的使用constexpr constexpr可以说是c++11中最让人困惑的关键字，它用来修饰变量或函数，表明该变量或函数的值能够在编译期获得。这些变量和函数可以用于需要一个常量表达式（constant expression）的地方。例如， int sz;   // 非constexpr变量...constexpr auto arraySize1 = sz;   // 错误，编译">
+<meta property="og:description" content="条款10 优先使用有作用域的enmu而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T16:58:09.062Z">
+<meta property="og:updated_time" content="2019-01-08T17:00:34.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款15 尽可能的使用constexpr)">
-<meta name="twitter:description" content="条款15 尽可能的使用constexpr constexpr可以说是c++11中最让人困惑的关键字，它用来修饰变量或函数，表明该变量或函数的值能够在编译期获得。这些变量和函数可以用于需要一个常量表达式（constant expression）的地方。例如， int sz;   // 非constexpr变量...constexpr auto arraySize1 = sz;   // 错误，编译">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
+<meta name="twitter:description" content="条款10 优先使用有作用域的enmu而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/2019/01/06/modern-cpp-15/"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-10.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款15 尽可能的使用constexpr) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/2019/01/06/modern-cpp-15/">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-10.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款15 尽可能的使用constexpr)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2019-01-06 21:47:15" itemprop="dateCreated datePublished" datetime="2019-01-06T21:47:15+09:00">2019-01-06</time>
+              <time title="创建时间：2018-10-28 02:18:56" itemprop="dateCreated datePublished" datetime="2018-10-28T02:18:56+09:00">2018-10-28</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 01:58:09" itemprop="dateModified" datetime="2019-01-09T01:58:09+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 02:00:34" itemprop="dateModified" datetime="2019-01-09T02:00:34+09:00">2019-01-09</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/06/modern-cpp-15/#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-10.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/01/06/modern-cpp-15/" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-10.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,36 +468,23 @@
       
 
       
-        <h2 id="条款15-尽可能的使用constexpr">条款15 尽可能的使用constexpr</h2>
-<p>constexpr可以说是c++11中最让人困惑的关键字，它用来修饰变量或函数，表明该变量或函数的值能够在编译期获得。这些变量和函数可以用于需要一个常量表达式（constant expression）的地方。例如， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> sz;   <span class="comment">// 非constexpr变量</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> arraySize1 = sz;   <span class="comment">// 错误，编译期间不知道sz的值</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">array</span>&lt;<span class="keyword">int</span>, sz&gt; data1;        <span class="comment">// 错误，同样的问题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> arraySize2 = <span class="number">10</span>;   <span class="comment">// 正确，10在编译期间是常量</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">array</span>&lt;<span class="keyword">int</span>, arraySize2&gt; data2;  <span class="comment">// 正确，arraySize2是constexpr的</span></span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>实际上，当constexpr用于修饰对象或非静态成员函数时（当传递适当的参数时，下面会说），该对象和函数同时也是const的。<br>
-作为补充，constexpr变量需要满足以下条件，否则会产生编译错误。</p>
-<ul>
-<li>其类型必须是字面类型 (LiteralType) 。</li>
-<li>它必须被立即初始化</li>
-<li>其初始化的完整表达式，包括所有隐式转换、构造函数调用等，都必须是常量表达式</li>
-</ul>
-<p>而当constexpr修饰函数时，情况有所不同，不能保证该函数的值是编译期常量。</p>
-<ul>
-<li>constexpr函数可以用在需求编译期间常量的上下文中（比如上面创建std::array的表达式中）。在这种上下文中，如果调用时传进去的实参的值在编译期间已知，那么函数的结果会在编译期间计算。如果任何一个参数的值在编译期间未知，代码将不能通过编译。<br>
-</li>
-<li>如果用一个或者多个在编译期间未知的值作为参数调用constexpr函数，函数的行为和普通的函数一样，在运行期间计算结果。</li>
-</ul>
-<p>不准确的来说，constexpr函数需要保证函数的返回值和每个参数都为字面类型（LiteralType），否则会产生编译错误。 (因为条件较多，constexpr函数需要满足的更为具体的规则可以参考<a href="https://en.cppreference.com/w/cpp/language/constexpr" target="_blank" rel="noopener">这里</a>）</p>
-<p>字面类型本质上就是一些在编译期间可确定值的类型。在C++14之前，除了void之外的内置类型都是字面类型（C++14开始void也算，因此C++14开始constexpr的返回值类型可以为void，而C++11不行），不过用户定义的类型也有可能是字面值类型，因为我们可以将构造函数和其他成员函数也声明为constexpr的： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">   <span class="function"><span class="keyword">constexpr</span> <span class="title">Point</span><span class="params">(<span class="keyword">double</span> xVal = <span class="number">0</span>, <span class="keyword">double</span> yVal = <span class="number">0</span>)</span> <span class="keyword">noexcept</span></span></span><br><span class="line">   : x(xVal), y(yVal)</span><br><span class="line">   &#123;&#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">constexpr</span> <span class="keyword">double</span> <span class="title">xValue</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> xVal; &#125;</span><br><span class="line">   <span class="function"><span class="keyword">constexpr</span> <span class="keyword">double</span> <span class="title">yValue</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> yVal; &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">constexpr</span> <span class="keyword">void</span> <span class="title">setX</span><span class="params">(<span class="keyword">double</span> newX)</span> <span class="keyword">noexcept</span> </span>&#123; x = newX; &#125; <span class="comment">// c++14</span></span><br><span class="line">   <span class="function"><span class="keyword">constexpr</span> <span class="keyword">void</span> <span class="title">setY</span><span class="params">(<span class="keyword">double</span> newY)</span> <span class="keyword">noexcept</span> </span>&#123; y = newY; &#125; <span class="comment">// c++14</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">   <span class="keyword">double</span> x, y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>如果传进来的参数在编译时已知，Point可以用constexpr初始化： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">constexpr</span> Point <span class="title">p1</span><span class="params">(<span class="number">9.4</span>, <span class="number">27.7</span>)</span></span>;  <span class="comment">// 正确，在编译时“运行”constexpr构造</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> Point <span class="title">p2</span><span class="params">(<span class="number">28.8</span>, <span class="number">5.3</span>)</span></span>;  <span class="comment">// 也正确</span></span><br></pre></td></tr></table></figure></p>
-<p>（constexpr构造函数需要满足的条件可以参考<a href="https://en.cppreference.com/w/cpp/language/constexpr" target="_blank" rel="noopener">这里</a>，什么样的类型是LiteralType可以参考<a href="https://en.cppreference.com/w/cpp/named_req/LiteralType" target="_blank" rel="noopener">这里</a>）</p>
-<p>同时我们也可以写出操作这些编译期对象的constexpr函数， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">constexpr</span> Point <span class="title">reflection</span><span class="params">(<span class="keyword">const</span> Point &amp;p)</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Point result;     <span class="comment">// create non-const Point</span></span><br><span class="line"></span><br><span class="line">    result.setX(-p.xValue());</span><br><span class="line">    result.setY(-p.yValue());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>最终用户的代码会像以下这样， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">constexpr</span> Point <span class="title">p1</span><span class="params">(<span class="number">9.4</span>, <span class="number">27.7</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> Point <span class="title">p2</span><span class="params">(<span class="number">28.8</span>, <span class="number">5.3</span>)</span></span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> mid = midpoint(p1, p2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> reflectedMid =      <span class="comment">// reflectedMid的值是（-19.1, -16.5）</span></span><br><span class="line">reflection(mid);                   <span class="comment">// 而且在编译期间就知道了</span></span><br></pre></td></tr></table></figure></p>
-<p>因为到了C++14/C++17/C++20，constexpr的限制已经放的如此的宽松。这意味着我们有足够的设施能够将运行时的工作转移到编译时，这也代表我们的程序可以运行的更快（当然编译时间会变长）。</p>
-<p>通过尽可能地使用constexpr，我们最大化了对象和函数的可能使用的情况（既可以像传统运行期函数一样使用，也可以用在需要常量表达式的上下文中）。注意，constexpr是一个对象或函数接口很重要的一部分。constexpr表明“我可以用于需求常量表达式的上下文”，如果你把对象或者函数声明为constexpr，用户就有可能把它用于这种上下文。后来，如果你觉得你使用constexpr是个错误，然后你删除了它，这样就可能造成用户大量代码无法编译（例如，为了调试添加I/O函数会导致这种问题，因为I/O语句通常不允许出现在constexpr函数）。因此，一旦选择了constexpr作为接口的一部分，就需要长期保证该接口不会改变。</p>
+        <h2 id="条款10-优先使用有作用域的enmu而不是无作用域的enum">条款10 优先使用有作用域的enmu而不是无作用域的enum</h2>
+<p>一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义： <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red&#125;;                 <span class="comment">// black, white, red 和</span></span><br><span class="line">	                                             <span class="comment">// Color  同属一个作用域</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                              <span class="comment">// 错误！因为 white</span></span><br><span class="line">	                                             <span class="comment">// 在这个作用域已经被声明过</span></span><br></pre></td></tr></table></figure></p>
+<p>而enum class则不会有该问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;; <span class="comment">// black, white, red</span></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                     <span class="comment">// fine</span></span><br><span class="line">Color c = white;                        <span class="comment">// error!</span></span><br><span class="line">Color c = Color::white;                 <span class="comment">// fine</span></span><br><span class="line"><span class="keyword">auto</span> c = Color::white;                  <span class="comment">// fine</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的理由已经足够让我们选择enum class，但是enum class还有一个优势，它的枚举元素是强类型的。 对于无作用域的enum，枚举元素可以隐式转换为数值类型，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//能通过编译！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//能通过编译！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个表示颜色的变量能够和double类型作比较，以及能用隐式转换为std::size_t类型，显然不是我们所期望的，使用enum class的话就能达到我们期望的效果， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = Color::red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//编译错误！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//编译错误！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果确实需要进行类型转换，可以用static_cast进行显式转换。</p>
+<p>有些时候，无作用域的enum的枚举项能够隐式转换为整数的特性会比较方便使用，比如作为有意义的索引值， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UserInfo = <span class="built_in">std</span>::tuple&lt;<span class="built_in">std</span>::<span class="built_in">string</span>,</span><br><span class="line">                           <span class="built_in">std</span>::<span class="built_in">string</span>,        <span class="comment">// email</span></span><br><span class="line">                           <span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; ;      <span class="comment">// reputation</span></span><br><span class="line"><span class="keyword">enum</span> UserInfoFields &#123; uiName, uiEmail, uiReputation &#125;;</span><br><span class="line">UserInfo uInfo;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">auto</span> val1 = <span class="built_in">std</span>::get&lt;<span class="number">1</span>&gt;(uInfo);       <span class="comment">// 不清楚索引1对应的数据是什么</span></span><br><span class="line"><span class="keyword">auto</span> val2 = <span class="built_in">std</span>::get&lt;uiEmail&gt;(uInfo); <span class="comment">// 隐式转换为1，清楚的知道是获取email字段</span></span><br></pre></td></tr></table></figure></p>
+<p>而enum class因为无法隐式转换，需要写成， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;<span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt;(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure></p>
+<p>但是这种写法的可读性不是太好，我们可以提供一个转换函数来增加可读性， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> E&gt;    <span class="comment">// C++14 constexpr auto</span></span><br><span class="line">toUType(E enumerator) <span class="keyword">noexcept</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">underlying_type_t</span>&lt;E&gt;&gt;(enumerator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;toUType(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure>
 <h2 id="总结">总结</h2>
 <ul>
-<li>constexpr对象是const的，它需要用编译期间已知的值初始化。</li>
-<li>constexpr函数在传入编译期已知值作为参数时，函数的返回值也能在编译期获得。</li>
-<li>constexpr对象和函数比non-constexpr对象和函数能运用在更加广泛的语境中。</li>
-<li>constexpr是对象和函数接口的一部分。</li>
+<li>C++98风格的enum是没有作用域的enum</li>
+<li>有作用域的枚举体的枚举元素仅仅对枚举体内部可见。只能通过类型转换（cast）转换为其他类型</li>
+<li>有作用域和没有作用域的enum都支持指定潜在类型。有作用域的enum的默认潜在类型是int。没有作用域的enum没有默认的潜在类型。</li>
+<li>有作用域的enum总是可以前置声明的。没有作用域的enum只有当指定潜在类型时才可以前置声明。</li>
 </ul>
 
       
@@ -553,7 +540,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/2019/01/06/modern-cpp-15/" title="读薄Effective Modern C++ (条款15 尽可能的使用constexpr)">https://natsu1211.com/2019/01/06/modern-cpp-15/</a>
+    <a href="https://natsu1211.com/modern-cpp-10.html" title="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">https://natsu1211.com/modern-cpp-10.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -579,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/01/modern-cpp-14/" rel="next" title="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)
+              <a href="/modern-cpp-9.html" rel="next" title="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
               </a>
             
           </div>
@@ -588,6 +575,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/modern-cpp-11.html" rel="prev" title="读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)">
+                读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -780,7 +771,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款15-尽可能的使用constexpr"><span class="nav-number">1.</span> <span class="nav-text">条款15 尽可能的使用constexpr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款10-优先使用有作用域的enmu而不是无作用域的enum"><span class="nav-number">1.</span> <span class="nav-text">条款10 优先使用有作用域的enmu而不是无作用域的enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -969,9 +960,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/2019/01/06/modern-cpp-15/';
-        this.page.identifier = '2019/01/06/modern-cpp-15/';
-        this.page.title = '读薄Effective Modern C++ (条款15 尽可能的使用constexpr)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-10.html';
+        this.page.identifier = 'modern-cpp-10.html';
+        this.page.title = '读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

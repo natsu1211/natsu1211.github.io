@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+  <meta name="description" content="条款1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款4 知道如何查看类型推导)">
-<meta property="og:url" content="https://natsu1211.com/2018/10/20/modern-cpp-4/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款1 理解模板类型推导)">
+<meta property="og:url" content="https://natsu1211.com/modern_cpp-1.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+<meta property="og:description" content="条款1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T15:46:07.293Z">
+<meta property="og:updated_time" content="2019-01-08T17:04:38.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款4 知道如何查看类型推导)">
-<meta name="twitter:description" content="条款4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款1 理解模板类型推导)">
+<meta name="twitter:description" content="条款1 理解模板类型推导（p9-p18） C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/2018/10/20/modern-cpp-4/"/>
+  <link rel="canonical" href="https://natsu1211.com/modern_cpp-1.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款4 知道如何查看类型推导) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款1 理解模板类型推导) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/2018/10/20/modern-cpp-4/">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern_cpp-1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款4 知道如何查看类型推导)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款1 理解模板类型推导)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-10-20 17:46:42" itemprop="dateCreated datePublished" datetime="2018-10-20T17:46:42+09:00">2018-10-20</time>
+              <time title="创建时间：2018-08-24 01:27:34" itemprop="dateCreated datePublished" datetime="2018-08-24T01:27:34+09:00">2018-08-24</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 00:46:07" itemprop="dateModified" datetime="2019-01-09T00:46:07+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 02:04:38" itemprop="dateModified" datetime="2019-01-09T02:04:38+09:00">2019-01-09</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/20/modern-cpp-4/#comments" itemprop="discussionUrl">
+                <a href="/modern_cpp-1.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/10/20/modern-cpp-4/" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern_cpp-1.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,32 +468,35 @@
       
 
       
-        <h2 id="条款4-知道如何查看类型推导-p30---p35">条款4 知道如何查看类型推导 (p30 - p35)</h2>
-<p>通常来说有三种办法，</p>
-<h3 id="ide">IDE</h3>
-<p>在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。<br>
-对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。<br>
-<a id="more"></a></p>
-<h3 id="编译器诊断">编译器诊断</h3>
-<p>一个有效的让编译器展示类型的办法就是故意制造编译问题。 首先声明一个类模板，但是并不定义这个模板： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                    <span class="comment">// 声明TD</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TD</span>;</span>                               <span class="comment">// TD == "Type Displayer"</span></span><br></pre></td></tr></table></figure></p>
-<p>尝试实例化这个模板会导致错误信息，因为没有模板的实现。想看变量被推导的类型，只要尝试去使用这些类型去实例化TD：<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TD&lt;<span class="keyword">decltype</span>(x)&gt; xType;                  <span class="comment">// 引起的错误</span></span><br><span class="line">TD&lt;<span class="keyword">decltype</span>(y)&gt; yType;                  <span class="comment">// 包含了x和y的类型</span></span><br></pre></td></tr></table></figure></p>
-<p>我使用的变量名字的形式variableNameType是因为这样有利于输出的错误信息可以帮助我定位我要寻找的信息。对上面的代码，我的一个编译器输出了诊断信息，其中的一部分如下： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: aggregate 'TD&lt;int&gt; xType' has incomplete type and cannot be defined</span><br><span class="line">error: aggregate 'TD&lt;const int *&gt; yType' has incomplete type and cannot be defined</span><br></pre></td></tr></table></figure></p>
-<p>另一个编译器提供相同的信息，但是格式不太一样： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: 'xType' uses undefined class 'TD&lt;int&gt;'</span><br><span class="line">error: 'yType' uses undefined class 'TD&lt;const int *&gt;'</span><br></pre></td></tr></table></figure></p>
-<p>排除格式的区别，基本所有的编译器都会在这种代码的技术中输出有用的错误信息。</p>
-<h3 id="运行时输出">运行时输出</h3>
-<p>可以使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(x).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// display types for</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(y).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// x and y</span></span><br></pre></td></tr></table></figure></p>
-<p>这是基于对类似于x或者y运算typeid可以得到一个std::type_info对象，std::type_info有一个成员函数，name可以提供一个C风格的字符串，代表了类型的名字。但是遗憾的是输出通常并不是完全可靠。<br>
-Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来查看变量或函数的类型<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/type_index.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line">    <span class="keyword">using</span> boost::typeindex::type_id_with_cvr;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show T</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"T = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;T&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show param's type</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"param = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;<span class="keyword">decltype</span>(param)&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>按照以下方法使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Widget&gt; createVec();    <span class="comment">// 工厂方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> vw = createVec();        <span class="comment">// init vw w/factory return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!vw.empty()) &#123;</span><br><span class="line">    f(&amp;vw[<span class="number">0</span>]);                      <span class="comment">// 调用f</span></span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在GNU和Clang的编译器下面，Boost.TypeIndex输出准确的结果： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = Widget <span class="keyword">const</span>*</span><br><span class="line">param = Widget <span class="keyword">const</span>* <span class="keyword">const</span>&amp;</span><br></pre></td></tr></table></figure></p>
-<p>微软的编译器实际上输出的结果是一样的： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = class Widget <span class="keyword">const</span> *</span><br><span class="line">param = class Widget <span class="keyword">const</span> * <span class="keyword">const</span> &amp;</span><br></pre></td></tr></table></figure></p>
-<p>以上三种方法可以灵活使用。</p>
+        <h2 id="条款1-理解模板类型推导p9-p18">条款1 理解模板类型推导（p9-p18）</h2>
+<p>C++98中，类型推导只发生在函数模板中。C++11中类型推导还会发生在大多数auto关键字和decltype表达式出现的地方，C++14还会发生在decltype(auto)。如果对类型推导没有深刻的理解，很难写出高效率的现代C++代码。</p>
+<a id="more"></a>
+<p>对于以下函数模板声明（伪代码）， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(ParamType param)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>以及它的调用 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">f(expr)</span><br></pre></td></tr></table></figure></p>
+<p>在编译时，编译器使用传递来的expr推导出T和ParamType，通常T和ParamType不是一个类型，因为ParamType通常会带上类型修饰符。例如 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">f(x);</span><br><span class="line"><span class="comment">// T is int, ParamType is const int&amp;</span></span><br></pre></td></tr></table></figure></p>
+<p>T的类型由expr和ParamType共同来决定，有3种可能，<br>
+1. ParamType是一个指针或者引用，但是不是一个通用引用（Universal Reference）<br>
+2. ParamType是一个通用引用<br>
+3. ParamType不是指针也不是引用</p>
+<p>对于1，如果expr的类型是个引用，忽略引用的部分。然后利用expr的类型和ParamType对比去判断T的类型。<br>
+例： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp; param)</span></span>;           <span class="comment">// param是一个引用类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// x是一个int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;           <span class="comment">// cx是一个const int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;          <span class="comment">// rx是const int的引用</span></span><br><span class="line"></span><br><span class="line">f(x);                       <span class="comment">// T是int，param的类型时int&amp;</span></span><br><span class="line"></span><br><span class="line">f(cx);                      <span class="comment">// T是const int，</span></span><br><span class="line">                            <span class="comment">// param的类型是const int&amp;</span></span><br><span class="line">f(rx);                      <span class="comment">// T是const int</span></span><br><span class="line">                            <span class="comment">// param的类型时const int&amp;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T* param)</span></span>;           <span class="comment">// param是一个指针</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *px = &amp;x;         <span class="comment">// px是一个指向const int x的指针</span></span><br><span class="line"></span><br><span class="line">f(&amp;x);                      <span class="comment">// T是int，param的类型是int*</span></span><br><span class="line"></span><br><span class="line">f(px);                      <span class="comment">// T是const int</span></span><br><span class="line">                            <span class="comment">// param的类型时const int*</span></span><br></pre></td></tr></table></figure>
+<p>对于2，如果expr是一个左值，T和ParamType都会被推导成左值引用。这是模板类型T被推导成一个引用的唯一情况。如果expr是一个右值，那么就执行“普通”的法则（第一种情况）。Item23和Item24会对这种情况进行详尽的解释。<br>
+例： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; param)</span></span>;          <span class="comment">// param现在是一个通用的引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;           <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;          <span class="comment">// 和之前一样</span></span><br><span class="line"></span><br><span class="line">f(x);                       <span class="comment">// x是左值，所以T是int&amp;</span></span><br><span class="line">                            <span class="comment">// param的类型也是int&amp;</span></span><br><span class="line"></span><br><span class="line">f(cx);                      <span class="comment">// cx是左值，所以T是const int&amp;</span></span><br><span class="line">                            <span class="comment">// param的类型也是const int&amp;</span></span><br><span class="line"></span><br><span class="line">f(rx);                      <span class="comment">// rx是左值，所以T是const int&amp;</span></span><br><span class="line">                            <span class="comment">// param的类型也是const int&amp;</span></span><br><span class="line"></span><br><span class="line">f(<span class="number">27</span>);                      <span class="comment">// 27是右值，所以T是int</span></span><br><span class="line">                            <span class="comment">// param的类型是int&amp;&amp;</span></span><br></pre></td></tr></table></figure></p>
+<p>对于3，param是pass-by-value的，这意味着param是的一份全新的拷贝。和之前一样，如果expr的类型是个引用，将会忽略引用的部分。接下来const，volatile修饰符也要忽略掉。这是有道理的，因为传递过来的参数不能修改不代表它的拷贝不能被修改。<br>
+例： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;                 <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;           <span class="comment">// 和之前一样</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;          <span class="comment">// 和之前一样</span></span><br><span class="line"></span><br><span class="line">f(x);                       <span class="comment">// T和param的类型都是int</span></span><br><span class="line"></span><br><span class="line">f(cx);                      <span class="comment">// T和param的类型也都是int</span></span><br><span class="line"></span><br><span class="line">f(rx);                      <span class="comment">// T和param的类型还都是int</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="注意事项">注意事项</h3>
+<h4 id="数组作为参数">数组作为参数</h4>
+<p>通常情况下数组类型会退化为指针类型，但是在模板函数的参数是数组的引用的时候情况就不同了。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp; param)</span></span>;                   <span class="comment">// 引用参数的模板</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> name[] = <span class="string">"J. P. Briggs"</span>;</span><br><span class="line">f(name);                            <span class="comment">// 传递数组给f</span></span><br></pre></td></tr></table></figure></p>
+<p>T最后推导出来的实际的类型就是数组。类型推导包括了数组的长度，所以在这个例子里面，T被推导成了const char [13]，函数f的参数（数组的引用）被推导成了const char (&amp;)[13]。</p>
+<h4 id="函数作为参数">函数作为参数</h4>
+<p>函数也会退化为函数指针， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>， <span class="keyword">double</span>)</span></span>;    <span class="comment">// someFunc是一个函数</span></span><br><span class="line">                                <span class="comment">// 类型是void(int, double)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(T param)</span></span>;               <span class="comment">// 在f1中 参数直接按值传递</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(T&amp; param)</span></span>;              <span class="comment">// 在f2中 参数是按照引用传递</span></span><br><span class="line"></span><br><span class="line">f1(someFunc);                   <span class="comment">// param被推导成函数指针</span></span><br><span class="line">                                <span class="comment">// 类型是void(*)(int, double)</span></span><br><span class="line"></span><br><span class="line">f2(someFunc);                   <span class="comment">// param被推导成函数引用</span></span><br><span class="line">                                <span class="comment">// 类型是void(&amp;)(int, double)</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="总结">总结</h3>
 <ul>
-<li>类型推导的结果常常可以通过IDE的编辑器，编译器错误输出信息和Boost.TypeIndex库的结果中得到</li>
-<li>一些工具的结果不一定有帮助性也不一定准确，所以对C++标准的类型推导法则加以理解是很有必要的</li>
+<li>在模板类型推导的时候，有引用特性的参数的引用特性会被忽略</li>
+<li>在推导通用引用参数的时候，左值会被特殊处理</li>
+<li>在推导按值传递的参数时候，const和volatile参数会被视为非const和非volatile</li>
+<li>在模板类型推导的时候，参数如果是数组或者函数名称，他们会被退化成指针，除非是用在初始化引用类型</li>
 </ul>
 
       
@@ -549,7 +552,7 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/2018/10/20/modern-cpp-4/" title="读薄Effective Modern C++ (条款4 知道如何查看类型推导)">https://natsu1211.com/2018/10/20/modern-cpp-4/</a>
+    <a href="https://natsu1211.com/modern_cpp-1.html" title="读薄Effective Modern C++ (条款1 理解模板类型推导)">https://natsu1211.com/modern_cpp-1.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -575,18 +578,14 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/19/modern-cpp-3/" rel="next" title="读薄Effective Modern C++ (条款3 理解decltype)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款3 理解decltype)
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/20/modern-cpp-5/" rel="prev" title="读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)">
-                读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明) <i class="fa fa-chevron-right"></i>
+              <a href="/modern-cpp-2.html" rel="prev" title="读薄Effective Modern C++ (条款2 理解auto类型推导)">
+                读薄Effective Modern C++ (条款2 理解auto类型推导) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -780,7 +779,7 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款4-知道如何查看类型推导-p30---p35"><span class="nav-number">1.</span> <span class="nav-text">条款4 知道如何查看类型推导 (p30 - p35)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ide"><span class="nav-number">1.1.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译器诊断"><span class="nav-number">1.2.</span> <span class="nav-text">编译器诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时输出"><span class="nav-number">1.3.</span> <span class="nav-text">运行时输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款1-理解模板类型推导p9-p18"><span class="nav-number">1.</span> <span class="nav-text">条款1 理解模板类型推导（p9-p18）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">1.1.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数组作为参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">数组作为参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作为参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数作为参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -969,9 +968,9 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/2018/10/20/modern-cpp-4/';
-        this.page.identifier = '2018/10/20/modern-cpp-4/';
-        this.page.title = '读薄Effective Modern C++ (条款4 知道如何查看类型推导)';
+        this.page.url = 'https://natsu1211.com/modern_cpp-1.html';
+        this.page.identifier = 'modern_cpp-1.html';
+        this.page.title = '读薄Effective Modern C++ (条款1 理解模板类型推导)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

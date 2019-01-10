@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款10 优先使用有作用域的enmu而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+  <meta name="description" content="条款12 将覆盖函数(overriding function)声明为override 类，继承与虚函数是C++实现面向对象的基础。在子类中覆盖掉父类中对应的虚函数，以此来实现多态。override关键字可以用来显式标识虚函数覆盖，表明该函数在子类中有不同于父类的实现。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
-<meta property="og:url" content="https://natsu1211.com/2018/10/28/modern-cpp-10/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-12.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款10 优先使用有作用域的enmu而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+<meta property="og:description" content="条款12 将覆盖函数(overriding function)声明为override 类，继承与虚函数是C++实现面向对象的基础。在子类中覆盖掉父类中对应的虚函数，以此来实现多态。override关键字可以用来显式标识虚函数覆盖，表明该函数在子类中有不同于父类的实现。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T17:00:34.268Z">
+<meta property="og:updated_time" content="2019-01-08T16:11:09.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
-<meta name="twitter:description" content="条款10 优先使用有作用域的enmu而不是无作用域的enum 一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)">
+<meta name="twitter:description" content="条款12 将覆盖函数(overriding function)声明为override 类，继承与虚函数是C++实现面向对象的基础。在子类中覆盖掉父类中对应的虚函数，以此来实现多态。override关键字可以用来显式标识虚函数覆盖，表明该函数在子类中有不同于父类的实现。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/2018/10/28/modern-cpp-10/"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-12.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/2018/10/28/modern-cpp-10/">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-12.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-10-28 02:18:56" itemprop="dateCreated datePublished" datetime="2018-10-28T02:18:56+09:00">2018-10-28</time>
+              <time title="创建时间：2018-11-04 23:17:23" itemprop="dateCreated datePublished" datetime="2018-11-04T23:17:23+09:00">2018-11-04</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 02:00:34" itemprop="dateModified" datetime="2019-01-09T02:00:34+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 01:11:09" itemprop="dateModified" datetime="2019-01-09T01:11:09+09:00">2019-01-09</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/28/modern-cpp-10/#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-12.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/10/28/modern-cpp-10/" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-12.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,23 +468,14 @@
       
 
       
-        <h2 id="条款10-优先使用有作用域的enmu而不是无作用域的enum">条款10 优先使用有作用域的enmu而不是无作用域的enum</h2>
-<p>一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义： <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red&#125;;                 <span class="comment">// black, white, red 和</span></span><br><span class="line">	                                             <span class="comment">// Color  同属一个作用域</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                              <span class="comment">// 错误！因为 white</span></span><br><span class="line">	                                             <span class="comment">// 在这个作用域已经被声明过</span></span><br></pre></td></tr></table></figure></p>
-<p>而enum class则不会有该问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;; <span class="comment">// black, white, red</span></span><br><span class="line"><span class="keyword">auto</span> white = <span class="literal">false</span>;                     <span class="comment">// fine</span></span><br><span class="line">Color c = white;                        <span class="comment">// error!</span></span><br><span class="line">Color c = Color::white;                 <span class="comment">// fine</span></span><br><span class="line"><span class="keyword">auto</span> c = Color::white;                  <span class="comment">// fine</span></span><br></pre></td></tr></table></figure></p>
-<p>上面的理由已经足够让我们选择enum class，但是enum class还有一个优势，它的枚举元素是强类型的。 对于无作用域的enum，枚举元素可以隐式转换为数值类型，</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//能通过编译！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//能通过编译！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一个表示颜色的变量能够和double类型作比较，以及能用隐式转换为std::size_t类型，显然不是我们所期望的，使用enum class的话就能达到我们期望的效果， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> black, white, red &#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; primeFactors(<span class="built_in">std</span>::<span class="keyword">size_t</span> x);</span><br><span class="line">Color c = Color::red;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (c &lt; <span class="number">14.5</span>) &#123;                     <span class="comment">//编译错误！</span></span><br><span class="line">  <span class="keyword">auto</span> factors = primeFactors(c);   <span class="comment">//编译错误！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果确实需要进行类型转换，可以用static_cast进行显式转换。</p>
-<p>有些时候，无作用域的enum的枚举项能够隐式转换为整数的特性会比较方便使用，比如作为有意义的索引值， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> UserInfo = <span class="built_in">std</span>::tuple&lt;<span class="built_in">std</span>::<span class="built_in">string</span>,</span><br><span class="line">                           <span class="built_in">std</span>::<span class="built_in">string</span>,        <span class="comment">// email</span></span><br><span class="line">                           <span class="built_in">std</span>::<span class="keyword">size_t</span>&gt; ;      <span class="comment">// reputation</span></span><br><span class="line"><span class="keyword">enum</span> UserInfoFields &#123; uiName, uiEmail, uiReputation &#125;;</span><br><span class="line">UserInfo uInfo;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">auto</span> val1 = <span class="built_in">std</span>::get&lt;<span class="number">1</span>&gt;(uInfo);       <span class="comment">// 不清楚索引1对应的数据是什么</span></span><br><span class="line"><span class="keyword">auto</span> val2 = <span class="built_in">std</span>::get&lt;uiEmail&gt;(uInfo); <span class="comment">// 隐式转换为1，清楚的知道是获取email字段</span></span><br></pre></td></tr></table></figure></p>
-<p>而enum class因为无法隐式转换，需要写成， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;<span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">size_t</span>&gt;(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure></p>
-<p>但是这种写法的可读性不是太好，我们可以提供一个转换函数来增加可读性， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> E&gt;    <span class="comment">// C++14 constexpr auto</span></span><br><span class="line">toUType(E enumerator) <span class="keyword">noexcept</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">underlying_type_t</span>&lt;E&gt;&gt;(enumerator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> val = <span class="built_in">std</span>::get&lt;toUType(UserInfoFields::uiEmail)&gt;(uInfo);</span><br></pre></td></tr></table></figure>
+        <h2 id="条款12-将覆盖函数overriding-function声明为override">条款12 将覆盖函数(overriding function)声明为override</h2>
+<p>类，继承与虚函数是C++实现面向对象的基础。在子类中覆盖掉父类中对应的虚函数，以此来实现多态。override关键字可以用来显式标识虚函数覆盖，表明该函数在子类中有不同于父类的实现。 <a id="more"></a></p>
+<p>如果要使用覆盖的函数，必须满足以下条件： - 父类中的函数被声明为virtual。 - 父类中和子类中的函数名称必须是完全一致的（除了虚析构函数）。 - 父类中和子类中的函数的参数类型必须完全一致。 - 父类中和子类中的函数的常量特性必须完全一致。 - 父类中和子类中的函数的返回值类型和异常声明必须兼容。 C++11中，附加了一个条件，虽然它并不太常用， - 函数的引用修饰符（reference qualifiers）必须完全一致。</p>
+<p>对覆盖函数的这些要求意味着，一个小的错误会产生一个很大不同的结果。在覆盖函数中出现的错误通常并不会引起编译错误，所以不容易察觉。比如以下的例子， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf1</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf2</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf3</span><span class="params">()</span> &amp;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mf4</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line">irtual</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf1</span><span class="params">()</span></span>; <span class="comment">// 不是const函数</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf2</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> x)</span></span>; <span class="comment">// 参数类型不是int</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mf3</span><span class="params">()</span> &amp;&amp;</span>; <span class="comment">// 引用修饰符不是左值引用</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mf4</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// 没有声明为virtual</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>子类并没有对父类的函数进行覆盖，而是重新定义了新的函数，这显然不是我们期望的。 因为虚函数覆盖是如此容易出错，所以C++11提供了override关键字来显式表示这是一个虚函数覆盖，如果不符合覆盖的条件，则会产生编译错误。 还有一点好处是，override关键字是上下文相关的，只在函数声明的末尾起效。也就是说以下C++98时代的代码不会产生编译错误， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Warning</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">override</span><span class="params">()</span></span>; <span class="comment">// 名为override的函数</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 在C++98和C++11中意义相同</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="总结">总结</h2>
 <ul>
-<li>C++98风格的enum是没有作用域的enum</li>
-<li>有作用域的枚举体的枚举元素仅仅对枚举体内部可见。只能通过类型转换（cast）转换为其他类型</li>
-<li>有作用域和没有作用域的enum都支持指定潜在类型。有作用域的enum的默认潜在类型是int。没有作用域的enum没有默认的潜在类型。</li>
-<li>有作用域的enum总是可以前置声明的。没有作用域的enum只有当指定潜在类型时才可以前置声明。</li>
+<li>使用override来标识函数覆盖。</li>
 </ul>
 
       
@@ -540,7 +531,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/2018/10/28/modern-cpp-10/" title="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">https://natsu1211.com/2018/10/28/modern-cpp-10/</a>
+    <a href="https://natsu1211.com/modern-cpp-12.html" title="读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)">https://natsu1211.com/modern-cpp-12.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -566,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/27/modern-cpp-9/" rel="next" title="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
+              <a href="/modern-cpp-11.html" rel="next" title="读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)
               </a>
             
           </div>
@@ -576,8 +567,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/01/modern-cpp-11/" rel="prev" title="读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)">
-                读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数) <i class="fa fa-chevron-right"></i>
+              <a href="/modern-cpp-13.html" rel="prev" title="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">
+                读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -771,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款10-优先使用有作用域的enmu而不是无作用域的enum"><span class="nav-number">1.</span> <span class="nav-text">条款10 优先使用有作用域的enmu而不是无作用域的enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款12-将覆盖函数overriding-function声明为override"><span class="nav-number">1.</span> <span class="nav-text">条款12 将覆盖函数(overriding function)声明为override</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -960,9 +951,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/2018/10/28/modern-cpp-10/';
-        this.page.identifier = '2018/10/28/modern-cpp-10/';
-        this.page.title = '读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-12.html';
+        this.page.identifier = 'modern-cpp-12.html';
+        this.page.title = '读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

@@ -18,8 +18,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款15 尽可能的使用constexpr)</title>
-    <link href="https://natsu1211.com/2019/01/06/modern-cpp-15/"/>
-    <id>https://natsu1211.com/2019/01/06/modern-cpp-15/</id>
+    <link href="https://natsu1211.com/modern-cpp-15.html"/>
+    <id>https://natsu1211.com/modern-cpp-15.html</id>
     <published>2019-01-06T12:47:15.000Z</published>
     <updated>2019-01-08T16:58:09.062Z</updated>
     
@@ -43,8 +43,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)</title>
-    <link href="https://natsu1211.com/2018/12/01/modern-cpp-14/"/>
-    <id>https://natsu1211.com/2018/12/01/modern-cpp-14/</id>
+    <link href="https://natsu1211.com/modern-cpp-14.html"/>
+    <id>https://natsu1211.com/modern-cpp-14.html</id>
     <published>2018-12-01T09:49:51.000Z</published>
     <updated>2019-01-08T16:58:15.425Z</updated>
     
@@ -70,8 +70,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)</title>
-    <link href="https://natsu1211.com/2018/11/21/modern-cpp-13/"/>
-    <id>https://natsu1211.com/2018/11/21/modern-cpp-13/</id>
+    <link href="https://natsu1211.com/modern-cpp-13.html"/>
+    <id>https://natsu1211.com/modern-cpp-13.html</id>
     <published>2018-11-20T15:21:26.000Z</published>
     <updated>2019-01-08T16:59:38.454Z</updated>
     
@@ -95,8 +95,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)</title>
-    <link href="https://natsu1211.com/2018/11/04/modern-cpp-12/"/>
-    <id>https://natsu1211.com/2018/11/04/modern-cpp-12/</id>
+    <link href="https://natsu1211.com/modern-cpp-12.html"/>
+    <id>https://natsu1211.com/modern-cpp-12.html</id>
     <published>2018-11-04T14:17:23.000Z</published>
     <updated>2019-01-08T16:11:09.343Z</updated>
     
@@ -120,8 +120,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)</title>
-    <link href="https://natsu1211.com/2018/11/01/modern-cpp-11/"/>
-    <id>https://natsu1211.com/2018/11/01/modern-cpp-11/</id>
+    <link href="https://natsu1211.com/modern-cpp-11.html"/>
+    <id>https://natsu1211.com/modern-cpp-11.html</id>
     <published>2018-10-31T15:22:48.000Z</published>
     <updated>2019-01-08T16:11:11.352Z</updated>
     
@@ -145,8 +145,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)</title>
-    <link href="https://natsu1211.com/2018/10/28/modern-cpp-10/"/>
-    <id>https://natsu1211.com/2018/10/28/modern-cpp-10/</id>
+    <link href="https://natsu1211.com/modern-cpp-10.html"/>
+    <id>https://natsu1211.com/modern-cpp-10.html</id>
     <published>2018-10-27T17:18:56.000Z</published>
     <updated>2019-01-08T17:00:34.268Z</updated>
     
@@ -170,8 +170,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)</title>
-    <link href="https://natsu1211.com/2018/10/27/modern-cpp-9/"/>
-    <id>https://natsu1211.com/2018/10/27/modern-cpp-9/</id>
+    <link href="https://natsu1211.com/modern-cpp-9.html"/>
+    <id>https://natsu1211.com/modern-cpp-9.html</id>
     <published>2018-10-27T07:15:51.000Z</published>
     <updated>2019-01-08T17:00:52.539Z</updated>
     
@@ -196,8 +196,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)</title>
-    <link href="https://natsu1211.com/2018/10/27/modern-cpp-8/"/>
-    <id>https://natsu1211.com/2018/10/27/modern-cpp-8/</id>
+    <link href="https://natsu1211.com/modern-cpp-8.html"/>
+    <id>https://natsu1211.com/modern-cpp-8.html</id>
     <published>2018-10-26T15:35:12.000Z</published>
     <updated>2019-01-08T15:46:32.261Z</updated>
     
@@ -222,8 +222,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款7 区分()与{}初始化)</title>
-    <link href="https://natsu1211.com/2018/10/21/modern-cpp-7/"/>
-    <id>https://natsu1211.com/2018/10/21/modern-cpp-7/</id>
+    <link href="https://natsu1211.com/modern-cpp-7.html"/>
+    <id>https://natsu1211.com/modern-cpp-7.html</id>
     <published>2018-10-21T10:57:37.000Z</published>
     <updated>2019-01-08T17:02:48.669Z</updated>
     
@@ -247,8 +247,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)</title>
-    <link href="https://natsu1211.com/2018/10/21/modern-cpp-6/"/>
-    <id>https://natsu1211.com/2018/10/21/modern-cpp-6/</id>
+    <link href="https://natsu1211.com/modern-cpp-6.html"/>
+    <id>https://natsu1211.com/modern-cpp-6.html</id>
     <published>2018-10-21T08:59:29.000Z</published>
     <updated>2019-01-08T15:46:21.762Z</updated>
     
@@ -272,8 +272,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)</title>
-    <link href="https://natsu1211.com/2018/10/20/modern-cpp-5/"/>
-    <id>https://natsu1211.com/2018/10/20/modern-cpp-5/</id>
+    <link href="https://natsu1211.com/modern-cpp-5.html"/>
+    <id>https://natsu1211.com/modern-cpp-5.html</id>
     <published>2018-10-20T10:37:28.000Z</published>
     <updated>2019-01-08T15:46:15.866Z</updated>
     
@@ -300,8 +300,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款4 知道如何查看类型推导)</title>
-    <link href="https://natsu1211.com/2018/10/20/modern-cpp-4/"/>
-    <id>https://natsu1211.com/2018/10/20/modern-cpp-4/</id>
+    <link href="https://natsu1211.com/modern-cpp-4.html"/>
+    <id>https://natsu1211.com/modern-cpp-4.html</id>
     <published>2018-10-20T08:46:42.000Z</published>
     <updated>2019-01-08T15:46:07.293Z</updated>
     
@@ -328,8 +328,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款3 理解decltype)</title>
-    <link href="https://natsu1211.com/2018/10/19/modern-cpp-3/"/>
-    <id>https://natsu1211.com/2018/10/19/modern-cpp-3/</id>
+    <link href="https://natsu1211.com/modern-cpp-3.html"/>
+    <id>https://natsu1211.com/modern-cpp-3.html</id>
     <published>2018-10-18T15:33:48.000Z</published>
     <updated>2019-01-08T17:04:25.180Z</updated>
     
@@ -353,8 +353,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款2 理解auto类型推导)</title>
-    <link href="https://natsu1211.com/2018/08/29/modern-cpp-2/"/>
-    <id>https://natsu1211.com/2018/08/29/modern-cpp-2/</id>
+    <link href="https://natsu1211.com/modern-cpp-2.html"/>
+    <id>https://natsu1211.com/modern-cpp-2.html</id>
     <published>2018-08-28T16:07:46.000Z</published>
     <updated>2019-01-08T15:45:55.178Z</updated>
     
@@ -378,8 +378,8 @@
   
   <entry>
     <title>读薄Effective Modern C++ (条款1 理解模板类型推导)</title>
-    <link href="https://natsu1211.com/2018/08/24/modern_cpp-1/"/>
-    <id>https://natsu1211.com/2018/08/24/modern_cpp-1/</id>
+    <link href="https://natsu1211.com/modern_cpp-1.html"/>
+    <id>https://natsu1211.com/modern_cpp-1.html</id>
     <published>2018-08-23T16:27:34.000Z</published>
     <updated>2019-01-08T17:04:38.386Z</updated>
     

@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款7 区分()与{}初始化 c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。">
+  <meta name="description" content="条款13 优先使用const_iterator而不是iterator const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款7 区分()与{}初始化)">
-<meta property="og:url" content="https://natsu1211.com/2018/10/21/modern-cpp-7/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-13.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款7 区分()与{}初始化 c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。">
+<meta property="og:description" content="条款13 优先使用const_iterator而不是iterator const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T17:02:48.669Z">
+<meta property="og:updated_time" content="2019-01-08T16:59:38.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款7 区分()与{}初始化)">
-<meta name="twitter:description" content="条款7 区分()与{}初始化 c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">
+<meta name="twitter:description" content="条款13 优先使用const_iterator而不是iterator const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/2018/10/21/modern-cpp-7/"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-13.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款7 区分()与{}初始化) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/2018/10/21/modern-cpp-7/">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-13.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款7 区分()与{}初始化)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-10-21 19:57:37" itemprop="dateCreated datePublished" datetime="2018-10-21T19:57:37+09:00">2018-10-21</time>
+              <time title="创建时间：2018-11-21 00:21:26" itemprop="dateCreated datePublished" datetime="2018-11-21T00:21:26+09:00">2018-11-21</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 02:02:48" itemprop="dateModified" datetime="2019-01-09T02:02:48+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 01:59:38" itemprop="dateModified" datetime="2019-01-09T01:59:38+09:00">2019-01-09</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/21/modern-cpp-7/#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-13.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/10/21/modern-cpp-7/" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-13.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,27 +468,18 @@
       
 
       
-        <h2 id="条款7-区分与初始化">条款7 区分()与{}初始化</h2>
-<p>c++11新增了使用{}进行初始化的统一初始化语法， 与c++98的()并存，应该使用哪种初始化常常让初学者困惑，因此有必要弄清楚它们之间的区别。 <a id="more"></a> 首先，初始化一个变量一般有4种方法， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">x</span><span class="params">(<span class="number">0</span>)</span></span>;     <span class="comment">// ()初始化</span></span><br><span class="line"><span class="keyword">int</span> y = <span class="number">0</span>;    <span class="comment">// =初始化</span></span><br><span class="line"><span class="keyword">int</span> z&#123;<span class="number">0</span>&#125;;     <span class="comment">// &#123;&#125;初始化</span></span><br><span class="line"><span class="keyword">int</span> z = &#123;<span class="number">0</span>&#125;;  <span class="comment">// =&#123;&#125;初始化，可以认为和&#123;&#125;没有区别</span></span><br></pre></td></tr></table></figure></p>
-<p>统一初始化可以用来直接初始化std容器，原子变量，非静态类成员变量，这些都是()初始化做不到的。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v&#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span> &#125;;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai1&#123; <span class="number">0</span> &#125;; <span class="comment">//没问题</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai2(<span class="number">0</span>);   <span class="comment">//没问题</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai3 = <span class="number">0</span>;  <span class="comment">//错误！</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x&#123; <span class="number">0</span> &#125;; <span class="comment">//没问题</span></span><br><span class="line">    <span class="keyword">int</span> y = <span class="number">0</span>;  <span class="comment">//没问题</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">z</span><span class="params">(<span class="number">0</span>)</span></span>;   <span class="comment">//错误！</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>另外，统一初始化可以避免()初始化的一些问题。</p>
-<p>能够避免类型截断， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> x, y, z;</span><br><span class="line"><span class="keyword">int</span> sum1&#123; x + y + z &#125;; <span class="comment">// error!</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum2</span><span class="params">(x + y + z)</span></span>; <span class="comment">// okay (截断为int)</span></span><br><span class="line"><span class="keyword">int</span> sum3 = x + y + z; <span class="comment">// okay</span></span><br></pre></td></tr></table></figure></p>
-<p>还能够避免most vexing parse（能够解释为函数声明的表达式就认为它是函数声明）， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Widget <span class="title">w1</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">//调用Widget的构造函数，参数为10</span></span><br><span class="line"><span class="function">Widget <span class="title">w2</span><span class="params">()</span></span>;   <span class="comment">//most vexing parse, 解释为函数声明！</span></span><br><span class="line">Widget w3&#123;&#125;;   <span class="comment">//调用Widget的无参构造函数</span></span><br></pre></td></tr></table></figure></p>
-<p>但是统一初始化也有其自身的缺点，因为{}本质上是std::initializer_list，在某些场合会产生让人预想不到的结果，比如Item2中介绍的模板类型推导中关于std::initializer_list的问题。<br>
-另外，如果定义了接受std::initializer_list类型的构造函数，编译器在做重载决议时会尽量的将{}决议到那个构造函数上，即使有其他看起来类型更为匹配的构造函数。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  Widget(<span class="keyword">int</span> i, <span class="keyword">bool</span> b);</span><br><span class="line">  Widget(<span class="keyword">int</span> i, <span class="keyword">double</span> d);</span><br><span class="line">  Widget(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="keyword">long</span> <span class="keyword">double</span>&gt; il); <span class="comment">//新增</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Widget <span class="title">w1</span><span class="params">(<span class="number">10</span>, <span class="literal">true</span>)</span></span>; <span class="comment">//调用第一个构造函数</span></span><br><span class="line">Widget w2&#123;<span class="number">10</span>, <span class="literal">true</span>&#125;; <span class="comment">//调用第三个构造函数，10和true被转换为long double</span></span><br><span class="line"><span class="function">Widget <span class="title">w3</span><span class="params">(<span class="number">10</span>, <span class="number">5.0</span>)</span></span>;  <span class="comment">//调用第二个构造函数</span></span><br><span class="line">Widget w4&#123;<span class="number">10</span>, <span class="number">5.0</span>&#125;;  <span class="comment">//调用第三个构造函数，10和5.0被转换为long double</span></span><br></pre></td></tr></table></figure></p>
-<p>更令人吃惊的是看似为拷贝和移动构造的初始化，也会被那个std::initializer_list版本的构造函数给“劫持”。</p>
-<p>但是如果没有到std::initializer<t>中类型T的转换，则会被重载为正常的版本， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">     Widget(<span class="keyword">int</span> i, <span class="keyword">bool</span> b);               <span class="comment">// as before</span></span><br><span class="line">     Widget(<span class="keyword">int</span> i, <span class="keyword">double</span> d);             <span class="comment">// as before</span></span><br><span class="line">     Widget(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; il);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Widget <span class="title">w1</span><span class="params">(<span class="number">10</span>, <span class="literal">true</span>)</span></span>; <span class="comment">//调用第一个构造函数</span></span><br><span class="line">Widget w2&#123;<span class="number">10</span>, <span class="literal">true</span>&#125;; <span class="comment">//调用第一个构造函数，10和true无法转换为std::string</span></span><br><span class="line"><span class="function">Widget <span class="title">w3</span><span class="params">(<span class="number">10</span>, <span class="number">5.0</span>)</span></span>;  <span class="comment">//调用第二个构造函数</span></span><br><span class="line">Widget w4&#123;<span class="number">10</span>, <span class="number">5.0</span>&#125;;  <span class="comment">//调用第二个构造函数，10和5.0无法转换为std::string</span></span><br></pre></td></tr></table></figure></t></p>
-<p>构造函数没有参数的情况下， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  Widget();</span><br><span class="line">  Widget(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; il);</span><br><span class="line">  ... </span><br><span class="line">&#125;;</span><br><span class="line">Widget w1;     <span class="comment">//无参构造函数</span></span><br><span class="line">Widget w2&#123;&#125;;   <span class="comment">//无参构造函数</span></span><br><span class="line"><span class="function">Widget <span class="title">w3</span><span class="params">()</span></span>;   <span class="comment">//most vexing parse</span></span><br><span class="line"><span class="function">Widget <span class="title">w4</span><span class="params">(&#123;&#125;)</span></span>; <span class="comment">//std::initializer_list&lt;int&gt;版本</span></span><br><span class="line">Widget w5&#123;&#123;&#125;&#125;; <span class="comment">//std::initializer_list&lt;int&gt;版本</span></span><br></pre></td></tr></table></figure></p>
-<p>有时，对()和{}初始化的选择会产生截然不同的结果，比如std::vector， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1(<span class="number">10</span>, <span class="number">20</span>); <span class="comment">// 含有10个元素，值都为20</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2&#123;<span class="number">10</span>, <span class="number">20</span>&#125;; <span class="comment">// 含有2个元素，值为10，20</span></span><br></pre></td></tr></table></figure></p>
-<p>这是一个典型的设计失误，容易造成用户的误用。类的设计者应当尽量让()与{}初始化表现的一致。这也强烈的暗示我们，没有充分的理由，不要为类添加接受std::initializer_list的构造函数。</p>
-<p>作为类的用户，我们应当坚持一种初始化的方法，只在()和{}表现不同的时候选择正确的初始化。而作为类的作者，特别是需要在泛型类中初始化T的局部变量的时候，没有绝对正确的做法，因为没有办法知道T的具体类型。</p>
-<h3 id="总结">总结</h3>
+        <h2 id="条款13-优先使用const_iterator而不是iterator">条款13 优先使用const_iterator而不是iterator</h2>
+<p>const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。<br>
+<a id="more"></a></p>
+<p>比如我们想在vector中找到1983并把它替换成1998，我们会写下以下代码, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it =</span><br><span class="line">    <span class="built_in">std</span>::find(values.begin(),values.end(), <span class="number">1983</span>);</span><br><span class="line">values.insert(it, <span class="number">1998</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这里因为并不会改变itertor所指向的数据，const_iterator应当是更合适的选择，然而在C++98中，std::find等函数只接受非const的iterator，并且没有简单的办法从非const容器获得const_iterator，在C++98中使用const_iterator只是自寻烦恼。<br>
+然而情况在C++11中大有不同，const_iterator容易获取并且容易使用。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values; <span class="comment">// as before ...</span></span><br><span class="line"><span class="keyword">auto</span> it = <span class="built_in">std</span>::find(values.cbegin(),values.cend(), <span class="number">1983</span>); <span class="comment">// and cend</span></span><br><span class="line">values.insert(it, <span class="number">1998</span>);<span class="comment">// use cbegin</span></span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是，当你需要写出更为泛型的代码的时候，C++11对const_iterator的支持可能会略显不足， 比如我们要写一个在容器中寻找元素并进行替换的泛型函数，原生C数组，我们会希望使用非成员函数的版本来获取迭代器。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> C, <span class="keyword">typename</span> V&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">findAndInsert</span><span class="params">(C&amp; container, <span class="keyword">const</span> V&amp; targetVal, <span class="keyword">const</span> V&amp; insertVal)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cbegin;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cend;</span><br><span class="line">    <span class="keyword">const</span> V&amp; targetVal,</span><br><span class="line">    <span class="keyword">const</span> V&amp; insertVal)</span><br><span class="line">    <span class="keyword">auto</span> it = <span class="built_in">std</span>::find(cbegin(container), cend(container), targetVal);</span><br><span class="line">    container.insert(it, insertVal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码需要C++14才会工作，因为C++11中没有提供cbegin和cend的非成员函数版本。 我们可以自己为C++11添加， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">C</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">auto</span> <span class="title">cbegin</span>(<span class="title">const</span> <span class="title">C</span>&amp; <span class="title">container</span>)-&gt;<span class="title">decltype</span>(<span class="title">std</span>:</span>:begin(container))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::begin(container);        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结</h2>
 <ul>
-<li>统一初始化是适用范围最广的初始化语法，它能够避免类型截断和most vertexing parse</li>
-<li>在构造函数的重载决议时，{}会匹配到std::initializer_list参数，即使有其它看起来更为匹配的构造函数</li>
-<li>在模板类中选择一种初始化方法不是一件简单的事</li>
+<li>优先使用const_iterator而不是iterator</li>
+<li>在泛型代码中，优先使用非成员函数版本的begin, end, rbegin ,rend函数</li>
 </ul>
 
       
@@ -544,7 +535,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/2018/10/21/modern-cpp-7/" title="读薄Effective Modern C++ (条款7 区分()与{}初始化)">https://natsu1211.com/2018/10/21/modern-cpp-7/</a>
+    <a href="https://natsu1211.com/modern-cpp-13.html" title="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">https://natsu1211.com/modern-cpp-13.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -570,8 +561,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/21/modern-cpp-6/" rel="next" title="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)
+              <a href="/modern-cpp-12.html" rel="next" title="读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)
               </a>
             
           </div>
@@ -580,8 +571,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/27/modern-cpp-8/" rel="prev" title="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
-                读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL) <i class="fa fa-chevron-right"></i>
+              <a href="/modern-cpp-14.html" rel="prev" title="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
+                读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -775,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款7-区分与初始化"><span class="nav-number">1.</span> <span class="nav-text">条款7 区分()与{}初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款13-优先使用const_iterator而不是iterator"><span class="nav-number">1.</span> <span class="nav-text">条款13 优先使用const_iterator而不是iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -964,9 +955,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/2018/10/21/modern-cpp-7/';
-        this.page.identifier = '2018/10/21/modern-cpp-7/';
-        this.page.title = '读薄Effective Modern C++ (条款7 区分()与{}初始化)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-13.html';
+        this.page.identifier = 'modern-cpp-13.html';
+        this.page.title = '读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

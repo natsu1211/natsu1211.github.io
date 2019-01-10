@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
+  <meta name="description" content="条款6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
-<meta property="og:url" content="https://natsu1211.com/2018/12/01/modern-cpp-14/index.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-6.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
+<meta property="og:description" content="条款6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T16:58:15.425Z">
+<meta property="og:updated_time" content="2019-01-08T15:46:21.762Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">
-<meta name="twitter:description" content="条款14 使用noexcept修饰不抛出异常的函数 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 double func (char param) throw (int, char, exception); 表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。 异常规范是如此严格，并">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">
+<meta name="twitter:description" content="条款6 当auto推导出非预期类型时应当使用显式的类型初始化 使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/2018/12/01/modern-cpp-14/"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-6.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/2018/12/01/modern-cpp-14/">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-6.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-12-01 18:49:51" itemprop="dateCreated datePublished" datetime="2018-12-01T18:49:51+09:00">2018-12-01</time>
+              <time title="创建时间：2018-10-21 17:59:29" itemprop="dateCreated datePublished" datetime="2018-10-21T17:59:29+09:00">2018-10-21</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 01:58:15" itemprop="dateModified" datetime="2019-01-09T01:58:15+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-09 00:46:21" itemprop="dateModified" datetime="2019-01-09T00:46:21+09:00">2019-01-09</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/01/modern-cpp-14/#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-6.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/12/01/modern-cpp-14/" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-6.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,24 +468,19 @@
       
 
       
-        <h2 id="条款14-使用noexcept修饰不抛出异常的函数">条款14 使用noexcept修饰不抛出异常的函数</h2>
-<p>C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">func</span> <span class="params">(<span class="keyword">char</span> param)</span> <span class="title">throw</span> <span class="params">(<span class="keyword">int</span>, <span class="keyword">char</span>, exception)</span></span>;</span><br></pre></td></tr></table></figure></p>
-<p>表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。<br>
-异常规范是如此严格，并且由于难以知道该函数中调用的函数可能会抛出什么类型的异常，导致异常规范难以使用，在C++11中已经被废弃。<br>
-<a id="more"></a> C++11认为对函数真正有用的信息是该函数究竟会不会抛出异常，因而引入了noexcept关键字,用于标识函数不会抛出异常。而C++98中需要使用<code>throw()</code>, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="title">throw</span><span class="params">()</span></span>; <span class="comment">// no exceptions from f: C++98 style </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="keyword">noexcept</span></span>; <span class="comment">// no exceptions from f: C++11 style</span></span><br></pre></td></tr></table></figure></p>
-<p>相比于C++98的<code>throw()</code>，<code>noexcept</code>主要有两个优势，</p>
-<ol type="1">
-<li>能够获得最大限度的编译器优化。标记为noexcept的函数，优化器可能无须保持调用栈,并且也无须保证object按照构造时相反的顺序被析构。而throw()则没有这些被优化的机会。</li>
-<li>标准库的一些函数，针对noexcept函数进行了优化，能够获得更好的性能。比如std::vector::push_back函数，为了保证异常安全性，只有在确保元素的move操作符不会抛出异常，亦即被标记为noexcept的时候，才会使用move操作代替copy操作。</li>
-</ol>
-<p>然而需要注意的是noexcept是函数签名的一部分。也就是说，一旦决定使用noexcept标记函数并公开，你将很难再改变它，因为从函数签名中删除noexcept的改动将是破坏性的。<br>
-另外需要注意的是，大多数函数是异常中立(exception-neutral)的，很多函数本身并不抛出异常，但是它内部调用的函数却会抛出异常，这类函数并不适合被标记为noexcept。 最后，因为历史遗留原因，编译器并不会对在noexcept函数中调用非noexcept函数进行报错和警告。比如std名称空间中的C标准库函数就没有标记为noexcept，即使它们的实现并不会抛出异常。</p>
-<h2 id="总结">总结</h2>
+        <h2 id="条款6-当auto推导出非预期类型时应当使用显式的类型初始化">条款6 当auto推导出非预期类型时应当使用显式的类型初始化</h2>
+<p>使用auto声明来接受一个返回代理类型的表达式，往往会偏离我们的意图。<br>
+<a id="more"></a> 例如假设有一个函数接受一个Widget返回一个std::vector<bool>，其中每个bool表征Widget是否接受一个特定的特性： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; features(<span class="keyword">const</span> Widget&amp; w);</span><br></pre></td></tr></table></figure></bool></p>
+<p>进一步的，假设第五个bit表示Widget是否有高优先级。我们可以这样写代码： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Widget w;</span><br><span class="line">…</span><br><span class="line"><span class="keyword">bool</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是高优先级的？</span></span><br><span class="line">…</span><br><span class="line">processWidget(w, highPriority);             <span class="comment">// 配合优先级处理w</span></span><br></pre></td></tr></table></figure></p>
+<p>但是，如果写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = features(w)[<span class="number">5</span>];         <span class="comment">// w是不是高优先级的？</span></span><br></pre></td></tr></table></figure></p>
+<p>就会出现问题，此时highPriority的类型并不是<code>bool</code>，而是<code>std::vector&lt;bool&gt;::reference</code>。之前的代码能够工作是由于存在<code>std::vector&lt;bool&gt;::reference</code>到<code>bool</code>的隐式转换。</p>
+<p>也就是说，我们要避免使用下面的代码的形式： <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">auto someVar = expression of <span class="string">"invisible"</span><span class="built_in"> proxy </span>class type;</span><br></pre></td></tr></table></figure></p>
+<p>这种时候应该做一个显式的类型转换。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> highPriority = <span class="keyword">static_cast</span>&lt;<span class="keyword">bool</span>&gt;(features(w)[<span class="number">5</span>]);</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结">总结</h3>
 <ul>
-<li>noexcept是函数接口的一部分，这意味着使用者依赖于它。</li>
-<li>比起非noexcept函数，noexcept函数更有可能被优化。</li>
-<li>noexcept对move操作，swap函数，析构函数非常重要。</li>
-<li>大多数函数是异常中立的。</li>
+<li>代理类型会导致auto推导出错误的类型<br>
+</li>
+<li>显式的强制类型转换能够使auto推导出期望的类型</li>
 </ul>
 
       
@@ -541,7 +536,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/2018/12/01/modern-cpp-14/" title="读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)">https://natsu1211.com/2018/12/01/modern-cpp-14/</a>
+    <a href="https://natsu1211.com/modern-cpp-6.html" title="读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)">https://natsu1211.com/modern-cpp-6.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -567,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/21/modern-cpp-13/" rel="next" title="读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)
+              <a href="/modern-cpp-5.html" rel="next" title="读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)
               </a>
             
           </div>
@@ -577,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/06/modern-cpp-15/" rel="prev" title="读薄Effective Modern C++ (条款15 尽可能的使用constexpr)">
-                读薄Effective Modern C++ (条款15 尽可能的使用constexpr) <i class="fa fa-chevron-right"></i>
+              <a href="/modern-cpp-7.html" rel="prev" title="读薄Effective Modern C++ (条款7 区分()与{}初始化)">
+                读薄Effective Modern C++ (条款7 区分()与{}初始化) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -772,7 +767,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款14-使用noexcept修饰不抛出异常的函数"><span class="nav-number">1.</span> <span class="nav-text">条款14 使用noexcept修饰不抛出异常的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款6-当auto推导出非预期类型时应当使用显式的类型初始化"><span class="nav-number">1.</span> <span class="nav-text">条款6 当auto推导出非预期类型时应当使用显式的类型初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -961,9 +956,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/2018/12/01/modern-cpp-14/';
-        this.page.identifier = '2018/12/01/modern-cpp-14/';
-        this.page.title = '读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-6.html';
+        this.page.identifier = 'modern-cpp-6.html';
+        this.page.title = '读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
