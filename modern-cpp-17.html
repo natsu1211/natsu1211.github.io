@@ -144,18 +144,20 @@
 
 
 
-  <meta name="description" content="条款9 优先使用别名声明而不是typedef C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 // FP等价于一个函数指针，这个函数的参数是一个int类型和// std::string常量类型，没有返回值typedef void (*FP)(int, const std::string&amp;amp;);      // typedef// 同上using FP =">
+  <meta name="description" content="条款17 理解特殊成员函数的生成 正如大家所知，C++编译器会在特定条件下为类生成特殊的成员函数。C++98中有4种隐式生成的特殊称成员函数，构造函数 (constuctor)，析构函数 (destructor)，拷贝构造函数（copy constructor），拷贝赋值运算符（copy assignment operator），从C++11开始又新增了移动构造函数，移动赋值运算符。 他们的生成规">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-9.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-17.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款9 优先使用别名声明而不是typedef C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 // FP等价于一个函数指针，这个函数的参数是一个int类型和// std::string常量类型，没有返回值typedef void (*FP)(int, const std::string&amp;amp;);      // typedef// 同上using FP =">
+<meta property="og:description" content="条款17 理解特殊成员函数的生成 正如大家所知，C++编译器会在特定条件下为类生成特殊的成员函数。C++98中有4种隐式生成的特殊称成员函数，构造函数 (constuctor)，析构函数 (destructor)，拷贝构造函数（copy constructor），拷贝赋值运算符（copy assignment operator），从C++11开始又新增了移动构造函数，移动赋值运算符。 他们的生成规">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T17:00:52.539Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/natsu1211/pics/master/cpp%20implicit%20functions.jpg">
+<meta property="og:updated_time" content="2019-01-15T17:11:33.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
-<meta name="twitter:description" content="条款9 优先使用别名声明而不是typedef C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 // FP等价于一个函数指针，这个函数的参数是一个int类型和// std::string常量类型，没有返回值typedef void (*FP)(int, const std::string&amp;amp;);      // typedef// 同上using FP =">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)">
+<meta name="twitter:description" content="条款17 理解特殊成员函数的生成 正如大家所知，C++编译器会在特定条件下为类生成特殊的成员函数。C++98中有4种隐式生成的特殊称成员函数，构造函数 (constuctor)，析构函数 (destructor)，拷贝构造函数（copy constructor），拷贝赋值运算符（copy assignment operator），从C++11开始又新增了移动构造函数，移动赋值运算符。 他们的生成规">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/natsu1211/pics/master/cpp%20implicit%20functions.jpg">
 
 
 
@@ -164,7 +166,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-9.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-17.html"/>
 
 
 
@@ -174,7 +176,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款17 理解特殊成员函数的生成) | EverSummer</title>
   
 
 
@@ -339,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-9.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-17.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +358,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)
               
             
           </h2>
@@ -381,7 +383,7 @@
                 
               
 
-              <time title="创建时间：2018-10-27 16:15:51" itemprop="dateCreated datePublished" datetime="2018-10-27T16:15:51+09:00">2018-10-27</time>
+              <time title="创建时间：2019-01-12 18:31:53" itemprop="dateCreated datePublished" datetime="2019-01-12T18:31:53+09:00">2019-01-12</time>
             
 
             
@@ -398,7 +400,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 02:00:52" itemprop="dateModified" datetime="2019-01-09T02:00:52+09:00">2019-01-09</time>
+                <time title="修改时间：2019-01-16 02:11:33" itemprop="dateModified" datetime="2019-01-16T02:11:33+09:00">2019-01-16</time>
               
             
           </span>
@@ -437,10 +439,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-9.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-17.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-9.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-17.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,20 +470,27 @@
       
 
       
-        <h2 id="条款9-优先使用别名声明而不是typedef">条款9 优先使用别名声明而不是typedef</h2>
-<p>C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// FP等价于一个函数指针，这个函数的参数是一个int类型和</span></span><br><span class="line"><span class="comment">// std::string常量类型，没有返回值</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*FP)</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;)</span></span>;      <span class="comment">// typedef</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 同上</span></span><br><span class="line"><span class="keyword">using</span> FP = <span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;);     <span class="comment">// 别名声明</span></span><br></pre></td></tr></table></figure></p>
-<p>也许别名声明看起来可读性更好，但是这并不足以成为放弃typedef使用别名声明的决定性理由。别名声明的真正优势并不在这，而在于它能够定义模板别名， <a id="more"></a></p>
-<p>typedef需要新定义一个模板类来模拟实现模板别名功能， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                            </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyAllocList</span> &#123;</span>                            </span><br><span class="line">    <span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt; type;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyAllocList&lt;Widget&gt;::type lw;                   <span class="comment">// 客户代码</span></span><br></pre></td></tr></table></figure></p>
-<p>而使用别名声明则很直接， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typname T&gt;</span><br><span class="line"><span class="keyword">using</span> MyAllocList = <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt;;</span><br><span class="line"></span><br><span class="line">MyAllocList&lt;Widget&gt; lw;                         <span class="comment">// 客户代码</span></span><br></pre></td></tr></table></figure></p>
-<p>特别当你在另一个模板类中使用该类型别名的时候，对比typedef，别名声明语法的优势则显得更加明显， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                            <span class="comment">// Widget&lt;T&gt; 包含</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span>&#123;</span>                                   <span class="comment">// 一个 MyAloocList&lt;T&gt;</span></span><br><span class="line"><span class="keyword">private</span>:                                        <span class="comment">// 作为一个数据成员</span></span><br><span class="line">	<span class="keyword">typename</span> MyAllocList&lt;T&gt;::type <span class="built_in">list</span>;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>因为无法知道名称MyAllocList<t>::type究竟是一个类型，还是一个变量，所以需要加上typename来明确表明这是一个类型。而别名声明则没有冗余的typename和::type， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typname T&gt;                             </span><br><span class="line"><span class="keyword">using</span> MyAllocList = <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt;;   <span class="comment">// 和以前一样</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	MyAllocList&lt;T&gt; <span class="built_in">list</span>;  <span class="comment">// 编辑器知道MyAllocList&lt;T&gt;一定是一个类型</span></span><br><span class="line">	...                                          </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></t></p>
-<p>另外，对于标准库中的type traits，C++11提供的接口都是基于typedef的，而在C++14中都提供了相应更为简洁的别名声明的版本， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::remove_const&lt;T&gt;::type                <span class="comment">// C++11: const T -&gt; T</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">remove_const_t</span>&lt;T&gt;                    <span class="comment">// 等价的C++14</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::remove_reference&lt;T&gt;::type            <span class="comment">// C++11: T&amp;/T&amp;&amp; -&gt; T</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">remove_reference_t</span>&lt;T&gt;                <span class="comment">// 等价的C++14</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::add_lvalue_reference&lt;T&gt;::type        <span class="comment">// C++11: T -&gt; T&amp;</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">add_lvalue_reference_t</span>&lt;T&gt;            <span class="comment">// 等价的C++14</span></span><br></pre></td></tr></table></figure></p>
-<p>它的定义很简单，即使只能用C++11的环境也只需自己简单的定义一下即可， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">remove_const_t</span> = <span class="title">typename</span> <span class="title">remove_const</span>&lt;T&gt;:</span>:type;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">remove_reference_t</span> = <span class="title">typename</span> <span class="title">remove_reference</span>&lt;T&gt;:</span>:type;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">add_lvalue_reference_t</span> = <span class="title">typename</span> <span class="title">add_lvalue_reference</span>&lt;T&gt;:</span>:type;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="条款17-理解特殊成员函数的生成">条款17 理解特殊成员函数的生成</h2>
+<p>正如大家所知，C++编译器会在特定条件下为类生成特殊的成员函数。C++98中有4种隐式生成的特殊称成员函数，构造函数 (constuctor)，析构函数 (destructor)，拷贝构造函数（copy constructor），拷贝赋值运算符（copy assignment operator），从C++11开始又新增了移动构造函数，移动赋值运算符。 他们的生成规则可用下图概括,</p>
+<p><img src="https://raw.githubusercontent.com/natsu1211/pics/master/cpp%20implicit%20functions.jpg"></p>
+<p>简单概括，</p>
+<ul>
+<li>默认构造函数：类中没有用户声明的构造函数时才会生成。</li>
+<li>析构函数：类中没有用户声明的析构函数时才会生成。和C++98的规则的唯一的区别就是析构函数默认声明为noexcept（看条款14）。C++98的规则是基类的析构函数的虚函数的话，生成的析构函数也是虚函数。</li>
+<li>拷贝构造函数：只有在类中缺乏用户声明的拷贝构造时才会生成。如果类中声明了移动操作，拷贝构造会被删除(delete)。当类中存在用户声明的拷贝赋值操作符或析构函数时，建议用户同时自己定义拷贝构造函数。</li>
+<li>拷贝赋值运算符：只有在类中缺乏用户声明的拷贝赋值运算符时才会生成。如果类中声明了移动操作，拷贝赋值运算符会被删除。当类中存在用户声明的拷贝构造函数或析构函数时，建议用户同时自己定义拷贝赋值运算符。</li>
+<li>移动构造函数和移动赋值运算符：只有在类中没有用户声明的拷贝操作、移动操作、析构函数时才会自动生成。</li>
+</ul>
+<p>需要注意的是，移动构造函数和移动赋值运算符不会抑制互相的生成。这是C++98的标准，C++11为了保证代码的兼容性同样保持了这一点。而移动构造函数和移动赋值运算符则会，这是符合直觉的。类似的，当用户定义了析构函数的时候，拷贝构造函数/拷贝赋值运算符依然可能被隐式声明，而移动版本则不能。然而生成的拷贝构造函数/拷贝赋值运算符的行为很有可能是不符合我们要求的，所以即使编译器能够为我们声明，我们也应当尽量的显式声明（也就是图中标红，需要注意的坑）。</p>
+<p>自动生成的拷贝构造函数与移动构造函数所做的事很简单，比如析构函数只是简单的对指针类型的成员进行delete，默认拷贝构造函数和默认移动构造函数只是对类中的non-static成员做逐成员（memberwise）的拷贝或移动。当自动生成的函数的行为符合你的需求的时候，可以简单的将他们定义为<code>=default</code>。而当默认的行为不符合需求的时候，你自然需要自己来定义这些函数。</p>
+<p>由此可以引申出著名的“三大法则”，如果你声明了拷贝构造、拷贝赋值运算符、析构函数中的其中一个，你应该把这三个函数都声明。这是因为，需要自定义这些函数通常是由于某种资源管理的需求，并且memberwise的拷贝，移动和默认的delete不能满足需求。在C++11之后，三大法则就变成了五大法则，你有很大可能还需要同时自定义移动构造函数和移动赋值运算符。</p>
+<p>最后需要注意的是，标准没有规定成员函数模板的存在会阻止编译器生成特殊成员函数。这意味着如果Widget是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    Widget(<span class="keyword">const</span> T&amp; rhs);   </span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    Widget&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> T&amp; rhs);</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>编译器还是会为Widget生成拷贝构造函数和拷贝赋值运算符（假如条件满足），尽管这些模板可以被实例化来产生拷贝构造函数和拷贝赋值运算符的签名（当T是Widget的时候）。这种情况需要记住，在条款26中会说明它导致的重大后果。</p>
 <h2 id="总结">总结</h2>
 <ul>
-<li>typedef不支持模板化，但是别名声明支持</li>
-<li>模板别名避免了::type后缀，在模板中，typedef还经常需要使用typename前缀</li>
-<li>C++14为C++11中的type traits提供了模板别名</li>
+<li>记住并理解特殊成员函数的生成条件</li>
+<li>成员函数模板从来不会抑制特殊成员函数的生成</li>
 </ul>
 
       
@@ -537,7 +546,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-9.html" title="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">https://natsu1211.com/modern-cpp-9.html</a>
+    <a href="https://natsu1211.com/modern-cpp-17.html" title="读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)">https://natsu1211.com/modern-cpp-17.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -563,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-8.html" rel="next" title="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)
+              <a href="/modern-cpp-16.html" rel="next" title="读薄Effective Modern C++ (条款16 使const成员函数成为线程安全函数)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款16 使const成员函数成为线程安全函数)
               </a>
             
           </div>
@@ -572,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-10.html" rel="prev" title="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
-                读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -768,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款9-优先使用别名声明而不是typedef"><span class="nav-number">1.</span> <span class="nav-text">条款9 优先使用别名声明而不是typedef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款17-理解特殊成员函数的生成"><span class="nav-number">1.</span> <span class="nav-text">条款17 理解特殊成员函数的生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -957,9 +962,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-9.html';
-        this.page.identifier = 'modern-cpp-9.html';
-        this.page.title = '读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-17.html';
+        this.page.identifier = 'modern-cpp-17.html';
+        this.page.title = '读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
