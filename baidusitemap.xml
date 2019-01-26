@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://natsu1211.com/modern-cpp-18.html</loc>
-    <lastmod>2019-01-26T15:59:35.619Z</lastmod>
+    <lastmod>2019-01-26T16:02:08.312Z</lastmod>
     <data>
         <display>
         <title>读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)</title>
