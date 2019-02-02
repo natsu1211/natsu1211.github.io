@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+  <meta name="description" content="条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用 std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。 std::weak_ptr通常是由std::shared_ptr创建而来， auto sp">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款4 知道如何查看类型推导)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-4.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-20.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+<meta property="og:description" content="条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用 std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。 std::weak_ptr通常是由std::shared_ptr创建而来， auto sp">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T15:46:07.293Z">
+<meta property="og:updated_time" content="2019-02-02T18:46:30.527Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款4 知道如何查看类型推导)">
-<meta name="twitter:description" content="条款4 知道如何查看类型推导 (p30 - p35) 通常来说有三种办法， IDE 在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)">
+<meta name="twitter:description" content="条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用 std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。 std::weak_ptr通常是由std::shared_ptr创建而来， auto sp">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-4.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-20.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款4 知道如何查看类型推导) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-4.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-20.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款4 知道如何查看类型推导)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-10-20 17:46:42" itemprop="dateCreated datePublished" datetime="2018-10-20T17:46:42+09:00">2018-10-20</time>
+              <time title="创建时间：2019-02-02 17:55:24" itemprop="dateCreated datePublished" datetime="2019-02-02T17:55:24+09:00">2019-02-02</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 00:46:07" itemprop="dateModified" datetime="2019-01-09T00:46:07+09:00">2019-01-09</time>
+                <time title="修改时间：2019-02-03 03:46:30" itemprop="dateModified" datetime="2019-02-03T03:46:30+09:00">2019-02-03</time>
               
             
           </span>
@@ -437,10 +437,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-4.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-20.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-4.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-20.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -468,32 +468,25 @@
       
 
       
-        <h2 id="条款4-知道如何查看类型推导-p30---p35">条款4 知道如何查看类型推导 (p30 - p35)</h2>
-<p>通常来说有三种办法，</p>
-<h3 id="ide">IDE</h3>
-<p>在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。<br>
-对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。<br>
-<a id="more"></a></p>
-<h3 id="编译器诊断">编译器诊断</h3>
-<p>一个有效的让编译器展示类型的办法就是故意制造编译问题。 首先声明一个类模板，但是并不定义这个模板： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                    <span class="comment">// 声明TD</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TD</span>;</span>                               <span class="comment">// TD == "Type Displayer"</span></span><br></pre></td></tr></table></figure></p>
-<p>尝试实例化这个模板会导致错误信息，因为没有模板的实现。想看变量被推导的类型，只要尝试去使用这些类型去实例化TD：<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TD&lt;<span class="keyword">decltype</span>(x)&gt; xType;                  <span class="comment">// 引起的错误</span></span><br><span class="line">TD&lt;<span class="keyword">decltype</span>(y)&gt; yType;                  <span class="comment">// 包含了x和y的类型</span></span><br></pre></td></tr></table></figure></p>
-<p>我使用的变量名字的形式variableNameType是因为这样有利于输出的错误信息可以帮助我定位我要寻找的信息。对上面的代码，我的一个编译器输出了诊断信息，其中的一部分如下： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: aggregate 'TD&lt;int&gt; xType' has incomplete type and cannot be defined</span><br><span class="line">error: aggregate 'TD&lt;const int *&gt; yType' has incomplete type and cannot be defined</span><br></pre></td></tr></table></figure></p>
-<p>另一个编译器提供相同的信息，但是格式不太一样： <figure class="highlight"><table><tr><td class="code"><pre><span class="line">error: 'xType' uses undefined class 'TD&lt;int&gt;'</span><br><span class="line">error: 'yType' uses undefined class 'TD&lt;const int *&gt;'</span><br></pre></td></tr></table></figure></p>
-<p>排除格式的区别，基本所有的编译器都会在这种代码的技术中输出有用的错误信息。</p>
-<h3 id="运行时输出">运行时输出</h3>
-<p>可以使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(x).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// display types for</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(y).name() &lt;&lt; <span class="string">'\n'</span>; <span class="comment">// x and y</span></span><br></pre></td></tr></table></figure></p>
-<p>这是基于对类似于x或者y运算typeid可以得到一个std::type_info对象，std::type_info有一个成员函数，name可以提供一个C风格的字符串，代表了类型的名字。但是遗憾的是输出通常并不是完全可靠。<br>
-Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来查看变量或函数的类型<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/type_index.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line">    <span class="keyword">using</span> boost::typeindex::type_id_with_cvr;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show T</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"T = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;T&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// show param's type</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"param = "</span></span><br><span class="line">         &lt;&lt; type_id_with_cvr&lt;<span class="keyword">decltype</span>(param)&gt;().pretty_name()</span><br><span class="line">         &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>按照以下方法使用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Widget&gt; createVec();    <span class="comment">// 工厂方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> vw = createVec();        <span class="comment">// init vw w/factory return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!vw.empty()) &#123;</span><br><span class="line">    f(&amp;vw[<span class="number">0</span>]);                      <span class="comment">// 调用f</span></span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在GNU和Clang的编译器下面，Boost.TypeIndex输出准确的结果： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = Widget <span class="keyword">const</span>*</span><br><span class="line">param = Widget <span class="keyword">const</span>* <span class="keyword">const</span>&amp;</span><br></pre></td></tr></table></figure></p>
-<p>微软的编译器实际上输出的结果是一样的： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">T = class Widget <span class="keyword">const</span> *</span><br><span class="line">param = class Widget <span class="keyword">const</span> * <span class="keyword">const</span> &amp;</span><br></pre></td></tr></table></figure></p>
-<p>以上三种方法可以灵活使用。</p>
-<h3 id="总结">总结</h3>
+        <h2 id="条款20-把stdweak_ptr当作类似stdshared_ptr的可空悬指针使用">条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用</h2>
+<p>std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。</p>
+<p>std::weak_ptr通常是由std::shared_ptr创建而来， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> spw = <span class="built_in">std</span>::make_shared&lt;Widget&gt;();  <span class="comment">// spw是std::shared_ptr&lt;Widget&gt;</span></span><br><span class="line">                                        <span class="comment">// 引用计数为1</span></span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::weak_ptr&lt;Widget&gt; wpw(spw);         <span class="comment">// wpw指向spw指向的Widget，引用计数仍然为1</span></span><br><span class="line">...</span><br><span class="line">spw = <span class="literal">nullptr</span>;                          <span class="comment">// 引用计数变成0，Widget被销毁，wpw现在变成空悬指针</span></span><br></pre></td></tr></table></figure></p>
+<p>空悬的std::weak_ptr被称作是已经过期（expired）的，你可以直接检查它，<br>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (wpw.expired()) ... <span class="comment">// 如果wpw指向的不是一个对象</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>不过一般状况是，你去检查std::weak_ptr是否过期，如果没有过期（即不是空悬），就要取得它指向的对象。但是这件事要比想象的困难，因为std::weak_ptr没有解引用操作，所以没有办法写出解引用的代码。就算有这个操作，单独的检查操作和解引用操作会引出一个竞争条件：在调用检查操作和解引用操作之间，另一个线程可能正在重赋值或销毁最后一个指向对象的std::shared_ptr，因此导致对象被销毁，这样解引用会产生未定义行为。</p>
+<p>我们需要的是一个原子操作，检查std::shared_ptr是否过期，没有的话，获得它指向的对象。 你以通过lock函数或是接受std::weak_ptr为参数的std::shared_ptr构造函数来做这件事。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw1 = wpw.lock();  <span class="comment">// 如果wpw过期了，spw1为空</span></span><br><span class="line"><span class="keyword">auto</span> spw2 = wpw.lock();                     <span class="comment">// 效果和上面相同， 不过使用了auto</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw3(wpw);          <span class="comment">// 如果wpw过期，抛出std::bad_weak_ptr</span></span><br></pre></td></tr></table></figure>
+<p>std::weak_ptr的用途主要有，</p>
 <ul>
-<li>类型推导的结果常常可以通过IDE的编辑器，编译器错误输出信息和Boost.TypeIndex库的结果中得到</li>
-<li>一些工具的结果不一定有帮助性也不一定准确，所以对C++标准的类型推导法则加以理解是很有必要的</li>
+<li>用于实现观察者模式。在多数实现中，每个Subject（主题）包含指向Observer(观察者)指针作为成员变量，这让主题在状态改变时很容易通知观察者。主题没有兴趣控制观察者的生命期，但是应当确保如果观察者被销毁，随后主题不会试图使用它。一个合理的设计是让每个主题持有一个元素为std::weak_ptr的容器，std::weak_ptr指向主题的每个观察者，因此主题在使用观察者之前可以查看其是否已经被销毁。</li>
+<li>用于避免循环引用。不过，值得注意的是需要用std::weak_ptr回避循环引用的情况并不常见。在严格分层的数据结构，例如树中，子结点通常只属于父结点，当父结点被销毁，它的子结点也会被销毁。因此通常情况下，父结点指向子结点的指针最好是std::unique_ptr，而子结点指向父结点的指针可以用原生指针安全实现，因为子结点的生命期决不会比父结点长，所以不必担心原生指针会空悬。</li>
+</ul>
+<p>最后，从效率的角度来看，std::weak_ptr的开销和std::shared_ptr差不多。std::weak_ptr对象的大小与std::shared_ptr对象相同，它们使用者与shared_ptr的一样的控制块（看条款19），也带有涉及引用计数操作的构造函数、析构函数、赋值操作。std::weak_ptr管理的是弱引用计数，详细细节看条款21。</p>
+<h2 id="总结">总结</h2>
+<ul>
+<li>把std::weak_ptr当作类似std::shared_ptr的、可空悬的指针使用</li>
+<li>std::weak_ptr的潜在用途包含缓存，观察者链表，防止std::shared_ptr循环</li>
 </ul>
 
       
@@ -549,7 +542,7 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-4.html" title="读薄Effective Modern C++ (条款4 知道如何查看类型推导)">https://natsu1211.com/modern-cpp-4.html</a>
+    <a href="https://natsu1211.com/modern-cpp-20.html" title="读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)">https://natsu1211.com/modern-cpp-20.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -575,8 +568,8 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-3.html" rel="next" title="读薄Effective Modern C++ (条款3 理解decltype)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款3 理解decltype)
+              <a href="/modern-cpp-19.html" rel="next" title="读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)
               </a>
             
           </div>
@@ -584,10 +577,6 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-5.html" rel="prev" title="读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)">
-                读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -780,7 +769,7 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款4-知道如何查看类型推导-p30---p35"><span class="nav-number">1.</span> <span class="nav-text">条款4 知道如何查看类型推导 (p30 - p35)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ide"><span class="nav-number">1.1.</span> <span class="nav-text">IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译器诊断"><span class="nav-number">1.2.</span> <span class="nav-text">编译器诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时输出"><span class="nav-number">1.3.</span> <span class="nav-text">运行时输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款20-把stdweak_ptr当作类似stdshared_ptr的可空悬指针使用"><span class="nav-number">1.</span> <span class="nav-text">条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -969,9 +958,9 @@ Boost.TypeIndex库可以得到准备的结果，我们可以写一个函数f来�
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-4.html';
-        this.page.identifier = 'modern-cpp-4.html';
-        this.page.title = '读薄Effective Modern C++ (条款4 知道如何查看类型推导)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-20.html';
+        this.page.identifier = 'modern-cpp-20.html';
+        this.page.title = '读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
