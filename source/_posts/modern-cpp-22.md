@@ -158,13 +158,13 @@ private:
 ```cpp
 #include "widget.h"            // 在“widget.cpp”
 ...                            // 如前
-struct Widget::Impl { ... };    //如前
+struct Widget::Impl { ... };   // 如前
 
-Widget::Widget()                           //如前
+Widget::Widget()               // 如前
 : pImpl(std::make_unique<Impl>())
 {}
 
-Widget::~Widget() {}                  // 如前
+Widget::~Widget() = default    // 如前
 
 Widget::Widget(Widget&& rhs) = default;          // 定义
 Widget& Widget::operator=(Widget&& rhs) = default;       // 定义
