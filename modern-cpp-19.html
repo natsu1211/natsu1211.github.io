@@ -145,7 +145,7 @@
 
 
   <meta name="description" content="条款19 用std::shared_ptr管理共享所有权的资源 正如其名, std::shared_ptr用于表达共享所有权语义，也就是说，可以有多个std::shared_ptr指向同一个对象，并且保证在没有std::shared_ptr指向该对象时，对象被正确的释放。 那么如何知道不再有任何std::shared_ptr指向某个对象/资源呢？答案是引用计数。std::shared_ptr内部除">
-<meta name="keywords" content="c++">
+<meta name="keywords" content="C++,Smart pointer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)">
 <meta property="og:url" content="https://natsu1211.com/modern-cpp-19.html">
@@ -153,7 +153,7 @@
 <meta property="og:description" content="条款19 用std::shared_ptr管理共享所有权的资源 正如其名, std::shared_ptr用于表达共享所有权语义，也就是说，可以有多个std::shared_ptr指向同一个对象，并且保证在没有std::shared_ptr指向该对象时，对象被正确的释放。 那么如何知道不再有任何std::shared_ptr指向某个对象/资源呢？答案是引用计数。std::shared_ptr内部除">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/natsu1211/pics/master/shard_ptr.jpg">
-<meta property="og:updated_time" content="2019-02-02T08:47:13.574Z">
+<meta property="og:updated_time" content="2019-02-11T10:10:39.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)">
 <meta name="twitter:description" content="条款19 用std::shared_ptr管理共享所有权的资源 正如其名, std::shared_ptr用于表达共享所有权语义，也就是说，可以有多个std::shared_ptr指向同一个对象，并且保证在没有std::shared_ptr指向该对象时，对象被正确的释放。 那么如何知道不再有任何std::shared_ptr指向某个对象/资源呢？答案是引用计数。std::shared_ptr内部除">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-02 17:47:13" itemprop="dateModified" datetime="2019-02-02T17:47:13+09:00">2019-02-02</time>
+                <time title="修改时间：2019-02-11 19:10:39" itemprop="dateModified" datetime="2019-02-11T19:10:39+09:00">2019-02-11</time>
               
             
           </span>
@@ -417,14 +417,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
 
                 
                 
@@ -571,7 +578,9 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+            <a href="/tags/Smart-pointer/" rel="tag"><i class="fa fa-tag"></i> Smart pointer</a>
           
         </div>
       
@@ -680,7 +689,7 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -697,7 +706,9 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -712,7 +723,29 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

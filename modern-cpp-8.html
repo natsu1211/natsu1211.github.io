@@ -145,14 +145,14 @@
 
 
   <meta name="description" content="条款8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内">
-<meta name="keywords" content="c++">
+<meta name="keywords" content="C++,nullptr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
 <meta property="og:url" content="https://natsu1211.com/modern-cpp-8.html">
 <meta property="og:site_name" content="EverSummer">
 <meta property="og:description" content="条款8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T15:46:32.261Z">
+<meta property="og:updated_time" content="2019-02-11T09:51:02.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
 <meta name="twitter:description" content="条款8 优先使用nullptr而不是0和NULL 使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。 nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内">
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-09 00:46:32" itemprop="dateModified" datetime="2019-01-09T00:46:32+09:00">2019-01-09</time>
+                <time title="修改时间：2019-02-11 18:51:02" itemprop="dateModified" datetime="2019-02-11T18:51:02+09:00">2019-02-11</time>
               
             
           </span>
@@ -415,14 +415,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
 
                 
                 
@@ -546,7 +553,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+            <a href="/tags/nullptr/" rel="tag"><i class="fa fa-tag"></i> nullptr</a>
           
         </div>
       
@@ -655,7 +664,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -672,7 +681,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -687,7 +698,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -145,14 +145,14 @@
 
 
   <meta name="description" content="条款18 用std::unique_ptr管理独占所有权的资源 指针是强大的，然而原生指针也有着一些的缺点。  难以知道一个原生指针指向的是单个对象还是一个对象数组，所以也难以正确选择delete还是delete[]来释放内存。 原生指针无法表达所有权（你是否应该负责释放该指针指向的对象） 难以确保所有路径上delete都被正确调用，也就难以确保异常安全 无法知道指针是否已经空悬  由于C++缺乏">
-<meta name="keywords" content="c++">
+<meta name="keywords" content="C++,Smart pointer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)">
 <meta property="og:url" content="https://natsu1211.com/modern-cpp-18.html">
 <meta property="og:site_name" content="EverSummer">
 <meta property="og:description" content="条款18 用std::unique_ptr管理独占所有权的资源 指针是强大的，然而原生指针也有着一些的缺点。  难以知道一个原生指针指向的是单个对象还是一个对象数组，所以也难以正确选择delete还是delete[]来释放内存。 原生指针无法表达所有权（你是否应该负责释放该指针指向的对象） 难以确保所有路径上delete都被正确调用，也就难以确保异常安全 无法知道指针是否已经空悬  由于C++缺乏">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-26T16:02:08.312Z">
+<meta property="og:updated_time" content="2019-02-11T10:10:33.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)">
 <meta name="twitter:description" content="条款18 用std::unique_ptr管理独占所有权的资源 指针是强大的，然而原生指针也有着一些的缺点。  难以知道一个原生指针指向的是单个对象还是一个对象数组，所以也难以正确选择delete还是delete[]来释放内存。 原生指针无法表达所有权（你是否应该负责释放该指针指向的对象） 难以确保所有路径上delete都被正确调用，也就难以确保异常安全 无法知道指针是否已经空悬  由于C++缺乏">
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-27 01:02:08" itemprop="dateModified" datetime="2019-01-27T01:02:08+09:00">2019-01-27</time>
+                <time title="修改时间：2019-02-11 19:10:33" itemprop="dateModified" datetime="2019-02-11T19:10:33+09:00">2019-02-11</time>
               
             
           </span>
@@ -415,14 +415,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
 
                 
                 
@@ -567,7 +574,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+            <a href="/tags/Smart-pointer/" rel="tag"><i class="fa fa-tag"></i> Smart pointer</a>
           
         </div>
       
@@ -676,7 +685,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -693,7 +702,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -708,7 +719,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

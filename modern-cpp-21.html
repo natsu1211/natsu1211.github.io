@@ -145,16 +145,16 @@
 
 
   <meta name="description" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared std中有三个make函数（std::make_unique, std::make_shared, std::allocate_shared）来帮助我们创建智能指针。它们把任意集合的参数完美转发给动态分配对象的构造函数，然后返回一个指向那对象的智能指针。std::allocate_shared的行">
-<meta name="keywords" content="c++">
+<meta name="keywords" content="C++,Smart pointer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared">
+<meta property="og:title" content="读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)">
 <meta property="og:url" content="https://natsu1211.com/modern-cpp-21.html">
 <meta property="og:site_name" content="EverSummer">
 <meta property="og:description" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared std中有三个make函数（std::make_unique, std::make_shared, std::allocate_shared）来帮助我们创建智能指针。它们把任意集合的参数完美转发给动态分配对象的构造函数，然后返回一个指向那对象的智能指针。std::allocate_shared的行">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T09:23:44.059Z">
+<meta property="og:updated_time" content="2019-02-11T10:10:52.931Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)">
 <meta name="twitter:description" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared std中有三个make函数（std::make_unique, std::make_shared, std::allocate_shared）来帮助我们创建智能指针。它们把任意集合的参数完美转发给动态分配对象的构造函数，然后返回一个指向那对象的智能指针。std::allocate_shared的行">
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>条款21 比起new，更倾向于使用std::make_unique和std::make_shared | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared) | EverSummer</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">条款21 比起new，更倾向于使用std::make_unique和std::make_shared
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2019-02-11 13:56:25 / 修改时间：18:23:44" itemprop="dateCreated datePublished" datetime="2019-02-11T13:56:25+09:00">2019-02-11</time>
+              <time title="创建时间：2019-02-11 13:56:25 / 修改时间：19:10:52" itemprop="dateCreated datePublished" datetime="2019-02-11T13:56:25+09:00">2019-02-11</time>
             
 
             
@@ -403,14 +403,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
 
                 
                 
@@ -573,7 +580,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-21.html" title="条款21 比起new，更倾向于使用std::make_unique和std::make_shared">https://natsu1211.com/modern-cpp-21.html</a>
+    <a href="https://natsu1211.com/modern-cpp-21.html" title="读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)">https://natsu1211.com/modern-cpp-21.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -586,7 +593,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+            <a href="/tags/Smart-pointer/" rel="tag"><i class="fa fa-tag"></i> Smart pointer</a>
           
         </div>
       
@@ -608,6 +617,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/modern-cpp-22.html" rel="prev" title="读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)">
+                读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -691,7 +704,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -708,7 +721,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -723,7 +738,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -991,7 +1028,7 @@
       var disqus_config = function () {
         this.page.url = 'https://natsu1211.com/modern-cpp-21.html';
         this.page.identifier = 'modern-cpp-21.html';
-        this.page.title = '条款21 比起new，更倾向于使用std::make_unique和std::make_shared';
+        this.page.title = '读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
