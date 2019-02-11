@@ -142,32 +142,32 @@ Widget::~Widget() = default
 另外，使用Pimpl Idiom的类天生就是支持移动操作的候选人，因此编译器生成的移动操作符合我们的需要：移动类内部的std::unique_ptr。就像条款17所说，声明了Widget析构函数会阻止编译器生成移动操作，所以如果想要支持移动，我们必须声明这些函数，同时也有必要将移动操作的定义移到实现文件中。
 
 ```cpp
-class Widget {               // 在“widget.h”
+class Widget {                // 仍在“widget.h”
 public:
-    ...                      // 其他函数，和以前一样
-    Widget(const Widget& rhs);                 // 只是声明
-    Widget& operator=(const Widget& rhs);      // 只是声明
+    Widget();
+    ~Widget();
+    Widget(Widget&& rhs);              // 只声明
+    Widget& operator=(Widget&& rhs);   // 只声明
+    ...
 private:
-    struct Impl;        // 如前
+    struct Impl;
     std::unique_ptr<Impl> pImpl;
 };
 ```
+
 ```cpp
 #include "widget.h"            // 在“widget.cpp”
-...                           // 其他头文件和以前一样
-struct Widget::Impl { ... };        // 如前
+...                            // 如前
+struct Widget::Impl { ... };    //如前
 
-Widget::~Widget() = default;      // 其他函数也和以前一样
-
-Widget::Widget(const Widget& rhs)                    // 拷贝构造
-: pImpl(std::make_unique<Impl>(*rhs.pImpl))
+Widget::Widget()                           //如前
+: pImpl(std::make_unique<Impl>())
 {}
 
-Widget& Widget::operator=(const Widget& rhs)        // 拷贝赋值
-{
-    *pImpl = *rhs.pImpl;
-    return *this;
-}
+Widget::~Widget() {}                  // 如前
+
+Widget::Widget(Widget&& rhs) = default;          // 定义
+Widget& Widget::operator=(Widget&& rhs) = default;       // 定义
 ```
 
 为了实现Pimpl Idiom，std::unique_ptr毫无疑问是更好的选择，因为Widget和Widget::Impl之间的关系是独占所有权关系。但是知道使用std::shared_ptr时的举动也是很有必要的。
