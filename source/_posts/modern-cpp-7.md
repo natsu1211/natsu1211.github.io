@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款7 区分()与{}初始化)
 date: 2018-10-21 19:57:37
 tags:
-- [c++]
+- [C++]
+- [initializer_list]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款7 区分()与{}初始化

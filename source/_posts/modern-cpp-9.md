@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
 date: 2018-10-27 16:15:51
 tags:
-- [c++]
+- [C++]
+- [type alias]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款9 优先使用别名声明而不是typedef

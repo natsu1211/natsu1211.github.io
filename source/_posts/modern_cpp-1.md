@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款1 理解模板类型推导)
 date: 2018-08-24 01:27:34
 tags: 
-- [c++]
+- [C++]
+- [Type inference]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款1 理解模板类型推导（p9-p18）

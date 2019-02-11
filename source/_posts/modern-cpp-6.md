@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款6 当auto推导出非预期类型时应当使用显式的类型初始化)
 date: 2018-10-21 17:59:29
 tags:
-- [c++]
+- [C++]
+- [Type inference]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款6 当auto推导出非预期类型时应当使用显式的类型初始化

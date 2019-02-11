@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款12 将覆盖函数(overriding function)声明为override)
 date: 2018-11-04 23:17:23
 tags:
-- [c++]
+- [C++]
+- [override]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款12 将覆盖函数(overriding function)声明为override

@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)
 date: 2018-12-01 18:49:51
 tags:
-- [c++]
+- [C++]
+- [noexcept]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款14 使用noexcept修饰不抛出异常的函数

@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)
 date: 2019-01-27 01:03:55
 tags:
-- [c++]
+- [C++]
+- [Smart pointer]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 ## 条款19 用std::shared_ptr管理共享所有权的资源
 

@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款5 优先使用auto而非显式类型声明)
 date: 2018-10-20 19:37:28
 tags: 
-- [c++]
+- [C++]
+- [Type inference]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款5 优先使用auto而非显式类型声明 (p37 - p42)

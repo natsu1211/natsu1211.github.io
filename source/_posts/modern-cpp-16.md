@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款16 使const成员函数成为线程安全函数)
 date: 2019-01-11 02:04:44
 tags:
-- [c++]
+- [C++]
+- [thread safety]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款16 使const成员函数成为线程安全函数

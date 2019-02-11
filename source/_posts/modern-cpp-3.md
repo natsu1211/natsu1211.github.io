@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款3 理解decltype)
 date: 2018-10-19 00:33:48
 tags:
-- [c++]
+- [C++]
+- [Type inference]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款3 理解decltype (p23 - p29)

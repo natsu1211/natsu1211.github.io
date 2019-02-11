@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款15 尽可能的使用constexpr)
 date: 2019-01-06 21:47:15
 tags:
-- [c++]
+- [C++]
+- [constexpr]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款15 尽可能的使用constexpr

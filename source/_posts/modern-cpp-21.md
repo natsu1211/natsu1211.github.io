@@ -1,11 +1,12 @@
 ---
-title: 条款21 比起new，更倾向于使用std::make_unique和std::make_shared
+title: 读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)
 date: 2019-02-11 13:56:25
 tags:
-- [c++]
+- [C++]
+- [Smart pointer]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款21 比起new，更倾向于使用std::make_unique和std::make_shared

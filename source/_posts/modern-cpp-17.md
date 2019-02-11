@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)
 date: 2019-01-12 18:31:53
 tags:
-- [c++]
+- [C++]
+- [Special members]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款17 理解特殊成员函数的生成

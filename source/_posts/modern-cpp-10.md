@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)
 date: 2018-10-28 02:18:56
 tags:
-- [c++]
+- [C++]
+- [type alias]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款10 优先使用有作用域的enmu而不是无作用域的enum

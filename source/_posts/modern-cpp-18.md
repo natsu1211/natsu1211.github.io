@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)
 date: 2019-01-16 02:19:57
 tags:
-- [c++]
+- [C++]
+- [Smart pointer]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款18 用std::unique_ptr管理独占所有权的资源

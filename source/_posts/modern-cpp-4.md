@@ -2,10 +2,11 @@
 title: 读薄Effective Modern C++ (条款4 知道如何查看类型推导)
 date: 2018-10-20 17:46:42
 tags: 
-- [c++]
+- [C++]
+- [Type inference]
 categories:
-- [编程语言]
-- [读书笔记]
+- [PL, Tips]
+- [Memo]
 ---
 
 ## 条款4 知道如何查看类型推导 (p30 - p35)
