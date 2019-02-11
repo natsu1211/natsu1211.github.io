@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://natsu1211.com/modern-cpp-22.html</loc>
-    <lastmod>2019-02-11T16:34:48.614Z</lastmod>
+    <lastmod>2019-02-11T16:42:51.510Z</lastmod>
     <data>
         <display>
         <title>读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)</title>
