@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款18 用std::unique_ptr管理独占所有权的资源 指针是强大的，然而原生指针也有着一些的缺点。  难以知道一个原生指针指向的是单个对象还是一个对象数组，所以也难以正确选择delete还是delete[]来释放内存。 原生指针无法表达所有权（你是否应该负责释放该指针指向的对象） 难以确保所有路径上delete都被正确调用，也就难以确保异常安全 无法知道指针是否已经空悬  由于C++缺乏">
-<meta name="keywords" content="C++,Smart pointer">
+  <meta name="description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
+<meta name="keywords" content="C++,Move semantic">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-18.html">
+<meta property="og:title" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-23.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款18 用std::unique_ptr管理独占所有权的资源 指针是强大的，然而原生指针也有着一些的缺点。  难以知道一个原生指针指向的是单个对象还是一个对象数组，所以也难以正确选择delete还是delete[]来释放内存。 原生指针无法表达所有权（你是否应该负责释放该指针指向的对象） 难以确保所有路径上delete都被正确调用，也就难以确保异常安全 无法知道指针是否已经空悬  由于C++缺乏">
+<meta property="og:description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:10:33.660Z">
+<meta property="og:updated_time" content="2019-02-20T17:40:47.475Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)">
-<meta name="twitter:description" content="条款18 用std::unique_ptr管理独占所有权的资源 指针是强大的，然而原生指针也有着一些的缺点。  难以知道一个原生指针指向的是单个对象还是一个对象数组，所以也难以正确选择delete还是delete[]来释放内存。 原生指针无法表达所有权（你是否应该负责释放该指针指向的对象） 难以确保所有路径上delete都被正确调用，也就难以确保异常安全 无法知道指针是否已经空悬  由于C++缺乏">
+<meta name="twitter:title" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
+<meta name="twitter:description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-18.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-23.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源) | EverSummer</title>
+  <title>读薄Effective Modern C++ (条款23 理解std::move和std::forward) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-18.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-23.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款23 理解std::move和std::forward)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2019-01-16 02:19:57" itemprop="dateCreated datePublished" datetime="2019-01-16T02:19:57+09:00">2019-01-16</time>
+              <time title="创建时间：2019-02-18 23:33:41" itemprop="dateCreated datePublished" datetime="2019-02-18T23:33:41+09:00">2019-02-18</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-11 19:10:33" itemprop="dateModified" datetime="2019-02-11T19:10:33+09:00">2019-02-11</time>
+                <time title="修改时间：2019-02-21 02:40:47" itemprop="dateModified" datetime="2019-02-21T02:40:47+09:00">2019-02-21</time>
               
             
           </span>
@@ -444,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-18.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-23.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-18.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-23.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,37 +475,19 @@
       
 
       
-        <h2 id="条款18-用stdunique_ptr管理独占所有权的资源">条款18 用std::unique_ptr管理独占所有权的资源</h2>
-<p>指针是强大的，然而原生指针也有着一些的缺点。</p>
-<ul>
-<li>难以知道一个原生指针指向的是单个对象还是一个对象数组，所以也难以正确选择delete还是delete[]来释放内存。</li>
-<li>原生指针无法表达所有权（你是否应该负责释放该指针指向的对象）</li>
-<li>难以确保所有路径上delete都被正确调用，也就难以确保异常安全</li>
-<li>无法知道指针是否已经空悬</li>
-</ul>
-<p>由于C++缺乏垃圾回收机制，用原生指针来管理内存又是如此的容易出错，C++11添加了一系列的智能指针(std::unique_ptr, std::shared_prt, std::weak_ptr)，用来解决原生指针的种种问题，简化内存管理。</p>
-<p>std::unique_ptr用来表示独占所有权语义。所谓独占，意味着一个非空的std::unique_ptr会一直拥有它指向的对象。你无法拷贝一个std::unique_ptr, 而只能移动它。当移动一个std::unique_ptr，所有权会从源指针转移到目标指针（源指针的内容浅拷贝到目标指针，之后源指针置为null）。<br>
-<a id="more"></a></p>
-<p>std::unique_ptr的一个常见使用是作为工厂函数的返回类型。<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt;        <span class="comment">// 返回一个由给定参数</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Investment&gt;     <span class="comment">// 创建的对象的指针</span></span><br><span class="line">makeInvestment(Ts&amp;&amp;... params);</span><br></pre></td></tr></table></figure></p>
-<p>调用者可以在一个局部作用域使用返回的std::unique_ptr, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">&#123;                  </span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">auto</span> pInvestment =                      <span class="comment">// pInvestment的类型是</span></span><br><span class="line">          makeInvestment(*arguments*);       <span class="comment">// std::unique_ptr&lt;Investment&gt;</span></span><br><span class="line">    ...</span><br><span class="line">&#125;    <span class="comment">// 销毁 *pInvestment</span></span><br></pre></td></tr></table></figure></p>
-<p>std::unique_ptr用于移动语境也是没有问题的，比如用一个容器来接受工厂返回的std::unique_ptr,此时资源的所有权会最终转移到对象内部，最终随着对象声明周期结束而被释放。</p>
-<p>默认情况下，资源销毁是通过对std::unique_ptr内的原生指针使用delete来完成的。也能够自定义删除器(deleter),</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">makeInvestment</span><span class="params">(Ts&amp;&amp;... params)</span>   <span class="comment">// C++14</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">auto</span> delInvmt = [](Investment* pInvestment) <span class="comment">// 自定义删除器</span></span><br><span class="line">                   &#123;                           <span class="comment">// 内置于makeInvestment</span></span><br><span class="line">                       makeLogEntry(pInvestment);</span><br><span class="line">                       <span class="keyword">delete</span> pInvestment;</span><br><span class="line">                   &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Investment, <span class="keyword">decltype</span>(delInvmt)&gt; pInv(<span class="literal">nullptr</span>, delInvmt); </span><br><span class="line">    <span class="keyword">if</span> (...)</span><br><span class="line">    &#123;</span><br><span class="line">        pInv.reset(<span class="keyword">new</span> Stock(<span class="built_in">std</span>::forward&lt;Ts&gt;(params)...));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (...)</span><br><span class="line">    &#123;</span><br><span class="line">        pInv.reset(<span class="keyword">new</span> Bond(<span class="built_in">std</span>::forward&lt;Ts&gt;(params)...));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (...)</span><br><span class="line">    &#123;</span><br><span class="line">        pInv.reset(<span class="keyword">new</span> RealEstate(<span class="built_in">std</span>::forward&lt;Ts&gt;(params)...));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pInv;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>delInvmt是从makeInvestment工厂函数返回对象的自定义删除器。所有的自定义删除器都必须有一个指向需要销毁的对象的原生指针作为参数，然后它做的事情是销毁对象的必要工作。在这个例子中，删除器的行为是调用makelogEntry，然后在进行delete。</li>
-<li>当我们使用自定义的删除器的时候，它的类型要作为std::unique_ptr的第二个模板参数。这也是为什么pInv的类型是std::unique_ptr&lt;Investment, decltype(delInvmt)&gt;。</li>
-<li>试图将原生指针赋值给std::unique_ptr无法通过编译，因为C++11禁止从原生指针到智能指针的隐式转换。那就是为什么reset被用来让pInvmt得到new出来的对象的所有权。</li>
-<li>当你使用默认删除器时（即delete），std::unique_ptr对象的大小和原生指针一样。如果使用自动定义删除器，就不是这样了。如果删除器是函数指针，它通常会让std::unique_ptr的大小增加一到两个字(word)。如果删除器是函数对象，std::unique_ptr的大小改变取决于函数对象存储了多少状态。无状态的函数对象不会受到一丝代价，这意味着当自定义删除器可用函数实现也可用不捕获变量的lambda表达式实现时，lambda实现会更好。</li>
-</ul>
-<p>std::unique_ptr的另一个常用的地方是在于实现Pimpl Idiom。条款22会专门介绍。</p>
-<p>在C++11中，std::unique_ptr是表达独占所有权的方式，但它最吸引人的一个特性是它能即简单又高效地转化为std::shared_ptr <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Investment&gt; sp =    <span class="comment">// 把 std::unique_ptr转换为</span></span><br><span class="line">    makeInvestment(argument);       <span class="comment">// std::shared_ptr</span></span><br></pre></td></tr></table></figure></p>
-<p>这就是为什么std::unique_ptr如此适合做工厂函数的关键原因，工厂函数不会知道独占所有权语义和共享所有权语义哪个更适合调用者。通过返回一个std::unique_ptr，工厂提供给调用者的是最高效的智能指针，但它不妨碍调用者用std::shared_ptr来替换它。</p>
+        <h2 id="读薄effective-modern-c-条款23-理解stdmove和stdforward">读薄Effective Modern C++ (条款23 理解std::move和std::forward)</h2>
+<p>移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值的属性(value category)能够得到保持。</p>
+<p>实际上，std::move不移动任何东西，std::forward不转发任何东西，在运行期间，它们什么事情都不会做，不会生成一个字节的可执行代码。它们做的只是类型转换，std::move无条件地把参数转换为右值，而std::forward在只在特定条件下才会执行右值转换。 <a id="more"></a> 一个接近但不完全符合标准的std::move实现如下, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;</span><br><span class="line">move(T&amp;&amp; param)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> ReturnType = <span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;ReturnType&gt;(param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是，std::move也不能保证移动一定会发生，比如一个const的右值就不能被移动。另外真正进行移动的是移动构造函数，而不是std::move。如上所示，std::move所做的仅仅是将参数转换为右值。</p>
+<p>而std::forward的最常见用法是在一个接受通用引用参数的模板函数中，把参数“转发”给另一个函数，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">const</span> Widget&amp; lvalArg)</span></span>;    <span class="comment">// 处理左值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(Widget&amp;&amp; rvalArg)</span></span>;         <span class="comment">// 处理右值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndProcess</span><span class="params">(T&amp;&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">auto</span> now = <span class="built_in">std</span>::chrono::system_clock::now();   <span class="comment">// 获取当前时间</span></span><br><span class="line"></span><br><span class="line">     makeLogEntry(<span class="string">"Calling 'process'"</span>, now);</span><br><span class="line">     process(<span class="built_in">std</span>::forward&lt;T&gt;(param));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>logAndProcess函数的参数param被传递给process函数，而process函数针对左值参数和右值参数进行了重载。当我们用左值调用logAndProcess的时候，我们自然是希望把左值转发给process，而当我们用右值调用logAndProcess时，我们希望调用的是右值重载的process。</p>
+<p>但是param，作为一个右值引用，其本身是个左值。所以每次只有左值重载的process会被调用。为了防止这样的事情，我们需要一项技术，当且仅当初始化param的实参是右值时，才将param转换为右值。这就是std::forward所做的事了，这也是为什么说std::forward是有条件的类型转换。</p>
 <h2 id="总结">总结</h2>
 <ul>
-<li>std::unique_ptr是一个轻量并且只可移动的智能指针，它表达资源的独占权。</li>
-<li>默认情况下，std::unique_ptr通过delete来销毁资源，但可以指定自定义删除器。有状态的删除器和函数指针作为std::unique_ptr的删除器会增加std::unique_ptr对象的大小。</li>
-<li>将std::unique_ptr转换为std::shared_ptr是容易的。</li>
+<li>std::move表现为无条件的右值转换，其自身不会移动任何东西。</li>
+<li>std::forward仅当参数被右值绑定时，才会把参数转换为右值。</li>
+<li>std::move和std::forward在运行时不做任何事情。</li>
 </ul>
 
       
@@ -561,7 +543,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-18.html" title="读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)">https://natsu1211.com/modern-cpp-18.html</a>
+    <a href="https://natsu1211.com/modern-cpp-23.html" title="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">https://natsu1211.com/modern-cpp-23.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -576,7 +558,7 @@
           
             <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/Smart-pointer/" rel="tag"><i class="fa fa-tag"></i> Smart pointer</a>
+            <a href="/tags/Move-semantic/" rel="tag"><i class="fa fa-tag"></i> Move semantic</a>
           
         </div>
       
@@ -589,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-17.html" rel="next" title="读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款17 理解特殊成员函数的生成)
+              <a href="/modern-cpp-22.html" rel="next" title="读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)
               </a>
             
           </div>
@@ -598,10 +580,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-19.html" rel="prev" title="读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)">
-                读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -820,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款18-用stdunique_ptr管理独占所有权的资源"><span class="nav-number">1.</span> <span class="nav-text">条款18 用std::unique_ptr管理独占所有权的资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读薄effective-modern-c-条款23-理解stdmove和stdforward"><span class="nav-number">1.</span> <span class="nav-text">读薄Effective Modern C++ (条款23 理解std::move和std::forward)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1009,9 +987,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-18.html';
-        this.page.identifier = 'modern-cpp-18.html';
-        this.page.title = '读薄Effective Modern C++ (条款18 用std::unique_ptr管理独占所有权的资源)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-23.html';
+        this.page.identifier = 'modern-cpp-23.html';
+        this.page.title = '读薄Effective Modern C++ (条款23 理解std::move和std::forward)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://natsu1211.com/"/>
-  <updated>2019-02-11T16:42:51.510Z</updated>
+  <updated>2019-02-20T17:40:47.475Z</updated>
   <id>https://natsu1211.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读薄Effective Modern C++ (条款23 理解std::move和std::forward)</title>
+    <link href="https://natsu1211.com/modern-cpp-23.html"/>
+    <id>https://natsu1211.com/modern-cpp-23.html</id>
+    <published>2019-02-18T14:33:41.000Z</published>
+    <updated>2019-02-20T17:40:47.475Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="读薄effective-modern-c-条款23-理解stdmove和stdforward">读薄Effective Modern C++ (条款23 理解std::move和std::forward)</h2><p>移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值的属性(value category)能够得到保持。</p><p>实际上，std::move不移动任何东西，std::forward不转发任何东西，在运行期间，它们什么事情都不会做，不会生成一个字节的可执行代码。它们做的只是类型转换，std::move无条件地把参数转换为右值，而std::forward在只在特定条件下才会执行右值转换。 <a id="more"></a> 一个接近但不完全符合标准的std::move实现如下, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;</span><br><span class="line">move(T&amp;&amp; param)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> ReturnType = <span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;ReturnType&gt;(param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>但是，std::move也不能保证移动一定会发生，比如一个const的右值就不能被移动。另外真正进行移动的是移动构造函数，而不是std::move。如上所示，std::move所做的仅仅是将参数转换为右值。</p><p>而std::forward的最常见用法是在一个接受通用引用参数的模板函数中，把参数“转发”给另一个函数，</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">const</span> Widget&amp; lvalArg)</span></span>;    <span class="comment">// 处理左值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(Widget&amp;&amp; rvalArg)</span></span>;         <span class="comment">// 处理右值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndProcess</span><span class="params">(T&amp;&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">auto</span> now = <span class="built_in">std</span>::chrono::system_clock::now();   <span class="comment">// 获取当前时间</span></span><br><span class="line"></span><br><span class="line">     makeLogEntry(<span class="string">"Calling 'process'"</span>, now);</span><br><span class="line">     process(<span class="built_in">std</span>::forward&lt;T&gt;(param));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>logAndProcess函数的参数param被传递给process函数，而process函数针对左值参数和右值参数进行了重载。当我们用左值调用logAndProcess的时候，我们自然是希望把左值转发给process，而当我们用右值调用logAndProcess时，我们希望调用的是右值重载的process。</p><p>但是param，作为一个右值引用，其本身是个左值。所以每次只有左值重载的process会被调用。为了防止这样的事情，我们需要一项技术，当且仅当初始化param的实参是右值时，才将param转换为右值。这就是std::forward所做的事了，这也是为什么说std::forward是有条件的类型转换。</p><h2 id="总结">总结</h2><ul><li>std::move表现为无条件的右值转换，其自身不会移动任何东西。</li><li>std::forward仅当参数被右值绑定时，才会把参数转换为右值。</li><li>std::move和std::forward在运行时不做任何事情。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;读薄effective-modern-c-条款23-理解stdmove和stdforward&quot;&gt;读薄Effective Modern C++ (条款23 理解std::move和std::forward)&lt;/h2&gt;
+&lt;p&gt;移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值的属性(value category)能够得到保持。&lt;/p&gt;
+&lt;p&gt;实际上，std::move不移动任何东西，std::forward不转发任何东西，在运行期间，它们什么事情都不会做，不会生成一个字节的可执行代码。它们做的只是类型转换，std::move无条件地把参数转换为右值，而std::forward在只在特定条件下才会执行右值转换。
+    
+    </summary>
+    
+      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
+    
+      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
+    
+      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
+    
+    
+      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
+    
+      <category term="Move semantic" scheme="https://natsu1211.com/tags/Move-semantic/"/>
+    
+  </entry>
   
   <entry>
     <title>读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)</title>
@@ -586,35 +616,6 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
 &lt;h3 id=&quot;ide&quot;&gt;IDE&lt;/h3&gt;
 &lt;p&gt;在IDE里面的代码编辑器里面当你使用光标悬停在实体之上，常常可以显示出程序实体（例如变量，参数，函数等等）的类型。需要IDE的编辑器对代码的文法有分析的能力。&lt;br&gt;
 对于简单的类型例如int，IDE里面的信息是正常的。对于更加复杂的类型的时候，从IDE里面得到的信息并不一定是有帮助性的。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
-    
-      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
-    
-      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
-    
-    
-      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
-    
-      <category term="Type inference" scheme="https://natsu1211.com/tags/Type-inference/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读薄Effective Modern C++ (条款3 理解decltype)</title>
-    <link href="https://natsu1211.com/modern-cpp-3.html"/>
-    <id>https://natsu1211.com/modern-cpp-3.html</id>
-    <published>2018-10-18T15:33:48.000Z</published>
-    <updated>2019-02-11T10:09:56.255Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="条款3-理解decltype-p23---p29">条款3 理解decltype (p23 - p29)</h2><p>decltype返回一个变量名或表达式的类型。和auto推导相比，它大多数时候只是如实的返回变量或表达式的类型，但是也有一些特殊情况。 <a id="more"></a> 正常情况下，没有任何意外。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">0</span>;            <span class="comment">// decltype(i) is const int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> Widget&amp; w)</span></span>;    <span class="comment">// decltype(w) is const Widget&amp;</span></span><br><span class="line">                            <span class="comment">// decltype(f) is bool(const Widget&amp;)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;               <span class="comment">// decltype(Point::x) is int</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Widget w;                   <span class="comment">// decltype(w) is Widget</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (f(w)) ...               <span class="comment">// decltype(f(w)) is bool</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;        <span class="comment">// simplified version of std::vector</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">vector</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    T&amp; <span class="keyword">operator</span>[](<span class="built_in">std</span>::<span class="keyword">size_t</span> index);</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;              <span class="comment">// decltype(v) is vector&lt;int&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span>(v[<span class="number">0</span>] == <span class="number">0</span>)               <span class="comment">// decltype(v[0]) is int&amp;f</span></span><br></pre></td></tr></table></figure></p><p>decltype在我们无法显式的写出某个表达式的类型时候特别有用， 例如我们要写一个获取列表容器在某个位置上的元素的泛型函数，我们无法知道这个容器内部的元素是什么类型，c++11中，我们可以借助尾置返回语法写出以下代码， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Container, <span class="keyword">typename</span> Index&gt;    <span class="comment">// final</span></span><br><span class="line"><span class="keyword">auto</span>                                            <span class="comment">// C++11</span></span><br><span class="line">access(Container&amp;&amp; c, Index i)                  <span class="comment">// version</span></span><br><span class="line">-&gt; <span class="keyword">decltype</span>(<span class="built_in">std</span>::forward&lt;Container&gt;(c)[i]</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::forward&lt;Container&gt;(c)[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>c++14中我们可以写成， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Container, <span class="keyword">typename</span> Index&gt;</span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) access(Container&amp;&amp; c, Index i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::forward&lt;Container&gt;(c)[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>代表用decltype的规则来进行类型推导。 该语法不止可以用于函数的返回类型推导，还可以用于变量的类型推导。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Widget w;</span><br><span class="line"><span class="keyword">const</span> Widget&amp; cw = w; <span class="comment">// cw的类型为const Widget&amp;</span></span><br><span class="line"><span class="keyword">auto</span> myWidget1 = cw;  <span class="comment">// auto类型推导，myWidget1的类型为Widget</span></span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) myWidget2 = cw; <span class="comment">// decltype类型推导，myWidget2的类型为const Widget&amp;</span></span><br></pre></td></tr></table></figure></p><p>需要注意的情况是，decltype会将具有类型T的左值表达式的类型推导为T&amp;， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) f1()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> x;        <span class="comment">// f1返回类型为int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">decltype</span>(<span class="keyword">auto</span>) f2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> (x);     <span class="comment">// f2返回类型为int&amp;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>f2返回了一个局部变量的引用！这当然是我们不愿意看到的。</p><h3 id="总结">总结</h3><ul><li>decltype几乎总是不加修改的返回变量或表达式的类型</li><li>对于类型为T并且不是单纯变量名的左值表达式，decltype总是返回T&amp;</li><li>C++14支持decltype(auto)语法，使用decltype的规则进行类型推导</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;条款3-理解decltype-p23---p29&quot;&gt;条款3 理解decltype (p23 - p29)&lt;/h2&gt;
-&lt;p&gt;decltype返回一个变量名或表达式的类型。和auto推导相比，它大多数时候只是如实的返回变量或表达式的类型，但是也有一些特殊情况。
     
     </summary>
     

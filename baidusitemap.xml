@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>https://natsu1211.com/modern-cpp-23.html</loc>
+    <lastmod>2019-02-20T17:40:47.475Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款23 理解std::move和std::forward)</title>
+        <pubTime>2019-02-18T14:33:41.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Move semantic</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://natsu1211.com/modern-cpp-22.html</loc>
     <lastmod>2019-02-11T16:42:51.510Z</lastmod>
     <data>
