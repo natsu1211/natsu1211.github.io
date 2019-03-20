@@ -4,6 +4,8 @@ date: 2019-02-18 23:33:41
 tags:
 - [C++]
 - [Move semantic]
+- [Value category]
+- [Rvalue]
 categories:
 - [PL, Tips]
 - [Memo]

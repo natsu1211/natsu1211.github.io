@@ -3,7 +3,7 @@ title: 读薄Effective Modern C++ (条款11 优先使用delete关键字删除函
 date: 2018-11-01 00:22:48
 tags:
 - [C++]
-- [type alias]
+- [delete]
 categories:
 - [PL, Tips]
 - [Memo]
