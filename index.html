@@ -338,6 +338,215 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-24.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="natsu1211">
+      <meta itemprop="description" content="EverSummer">
+      <meta itemprop="image" content="/images/lambda.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EverSummer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/modern-cpp-24.html" itemprop="url">
+                  读薄Effective Modern C++（条款24 区分通用引用和右值引用）
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-21 03:23:33" itemprop="dateCreated datePublished" datetime="2019-02-21T03:23:33+09:00">2019-02-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-21 01:05:05" itemprop="dateModified" datetime="2019-03-21T01:05:05+09:00">2019-03-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/modern-cpp-24.html#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="modern-cpp-24.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="读薄effective-modern-c条款24-区分通用引用和右值引用">读薄Effective Modern C++（条款24 区分通用引用和右值引用）</h2>
+<p>T&amp;&amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;&amp;也可能是一个T的通用引用(Universal reference)。<br>
+需要通过T&amp;&amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; param)</span></span>;        <span class="comment">// param是通用引用</span></span><br></pre></td></tr></table></figure></p>
+<p>第二个语境是auto声明: <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span>&amp;&amp; var2 = var1;       <span class="comment">// var2是通用引用</span></span><br></pre></td></tr></table></figure></p>
+<p>这两种语境有个共同点，就是出现了类型推导。在模板f中，param的类型需要被推导，而在var2的声明中，var2的类型要被推导。 而下面这些代码不用类型推断，所以它们的形式虽然是T&amp;&amp;，但是却是右值引用，</p>
+<p>对于通用引用，类型推断是必需的，并且引用的类型必须是精确的“T&amp;&amp;”, 不能有cv修饰符。</p>
+<p>声明为auto&amp;&amp;的变量都是通用引用，因为既发生了类型推断，又有正确的形式（T&amp;&amp;）。它的使用场景通常是用于lambda表达式的参数， 例如，有一个C++14的lambda来记录调用任意函数执行的所需要的时间， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> timeFuncInvocation = </span><br><span class="line">  [](<span class="keyword">auto</span>&amp;&amp; func, <span class="keyword">auto</span>&amp;&amp;... params)          <span class="comment">// C++14</span></span><br><span class="line">  &#123;</span><br><span class="line">    start timer;</span><br><span class="line">    <span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(func)&gt;(func)(</span><br><span class="line">      <span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...</span><br><span class="line">      );</span><br><span class="line">    stop timer <span class="keyword">and</span> record elapsed time;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>func是个通用引用，可以绑定任何的可执行对象，不论左值还是右值，而params是通用引用参数包，可以绑定任意数目的任意类型对象。因此timeFuncInvocation可以记录几乎所有的函数执行的所需的时间。</p>
+<h2 id="总结">总结</h2>
+<ul>
+<li>如果一个模板函数的参数类型是T&amp;&amp;而T是要被推断类型，或者一个对象使用auto&amp;&amp;声明，那么这个参数或者对象是个通用引用。</li>
+<li>如果类型推断的类型不是精确的T&amp;&amp;，或者不发生类型推断，那么T&amp;&amp;将是右值引用。</li>
+<li>如果用右值初始化通用引用，通用引用相当于右值引用。如果用左值初始化通用引用，通用引用相当于左值引用。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-23.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -401,7 +610,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-21 02:40:47" itemprop="dateModified" datetime="2019-02-21T02:40:47+09:00">2019-02-21</time>
+                <time title="修改时间：2019-02-21 03:24:04" itemprop="dateModified" datetime="2019-02-21T03:24:04+09:00">2019-02-21</time>
               
             
           </span>
@@ -2146,209 +2355,6 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-14.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="natsu1211">
-      <meta itemprop="description" content="EverSummer">
-      <meta itemprop="image" content="/images/lambda.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EverSummer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/modern-cpp-14.html" itemprop="url">
-                  读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-01 18:49:51" itemprop="dateCreated datePublished" datetime="2018-12-01T18:49:51+09:00">2018-12-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-11 19:01:45" itemprop="dateModified" datetime="2019-02-11T19:01:45+09:00">2019-02-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/modern-cpp-14.html#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-14.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="条款14-使用noexcept修饰不抛出异常的函数">条款14 使用noexcept修饰不抛出异常的函数</h2>
-<p>C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">func</span> <span class="params">(<span class="keyword">char</span> param)</span> <span class="title">throw</span> <span class="params">(<span class="keyword">int</span>, <span class="keyword">char</span>, exception)</span></span>;</span><br></pre></td></tr></table></figure></p>
-<p>表明该函数可能会抛出int，char或exception类型的异常，如果抛出了其他类型的，该异常无法被catch，而会导致程序异常终止。<br>
-异常规范是如此严格，并且由于难以知道该函数中调用的函数可能会抛出什么类型的异常，导致异常规范难以使用，在C++11中已经被废弃。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/modern-cpp-14.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2400,7 +2406,7 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2458,7 +2464,17 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -145,14 +145,14 @@
 
 
   <meta name="description" content="条款11 优先使用delete关键字删除函数而不是不实现的私有函数 有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。">
-<meta name="keywords" content="C++,type alias">
+<meta name="keywords" content="C++,delete">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)">
 <meta property="og:url" content="https://natsu1211.com/modern-cpp-11.html">
 <meta property="og:site_name" content="EverSummer">
 <meta property="og:description" content="条款11 优先使用delete关键字删除函数而不是不实现的私有函数 有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T09:57:13.467Z">
+<meta property="og:updated_time" content="2019-02-24T13:24:03.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读薄Effective Modern C++ (条款11 优先使用delete关键字删除函数而不是不实现的私有函数)">
 <meta name="twitter:description" content="条款11 优先使用delete关键字删除函数而不是不实现的私有函数 有时我们会希望能够禁用某些函数，比如在构造单例对象的时候，我们会希望该单例类的拷贝构造和赋值构造函数无法被用户调用。 在C++98时代，我们需要运用将该函数定义为私有函数但是不实现它的技巧来实现这个目的，如果访问到这些函数，在链接的时候会因为找不到定义而引起链接错误。">
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-11 18:57:13" itemprop="dateModified" datetime="2019-02-11T18:57:13+09:00">2019-02-11</time>
+                <time title="修改时间：2019-02-24 22:24:03" itemprop="dateModified" datetime="2019-02-24T22:24:03+09:00">2019-02-24</time>
               
             
           </span>
@@ -560,7 +560,7 @@
           
             <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/type-alias/" rel="tag"><i class="fa fa-tag"></i> type alias</a>
+            <a href="/tags/delete/" rel="tag"><i class="fa fa-tag"></i> delete</a>
           
         </div>
       
@@ -669,7 +669,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -727,7 +727,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

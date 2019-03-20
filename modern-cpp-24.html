@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
-<meta name="keywords" content="C++,Move semantic,Value category,Rvalue">
+  <meta name="description" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用） T&amp;amp;&amp;amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;amp;&amp;amp;也可能是一个T的通用引用(Universal reference)。 需要通过T&amp;amp;&amp;amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， template&amp;lt;typenam">
+<meta name="keywords" content="C++,Universal reference,Rvalue reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-23.html">
+<meta property="og:title" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-24.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
+<meta property="og:description" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用） T&amp;amp;&amp;amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;amp;&amp;amp;也可能是一个T的通用引用(Universal reference)。 需要通过T&amp;amp;&amp;amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， template&amp;lt;typenam">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-20T18:24:04.398Z">
+<meta property="og:updated_time" content="2019-03-20T16:05:05.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
-<meta name="twitter:description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
+<meta name="twitter:title" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">
+<meta name="twitter:description" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用） T&amp;amp;&amp;amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;amp;&amp;amp;也可能是一个T的通用引用(Universal reference)。 需要通过T&amp;amp;&amp;amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， template&amp;lt;typenam">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-23.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-24.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款23 理解std::move和std::forward) | EverSummer</title>
+  <title>读薄Effective Modern C++（条款24 区分通用引用和右值引用） | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-23.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-24.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款23 理解std::move和std::forward)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++（条款24 区分通用引用和右值引用）
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2019-02-18 23:33:41" itemprop="dateCreated datePublished" datetime="2019-02-18T23:33:41+09:00">2019-02-18</time>
+              <time title="创建时间：2019-02-21 03:23:33" itemprop="dateCreated datePublished" datetime="2019-02-21T03:23:33+09:00">2019-02-21</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-21 03:24:04" itemprop="dateModified" datetime="2019-02-21T03:24:04+09:00">2019-02-21</time>
+                <time title="修改时间：2019-03-21 01:05:05" itemprop="dateModified" datetime="2019-03-21T01:05:05+09:00">2019-03-21</time>
               
             
           </span>
@@ -444,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-23.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-24.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-23.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-24.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,19 +475,19 @@
       
 
       
-        <h2 id="读薄effective-modern-c-条款23-理解stdmove和stdforward">读薄Effective Modern C++ (条款23 理解std::move和std::forward)</h2>
-<p>移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值的属性(value category)能够得到保持。</p>
-<p>实际上，std::move不移动任何东西，std::forward不转发任何东西，在运行期间，它们什么事情都不会做，不会生成一个字节的可执行代码。它们做的只是类型转换，std::move无条件地把参数转换为右值，而std::forward在只在特定条件下才会执行右值转换。 <a id="more"></a> 一个接近但不完全符合标准的std::move实现如下, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;</span><br><span class="line">move(T&amp;&amp; param)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> ReturnType = <span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;ReturnType&gt;(param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>但是，std::move也不能保证移动一定会发生，比如一个const的右值就不能被移动。另外真正进行移动的是移动构造函数，而不是std::move。如上所示，std::move所做的仅仅是将参数转换为右值。</p>
-<p>而std::forward的最常见用法是在一个接受通用引用参数的模板函数中，把参数“转发”给另一个函数，</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">const</span> Widget&amp; lvalArg)</span></span>;    <span class="comment">// 处理左值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(Widget&amp;&amp; rvalArg)</span></span>;         <span class="comment">// 处理右值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndProcess</span><span class="params">(T&amp;&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">auto</span> now = <span class="built_in">std</span>::chrono::system_clock::now();   <span class="comment">// 获取当前时间</span></span><br><span class="line"></span><br><span class="line">     makeLogEntry(<span class="string">"Calling 'process'"</span>, now);</span><br><span class="line">     process(<span class="built_in">std</span>::forward&lt;T&gt;(param));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>logAndProcess函数的参数param被传递给process函数，而process函数针对左值参数和右值参数进行了重载。当我们用左值调用logAndProcess的时候，我们自然是希望把左值转发给process，而当我们用右值调用logAndProcess时，我们希望调用的是右值重载的process。</p>
-<p>但是param，作为一个右值引用，其本身是个左值。所以每次只有左值重载的process会被调用。为了防止这样的事情，我们需要一项技术，当且仅当初始化param的实参是右值时，才将param转换为右值。这就是std::forward所做的事了，这也是为什么说std::forward是有条件的类型转换。</p>
+        <h2 id="读薄effective-modern-c条款24-区分通用引用和右值引用">读薄Effective Modern C++（条款24 区分通用引用和右值引用）</h2>
+<p>T&amp;&amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;&amp;也可能是一个T的通用引用(Universal reference)。<br>
+需要通过T&amp;&amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; param)</span></span>;        <span class="comment">// param是通用引用</span></span><br></pre></td></tr></table></figure></p>
+<p>第二个语境是auto声明: <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span>&amp;&amp; var2 = var1;       <span class="comment">// var2是通用引用</span></span><br></pre></td></tr></table></figure></p>
+<p>这两种语境有个共同点，就是出现了类型推导。在模板f中，param的类型需要被推导，而在var2的声明中，var2的类型要被推导。 而下面这些代码不用类型推断，所以它们的形式虽然是T&amp;&amp;，但是却是右值引用，</p>
+<p>对于通用引用，类型推断是必需的，并且引用的类型必须是精确的“T&amp;&amp;”, 不能有cv修饰符。</p>
+<p>声明为auto&amp;&amp;的变量都是通用引用，因为既发生了类型推断，又有正确的形式（T&amp;&amp;）。它的使用场景通常是用于lambda表达式的参数， 例如，有一个C++14的lambda来记录调用任意函数执行的所需要的时间， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> timeFuncInvocation = </span><br><span class="line">  [](<span class="keyword">auto</span>&amp;&amp; func, <span class="keyword">auto</span>&amp;&amp;... params)          <span class="comment">// C++14</span></span><br><span class="line">  &#123;</span><br><span class="line">    start timer;</span><br><span class="line">    <span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(func)&gt;(func)(</span><br><span class="line">      <span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...</span><br><span class="line">      );</span><br><span class="line">    stop timer <span class="keyword">and</span> record elapsed time;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>func是个通用引用，可以绑定任何的可执行对象，不论左值还是右值，而params是通用引用参数包，可以绑定任意数目的任意类型对象。因此timeFuncInvocation可以记录几乎所有的函数执行的所需的时间。</p>
 <h2 id="总结">总结</h2>
 <ul>
-<li>std::move表现为无条件的右值转换，其自身不会移动任何东西。</li>
-<li>std::forward仅当参数被右值绑定时，才会把参数转换为右值。</li>
-<li>std::move和std::forward在运行时不做任何事情。</li>
+<li>如果一个模板函数的参数类型是T&amp;&amp;而T是要被推断类型，或者一个对象使用auto&amp;&amp;声明，那么这个参数或者对象是个通用引用。</li>
+<li>如果类型推断的类型不是精确的T&amp;&amp;，或者不发生类型推断，那么T&amp;&amp;将是右值引用。</li>
+<li>如果用右值初始化通用引用，通用引用相当于右值引用。如果用左值初始化通用引用，通用引用相当于左值引用。</li>
 </ul>
 
       
@@ -543,7 +543,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-23.html" title="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">https://natsu1211.com/modern-cpp-23.html</a>
+    <a href="https://natsu1211.com/modern-cpp-24.html" title="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">https://natsu1211.com/modern-cpp-24.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -558,11 +558,9 @@
           
             <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/Move-semantic/" rel="tag"><i class="fa fa-tag"></i> Move semantic</a>
+            <a href="/tags/Universal-reference/" rel="tag"><i class="fa fa-tag"></i> Universal reference</a>
           
-            <a href="/tags/Value-category/" rel="tag"><i class="fa fa-tag"></i> Value category</a>
-          
-            <a href="/tags/Rvalue/" rel="tag"><i class="fa fa-tag"></i> Rvalue</a>
+            <a href="/tags/Rvalue-reference/" rel="tag"><i class="fa fa-tag"></i> Rvalue reference</a>
           
         </div>
       
@@ -575,8 +573,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-22.html" rel="next" title="读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)
+              <a href="/modern-cpp-23.html" rel="next" title="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款23 理解std::move和std::forward)
               </a>
             
           </div>
@@ -584,10 +582,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-24.html" rel="prev" title="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">
-                读薄Effective Modern C++（条款24 区分通用引用和右值引用） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -816,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读薄effective-modern-c-条款23-理解stdmove和stdforward"><span class="nav-number">1.</span> <span class="nav-text">读薄Effective Modern C++ (条款23 理解std::move和std::forward)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读薄effective-modern-c条款24-区分通用引用和右值引用"><span class="nav-number">1.</span> <span class="nav-text">读薄Effective Modern C++（条款24 区分通用引用和右值引用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1005,9 +999,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-23.html';
-        this.page.identifier = 'modern-cpp-23.html';
-        this.page.title = '读薄Effective Modern C++ (条款23 理解std::move和std::forward)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-24.html';
+        this.page.identifier = 'modern-cpp-24.html';
+        this.page.title = '读薄Effective Modern C++（条款24 区分通用引用和右值引用）';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

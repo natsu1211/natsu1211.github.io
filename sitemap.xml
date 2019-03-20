@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://natsu1211.com/modern-cpp-24.html</loc>
+    
+    <lastmod>2019-03-20T16:05:05.728Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-11.html</loc>
+    
+    <lastmod>2019-02-24T13:24:03.667Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://natsu1211.com/modern-cpp-23.html</loc>
     
-    <lastmod>2019-02-20T17:40:47.475Z</lastmod>
+    <lastmod>2019-02-20T18:24:04.398Z</lastmod>
     
   </url>
   
@@ -124,13 +138,6 @@
     <loc>https://natsu1211.com/modern-cpp-12.html</loc>
     
     <lastmod>2019-02-11T09:57:49.416Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://natsu1211.com/modern-cpp-11.html</loc>
-    
-    <lastmod>2019-02-11T09:57:13.467Z</lastmod>
     
   </url>
   
