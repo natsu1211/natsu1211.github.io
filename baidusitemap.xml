@@ -4,6 +4,36 @@
 
     
   <url>
+    <loc>https://natsu1211.com/modern-cpp-25.html</loc>
+    <lastmod>2019-06-01T14:31:14.754Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)</title>
+        <pubTime>2019-03-27T15:48:34.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Universal reference</tag>
+         
+        <tag>Rvalue reference</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://natsu1211.com/modern-cpp-24.html</loc>
     <lastmod>2019-03-20T16:17:10.528Z</lastmod>
     <data>

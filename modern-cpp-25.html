@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用） T&amp;amp;&amp;amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;amp;&amp;amp;也可能是一个T的通用引用(Universal reference)。 需要通过T&amp;amp;&amp;amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， template&amp;lt;typenam">
+  <meta name="description" content="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward) 右值引用只能绑定到能够被移动的对象，所以当看到一个右值应用作为函数参数时，你可以也应当对其使用std::move来获得更好的效率。 而条款24告诉我们，通用引用有可能绑定到能够被移动的对象。条款23说明了这是std::forward做的事情， 对右值引用使用std::">
 <meta name="keywords" content="C++,Universal reference,Rvalue reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-24.html">
+<meta property="og:title" content="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-25.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用） T&amp;amp;&amp;amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;amp;&amp;amp;也可能是一个T的通用引用(Universal reference)。 需要通过T&amp;amp;&amp;amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， template&amp;lt;typenam">
+<meta property="og:description" content="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward) 右值引用只能绑定到能够被移动的对象，所以当看到一个右值应用作为函数参数时，你可以也应当对其使用std::move来获得更好的效率。 而条款24告诉我们，通用引用有可能绑定到能够被移动的对象。条款23说明了这是std::forward做的事情， 对右值引用使用std::">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-20T16:17:10.528Z">
+<meta property="og:updated_time" content="2019-06-01T14:31:14.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">
-<meta name="twitter:description" content="读薄Effective Modern C++（条款24 区分通用引用和右值引用） T&amp;amp;&amp;amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;amp;&amp;amp;也可能是一个T的通用引用(Universal reference)。 需要通过T&amp;amp;&amp;amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， template&amp;lt;typenam">
+<meta name="twitter:title" content="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)">
+<meta name="twitter:description" content="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward) 右值引用只能绑定到能够被移动的对象，所以当看到一个右值应用作为函数参数时，你可以也应当对其使用std::move来获得更好的效率。 而条款24告诉我们，通用引用有可能绑定到能够被移动的对象。条款23说明了这是std::forward做的事情， 对右值引用使用std::">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-24.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-25.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++（条款24 区分通用引用和右值引用） | EverSummer</title>
+  <title>读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-24.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-25.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++（条款24 区分通用引用和右值引用）
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2019-02-21 03:23:33" itemprop="dateCreated datePublished" datetime="2019-02-21T03:23:33+09:00">2019-02-21</time>
+              <time title="创建时间：2019-03-28 00:48:34" itemprop="dateCreated datePublished" datetime="2019-03-28T00:48:34+09:00">2019-03-28</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-21 01:17:10" itemprop="dateModified" datetime="2019-03-21T01:17:10+09:00">2019-03-21</time>
+                <time title="修改时间：2019-06-01 23:31:14" itemprop="dateModified" datetime="2019-06-01T23:31:14+09:00">2019-06-01</time>
               
             
           </span>
@@ -444,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-24.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-25.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-24.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-25.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,20 +475,18 @@
       
 
       
-        <h2 id="读薄effective-modern-c条款24-区分通用引用和右值引用">读薄Effective Modern C++（条款24 区分通用引用和右值引用）</h2>
-<p>T&amp;&amp;并不总是代表T的右值引用(Rvalue reference)，T&amp;&amp;也可能是一个T的通用引用(Universal reference)。<br>
-需要通过T&amp;&amp;所出现的语境来判断。 通用引用在两种语境出现。最常见的就是模板函数参数， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; param)</span></span>;        <span class="comment">// param是通用引用</span></span><br></pre></td></tr></table></figure></p>
-<p>第二个语境是auto声明: <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span>&amp;&amp; var2 = var1;       <span class="comment">// var2是通用引用</span></span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>这两种语境有个共同点，就是出现了类型推导。在模板f中，param的类型需要被推导，而在var2的声明中，var2的类型要被推导。 而下面这些代码不用类型推断，所以它们的形式虽然是T&amp;&amp;，但是却是右值引用，</p>
-<p>对于通用引用，类型推断是必需的，并且引用的类型必须是精确的“T&amp;&amp;”, 不能有cv修饰符。</p>
-<p>声明为auto&amp;&amp;的变量都是通用引用，因为既发生了类型推断，又有正确的形式（T&amp;&amp;）。它的使用场景通常是用于lambda表达式的参数， 例如，有一个C++14的lambda来记录调用任意函数执行的所需要的时间， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> timeFuncInvocation = </span><br><span class="line">  [](<span class="keyword">auto</span>&amp;&amp; func, <span class="keyword">auto</span>&amp;&amp;... params)          <span class="comment">// C++14</span></span><br><span class="line">  &#123;</span><br><span class="line">    start timer;</span><br><span class="line">    <span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(func)&gt;(func)(</span><br><span class="line">      <span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...</span><br><span class="line">      );</span><br><span class="line">    stop timer <span class="keyword">and</span> record elapsed time;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></p>
-<p>func是个通用引用，可以绑定任何的可执行对象，不论左值还是右值，而params是通用引用参数包，可以绑定任意数目的任意类型对象。因此timeFuncInvocation可以记录几乎所有的函数执行的所需的时间。</p>
+        <h2 id="读薄effective-modern-c条款25-对右值引用使用stdmove对通用引用使用stdforward">读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)</h2>
+<p>右值引用只能绑定到能够被移动的对象，所以当看到一个右值应用作为函数参数时，你可以也应当对其使用std::move来获得更好的效率。</p>
+<p>而条款24告诉我们，通用引用有可能绑定到能够被移动的对象。条款23说明了这是std::forward做的事情，</p>
+<p>对右值引用使用std::forward会表现出正确的行为，但是源代码会是冗长易错,并且不符合语言习惯的，因此应该避免对右值引用使用std::forward。真正糟糕的是对通用引用使用std::move，因为它移动的对象有可能是个左值，比如局部变量，这将引起调用者难以察觉的bug。 <a id="more"></a> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(T&amp;&amp; newName)</span>  <span class="comment">// newName是个通用引用</span></span></span><br><span class="line"><span class="function">    </span>&#123; name = <span class="built_in">std</span>::move(newName); &#125;  <span class="comment">// 可以编译，不过太糟了！太糟了！</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> name;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;SomeDataStructure&gt; p;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">getWidgetName</span><span class="params">()</span></span>;    <span class="comment">// 工厂函数</span></span><br><span class="line"></span><br><span class="line">Widget w;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> n = getWidgetName();   <span class="comment">// n是局部变量</span></span><br><span class="line"></span><br><span class="line">w.setName(n);    <span class="comment">// 把n移动到w</span></span><br><span class="line"></span><br><span class="line">...             <span class="comment">// 到了这里n的值是未知的</span></span><br></pre></td></tr></table></figure></p>
+<p>虽然可以通过左值和右值进行重载来替代通用引用， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; newName)</span></span></span><br><span class="line"><span class="function">    </span>&#123; name = newName; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>&amp;&amp; newName)</span></span></span><br><span class="line"><span class="function">    </span>&#123; name = <span class="built_in">std</span>::move(newName); &#125; </span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>但是比起通用引用作为参数， 1. 它有更多的源代码要写和维护（用了两个函数替代一个模板函数） 2. 它效率更低。因此w里的name成员变量直接由字符串赋值构造，没有产生std::string临时对象。而在重载的setName版本中，会创建一个临时对象（用const char* 来创建std::string），再把这个临时对象移动到w的成员变量中。因此，调用一次setName需要执行一次std::string的构造函数，和一次std::string的移动赋值运算符函数，还有一次std::string的析构函数。 3. 使用两个重载函数的最严重的问题是这种设计的可扩展性差。如果函数有更多的参数，每个参数都可以是左值或右值，那么重载函数的数量会成几何增加：n个参数需要2^n个重载。另外一些模板函数可以接受无限个参数，每个都可以是左值和右值。比如std::make_shared和std::make_unique。</p>
+<p>最后，不应当对函数内部被返回的局部变量使用std::move,因为它会阻碍编译器进行RVO优化，且不会带来其他任何好处。</p>
 <h2 id="总结">总结</h2>
 <ul>
-<li>如果一个模板函数的参数类型是T&amp;&amp;而T是要被推断类型，或者一个对象使用auto&amp;&amp;声明，那么这个参数或者对象是个通用引用。</li>
-<li>如果类型推断的类型不是精确的T&amp;&amp;，或者不发生类型推断，那么T&amp;&amp;将是右值引用。</li>
-<li>如果用右值初始化通用引用，通用引用相当于右值引用。如果用左值初始化通用引用，通用引用相当于左值引用。</li>
+<li>在最后一次使用右值引用或者通用引用时，对右值引用使用std::move，对通用引用使用std::forward。</li>
+<li>在一个通过值返回的函数中，如果返回的是右值引用对其使用std::move，如果是通用引用则应该使用std::forward）。</li>
+<li>如果局部变量有资格进行返回值优化（RVO），不要对它们使用std::move或std::forward。</li>
 </ul>
 
       
@@ -544,7 +542,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-24.html" title="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">https://natsu1211.com/modern-cpp-24.html</a>
+    <a href="https://natsu1211.com/modern-cpp-25.html" title="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)">https://natsu1211.com/modern-cpp-25.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -574,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-23.html" rel="next" title="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款23 理解std::move和std::forward)
+              <a href="/modern-cpp-24.html" rel="next" title="读薄Effective Modern C++（条款24 区分通用引用和右值引用）">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++（条款24 区分通用引用和右值引用）
               </a>
             
           </div>
@@ -583,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-25.html" rel="prev" title="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)">
-                读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -815,7 +809,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读薄effective-modern-c条款24-区分通用引用和右值引用"><span class="nav-number">1.</span> <span class="nav-text">读薄Effective Modern C++（条款24 区分通用引用和右值引用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读薄effective-modern-c条款25-对右值引用使用stdmove对通用引用使用stdforward"><span class="nav-number">1.</span> <span class="nav-text">读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1004,9 +998,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-24.html';
-        this.page.identifier = 'modern-cpp-24.html';
-        this.page.title = '读薄Effective Modern C++（条款24 区分通用引用和右值引用）';
+        this.page.url = 'https://natsu1211.com/modern-cpp-25.html';
+        this.page.identifier = 'modern-cpp-25.html';
+        this.page.title = '读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
