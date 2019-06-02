@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared std中有三个make函数（std::make_unique, std::make_shared, std::allocate_shared）来帮助我们创建智能指针。它们把任意集合的参数完美转发给动态分配对象的构造函数，然后返回一个指向那对象的智能指针。std::allocate_shared的行">
-<meta name="keywords" content="C++,Smart pointer">
+  <meta name="description" content="读薄Effective Modern C++（条款26 避免对通用引用进行重载) 接受通用引用作为参数的函数是C++最贪婪的函数，它们几乎接收所有类型的参数，从而创建的精确匹配，使得重载决议时用户希望调用的函数无法被匹配到，例如： template&amp;lt;class T&amp;gt;void logAndAdd(T&amp;amp;&amp;amp; name)&amp;#123;    // do log&amp;#125;void">
+<meta name="keywords" content="C++,Universal reference,Rvalue reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-21.html">
+<meta property="og:title" content="读薄Effective Modern C++（条款26 避免对通用引用进行重载)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-26.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared std中有三个make函数（std::make_unique, std::make_shared, std::allocate_shared）来帮助我们创建智能指针。它们把任意集合的参数完美转发给动态分配对象的构造函数，然后返回一个指向那对象的智能指针。std::allocate_shared的行">
+<meta property="og:description" content="读薄Effective Modern C++（条款26 避免对通用引用进行重载) 接受通用引用作为参数的函数是C++最贪婪的函数，它们几乎接收所有类型的参数，从而创建的精确匹配，使得重载决议时用户希望调用的函数无法被匹配到，例如： template&amp;lt;class T&amp;gt;void logAndAdd(T&amp;amp;&amp;amp; name)&amp;#123;    // do log&amp;#125;void">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:10:52.931Z">
+<meta property="og:updated_time" content="2019-06-02T05:55:18.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)">
-<meta name="twitter:description" content="条款21 比起new，更倾向于使用std::make_unique和std::make_shared std中有三个make函数（std::make_unique, std::make_shared, std::allocate_shared）来帮助我们创建智能指针。它们把任意集合的参数完美转发给动态分配对象的构造函数，然后返回一个指向那对象的智能指针。std::allocate_shared的行">
+<meta name="twitter:title" content="读薄Effective Modern C++（条款26 避免对通用引用进行重载)">
+<meta name="twitter:description" content="读薄Effective Modern C++（条款26 避免对通用引用进行重载) 接受通用引用作为参数的函数是C++最贪婪的函数，它们几乎接收所有类型的参数，从而创建的精确匹配，使得重载决议时用户希望调用的函数无法被匹配到，例如： template&amp;lt;class T&amp;gt;void logAndAdd(T&amp;amp;&amp;amp; name)&amp;#123;    // do log&amp;#125;void">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-21.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-26.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared) | EverSummer</title>
+  <title>读薄Effective Modern C++（条款26 避免对通用引用进行重载) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-21.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-26.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++（条款26 避免对通用引用进行重载)
               
             
           </h2>
@@ -381,12 +381,24 @@
                 
               
 
-              <time title="创建时间：2019-02-11 13:56:25 / 修改时间：19:10:52" itemprop="dateCreated datePublished" datetime="2019-02-11T13:56:25+09:00">2019-02-11</time>
+              <time title="创建时间：2019-06-01 23:36:29" itemprop="dateCreated datePublished" datetime="2019-06-01T23:36:29+09:00">2019-06-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-02 14:55:18" itemprop="dateModified" datetime="2019-06-02T14:55:18+09:00">2019-06-02</time>
               
             
           </span>
@@ -432,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-21.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-26.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-21.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-26.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -463,68 +475,23 @@
       
 
       
-        <h2 id="条款21-比起new更倾向于使用stdmake_unique和stdmake_shared">条款21 比起new，更倾向于使用std::make_unique和std::make_shared</h2>
-<p>std中有三个make函数（std::make_unique, std::make_shared, std::allocate_shared）来帮助我们创建智能指针。它们把任意集合的参数完美转发给动态分配对象的构造函数，然后返回一个指向那对象的智能指针。std::allocate_shared的行为与std::make_shared类似，除了它第一个参数是个分配器，指定动态分配对象的方式。</p>
-<p>对比直接通过new来创建智能指针，make系列函数来创建主要有三点优势。</p>
+        <h2 id="读薄effective-modern-c条款26-避免对通用引用进行重载">读薄Effective Modern C++（条款26 避免对通用引用进行重载)</h2>
+<p>接受通用引用作为参数的函数是C++最贪婪的函数，它们几乎接收所有类型的参数，从而创建的精确匹配，使得重载决议时用户希望调用的函数无法被匹配到，例如： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">logAndAdd</span>(<span class="title">T</span>&amp;&amp; <span class="title">name</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">// do log</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndAdd</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> name = nameFromIndex(index);</span><br><span class="line">    logAndAdd(name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">petName</span><span class="params">(<span class="string">"Darla"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">logAndAdd(petName); <span class="comment">//这三个都是使用T&amp;&amp;的重载</span></span><br><span class="line">logAndAdd(<span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">"Persephone"</span>));</span><br><span class="line">logAndAdd(<span class="string">"PattyDog"</span>);</span><br><span class="line"></span><br><span class="line">logAndAdd(<span class="number">22</span>);    <span class="comment">// 使用int重载</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">short</span> nameIndex;</span><br><span class="line">...</span><br><span class="line">logAndAdd(nameIndex); <span class="comment">// 编译错误，因为重载为T&amp;&amp;版本，std::string没有一个接受short类型的构造函数</span></span><br></pre></td></tr></table></figure></p>
+<p>这就是为什么结合重载和通用引用是个糟糕的想法。</p>
+<p>而更糟糕的是使用完美转发的构造函数，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(T&amp;&amp; n)</span>         <span class="comment">// 完美转发构造函数</span></span></span><br><span class="line">    : name(std::forward&lt;T&gt;(n)) &#123;&#125;  // 初始化成员变量</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> idx)</span>   <span class="comment">// 接受int的构造</span></span></span><br><span class="line">    ：name(nameFromIdx(idx)) &#123;&#125;</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Person <span class="title">p</span><span class="params">(<span class="string">"Nancy"</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">cloneOfP</span><span class="params">(p)</span></span>;   <span class="comment">// 从p创建一个新Person，这不能通过编译</span></span><br></pre></td></tr></table></figure>
+<p>cloneOfP被一个非const左值p来进行初始化，实例化之后，Person的代码变成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(Person&amp; n)</span>      <span class="comment">// 从完美转发模板构造实例化而来</span></span></span><br><span class="line">    : name(std::forward&lt;Person&amp;&gt;(n)) &#123;&#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line"></span><br><span class="line">    Person(<span class="keyword">const</span> Person&amp; rhs); </span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>调用拷贝构造需要对p添加const才能匹配参数类型，但是调用实例化的模板构造函数却是精确匹配。编译器做了它们应该做的事情：调用更加匹配的函数。因此，“拷贝”一个非const的左值Person，会被完美转发构造函数处理，而不是拷贝构造函数。</p>
+<p>如果我们稍稍改一下代码，让对象拷贝const对象，我们就会得到完全不一样结果： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> Person <span class="title">cp</span><span class="params">(<span class="string">"Nancy"</span>)</span></span>;  <span class="comment">// 对象是const的</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">cloneOfP</span><span class="params">(cp)</span></span>;      <span class="comment">// 调用拷贝构造</span></span><br></pre></td></tr></table></figure></p>
+<p>因为对象拷贝的对象是const的，它会精确匹配拷贝构造函数。模板化构造函数可以实例化出一样的签名， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="keyword">const</span> Person&amp; n)</span></span>;    <span class="comment">// 实例化的模板构造函数</span></span><br><span class="line"></span><br><span class="line">    Person(<span class="keyword">const</span> Person&amp; rhs);   <span class="comment">// 编译器生成的拷贝构造函数</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>根据C++的重载决策规则，当一个模板实例化函数和一个普通函数匹配度一样时，优先使用普通函数。</p>
+<p>如果考虑继承，同样会有类似的问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpecialPerson</span> :</span>  <span class="keyword">public</span> Person &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    SpecialPerson(<span class="keyword">const</span> SpecialPerson&amp; rhs)  <span class="comment">// 拷贝构造函数</span></span><br><span class="line">    : Person(rhs)              <span class="comment">// 调用基类的完美转发构造函数</span></span><br><span class="line">    &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">    SpecialPerson(SpecialPerson&amp;&amp; rhs)    <span class="comment">// 移动构造函数</span></span><br><span class="line">    : Person(<span class="built_in">std</span>::move(rhs))   <span class="comment">// 编译错误！调用基类的完美转发构造函数！</span></span><br><span class="line">    &#123; ... &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结：</h2>
 <ul>
-<li>更简洁的代码</li>
-<li>能够保证异常安全</li>
-<li>更高的效率</li>
-</ul>
-<a id="more"></a>
-<p>首先，直接使用new来创建智能指针时需要重复写下对象的类型名称，而make函数则只需要写一次。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">auto upw1(std::make_unique&lt;Widget&gt;());  // 使用make函数</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Widget&gt; upw2(<span class="keyword">new</span> Widget);  <span class="comment">// 不使用make函数</span></span><br><span class="line"></span><br><span class="line">auto spw1(std::make_shared&lt;Widget&gt;());  // 使用make函数</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw2(<span class="keyword">new</span> Widget);  <span class="comment">// 不使用make函数</span></span><br></pre></td></tr></table></figure></p>
-<p>当然这不足以成为决定性的理由。更加重要的是make系列函数能够保证异常安全， 考虑以下代码，假如我们有个函数，根据优先级来处理Widget：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processWidget</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw, <span class="keyword">int</span> priority)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>另外我们有个计算优先级的函数，</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">computePriority</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-<p>然后我们用它和new创建的智能指针作为参数调用processWidget：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">processWidget(<span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt;(<span class="keyword">new</span> Widget), </span><br><span class="line">              computePriority());    <span class="comment">// 可能会资源泄漏</span></span><br></pre></td></tr></table></figure>
-<p>就如注释所说，这代码中new出来的Widget可能会泄漏，但是为什么？std::shared_ptr是为了防止资源泄漏而设计的，当最后一个指向资源的std::shared_ptr对象消失，它们指向的资源也会被销毁。如果每个人无论什么地方都使用std::shared_ptr，C++还会发生内存泄漏么？</p>
-<p>原因在于，C++标准规定函数的参数在函数运行前必须被求值，所以调用processWidget时，在processWidget开始前执行会发生以下事情：</p>
-<ol type="1">
-<li>表达式“new Widget”会被求值，一个Widget对象必须在堆上被创建。</li>
-<li>std::shared_ptr的接收原生指针的构造函数一定要执行。</li>
-<li>computePriority一定要执行。</li>
-</ol>
-<p>编译器在生成代码时不会保证上面的执行顺序，“new Widget”一定会在std::shared_ptr构造函数之前执行，因为构造函数需要new的结果，但是computePriority可能在它们之前就被调用了，可能在它们之后，也可能在它们之间。所以，编译器生成代码的执行顺序有可能是这样的：</p>
-<ol type="1">
-<li>执行“new Widget”。</li>
-<li>执行computePriority。</li>
-<li>执行std::shared_ptr的构造函数。</li>
-</ol>
-<p>如果生成的代码真的是这样，那么在运行时，如果computePriority产生了异常，步骤1中动态分配的Widget就泄漏了，因为它没有被步骤3中的std::shared_ptr保存。</p>
-<p>使用std::make_shared_ptr可以避免这问题。这样调用代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">processWidget(<span class="built_in">std</span>::make_shared&lt;Widget&gt;(), computePriority())</span><br></pre></td></tr></table></figure>
-<p>在运行期间，std::make_shared和computePriority都有可能先被调用，如果先调用的是std::make_shared，那么指向动态分配Widget对象的原生指针会安全地存储在要返回的std::shared_ptr中，然后再调用computePriority。如果computePriority产生异常，std::shared_ptr的析构函数就会销毁持有的Widget。而如果先调用的是computePriority，并且产生异常，std::make_shared就不会被执行，因此没有动态分配的Widget对象需要担心。</p>
-<p>这里的要点在于make函数保证了智能指针的初始化与对象内存的动态分配在同一个表达式中运行。<br>
-另外，以上的说明对std::unique_ptr和std::make_unique同样适用。</p>
-<p>最后，使用std::make_shared允许编译器生成更小、更快的代码。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw(<span class="keyword">new</span> Widget); <span class="comment">//两次内存分配</span></span><br><span class="line"><span class="keyword">auto</span> spw = <span class="built_in">std</span>::make_shared&lt;Widget&gt;();   <span class="comment">//一次内存分配</span></span><br></pre></td></tr></table></figure>
-<p>条款19说明了每个std::shared_ptr内都含有一个指向控制块的指针，这控制块的内存是由std::shared_ptr的构造函数分配的，那么直接使用new，需要为Widget分配一次内存，还需要为控制块分配一次内存。而使用std::make_shared的时候，会分配一大块内存来同时持有Widget对象和控制块。这种优化减少了程序的静态尺寸，因为代码只需要调用一次内存分配函数，然后它增加了代码执行的速度。这个优势同样存在于std::allocate_shared。</p>
-<p>但是，make系列函数也有他们自身的限制。</p>
-<ol type="1">
-<li>不可以指定自定义删除器</li>
-<li>make函数内，完美转发使用的是圆括号。</li>
-</ol>
-<p>这两种情况下应当直接使用各个智能指针的构造函数。</p>
-<p>对于1，如果需要使用自定义删除器，又想要防止容易发生的异常安全问题。最好的办法就是确保当你直接使用new时，用一条语句执行——把new的结果马上传递给智能指针的构造函数，并且该语句就做这一件事。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processWidget</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw, <span class="keyword">int</span> priority)</span></span>; <span class="comment">// 如前</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cusDel</span><span class="params">(Widget *ptr)</span></span>;      <span class="comment">//  自定义删除器</span></span><br><span class="line"></span><br><span class="line">processWidget(                 <span class="comment">// 如前，资源可能泄漏</span></span><br><span class="line">   <span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt;(<span class="keyword">new</span> Widget, cusDel),</span><br><span class="line">   computePriority()</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw(<span class="keyword">new</span> Widget, cusDel);</span><br><span class="line">processWidget(spw, computeWidget);  <span class="comment">// 正确，但不是最佳，因为spw是个左值，会进行拷贝构造</span></span><br><span class="line"></span><br><span class="line">processWidget(<span class="built_in">std</span>::move(spw), computePriority());  <span class="comment">// 将spw转换为右值，得到与非异常安全版本一样的效率。因为对于std::shared_ptr来说，移动构造不需要像拷贝构造一样进行昂贵的引用计数增加操作。</span></span><br></pre></td></tr></table></figure>
-<p>对于2，可以借助auto来进行类型推导，从而创建一个std::initializer_list，</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建 std::initializer_list</span></span><br><span class="line"><span class="keyword">auto</span> initList = &#123;<span class="number">10</span>, <span class="number">20</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用std::initializer_list创建std::vector，容器中只有两个元素</span></span><br><span class="line"><span class="keyword">auto</span> spv = <span class="built_in">std</span>::make_shared&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;(initList);</span><br></pre></td></tr></table></figure>
-<p>对于std::make_unique来说，上面就是故事的全部了，但是对于std::make_shared来说，还有一些边缘情况值得知道。</p>
-<ol start="3" type="1">
-<li>一些类重定义了自己的new和delete操作符函数，这些函数的出现暗示着常规的全局内存分配和回收不适合这种类型的对象。通常情况下，设计这些函数只有为了精确分配和销毁对象，例如，Widget对象的new和delete操作符是为了精确分配和回收大小为sizeof(Widget)的内存块设计的。这两个函数不适合std::shared_ptr的自定义分配（借助std::allocate_shared）和回收（借助自定义删除器），因为std::allocate_shared请求内存的大小不是对象的尺寸，而是对象尺寸加上控制块尺寸。所以，使用make函数为那些自定义了new和delete操作符的类创建对象通常是个糟糕的想法。</li>
-<li>正如之前提到的，std::make_shared所创建的std::shared_ptr的控制块与它管理的对象放在同一块内存。当引用计数为0时，对象被销毁，但是，它使用的内存不会释放，除非控制块也被销毁。但是，只要有std::weak_ptr指向控制块（weak count大于0），控制块就必须继续存在，而只要控制块存在，容纳它的内存快也就不能被释放。也就是说，通过make函数创建对象所分配的内存，要直到最后一个指向它的std::shared_ptr和std::weak_ptr对象销毁，才能被回收。如果对象的类型非常大，并且最后一个std::shared_ptr销毁和最后一个std::weak_ptr销毁之间的时间间隔很大，那么是对象销毁和内存被回收之间的会有延迟，这在某些内存紧张的系统上可能会造成问题。而直接使用new来创建智能指针就不会有这种问题，因为控制块的内存和对象自身的内存是分开的。</li>
-</ol>
-<h2 id="总结">总结</h2>
-<ul>
-<li>相比于直接使用new，make函数更加简洁，更加异常安全，而且std::make_shared和std::allocate_shared生成的代码更小更快。</li>
-<li>不适合使用make函数的场合包括需要指定自定义删除器和想要传递大括号初始值。</li>
-<li>对于std::shared_ptr，使用make函数可能是不明智的额外场合包括
-<ul>
-<li>自定义内存管理函数的类</li>
-<li>内存紧张的系统中，对象非常大，并且std::weak_ptr生命周期长于std::shared_ptr。</li>
-</ul></li>
+<li>对通用引用进行重载几乎总是会导致通用引用版本被调用。</li>
+<li>完美转发构造函数应当尽量避免，因为在接受非const左值作为参数时，它们通常比拷贝构造匹配度高，它们还能劫持派生类调用的基类的拷贝及移动构造。</li>
 </ul>
 
       
@@ -580,7 +547,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-21.html" title="读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)">https://natsu1211.com/modern-cpp-21.html</a>
+    <a href="https://natsu1211.com/modern-cpp-26.html" title="读薄Effective Modern C++（条款26 避免对通用引用进行重载)">https://natsu1211.com/modern-cpp-26.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -595,7 +562,9 @@
           
             <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/Smart-pointer/" rel="tag"><i class="fa fa-tag"></i> Smart pointer</a>
+            <a href="/tags/Universal-reference/" rel="tag"><i class="fa fa-tag"></i> Universal reference</a>
+          
+            <a href="/tags/Rvalue-reference/" rel="tag"><i class="fa fa-tag"></i> Rvalue reference</a>
           
         </div>
       
@@ -608,8 +577,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-20.html" rel="next" title="读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)
+              <a href="/modern-cpp-25.html" rel="next" title="读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)
               </a>
             
           </div>
@@ -617,10 +586,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-22.html" rel="prev" title="读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数)">
-                读薄Effective Modern C++ (条款22 当使用Pimpl Idiom时，在实现文件中定义特殊成员函数) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -849,7 +814,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款21-比起new更倾向于使用stdmake_unique和stdmake_shared"><span class="nav-number">1.</span> <span class="nav-text">条款21 比起new，更倾向于使用std::make_unique和std::make_shared</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读薄effective-modern-c条款26-避免对通用引用进行重载"><span class="nav-number">1.</span> <span class="nav-text">读薄Effective Modern C++（条款26 避免对通用引用进行重载)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结：</span></a></li></ol></div>
             
 
           </div>
@@ -1038,9 +1003,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-21.html';
-        this.page.identifier = 'modern-cpp-21.html';
-        this.page.title = '读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-26.html';
+        this.page.identifier = 'modern-cpp-26.html';
+        this.page.title = '读薄Effective Modern C++（条款26 避免对通用引用进行重载)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

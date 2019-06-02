@@ -338,6 +338,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-26.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="natsu1211">
+      <meta itemprop="description" content="EverSummer">
+      <meta itemprop="image" content="/images/lambda.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EverSummer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/modern-cpp-26.html" itemprop="url">
+                  读薄Effective Modern C++（条款26 避免对通用引用进行重载)
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-01 23:36:29" itemprop="dateCreated datePublished" datetime="2019-06-01T23:36:29+09:00">2019-06-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-02 14:55:18" itemprop="dateModified" datetime="2019-06-02T14:55:18+09:00">2019-06-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/modern-cpp-26.html#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="modern-cpp-26.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="读薄effective-modern-c条款26-避免对通用引用进行重载">读薄Effective Modern C++（条款26 避免对通用引用进行重载)</h2>
+<p>接受通用引用作为参数的函数是C++最贪婪的函数，它们几乎接收所有类型的参数，从而创建的精确匹配，使得重载决议时用户希望调用的函数无法被匹配到，例如： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">logAndAdd</span>(<span class="title">T</span>&amp;&amp; <span class="title">name</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">// do log</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndAdd</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> name = nameFromIndex(index);</span><br><span class="line">    logAndAdd(name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">petName</span><span class="params">(<span class="string">"Darla"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">logAndAdd(petName); <span class="comment">//这三个都是使用T&amp;&amp;的重载</span></span><br><span class="line">logAndAdd(<span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">"Persephone"</span>));</span><br><span class="line">logAndAdd(<span class="string">"PattyDog"</span>);</span><br><span class="line"></span><br><span class="line">logAndAdd(<span class="number">22</span>);    <span class="comment">// 使用int重载</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">short</span> nameIndex;</span><br><span class="line">...</span><br><span class="line">logAndAdd(nameIndex); <span class="comment">// 编译错误，因为重载为T&amp;&amp;版本，std::string没有一个接受short类型的构造函数</span></span><br></pre></td></tr></table></figure></p>
+<p>这就是为什么结合重载和通用引用是个糟糕的想法。</p>
+<p>而更糟糕的是使用完美转发的构造函数，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(T&amp;&amp; n)</span>         <span class="comment">// 完美转发构造函数</span></span></span><br><span class="line">    : name(std::forward&lt;T&gt;(n)) &#123;&#125;  // 初始化成员变量</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> idx)</span>   <span class="comment">// 接受int的构造</span></span></span><br><span class="line">    ：name(nameFromIdx(idx)) &#123;&#125;</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Person <span class="title">p</span><span class="params">(<span class="string">"Nancy"</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">cloneOfP</span><span class="params">(p)</span></span>;   <span class="comment">// 从p创建一个新Person，这不能通过编译</span></span><br></pre></td></tr></table></figure>
+<p>cloneOfP被一个非const左值p来进行初始化，实例化之后，Person的代码变成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(Person&amp; n)</span>      <span class="comment">// 从完美转发模板构造实例化而来</span></span></span><br><span class="line">    : name(std::forward&lt;Person&amp;&gt;(n)) &#123;&#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line"></span><br><span class="line">    Person(<span class="keyword">const</span> Person&amp; rhs); </span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>调用拷贝构造需要对p添加const才能匹配参数类型，但是调用实例化的模板构造函数却是精确匹配。编译器做了它们应该做的事情：调用更加匹配的函数。因此，“拷贝”一个非const的左值Person，会被完美转发构造函数处理，而不是拷贝构造函数。</p>
+<p>如果我们稍稍改一下代码，让对象拷贝const对象，我们就会得到完全不一样结果： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> Person <span class="title">cp</span><span class="params">(<span class="string">"Nancy"</span>)</span></span>;  <span class="comment">// 对象是const的</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">cloneOfP</span><span class="params">(cp)</span></span>;      <span class="comment">// 调用拷贝构造</span></span><br></pre></td></tr></table></figure></p>
+<p>因为对象拷贝的对象是const的，它会精确匹配拷贝构造函数。模板化构造函数可以实例化出一样的签名， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="keyword">const</span> Person&amp; n)</span></span>;    <span class="comment">// 实例化的模板构造函数</span></span><br><span class="line"></span><br><span class="line">    Person(<span class="keyword">const</span> Person&amp; rhs);   <span class="comment">// 编译器生成的拷贝构造函数</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>根据C++的重载决策规则，当一个模板实例化函数和一个普通函数匹配度一样时，优先使用普通函数。</p>
+<p>如果考虑继承，同样会有类似的问题， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpecialPerson</span> :</span>  <span class="keyword">public</span> Person &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    SpecialPerson(<span class="keyword">const</span> SpecialPerson&amp; rhs)  <span class="comment">// 拷贝构造函数</span></span><br><span class="line">    : Person(rhs)              <span class="comment">// 调用基类的完美转发构造函数</span></span><br><span class="line">    &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">    SpecialPerson(SpecialPerson&amp;&amp; rhs)    <span class="comment">// 移动构造函数</span></span><br><span class="line">    : Person(<span class="built_in">std</span>::move(rhs))   <span class="comment">// 编译错误！调用基类的完美转发构造函数！</span></span><br><span class="line">    &#123; ... &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结：</h2>
+<ul>
+<li>对通用引用进行重载几乎总是会导致通用引用版本被调用。</li>
+<li>完美转发构造函数应当尽量避免，因为在接受非const左值作为参数时，它们通常比拷贝构造匹配度高，它们还能劫持派生类调用的基类的拷贝及移动构造。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-25.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -401,7 +614,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-01 23:31:14" itemprop="dateModified" datetime="2019-06-01T23:31:14+09:00">2019-06-01</time>
+                <time title="修改时间：2019-06-02 00:16:49" itemprop="dateModified" datetime="2019-06-02T00:16:49+09:00">2019-06-02</time>
               
             
           </span>
@@ -2150,207 +2363,6 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-16.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="natsu1211">
-      <meta itemprop="description" content="EverSummer">
-      <meta itemprop="image" content="/images/lambda.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EverSummer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/modern-cpp-16.html" itemprop="url">
-                  读薄Effective Modern C++ (条款16 使const成员函数成为线程安全函数)
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-11 02:04:44" itemprop="dateCreated datePublished" datetime="2019-01-11T02:04:44+09:00">2019-01-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-11 19:01:43" itemprop="dateModified" datetime="2019-02-11T19:01:43+09:00">2019-02-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/modern-cpp-16.html#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-16.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="条款16-使const成员函数成为线程安全函数">条款16 使const成员函数成为线程安全函数</h2>
-<p>假如我们在数学领域工作，我们很可能会需要一个表示多项式的类，一个计算多项式的根（零点）的函数是很有必要的，也就是求多项式等于0时各个因子的值。这个函数不会改变多项式，所以我们把它声明为const： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Polynomial</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">using</span> RootsType =            <span class="comment">// 该数据结构存储</span></span><br><span class="line">      <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt;;       <span class="comment">// 多项式的根</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="function">RootsType <span class="title">roots</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/modern-cpp-16.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2402,7 +2414,7 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

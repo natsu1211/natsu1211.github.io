@@ -4,8 +4,38 @@
 
     
   <url>
+    <loc>https://natsu1211.com/modern-cpp-26.html</loc>
+    <lastmod>2019-06-02T05:55:18.150Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款26 避免对通用引用进行重载)</title>
+        <pubTime>2019-06-01T14:36:29.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Universal reference</tag>
+         
+        <tag>Rvalue reference</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://natsu1211.com/modern-cpp-25.html</loc>
-    <lastmod>2019-06-01T14:31:14.754Z</lastmod>
+    <lastmod>2019-06-01T15:16:49.784Z</lastmod>
     <data>
         <display>
         <title>读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)</title>
