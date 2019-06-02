@@ -21,7 +21,7 @@ categories:
 class Widget {
 public:
     template<typename T>
-    void setName(T&& newName)  // newName是个通用引用
+    void setName(T&& newName)       // newName是个通用引用
     { name = std::move(newName); }  // 可以编译，不过太糟了！太糟了！
     ...
 
@@ -30,13 +30,13 @@ private:
     std::shared_ptr<SomeDataStructure> p;
 };
 
-std::string getWidgetName();    // 工厂函数
+std::string getWidgetName(); // 工厂函数
 
 Widget w;
 
-auto n = getWidgetName();   // n是局部变量
+auto n = getWidgetName(); // n是局部变量
 
-w.setName(n);    // 把n移动到w
+w.setName(n); // 把n移动到w
 
 ...             // 到了这里n的值是未知的
 ```
@@ -55,8 +55,11 @@ public:
 ```
 
 但是比起通用引用作为参数，
+
 1. 它有更多的源代码要写和维护（用了两个函数替代一个模板函数）
+
 2. 它效率更低。因此w里的name成员变量直接由字符串赋值构造，没有产生std::string临时对象。而在重载的setName版本中，会创建一个临时对象（用const char* 来创建std::string），再把这个临时对象移动到w的成员变量中。因此，调用一次setName需要执行一次std::string的构造函数，和一次std::string的移动赋值运算符函数，还有一次std::string的析构函数。
+
 3. 使用两个重载函数的最严重的问题是这种设计的可扩展性差。如果函数有更多的参数，每个参数都可以是左值或右值，那么重载函数的数量会成几何增加：n个参数需要2^n个重载。另外一些模板函数可以接受无限个参数，每个都可以是左值和右值。比如std::make_shared和std::make_unique。
 
 最后，不应当对函数内部被返回的局部变量使用std::move,因为它会阻碍编译器进行RVO优化，且不会带来其他任何好处。
