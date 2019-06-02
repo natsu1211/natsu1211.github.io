@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款2 理解auto类型推导（p18-p23） auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。">
-<meta name="keywords" content="C++,Type inference">
+  <meta name="description" content="条款27 熟悉替代重载通用引用的方法 条款26解释了对通用引用进行重载会导致很多问题，不过也展示了这种重载有用的地方，该条款探索如何获得我们期望的行为，包括通过设计避免对通用引用进行重载，以及使用通用引用重载时约束它们能够匹配的参数类型。">
+<meta name="keywords" content="C++,Universal reference,Rvalue reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款2 理解auto类型推导)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-2.html">
+<meta property="og:title" content="读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-27.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款2 理解auto类型推导（p18-p23） auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。">
+<meta property="og:description" content="条款27 熟悉替代重载通用引用的方法 条款26解释了对通用引用进行重载会导致很多问题，不过也展示了这种重载有用的地方，该条款探索如何获得我们期望的行为，包括通过设计避免对通用引用进行重载，以及使用通用引用重载时约束它们能够匹配的参数类型。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:09:58.874Z">
+<meta property="og:updated_time" content="2019-06-02T16:41:02.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款2 理解auto类型推导)">
-<meta name="twitter:description" content="条款2 理解auto类型推导（p18-p23） auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。">
+<meta name="twitter:title" content="读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)">
+<meta name="twitter:description" content="条款27 熟悉替代重载通用引用的方法 条款26解释了对通用引用进行重载会导致很多问题，不过也展示了这种重载有用的地方，该条款探索如何获得我们期望的行为，包括通过设计避免对通用引用进行重载，以及使用通用引用重载时约束它们能够匹配的参数类型。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-2.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-27.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款2 理解auto类型推导) | EverSummer</title>
+  <title>读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-2.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-27.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款2 理解auto类型推导)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-08-29 01:07:46" itemprop="dateCreated datePublished" datetime="2018-08-29T01:07:46+09:00">2018-08-29</time>
+              <time title="创建时间：2019-06-02 15:40:28" itemprop="dateCreated datePublished" datetime="2019-06-02T15:40:28+09:00">2019-06-02</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-11 19:09:58" itemprop="dateModified" datetime="2019-02-11T19:09:58+09:00">2019-02-11</time>
+                <time title="修改时间：2019-06-03 01:41:02" itemprop="dateModified" datetime="2019-06-03T01:41:02+09:00">2019-06-03</time>
               
             
           </span>
@@ -444,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-2.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-27.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-2.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-27.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,26 +475,22 @@
       
 
       
-        <h2 id="条款2-理解auto类型推导p18-p23">条款2 理解auto类型推导（p18-p23）</h2>
-<p>auto类型推导的规则本质就是模板类型推导，除了一种特殊情况。 auto类型推导和模板类型推导之间存在着直接的对应关系。可以想象编译器为auto语句生成了对应的模板函数，并采用Item1介绍的规则对类型进行推导。</p>
+        <h2 id="条款27-熟悉替代重载通用引用的方法">条款27 熟悉替代重载通用引用的方法</h2>
+<p>条款26解释了对通用引用进行重载会导致很多问题，不过也展示了这种重载有用的地方，该条款探索如何获得我们期望的行为，包括通过设计避免对通用引用进行重载，以及使用通用引用重载时约束它们能够匹配的参数类型。</p>
 <a id="more"></a>
-<p>具体的对应规则如下， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> x = <span class="number">27</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> cx = x;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span>&amp; rx = x;</span><br></pre></td></tr></table></figure></p>
-<p>对应 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                <span class="comment">// 推导x的类型的</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func_for_x</span><span class="params">(T param)</span></span>;           <span class="comment">// 概念上的模板</span></span><br><span class="line"></span><br><span class="line">func_for_x(<span class="number">27</span>);                     <span class="comment">// 概念上的调用：</span></span><br><span class="line">                                    <span class="comment">// param的类型就是x的类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func_for_cx</span><span class="params">(<span class="keyword">const</span> T param)</span></span>;    <span class="comment">// 推导cx的概念上的模板</span></span><br><span class="line"></span><br><span class="line">func_for_cx(x);                     <span class="comment">// 概念调用：param的推导类型就是cx的类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func_for_rx</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span>;   <span class="comment">// 推导rx概念上的模板</span></span><br><span class="line"></span><br><span class="line">func_for_rx(x);                     <span class="comment">// 概念调用：param的推导类型就是rx的类型</span></span><br></pre></td></tr></table></figure></p>
-<p>特殊情况：<br>
-使用C++11新加入的统一初始化时， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> x3 = &#123;<span class="number">27</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> x4&#123; <span class="number">27</span> &#125;;</span><br></pre></td></tr></table></figure></p>
-<p>相当于声明了一个类型为std::intializer_list<int>的变量，这个变量包含了一个单一的元素27。</int></p>
-<p>对待花括号初始化的行为是auto唯一和模板类型推导不一样的地方。当auto声明变量被使用一对花括号初始化，推导的类型是std::intializer_list的一个实例。但是如果相同的初始化递给相同的模板，类型推导会失败，代码不能编译。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> x = &#123; <span class="number">11</span>, <span class="number">23</span>, <span class="number">9</span> &#125;;             <span class="comment">// x的类型是</span></span><br><span class="line">                                    <span class="comment">// std::initializer_list&lt;int&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                <span class="comment">// 和x的声明等价的</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T param)</span></span>;                    <span class="comment">// 模板</span></span><br><span class="line"></span><br><span class="line">f(&#123; <span class="number">11</span>, <span class="number">23</span>, <span class="number">9</span> &#125;);                   <span class="comment">// 错误的！没办法推导T的类型</span></span><br></pre></td></tr></table></figure></p>
-<p>但是，如果你明确模板的param的类型是一个不知道T类型的std::initializer_list<t>： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;T&gt; initList)</span></span>;</span><br><span class="line"></span><br><span class="line">f(&#123; <span class="number">11</span>, <span class="number">23</span>, <span class="number">9</span> &#125;);                   <span class="comment">// T被推导成int，initList的</span></span><br><span class="line">                                    <span class="comment">// 类型是std::initializer_list&lt;int&gt;</span></span><br></pre></td></tr></table></figure></t></p>
-<p>所以auto和模板类型推导的本质区别就是auto假设花括号初始化代表的是std::initializer_list，但是模板类型推导却不是。</p>
-<p>对于C++11，这就是auto类型推导规则的全部了。但是对于C++14来说，故事还要继续。C++14允许auto表示推导的函数返回值（参看Item3），而且C++14的lambda可能会在参数声明里面使用auto。但是，这里的auto的规则是模板的类型推导，而不是auto的类型推导。所以一个使用auto声明的返回值的函数，返回一个花括号初始化就无法编译。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">createInitList</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;             <span class="comment">// 编译错误：不能推导出&#123; 1, 2, 3 &#125;的类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在C++14的lambda里面，当auto用在参数类型声明的时候也是如此：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="keyword">auto</span> resetV =  [&amp;v](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; newValue) &#123; v = newValue; &#125;    <span class="comment">// C++14</span></span><br><span class="line">resetV(&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;);                <span class="comment">// 编译错误，不能推导出&#123; 1, 2, 3 &#125;的类型</span></span><br></pre></td></tr></table></figure>
-<h4 id="总结">总结</h4>
+<p>几个可能的选项是:</p>
+<ol type="1">
+<li><p>放弃重载 这个方案不太可行，因为构造函数的名称是固定的，另外我们也不愿意放弃重载带来的便利。</p></li>
+<li><p>通过const T&amp;传递参数 放弃一些效率来保持代码的简单也是值得考虑的。</p></li>
+<li><p>通过值语义传递参数 往往直接传值高性能却不用增加复杂性的方法是，用值参数替换引用参数。这种设计遵顼条款41的建议，当你知道参数会被拷贝的时候，考虑直接以值传递对象。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> n)</span>  <span class="comment">// 替换 T&amp;&amp; 构造函数</span></span></span><br><span class="line">    : name(std::move(n)) &#123;&#125;    // 使用std::move</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> idx)</span>        <span class="comment">// 和以前一样</span></span></span><br><span class="line">    : name(nameFromIdx(idx)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>使用tag dispatch tag dispatch是泛型代码写作中的常用技术，它在额外模板类型变量，用于控制重载。 tag dispatch的重点是存在一个使用通用引用作为参数但是未重载的函数作为用户的API，这个函数把工作调度到不同的实现函数。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndAdd</span><span class="params">(T&amp;&amp; name)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    logAndAddImpl(</span><br><span class="line">      <span class="built_in">std</span>::forward&lt;T&gt;(name),</span><br><span class="line">      <span class="built_in">std</span>::is_integral&lt;<span class="keyword">typename</span> <span class="built_in">std</span>::remove_reference&lt;T&gt;::type&gt;()</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndAddImpl</span><span class="params">(T&amp;&amp; name, <span class="built_in">std</span>::false_type)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> now = <span class="built_in">std</span>::chrono::system_clock::now();</span><br><span class="line">    <span class="built_in">log</span>(now, <span class="string">"logAndAdd"</span>);</span><br><span class="line">    names.emplace(<span class="built_in">std</span>::forward&lt;T&gt;(name));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">nameFromIndx</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;     <span class="comment">// 和条款26一样</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">logAndAddImpl</span><span class="params">(<span class="keyword">int</span> idx, <span class="built_in">std</span>::true_type)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    logAndAdd(nameFromIdx(idx);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>约束接受通用引用的模板 tag dispatch并不能避免编译器生成的拷贝构造及移动构造被劫持的问题。这里我们需要使用std::enable_if来限制模板的实例化，std::enable_if的基础是SAFINE。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">template</span>&lt;</span><br><span class="line">      <span class="keyword">typename</span> T,</span><br><span class="line">      <span class="keyword">typename</span> = <span class="built_in">std</span>::<span class="keyword">enable_if_t</span>&lt;</span><br><span class="line">        !<span class="built_in">std</span>::is_base_of&lt;Person, <span class="built_in">std</span>::<span class="keyword">decay_t</span>&lt;T&gt;&gt;::value</span><br><span class="line">        &amp;&amp;</span><br><span class="line">        !<span class="built_in">std</span>::is_integral&lt;<span class="built_in">std</span>::<span class="keyword">remove_reference_t</span>&lt;T&gt;&gt;::value</span><br><span class="line">      &gt;</span><br><span class="line">    &gt;</span><br><span class="line">    <span class="keyword">explicit</span> Person(T&amp;&amp; n)       <span class="comment">// 接受std::string类型</span></span><br><span class="line">    : name(<span class="built_in">std</span>::forward&lt;T&gt;(n))   <span class="comment">// 和 可以转换为string的参数的构造函数</span></span><br><span class="line">    &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">explicit</span> Person(<span class="keyword">int</span> idx)     <span class="comment">// 接受整型参数的构造函数</span></span><br><span class="line">    : name(nameFromIdx(idx))</span><br><span class="line">    &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">    ...    <span class="comment">// 拷贝和移动构造， 等等</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<h2 id="总结">总结</h2>
 <ul>
-<li>auto类型推导通常和模板类型推导类似，但是auto类型推导假定花括号初始化代表的类型是std::initializer_list，但是模板类型推导却不是这样。<br>
-</li>
-<li>auto在函数返回值或者lambda参数里面执行模板的类型推导，而不是通常意义的auto类型推导</li>
+<li>替代通用引用和重载的方法包括使用有区别的函数名（不重载）、以lvalue-reference-to-const形式传递参数、以值语义传递参数和使用tag dispatch。</li>
+<li>借助std::enable_if限制模板通用引用和重载能够同时使用。</li>
+<li>通用引用参数一般有性能优势，但它们更加难以使用。</li>
 </ul>
 
       
@@ -550,7 +546,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-2.html" title="读薄Effective Modern C++ (条款2 理解auto类型推导)">https://natsu1211.com/modern-cpp-2.html</a>
+    <a href="https://natsu1211.com/modern-cpp-27.html" title="读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)">https://natsu1211.com/modern-cpp-27.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -565,7 +561,9 @@
           
             <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/Type-inference/" rel="tag"><i class="fa fa-tag"></i> Type inference</a>
+            <a href="/tags/Universal-reference/" rel="tag"><i class="fa fa-tag"></i> Universal reference</a>
+          
+            <a href="/tags/Rvalue-reference/" rel="tag"><i class="fa fa-tag"></i> Rvalue reference</a>
           
         </div>
       
@@ -578,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern_cpp-1.html" rel="next" title="读薄Effective Modern C++ (条款1 理解模板类型推导)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款1 理解模板类型推导)
+              <a href="/modern-cpp-26.html" rel="next" title="读薄Effective Modern C++（条款26 避免对通用引用进行重载)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++（条款26 避免对通用引用进行重载)
               </a>
             
           </div>
@@ -587,10 +585,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-3.html" rel="prev" title="读薄Effective Modern C++ (条款3 理解decltype)">
-                读薄Effective Modern C++ (条款3 理解decltype) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -819,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款2-理解auto类型推导p18-p23"><span class="nav-number">1.</span> <span class="nav-text">条款2 理解auto类型推导（p18-p23）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.0.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款27-熟悉替代重载通用引用的方法"><span class="nav-number">1.</span> <span class="nav-text">条款27 熟悉替代重载通用引用的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1008,9 +1002,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-2.html';
-        this.page.identifier = 'modern-cpp-2.html';
-        this.page.title = '读薄Effective Modern C++ (条款2 理解auto类型推导)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-27.html';
+        this.page.identifier = 'modern-cpp-27.html';
+        this.page.title = '读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
