@@ -37,6 +37,7 @@ short nameIndex;
 ...
 logAndAdd(nameIndex); // 编译错误，因为重载为T&&版本，std::string没有一个接受short类型的构造函数
 ```
+<!-- more -->
 
 这就是为什么结合重载和通用引用是个糟糕的想法。
 
