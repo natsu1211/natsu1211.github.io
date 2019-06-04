@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用 std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。 std::weak_ptr通常是由std::shared_ptr创建而来， auto sp">
-<meta name="keywords" content="C++,Smart pointer">
+  <meta name="description" content="条款28 理解引用折叠 尽管C++禁止声明引用的引用，但编译器在模板实例化的过程中可以产生它们。当编译器生成对引用的引用时，随后会发生引用折叠。 引用折叠按照以下规则工作，  如果两个引用中有一个是左值引用，那么折叠的结果是一个左值引用。否则（即两个都是右值引用），折叠的结果是一个右值引用。">
+<meta name="keywords" content="C++,Universal reference,Rvalue reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-20.html">
+<meta property="og:title" content="读薄Effective Modern C++（条款28 理解引用折叠)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-28.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用 std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。 std::weak_ptr通常是由std::shared_ptr创建而来， auto sp">
+<meta property="og:description" content="条款28 理解引用折叠 尽管C++禁止声明引用的引用，但编译器在模板实例化的过程中可以产生它们。当编译器生成对引用的引用时，随后会发生引用折叠。 引用折叠按照以下规则工作，  如果两个引用中有一个是左值引用，那么折叠的结果是一个左值引用。否则（即两个都是右值引用），折叠的结果是一个右值引用。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:10:47.844Z">
+<meta property="og:updated_time" content="2019-06-04T15:50:40.081Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)">
-<meta name="twitter:description" content="条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用 std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。 std::weak_ptr通常是由std::shared_ptr创建而来， auto sp">
+<meta name="twitter:title" content="读薄Effective Modern C++（条款28 理解引用折叠)">
+<meta name="twitter:description" content="条款28 理解引用折叠 尽管C++禁止声明引用的引用，但编译器在模板实例化的过程中可以产生它们。当编译器生成对引用的引用时，随后会发生引用折叠。 引用折叠按照以下规则工作，  如果两个引用中有一个是左值引用，那么折叠的结果是一个左值引用。否则（即两个都是右值引用），折叠的结果是一个右值引用。">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-20.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-28.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源) | EverSummer</title>
+  <title>读薄Effective Modern C++（条款28 理解引用折叠) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-20.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-28.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++（条款28 理解引用折叠)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2019-02-02 17:55:24" itemprop="dateCreated datePublished" datetime="2019-02-02T17:55:24+09:00">2019-02-02</time>
+              <time title="创建时间：2019-06-03 01:49:30" itemprop="dateCreated datePublished" datetime="2019-06-03T01:49:30+09:00">2019-06-03</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-11 19:10:47" itemprop="dateModified" datetime="2019-02-11T19:10:47+09:00">2019-02-11</time>
+                <time title="修改时间：2019-06-05 00:50:40" itemprop="dateModified" datetime="2019-06-05T00:50:40+09:00">2019-06-05</time>
               
             
           </span>
@@ -444,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-20.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-28.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-20.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-28.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,25 +475,28 @@
       
 
       
-        <h2 id="条款20-把stdweak_ptr当作类似stdshared_ptr的可空悬指针使用">条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用</h2>
-<p>std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。</p>
-<p>std::weak_ptr通常是由std::shared_ptr创建而来， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> spw = <span class="built_in">std</span>::make_shared&lt;Widget&gt;();  <span class="comment">// spw是std::shared_ptr&lt;Widget&gt;</span></span><br><span class="line">                                        <span class="comment">// 引用计数为1</span></span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::weak_ptr&lt;Widget&gt; wpw(spw);         <span class="comment">// wpw指向spw指向的Widget，引用计数仍然为1</span></span><br><span class="line">...</span><br><span class="line">spw = <span class="literal">nullptr</span>;                          <span class="comment">// 引用计数变成0，Widget被销毁，wpw现在变成空悬指针</span></span><br></pre></td></tr></table></figure></p>
-<p>空悬的std::weak_ptr被称作是已经过期（expired）的，你可以直接检查它，<br>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (wpw.expired()) ... <span class="comment">// 如果wpw指向的不是一个对象</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="条款28-理解引用折叠">条款28 理解引用折叠</h2>
+<p>尽管C++禁止声明引用的引用，但编译器在模板实例化的过程中可以产生它们。当编译器生成对引用的引用时，随后会发生引用折叠。</p>
+<p>引用折叠按照以下规则工作，  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">如果两个引用中有一个是左值引用，那么折叠的结果是一个左值引用。否则（即两个都是右值引用），折叠的结果是一个右值引用。</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>不过一般状况是，你去检查std::weak_ptr是否过期，如果没有过期（即不是空悬），就要取得它指向的对象。但是这件事要比想象的困难，因为std::weak_ptr没有解引用操作，所以没有办法写出解引用的代码。就算有这个操作，单独的检查操作和解引用操作会引出一个竞争条件：在调用检查操作和解引用操作之间，另一个线程可能正在重赋值或销毁最后一个指向对象的std::shared_ptr，因此导致对象被销毁，这样解引用会产生未定义行为。</p>
-<p>我们需要的是一个原子操作，检查std::shared_ptr是否过期，没有的话，获得它指向的对象。 你以通过lock函数或是接受std::weak_ptr为参数的std::shared_ptr构造函数来做这件事。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw1 = wpw.lock();  <span class="comment">// 如果wpw过期了，spw1为空</span></span><br><span class="line"><span class="keyword">auto</span> spw2 = wpw.lock();                     <span class="comment">// 效果和上面相同， 不过使用了auto</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;Widget&gt; spw3(wpw);          <span class="comment">// 如果wpw过期，抛出std::bad_weak_ptr</span></span><br></pre></td></tr></table></figure>
-<p>std::weak_ptr的用途主要有，</p>
-<ul>
-<li>用于实现观察者模式。在多数实现中，每个Subject（主题）包含指向Observer(观察者)指针作为成员变量，这让主题在状态改变时很容易通知观察者。主题没有兴趣控制观察者的生命期，但是应当确保如果观察者被销毁，随后主题不会试图使用它。一个合理的设计是让每个主题持有一个元素为std::weak_ptr的容器，std::weak_ptr指向主题的每个观察者，因此主题在使用观察者之前可以查看其是否已经被销毁。</li>
-<li>用于避免循环引用。不过，值得注意的是需要用std::weak_ptr回避循环引用的情况并不常见。在严格分层的数据结构，例如树中，子结点通常只属于父结点，当父结点被销毁，它的子结点也会被销毁。因此通常情况下，父结点指向子结点的指针最好是std::unique_ptr，而子结点指向父结点的指针可以用原生指针安全实现，因为子结点的生命期决不会比父结点长，所以不必担心原生指针会空悬。</li>
-</ul>
-<p>最后，从效率的角度来看，std::weak_ptr的开销和std::shared_ptr差不多。std::weak_ptr对象的大小与std::shared_ptr对象相同，它们使用者与shared_ptr的一样的控制块（看条款19），也带有涉及引用计数操作的构造函数、析构函数、赋值操作。std::weak_ptr管理的是弱引用计数，详细细节看条款21。</p>
+<p>引用折叠也是std::forward能够工作的关键，<br>
+以下是std::forward的略微简略的实现，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;          <span class="comment">// 在命名空间std中</span></span><br><span class="line"><span class="function">T&amp;&amp; <span class="title">forward</span><span class="params">(<span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;T&amp;&amp;&gt;(param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它的关键就在于当传给函数f的是个左值的Widget的时候，T会被推断为Widget&amp;，然后调用std::forward会让它实例化为std::forward&lt;Widget&amp;&gt;, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Widget&amp; &amp;&amp; <span class="title">forward</span><span class="params">(Widget&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;Widget&amp; &amp;&amp;&gt;(param);    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 发生引用折叠</span></span><br><span class="line"><span class="function">Widget&amp; <span class="title">forward</span><span class="params">(Widget&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;Widget&amp;&gt;(param);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>正如以上，当传递左值实参给std::forward，会得到一个左值引用。左值引用也是左值，所以传递一个左值给std::forward，会导致std::forward返回一个左值。</p>
+<p>如果传递的是右值的Widget。在这种情况下，函数f的类型参数T会被推断为Widget， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Widget&amp;&amp; <span class="title">forward</span><span class="params">(Widget&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;Widget&amp;&amp;&gt;(param);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里没有对引用的引用，所以没有进行引用折叠。所以这也就是最终的实例化结果。返回的是右值引用。</p>
+<p>引用折叠出现在四种上下文。<br>
+1. 模板实例化。<br>
+2. auto变量的类型推导。这本质上和模板实例化相同，因为auto变量的类型推导和模板类型推导本质上相同（条款2）。<br>
+3. 使用typedef或using类型别名声明（条款9）。如果在typedef创建或者评估期间，出现了引用的引用，会发生引用折叠。<br>
+4. 使用decltype时。如果在分析decltype的类型期间，出现了引用的引用，会发生引用折叠。（decltype详见条款3)</p>
+<p>简而言之，引用折叠会发生在需要类型推导的时候。</p>
 <h2 id="总结">总结</h2>
 <ul>
-<li>把std::weak_ptr当作类似std::shared_ptr的、可空悬的指针使用</li>
-<li>std::weak_ptr的潜在用途包含缓存，观察者链表，防止std::shared_ptr循环</li>
+<li>引用折叠会出现在4中上下文：模板实例化，auto类型生成，typedef和类型别名声明的创建和使用，decltype。</li>
+<li>当编译器在一个引用折叠上下文中生成了对于引用的引用时，结果会变折叠成单一引用。如果原来的引用中只要有一个是左值引用，结果就是左值引用。否则，结果是右值引用。</li>
+<li>通用引用本质是出现在引用折叠的上下文中的右值引用。</li>
 </ul>
 
       
@@ -549,7 +552,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-20.html" title="读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)">https://natsu1211.com/modern-cpp-20.html</a>
+    <a href="https://natsu1211.com/modern-cpp-28.html" title="读薄Effective Modern C++（条款28 理解引用折叠)">https://natsu1211.com/modern-cpp-28.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -564,7 +567,9 @@
           
             <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/Smart-pointer/" rel="tag"><i class="fa fa-tag"></i> Smart pointer</a>
+            <a href="/tags/Universal-reference/" rel="tag"><i class="fa fa-tag"></i> Universal reference</a>
+          
+            <a href="/tags/Rvalue-reference/" rel="tag"><i class="fa fa-tag"></i> Rvalue reference</a>
           
         </div>
       
@@ -577,8 +582,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-19.html" rel="next" title="读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)
+              <a href="/modern-cpp-27.html" rel="next" title="读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)
               </a>
             
           </div>
@@ -586,10 +591,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-21.html" rel="prev" title="读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared)">
-                读薄Effective Modern C++ (条款21 比起new，更倾向于使用std::make_unique和std::make_shared) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -818,7 +819,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款20-把stdweak_ptr当作类似stdshared_ptr的可空悬指针使用"><span class="nav-number">1.</span> <span class="nav-text">条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款28-理解引用折叠"><span class="nav-number">1.</span> <span class="nav-text">条款28 理解引用折叠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1007,9 +1008,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-20.html';
-        this.page.identifier = 'modern-cpp-20.html';
-        this.page.title = '读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-28.html';
+        this.page.identifier = 'modern-cpp-28.html';
+        this.page.title = '读薄Effective Modern C++（条款28 理解引用折叠)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

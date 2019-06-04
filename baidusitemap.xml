@@ -4,6 +4,36 @@
 
     
   <url>
+    <loc>https://natsu1211.com/modern-cpp-28.html</loc>
+    <lastmod>2019-06-04T15:50:40.081Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款28 理解引用折叠)</title>
+        <pubTime>2019-06-02T16:49:30.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Universal reference</tag>
+         
+        <tag>Rvalue reference</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://natsu1211.com/modern-cpp-27.html</loc>
     <lastmod>2019-06-02T16:41:02.720Z</lastmod>
     <data>

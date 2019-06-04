@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://natsu1211.com/"/>
-  <updated>2019-06-02T16:41:02.720Z</updated>
+  <updated>2019-06-04T15:50:40.081Z</updated>
   <id>https://natsu1211.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读薄Effective Modern C++（条款28 理解引用折叠)</title>
+    <link href="https://natsu1211.com/modern-cpp-28.html"/>
+    <id>https://natsu1211.com/modern-cpp-28.html</id>
+    <published>2019-06-02T16:49:30.000Z</published>
+    <updated>2019-06-04T15:50:40.081Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="条款28-理解引用折叠">条款28 理解引用折叠</h2><p>尽管C++禁止声明引用的引用，但编译器在模板实例化的过程中可以产生它们。当编译器生成对引用的引用时，随后会发生引用折叠。</p><p>引用折叠按照以下规则工作，  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">如果两个引用中有一个是左值引用，那么折叠的结果是一个左值引用。否则（即两个都是右值引用），折叠的结果是一个右值引用。</span><br></pre></td></tr></table></figure></p><a id="more"></a><p>引用折叠也是std::forward能够工作的关键，<br>以下是std::forward的略微简略的实现，</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;          <span class="comment">// 在命名空间std中</span></span><br><span class="line"><span class="function">T&amp;&amp; <span class="title">forward</span><span class="params">(<span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;T&amp;&amp;&gt;(param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>它的关键就在于当传给函数f的是个左值的Widget的时候，T会被推断为Widget&amp;，然后调用std::forward会让它实例化为std::forward&lt;Widget&amp;&gt;, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Widget&amp; &amp;&amp; <span class="title">forward</span><span class="params">(Widget&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;Widget&amp; &amp;&amp;&gt;(param);    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 发生引用折叠</span></span><br><span class="line"><span class="function">Widget&amp; <span class="title">forward</span><span class="params">(Widget&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;Widget&amp;&gt;(param);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>正如以上，当传递左值实参给std::forward，会得到一个左值引用。左值引用也是左值，所以传递一个左值给std::forward，会导致std::forward返回一个左值。</p><p>如果传递的是右值的Widget。在这种情况下，函数f的类型参数T会被推断为Widget， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Widget&amp;&amp; <span class="title">forward</span><span class="params">(Widget&amp; param)</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;Widget&amp;&amp;&gt;(param);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>这里没有对引用的引用，所以没有进行引用折叠。所以这也就是最终的实例化结果。返回的是右值引用。</p><p>引用折叠出现在四种上下文。<br>1. 模板实例化。<br>2. auto变量的类型推导。这本质上和模板实例化相同，因为auto变量的类型推导和模板类型推导本质上相同（条款2）。<br>3. 使用typedef或using类型别名声明（条款9）。如果在typedef创建或者评估期间，出现了引用的引用，会发生引用折叠。<br>4. 使用decltype时。如果在分析decltype的类型期间，出现了引用的引用，会发生引用折叠。（decltype详见条款3)</p><p>简而言之，引用折叠会发生在需要类型推导的时候。</p><h2 id="总结">总结</h2><ul><li>引用折叠会出现在4中上下文：模板实例化，auto类型生成，typedef和类型别名声明的创建和使用，decltype。</li><li>当编译器在一个引用折叠上下文中生成了对于引用的引用时，结果会变折叠成单一引用。如果原来的引用中只要有一个是左值引用，结果就是左值引用。否则，结果是右值引用。</li><li>通用引用本质是出现在引用折叠的上下文中的右值引用。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;条款28-理解引用折叠&quot;&gt;条款28 理解引用折叠&lt;/h2&gt;
+&lt;p&gt;尽管C++禁止声明引用的引用，但编译器在模板实例化的过程中可以产生它们。当编译器生成对引用的引用时，随后会发生引用折叠。&lt;/p&gt;
+&lt;p&gt;引用折叠按照以下规则工作，  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;如果两个引用中有一个是左值引用，那么折叠的结果是一个左值引用。否则（即两个都是右值引用），折叠的结果是一个右值引用。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
+    
+      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
+    
+      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
+    
+    
+      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
+    
+      <category term="Universal reference" scheme="https://natsu1211.com/tags/Universal-reference/"/>
+    
+      <category term="Rvalue reference" scheme="https://natsu1211.com/tags/Rvalue-reference/"/>
+    
+  </entry>
   
   <entry>
     <title>读薄Effective Modern C++（条款27 熟悉替代重载通用引用的方法)</title>
@@ -609,36 +641,6 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
       <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
     
       <category term="type alias" scheme="https://natsu1211.com/tags/type-alias/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)</title>
-    <link href="https://natsu1211.com/modern-cpp-8.html"/>
-    <id>https://natsu1211.com/modern-cpp-8.html</id>
-    <published>2018-10-26T15:35:12.000Z</published>
-    <updated>2019-02-11T09:51:02.195Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="条款8-优先使用nullptr而不是0和null">条款8 优先使用nullptr而不是0和NULL</h2><p>使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。</p><p>nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内部定义了转换操作符，可以隐式的转换为所有的原始的指针类型。 <a id="more"></a></p><p>在函数重载决议时，nullptr可以避免错误的类型重载。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span>)</span></span>;  <span class="comment">// 函数f的三个重载</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">bool</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">void</span>*)</span></span>;</span><br><span class="line"></span><br><span class="line">f(<span class="number">0</span>);         <span class="comment">// 调用 f(int)，而非f(void*)</span></span><br><span class="line"></span><br><span class="line">f(<span class="literal">NULL</span>);      <span class="comment">// 可能无法编译，可能调用f(int)</span></span><br><span class="line">              <span class="comment">// 不可能调用 f(void*)</span></span><br><span class="line">f(nulltpr);   <span class="comment">// 调用 f(void*)</span></span><br></pre></td></tr></table></figure></p><p>另外，当你写出以下代码时， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> result = findRecord( <span class="comment">/* arguments */</span>);</span><br><span class="line"><span class="keyword">if</span>(reuslt == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>一眼就能明白result是个指针，这能够增加代码的可读性。</p><h3 id="总结">总结</h3><ul><li>相较于0和NULL，优先使用nullptr</li><li>避免整数类型和指针类型之间的重载</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;条款8-优先使用nullptr而不是0和null&quot;&gt;条款8 优先使用nullptr而不是0和NULL&lt;/h2&gt;
-&lt;p&gt;使用0或者NULL来初始化空指针的最大问题是0是int类型，NULL根据定义可能是int或是long，但是不会是个指针类型。编译器只是勉强将0解释为空指针。&lt;/p&gt;
-&lt;p&gt;nullptr作为C++11中新增的关键字，它的优势是它不再是int类型，而是一个可以表示指向任意类型的指针的类型。nullptr在内部的类型是std::nullptr_t，这是一个模板类，内部定义了转换操作符，可以隐式的转换为所有的原始的指针类型。
-    
-    </summary>
-    
-      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
-    
-      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
-    
-      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
-    
-    
-      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
-    
-      <category term="nullptr" scheme="https://natsu1211.com/tags/nullptr/"/>
     
   </entry>
   
