@@ -338,6 +338,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-29.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="natsu1211">
+      <meta itemprop="description" content="EverSummer">
+      <meta itemprop="image" content="/images/lambda.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EverSummer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/modern-cpp-29.html" itemprop="url">
+                  读薄Effective Modern C++（条款29 假设移动操作是不存在、不廉价、不能用的)
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-05 01:15:55 / 修改时间：03:14:32" itemprop="dateCreated datePublished" datetime="2019-06-05T01:15:55+09:00">2019-06-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/modern-cpp-29.html#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="modern-cpp-29.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="条款29-假设移动操作是不存在不廉价不能用的">条款29 假设移动操作是不存在、不廉价、不能用的</h2>
+<p>对于古老的C++98代码库，移动操作并不总是存在的，因为当你声明了拷贝构造函数或析构函数，编译器就不会帮助自动生成移动构造函数。这时，没有理由期望C++11的性能比C++98好。</p>
+<p>就算一些类型支持移动操作，比起拷贝操作，它们也不一定具有更高效率。比如std::array，不同于其他的标准库容器（将实际内容保存在堆上，容器内部只保持着指向堆的指针）， <img src="https://raw.githubusercontent.com/natsu1211/pics/master/item29-1.png"></p>
+<p>std::array缺少这样的指针，数据直接存储在std::array对象中。因此移动std::array的效率和拷贝无二。 <img src="https://raw.githubusercontent.com/natsu1211/pics/master/item29-2.png"></p>
+<p>因此在下面几种情况下，C++11的移动语义对你没好处：</p>
+<ul>
+<li>没有移动操作。需要被移动的对象拒绝提供移动操作，结果是移动请求会变为拷贝。<br>
+</li>
+<li>移动的速度不快。需要被移动的对象有移动操作，但是不比拷贝效率高。<br>
+</li>
+<li>不能使用移动操作。在一些进行移动操作的上下文中，要求移动操作不能产生异常，但移动操作没有声明为noexcept。<br>
+</li>
+<li>源对象是个左值。只有右值才有可能作为移动操作的源对象，除去极少数例外。</li>
+</ul>
+<p>当然，如果清楚的知道使用的类提供廉价的移动操作，然后使用的对象又处在可以调用移动操作的语境，你可以安全地依赖移动语义，用开销更小的移动操作替换掉拷贝操作。</p>
+<h2 id="总结">总结</h2>
+<ul>
+<li>假设移动操作是不存在、不廉价、不能用的。</li>
+<li>在知道类型或支持移动语义的代码中，不需要这个假设。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-28.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2139,209 +2342,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-19.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="natsu1211">
-      <meta itemprop="description" content="EverSummer">
-      <meta itemprop="image" content="/images/lambda.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EverSummer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/modern-cpp-19.html" itemprop="url">
-                  读薄Effective Modern C++ (条款19 用std::shared_ptr管理共享所有权的资源)
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-27 01:03:55" itemprop="dateCreated datePublished" datetime="2019-01-27T01:03:55+09:00">2019-01-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-11 19:10:39" itemprop="dateModified" datetime="2019-02-11T19:10:39+09:00">2019-02-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/modern-cpp-19.html#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-19.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="条款19-用stdshared_ptr管理共享所有权的资源">条款19 用std::shared_ptr管理共享所有权的资源</h2>
-<p>正如其名, std::shared_ptr用于表达共享所有权语义，也就是说，可以有多个std::shared_ptr指向同一个对象，并且保证在没有std::shared_ptr指向该对象时，对象被正确的释放。</p>
-<p>那么如何知道不再有任何std::shared_ptr指向某个对象/资源呢？答案是引用计数。std::shared_ptr内部除了包含原生指针，还包含一个控制块（的指针），该控制块（一个struct）里有一个整数字段，用于记录有多少std::shared同时指向该对象。<br>
-std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值运算也会。（如果shared_ptr对象sp1和sp2指向不同的对象，那么赋值语句“sp1 = sp2”会导致sp1指向sp2指向的对象。赋值语句还会导致sp1原来指向的对象的引用计数减1，sp2指向的对象的引用计数加1。）如果一个std::shared_ptr在操作引用计数后发现引用计数为0，意味着没有其他的std::shared_ptr指向该资源，便释放资源。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/modern-cpp-19.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2393,7 +2393,7 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

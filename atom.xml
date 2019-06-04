@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://natsu1211.com/"/>
-  <updated>2019-06-04T15:50:40.081Z</updated>
+  <updated>2019-06-04T18:14:32.998Z</updated>
   <id>https://natsu1211.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读薄Effective Modern C++（条款29 假设移动操作是不存在、不廉价、不能用的)</title>
+    <link href="https://natsu1211.com/modern-cpp-29.html"/>
+    <id>https://natsu1211.com/modern-cpp-29.html</id>
+    <published>2019-06-04T16:15:55.000Z</published>
+    <updated>2019-06-04T18:14:32.998Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="条款29-假设移动操作是不存在不廉价不能用的">条款29 假设移动操作是不存在、不廉价、不能用的</h2><p>对于古老的C++98代码库，移动操作并不总是存在的，因为当你声明了拷贝构造函数或析构函数，编译器就不会帮助自动生成移动构造函数。这时，没有理由期望C++11的性能比C++98好。</p><p>就算一些类型支持移动操作，比起拷贝操作，它们也不一定具有更高效率。比如std::array，不同于其他的标准库容器（将实际内容保存在堆上，容器内部只保持着指向堆的指针）， <img src="https://raw.githubusercontent.com/natsu1211/pics/master/item29-1.png"></p><p>std::array缺少这样的指针，数据直接存储在std::array对象中。因此移动std::array的效率和拷贝无二。 <img src="https://raw.githubusercontent.com/natsu1211/pics/master/item29-2.png"></p><p>因此在下面几种情况下，C++11的移动语义对你没好处：</p><ul><li>没有移动操作。需要被移动的对象拒绝提供移动操作，结果是移动请求会变为拷贝。<br></li><li>移动的速度不快。需要被移动的对象有移动操作，但是不比拷贝效率高。<br></li><li>不能使用移动操作。在一些进行移动操作的上下文中，要求移动操作不能产生异常，但移动操作没有声明为noexcept。<br></li><li>源对象是个左值。只有右值才有可能作为移动操作的源对象，除去极少数例外。</li></ul><p>当然，如果清楚的知道使用的类提供廉价的移动操作，然后使用的对象又处在可以调用移动操作的语境，你可以安全地依赖移动语义，用开销更小的移动操作替换掉拷贝操作。</p><h2 id="总结">总结</h2><ul><li>假设移动操作是不存在、不廉价、不能用的。</li><li>在知道类型或支持移动语义的代码中，不需要这个假设。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;条款29-假设移动操作是不存在不廉价不能用的&quot;&gt;条款29 假设移动操作是不存在、不廉价、不能用的&lt;/h2&gt;
+&lt;p&gt;对于古老的C++98代码库，移动操作并不总是存在的，因为当你声明了拷贝构造函数或析构函数，编译器就不会帮助自动生成移动构造函数。这时，没有理由期望C+
+      
+    
+    </summary>
+    
+      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
+    
+      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
+    
+      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
+    
+    
+      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
+    
+      <category term="Universal reference" scheme="https://natsu1211.com/tags/Universal-reference/"/>
+    
+      <category term="Rvalue reference" scheme="https://natsu1211.com/tags/Rvalue-reference/"/>
+    
+  </entry>
   
   <entry>
     <title>读薄Effective Modern C++（条款28 理解引用折叠)</title>
@@ -598,36 +632,6 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
     
       &lt;h2 id=&quot;条款10-优先使用有作用域的enmu而不是无作用域的enum&quot;&gt;条款10 优先使用有作用域的enmu而不是无作用域的enum&lt;/h2&gt;
 &lt;p&gt;一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：
-    
-    </summary>
-    
-      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
-    
-      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
-    
-      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
-    
-    
-      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
-    
-      <category term="type alias" scheme="https://natsu1211.com/tags/type-alias/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)</title>
-    <link href="https://natsu1211.com/modern-cpp-9.html"/>
-    <id>https://natsu1211.com/modern-cpp-9.html</id>
-    <published>2018-10-27T07:15:51.000Z</published>
-    <updated>2019-02-11T09:51:02.932Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="条款9-优先使用别名声明而不是typedef">条款9 优先使用别名声明而不是typedef</h2><p>C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// FP等价于一个函数指针，这个函数的参数是一个int类型和</span></span><br><span class="line"><span class="comment">// std::string常量类型，没有返回值</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*FP)</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;)</span></span>;      <span class="comment">// typedef</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 同上</span></span><br><span class="line"><span class="keyword">using</span> FP = <span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;);     <span class="comment">// 别名声明</span></span><br></pre></td></tr></table></figure></p><p>也许别名声明看起来可读性更好，但是这并不足以成为放弃typedef使用别名声明的决定性理由。别名声明的真正优势并不在这，而在于它能够定义模板别名， <a id="more"></a></p><p>typedef需要新定义一个模板类来模拟实现模板别名功能， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                            </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyAllocList</span> &#123;</span>                            </span><br><span class="line">    <span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt; type;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyAllocList&lt;Widget&gt;::type lw;                   <span class="comment">// 客户代码</span></span><br></pre></td></tr></table></figure></p><p>而使用别名声明则很直接， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typname T&gt;</span><br><span class="line"><span class="keyword">using</span> MyAllocList = <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt;;</span><br><span class="line"></span><br><span class="line">MyAllocList&lt;Widget&gt; lw;                         <span class="comment">// 客户代码</span></span><br></pre></td></tr></table></figure></p><p>特别当你在另一个模板类中使用该类型别名的时候，对比typedef，别名声明语法的优势则显得更加明显， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                            <span class="comment">// Widget&lt;T&gt; 包含</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span>&#123;</span>                                   <span class="comment">// 一个 MyAloocList&lt;T&gt;</span></span><br><span class="line"><span class="keyword">private</span>:                                        <span class="comment">// 作为一个数据成员</span></span><br><span class="line"><span class="keyword">typename</span> MyAllocList&lt;T&gt;::type <span class="built_in">list</span>;</span><br><span class="line">...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>因为无法知道名称MyAllocList<t>::type究竟是一个类型，还是一个变量，所以需要加上typename来明确表明这是一个类型。而别名声明则没有冗余的typename和::type， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typname T&gt;                             </span><br><span class="line"><span class="keyword">using</span> MyAllocList = <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt;;   <span class="comment">// 和以前一样</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">MyAllocList&lt;T&gt; <span class="built_in">list</span>;  <span class="comment">// 编辑器知道MyAllocList&lt;T&gt;一定是一个类型</span></span><br><span class="line">...                                          </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></t></p><p>另外，对于标准库中的type traits，C++11提供的接口都是基于typedef的，而在C++14中都提供了相应更为简洁的别名声明的版本， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::remove_const&lt;T&gt;::type                <span class="comment">// C++11: const T -&gt; T</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">remove_const_t</span>&lt;T&gt;                    <span class="comment">// 等价的C++14</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::remove_reference&lt;T&gt;::type            <span class="comment">// C++11: T&amp;/T&amp;&amp; -&gt; T</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">remove_reference_t</span>&lt;T&gt;                <span class="comment">// 等价的C++14</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::add_lvalue_reference&lt;T&gt;::type        <span class="comment">// C++11: T -&gt; T&amp;</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">add_lvalue_reference_t</span>&lt;T&gt;            <span class="comment">// 等价的C++14</span></span><br></pre></td></tr></table></figure></p><p>它的定义很简单，即使只能用C++11的环境也只需自己简单的定义一下即可， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">remove_const_t</span> = <span class="title">typename</span> <span class="title">remove_const</span>&lt;T&gt;:</span>:type;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">remove_reference_t</span> = <span class="title">typename</span> <span class="title">remove_reference</span>&lt;T&gt;:</span>:type;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">add_lvalue_reference_t</span> = <span class="title">typename</span> <span class="title">add_lvalue_reference</span>&lt;T&gt;:</span>:type;</span><br></pre></td></tr></table></figure></p><h2 id="总结">总结</h2><ul><li>typedef不支持模板化，但是别名声明支持</li><li>模板别名避免了::type后缀，在模板中，typedef还经常需要使用typename前缀</li><li>C++14为C++11中的type traits提供了模板别名</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;条款9-优先使用别名声明而不是typedef&quot;&gt;条款9 优先使用别名声明而不是typedef&lt;/h2&gt;
-&lt;p&gt;C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 &lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// FP等价于一个函数指针，这个函数的参数是一个int类型和&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// std::string常量类型，没有返回值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(*FP)&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;&amp;amp;)&lt;/span&gt;&lt;/span&gt;;      &lt;span class=&quot;comment&quot;&gt;// typedef&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 同上&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; FP = &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; (*)(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;&amp;amp;);     &lt;span class=&quot;comment&quot;&gt;// 别名声明&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;也许别名声明看起来可读性更好，但是这并不足以成为放弃typedef使用别名声明的决定性理由。别名声明的真正优势并不在这，而在于它能够定义模板别名，
     
     </summary>
     
