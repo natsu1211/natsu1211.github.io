@@ -338,6 +338,210 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-20.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="natsu1211">
+      <meta itemprop="description" content="EverSummer">
+      <meta itemprop="image" content="/images/lambda.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EverSummer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/modern-cpp-20.html" itemprop="url">
+                  读薄Effective Modern C++ (条款20 用std::shared_ptr管理共享所有权的资源)
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-02 17:55:24" itemprop="dateCreated datePublished" datetime="2019-02-02T17:55:24+09:00">2019-02-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-11 19:10:47" itemprop="dateModified" datetime="2019-02-11T19:10:47+09:00">2019-02-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/modern-cpp-20.html#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="modern-cpp-20.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="条款20-把stdweak_ptr当作类似stdshared_ptr的可空悬指针使用">条款20 把std::weak_ptr当作类似std::shared_ptr的可空悬指针使用</h2>
+<p>std::weak_ptr是用于表示弱引用的智能指针。std::weak_ptr不是一个单独使用的智能指针，它要和std::shared_ptr搭配使用。std::weak_ptr不能被解引用，也不能检测是否为空。</p>
+<p>std::weak_ptr通常是由std::shared_ptr创建而来， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> spw = <span class="built_in">std</span>::make_shared&lt;Widget&gt;();  <span class="comment">// spw是std::shared_ptr&lt;Widget&gt;</span></span><br><span class="line">                                        <span class="comment">// 引用计数为1</span></span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::weak_ptr&lt;Widget&gt; wpw(spw);         <span class="comment">// wpw指向spw指向的Widget，引用计数仍然为1</span></span><br><span class="line">...</span><br><span class="line">spw = <span class="literal">nullptr</span>;                          <span class="comment">// 引用计数变成0，Widget被销毁，wpw现在变成空悬指针</span></span><br></pre></td></tr></table></figure></p>
+<p>空悬的std::weak_ptr被称作是已经过期（expired）的，你可以直接检查它，<br>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (wpw.expired()) ... <span class="comment">// 如果wpw指向的不是一个对象</span></span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/modern-cpp-20.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-19.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2146,207 +2350,6 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-10.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="natsu1211">
-      <meta itemprop="description" content="EverSummer">
-      <meta itemprop="image" content="/images/lambda.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EverSummer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/modern-cpp-10.html" itemprop="url">
-                  读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-10-28 02:18:56" itemprop="dateCreated datePublished" datetime="2018-10-28T02:18:56+09:00">2018-10-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-11 18:56:53" itemprop="dateModified" datetime="2019-02-11T18:56:53+09:00">2019-02-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/" itemprop="url" rel="index"><span itemprop="name">PL</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PL/Tips/" itemprop="url" rel="index"><span itemprop="name">Tips</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/modern-cpp-10.html#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-10.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="条款10-优先使用有作用域的enmu而不是无作用域的enum">条款10 优先使用有作用域的enmu而不是无作用域的enum</h2>
-<p>一般而言，{}会建立一个新的作用域，将作用域内部和外部的名称隔离开。但是这对于C++98风格的enum中的枚举元素并不成立。枚举元素和包含它的枚举类型同属一个作用域，这意味着在这个作用域中不能再有同样名称的定义：
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/modern-cpp-10.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2398,7 +2401,7 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

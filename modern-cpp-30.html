@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="条款9 优先使用别名声明而不是typedef C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 // FP等价于一个函数指针，这个函数的参数是一个int类型和// std::string常量类型，没有返回值typedef void (*FP)(int, const std::string&amp;amp;);      // typedef// 同上using FP =">
-<meta name="keywords" content="C++,type alias">
+  <meta name="description" content="条款30 熟悉完美转发失败的情况 完美转发在大多数时候如期工作， template&amp;lt;typename... Ts&amp;gt;void fwd(T&amp;amp;&amp;amp; ...params)   //  接受一些参数&amp;#123;    f(std::forward&amp;lt;Ts&amp;gt;(param)...);    // 把它们转发到f&amp;#125; 但是也有失败的情形（通过完美转发函数将参数转发给函数">
+<meta name="keywords" content="C++,Universal reference,Rvalue reference">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
-<meta property="og:url" content="https://natsu1211.com/modern-cpp-9.html">
+<meta property="og:title" content="读薄Effective Modern C++（条款30 熟悉完美转发失败的情况)">
+<meta property="og:url" content="https://natsu1211.com/modern-cpp-30.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="条款9 优先使用别名声明而不是typedef C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 // FP等价于一个函数指针，这个函数的参数是一个int类型和// std::string常量类型，没有返回值typedef void (*FP)(int, const std::string&amp;amp;);      // typedef// 同上using FP =">
+<meta property="og:description" content="条款30 熟悉完美转发失败的情况 完美转发在大多数时候如期工作， template&amp;lt;typename... Ts&amp;gt;void fwd(T&amp;amp;&amp;amp; ...params)   //  接受一些参数&amp;#123;    f(std::forward&amp;lt;Ts&amp;gt;(param)...);    // 把它们转发到f&amp;#125; 但是也有失败的情形（通过完美转发函数将参数转发给函数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T09:51:02.932Z">
+<meta property="og:updated_time" content="2019-06-08T17:43:51.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">
-<meta name="twitter:description" content="条款9 优先使用别名声明而不是typedef C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 // FP等价于一个函数指针，这个函数的参数是一个int类型和// std::string常量类型，没有返回值typedef void (*FP)(int, const std::string&amp;amp;);      // typedef// 同上using FP =">
+<meta name="twitter:title" content="读薄Effective Modern C++（条款30 熟悉完美转发失败的情况)">
+<meta name="twitter:description" content="条款30 熟悉完美转发失败的情况 完美转发在大多数时候如期工作， template&amp;lt;typename... Ts&amp;gt;void fwd(T&amp;amp;&amp;amp; ...params)   //  接受一些参数&amp;#123;    f(std::forward&amp;lt;Ts&amp;gt;(param)...);    // 把它们转发到f&amp;#125; 但是也有失败的情形（通过完美转发函数将参数转发给函数">
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-  <link rel="canonical" href="https://natsu1211.com/modern-cpp-9.html"/>
+  <link rel="canonical" href="https://natsu1211.com/modern-cpp-30.html"/>
 
 
 
@@ -174,7 +174,7 @@
   };
 </script>
 
-  <title>读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef) | EverSummer</title>
+  <title>读薄Effective Modern C++（条款30 熟悉完美转发失败的情况) | EverSummer</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-9.html">
+    <link itemprop="mainEntityOfPage" href="https://natsu1211.com/modern-cpp-30.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="natsu1211">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)
+          <h2 class="post-title" itemprop="name headline">读薄Effective Modern C++（条款30 熟悉完美转发失败的情况)
               
             
           </h2>
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-10-27 16:15:51" itemprop="dateCreated datePublished" datetime="2018-10-27T16:15:51+09:00">2018-10-27</time>
+              <time title="创建时间：2019-06-05 23:43:45" itemprop="dateCreated datePublished" datetime="2019-06-05T23:43:45+09:00">2019-06-05</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-11 18:51:02" itemprop="dateModified" datetime="2019-02-11T18:51:02+09:00">2019-02-11</time>
+                <time title="修改时间：2019-06-09 02:43:51" itemprop="dateModified" datetime="2019-06-09T02:43:51+09:00">2019-06-09</time>
               
             
           </span>
@@ -444,10 +444,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/modern-cpp-9.html#comments" itemprop="discussionUrl">
+                <a href="/modern-cpp-30.html#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="modern-cpp-9.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="modern-cpp-30.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,20 +475,42 @@
       
 
       
-        <h2 id="条款9-优先使用别名声明而不是typedef">条款9 优先使用别名声明而不是typedef</h2>
-<p>C++11中新增了别名声明，对于之前的typedef语句，可以使用别名声明语法写成 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// FP等价于一个函数指针，这个函数的参数是一个int类型和</span></span><br><span class="line"><span class="comment">// std::string常量类型，没有返回值</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*FP)</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;)</span></span>;      <span class="comment">// typedef</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 同上</span></span><br><span class="line"><span class="keyword">using</span> FP = <span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;);     <span class="comment">// 别名声明</span></span><br></pre></td></tr></table></figure></p>
-<p>也许别名声明看起来可读性更好，但是这并不足以成为放弃typedef使用别名声明的决定性理由。别名声明的真正优势并不在这，而在于它能够定义模板别名， <a id="more"></a></p>
-<p>typedef需要新定义一个模板类来模拟实现模板别名功能， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                            </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyAllocList</span> &#123;</span>                            </span><br><span class="line">    <span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt; type;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyAllocList&lt;Widget&gt;::type lw;                   <span class="comment">// 客户代码</span></span><br></pre></td></tr></table></figure></p>
-<p>而使用别名声明则很直接， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typname T&gt;</span><br><span class="line"><span class="keyword">using</span> MyAllocList = <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt;;</span><br><span class="line"></span><br><span class="line">MyAllocList&lt;Widget&gt; lw;                         <span class="comment">// 客户代码</span></span><br></pre></td></tr></table></figure></p>
-<p>特别当你在另一个模板类中使用该类型别名的时候，对比typedef，别名声明语法的优势则显得更加明显， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;                            <span class="comment">// Widget&lt;T&gt; 包含</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span>&#123;</span>                                   <span class="comment">// 一个 MyAloocList&lt;T&gt;</span></span><br><span class="line"><span class="keyword">private</span>:                                        <span class="comment">// 作为一个数据成员</span></span><br><span class="line">	<span class="keyword">typename</span> MyAllocList&lt;T&gt;::type <span class="built_in">list</span>;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>因为无法知道名称MyAllocList<t>::type究竟是一个类型，还是一个变量，所以需要加上typename来明确表明这是一个类型。而别名声明则没有冗余的typename和::type， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typname T&gt;                             </span><br><span class="line"><span class="keyword">using</span> MyAllocList = <span class="built_in">std</span>::<span class="built_in">list</span>&lt;T, MyAlloc&lt;T&gt;&gt;;   <span class="comment">// 和以前一样</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	MyAllocList&lt;T&gt; <span class="built_in">list</span>;  <span class="comment">// 编辑器知道MyAllocList&lt;T&gt;一定是一个类型</span></span><br><span class="line">	...                                          </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></t></p>
-<p>另外，对于标准库中的type traits，C++11提供的接口都是基于typedef的，而在C++14中都提供了相应更为简洁的别名声明的版本， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::remove_const&lt;T&gt;::type                <span class="comment">// C++11: const T -&gt; T</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">remove_const_t</span>&lt;T&gt;                    <span class="comment">// 等价的C++14</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::remove_reference&lt;T&gt;::type            <span class="comment">// C++11: T&amp;/T&amp;&amp; -&gt; T</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">remove_reference_t</span>&lt;T&gt;                <span class="comment">// 等价的C++14</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::add_lvalue_reference&lt;T&gt;::type        <span class="comment">// C++11: T -&gt; T&amp;</span></span><br><span class="line"><span class="built_in">std</span>::<span class="keyword">add_lvalue_reference_t</span>&lt;T&gt;            <span class="comment">// 等价的C++14</span></span><br></pre></td></tr></table></figure></p>
-<p>它的定义很简单，即使只能用C++11的环境也只需自己简单的定义一下即可， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">remove_const_t</span> = <span class="title">typename</span> <span class="title">remove_const</span>&lt;T&gt;:</span>:type;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">remove_reference_t</span> = <span class="title">typename</span> <span class="title">remove_reference</span>&lt;T&gt;:</span>:type;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">using</span> <span class="title">add_lvalue_reference_t</span> = <span class="title">typename</span> <span class="title">add_lvalue_reference</span>&lt;T&gt;:</span>:type;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="条款30-熟悉完美转发失败的情况">条款30 熟悉完美转发失败的情况</h2>
+<p>完美转发在大多数时候如期工作， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Ts&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fwd</span><span class="params">(T&amp;&amp; ...params)</span>   <span class="comment">//  接受一些参数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    f(<span class="built_in">std</span>::forward&lt;Ts&gt;(param)...);    <span class="comment">// 把它们转发到f</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是也有失败的情形（通过完美转发函数将参数转发给函数f调用与直接将参数传递给f调用的行为不一致。）</p>
+<a id="more"></a>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">f(expression);       <span class="comment">// 如果f做某件事</span></span><br><span class="line">fwd(expression);     <span class="comment">// 而fwd里的f做的是不同的事，那么完美转发expression失败</span></span><br></pre></td></tr></table></figure>
+<p>有几种实参的类型会导致完美转发失败，</p>
+<h3 id="stdinitial_list">std::initial_list</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; v)</span></span>;</span><br><span class="line">f(&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;);   <span class="comment">// 正确，“&#123;1，2，3&#125;”被隐式转换为std::vector&lt;int&gt;</span></span><br><span class="line">fwd(&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;)；  <span class="comment">// 错误，不能编译</span></span><br></pre></td></tr></table></figure>
+<p>正如条款2提到的，这里的问题在于f的参数类型不是<code>std::initial_list&lt;T&gt;</code>, 编译器禁止从表达式{1,2,3}推断出一个类型（<code>std::initial_list&lt;int&gt;</code>到<code>std::vector&lt;int&gt;</code>还需要一次隐式转换，直接比对<code>std::initial_list&lt;T&gt;</code>与<code>std::vector&lt;int&gt;</code>, T无法被推导为int）。 条款2中同样提到了一个简单的应对办法，用auto声明一个局部变量接受初始化列表，然后再把该局部变量传递给进行转发的函数：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> il = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// il的类型被推导为std::initializer_list&lt;int&gt;</span></span><br><span class="line">fwd(il);             <span class="comment">// 正确，把il转发给f</span></span><br></pre></td></tr></table></figure>
+<h3 id="和null作为空指针">0和NULL作为空指针</h3>
+<p>条款8解释过，当把0和NULL作为空指针传递给一个模板，编译器通常会把传入的参数推断为整型数类型，而绝不会是指针类型。这就导致了0和NULL都不可以作为空指针被完美转发。解决办法也很单纯：用nullptr代替0或NULL。</p>
+<h3 id="只声明的static-const整数成员变量">只声明的static const整数成员变量</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">std</span>::<span class="keyword">size_t</span> MinVals = <span class="number">28</span>;         <span class="comment">// MinVals的声明</span></span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line">...                 <span class="comment">// 没有定义MinVals</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; weightData;</span><br><span class="line">widgetData.reserve(Widget::MinVals);    <span class="comment">// 使用MinVals</span></span><br></pre></td></tr></table></figure>
+<p>C++允许对static const的整数变量在声明时提供初始值，而不用进行定义。此时编译器会为这些成员变量的值进行const propagation（常数传播，编译时会直接用常量值替换掉变量），而不需要为这些变量提供内存。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">f(Widget::MinVals); <span class="comment">// 没问题，会被替换为f(28)</span></span><br></pre></td></tr></table></figure></p>
+<p>而通过完美转发调用则可能会出现链接错误， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">fwd(Widget::MinVals); <span class="comment">// 链接错误！</span></span><br></pre></td></tr></table></figure></p>
+<p>这时尽管看起来没有取MinVals的地址，但fwd的参数是个通用引用，然后引用在程序的二进制代码中指针和引用在本质上是同一个东西，引用只是会自动解引用的指针。MinVals相当于通过指针被传递，而传递指针则必须有指针可以指向的内存。以引用传递static const成员变量通常要求它们被定义过，而这个要求会导致未进行定义的代码完美转发失败。</p>
+<p>为了让代码可移植，应当为static const成员变量提供一份定义。对于MinVals，代码是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">std</span>::<span class="keyword">size_t</span> Widget::MinVals; <span class="comment">// 在cpp中，不能重复提供初始值</span></span><br></pre></td></tr></table></figure>
+<h3 id="重载函数名字和模板名字">重载函数名字和模板名字</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">void f(int (*pf)(int));  // pf = "进行处理的函数"</span><br><span class="line">void f(int pf(int));    // 或者可以声明为</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">processVal</span><span class="params">(<span class="keyword">int</span> value)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">processVal</span><span class="params">(<span class="keyword">int</span> value, <span class="keyword">int</span> priority)</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">f(processVal);         <span class="comment">// 两种声明都能正确调用</span></span><br><span class="line">fwd(processVal);      <span class="comment">//  第二个版本错误！无法知道调用哪个processVal</span></span><br></pre></td></tr></table></figure>
+<p>f需要的是一个指向函数的指针作为它的参数，但是rocessVal既不是个函数指针，也不是一个函数，它是两个不同函数的名字。不过，编译器知道f需要的是接受一个int参数的函数。因此，编译器会选择第一个版本的processVal，然后把那个函数地址传给f。 然而作为函数名称的processVal本身不包含类型信息。没有类型信息，就无法进行类型推导。因此完美转发失败了。 用一个模板函数作为参数传入也会出现同样的问题，因为无法知道使用哪个类型来实例化。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">workOnVal</span><span class="params">(T param)</span>        <span class="comment">// 一个处理值的模板</span></span></span><br><span class="line"><span class="function"></span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line">fwd(workOnVal);        <span class="comment">// 错误！哪个workOnVal实例化？</span></span><br></pre></td></tr></table></figure>
+<p>像一种解决办法是手动指定想要转发的那个重载或者实例化。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ProcessFuncType = <span class="keyword">int</span> (*)(<span class="keyword">int</span>);</span><br><span class="line">ProcessFuncType processValPtr = processVal;     <span class="comment">// 指定了processVal的签名</span></span><br><span class="line">fwd(processValue);                              <span class="comment">// 正确</span></span><br><span class="line">fwd(<span class="keyword">static_cast</span>&lt;ProcessFuncType&gt;(workOnVal));   <span class="comment">// 也是正确的</span></span><br></pre></td></tr></table></figure>
+<p>当然，这需要你知道fwd转发的目的函数需要的函数指针类型。</p>
+<h3 id="bitfields位域">Bitfields（位域）</h3>
+<p>最后一种完美转发失败的情况是，当位域被用作函数实参。例如，有一个使用位域定义的IPV4头部： <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">IPv4Header</span> &#123;</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="keyword">uint32_t</span> version : <span class="number">4</span>,</span><br><span class="line">                         IHL : <span class="number">4</span>,</span><br><span class="line">                         DSCP : <span class="number">6</span>,</span><br><span class="line">                         ECN : <span class="number">2</span>,</span><br><span class="line">                         totalLength : <span class="number">16</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="built_in">std</span>::<span class="keyword">size_t</span> sz)</span></span>;   <span class="comment">// 被调用的函数</span></span><br><span class="line"></span><br><span class="line">IPv4Header h;</span><br><span class="line">...</span><br><span class="line">f(h.totalLength);        <span class="comment">// 正确</span></span><br><span class="line">fwd(t.totalLength);      <span class="comment">// 错误</span></span><br></pre></td></tr></table></figure>
+<p>位域可能是包括字的任意部分（例如，32位int的第3到5个位。），但是没有方法直接获取它们的地址。就像没有办法创建指向任意位的指针（C++表明可指向的最小的东西是一个char），也没有办法对任意位进行绑定引用。可以传递位域的参数种类只有传值和const引用参数。 要解决这个问题，可以先对位域的值进行拷贝，然后对拷贝进行转发。例如，在IPv4Header这个例子，</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  拷贝位域的值</span></span><br><span class="line"><span class="keyword">auto</span> length = <span class="keyword">static_cast</span>&lt;<span class="built_in">std</span>::<span class="keyword">uint16_t</span>&gt;(h.totalLength);</span><br><span class="line">fwd(length);   <span class="comment">// 转发拷贝</span></span><br></pre></td></tr></table></figure>
 <h2 id="总结">总结</h2>
 <ul>
-<li>typedef不支持模板化，但是别名声明支持</li>
-<li>模板别名避免了::type后缀，在模板中，typedef还经常需要使用typename前缀</li>
-<li>C++14为C++11中的type traits提供了模板别名</li>
+<li>当模板类型推断失败或推断出错误的类型时，完美转发会失败。</li>
+<li>导致完美转发失败的几种实参有：大括号初始化，0和NULL代表的空指针，只有声明的static const整数成员变量，模板函数名字和重载函数名字，位域。</li>
 </ul>
 
       
@@ -544,7 +566,7 @@
     <strong>本文作者： </strong>natsu1211</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://natsu1211.com/modern-cpp-9.html" title="读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)">https://natsu1211.com/modern-cpp-9.html</a>
+    <a href="https://natsu1211.com/modern-cpp-30.html" title="读薄Effective Modern C++（条款30 熟悉完美转发失败的情况)">https://natsu1211.com/modern-cpp-30.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -559,7 +581,9 @@
           
             <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/type-alias/" rel="tag"><i class="fa fa-tag"></i> type alias</a>
+            <a href="/tags/Universal-reference/" rel="tag"><i class="fa fa-tag"></i> Universal reference</a>
+          
+            <a href="/tags/Rvalue-reference/" rel="tag"><i class="fa fa-tag"></i> Rvalue reference</a>
           
         </div>
       
@@ -572,8 +596,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/modern-cpp-8.html" rel="next" title="读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)">
-                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++ (条款8 优先使用nullptr而不是0和NULL)
+              <a href="/modern-cpp-29.html" rel="next" title="读薄Effective Modern C++（条款29 假设移动操作是不存在、不廉价、不能用的)">
+                <i class="fa fa-chevron-left"></i> 读薄Effective Modern C++（条款29 假设移动操作是不存在、不廉价、不能用的)
               </a>
             
           </div>
@@ -581,10 +605,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/modern-cpp-10.html" rel="prev" title="读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum)">
-                读薄Effective Modern C++ (条款10 优先使用有作用域的enum而不是无作用域的enum) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -813,7 +833,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款9-优先使用别名声明而不是typedef"><span class="nav-number">1.</span> <span class="nav-text">条款9 优先使用别名声明而不是typedef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款30-熟悉完美转发失败的情况"><span class="nav-number">1.</span> <span class="nav-text">条款30 熟悉完美转发失败的情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stdinitial_list"><span class="nav-number">1.1.</span> <span class="nav-text">std::initial_list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和null作为空指针"><span class="nav-number">1.2.</span> <span class="nav-text">0和NULL作为空指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只声明的static-const整数成员变量"><span class="nav-number">1.3.</span> <span class="nav-text">只声明的static const整数成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载函数名字和模板名字"><span class="nav-number">1.4.</span> <span class="nav-text">重载函数名字和模板名字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitfields位域"><span class="nav-number">1.5.</span> <span class="nav-text">Bitfields（位域）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1002,9 +1022,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://natsu1211.com/modern-cpp-9.html';
-        this.page.identifier = 'modern-cpp-9.html';
-        this.page.title = '读薄Effective Modern C++ (条款9 优先使用别名声明而不是typedef)';
+        this.page.url = 'https://natsu1211.com/modern-cpp-30.html';
+        this.page.identifier = 'modern-cpp-30.html';
+        this.page.title = '读薄Effective Modern C++（条款30 熟悉完美转发失败的情况)';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
