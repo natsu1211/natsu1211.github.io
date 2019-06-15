@@ -4,6 +4,62 @@
 
     
   <url>
+    <loc>https://natsu1211.com/modern-cpp-33.html</loc>
+    <lastmod>2019-06-15T14:19:29.969Z</lastmod>
+    <data>
+        <display>
+        <title>modern-cpp-33 读薄Effective Modern C++（条款33 对需要std::forward的auto&&参数使用decltype)</title>
+        <pubTime>2019-06-15T12:38:39.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Lambda</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-3.html</loc>
+    <lastmod>2019-06-15T14:02:24.569Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款3 理解decltype)</title>
+        <pubTime>2018-10-18T15:33:48.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Type inference</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://natsu1211.com/modern-cpp-32.html</loc>
     <lastmod>2019-06-15T12:31:51.067Z</lastmod>
     <data>
@@ -644,34 +700,6 @@
         <display>
         <title>读薄Effective Modern C++ (条款2 理解auto类型推导)</title>
         <pubTime>2018-08-28T16:07:46.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>Type inference</tag>
-         
-         
-           
-             
-              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
-          
-             
-              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
-          
-             
-              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://natsu1211.com/modern-cpp-3.html</loc>
-    <lastmod>2019-02-11T10:09:56.255Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++ (条款3 理解decltype)</title>
-        <pubTime>2018-10-18T15:33:48.000Z</pubTime>
         
         <tag>C++</tag>
          

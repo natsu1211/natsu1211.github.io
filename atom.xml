@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://natsu1211.com/"/>
-  <updated>2019-06-15T12:31:51.067Z</updated>
+  <updated>2019-06-15T14:19:29.969Z</updated>
   <id>https://natsu1211.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>modern-cpp-33 读薄Effective Modern C++（条款33 对需要std::forward的auto&amp;&amp;参数使用decltype)</title>
+    <link href="https://natsu1211.com/modern-cpp-33.html"/>
+    <id>https://natsu1211.com/modern-cpp-33.html</id>
+    <published>2019-06-15T12:38:39.000Z</published>
+    <updated>2019-06-15T14:19:29.969Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="条款33-对需要stdforward的auto参数使用decltype">条款33 对需要std::forward的auto&amp;&amp;参数使用decltype)</h2><p>从C++14开始，lambda可以在参数类型声明处使用auto，表明该lambda是个泛型lambda，参数的类型需要进行推导。这个特性的实现很直截了当：生成的闭包类中的()运算符函数是一个模板。例如，</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = [](<span class="keyword">auto</span> x) &#123; <span class="keyword">return</span> func(normalize(x)); &#125;;</span><br></pre></td></tr></table></figure><p>编译器生成的闭包类的函数调用运算符看起来是这样的,</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeCompilerGeneratedClassName</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;         </span><br><span class="line">    <span class="function"><span class="keyword">auto</span> <span class="title">operator</span><span class="params">()</span><span class="params">(T x)</span> <span class="keyword">const</span>          <span class="comment">// 关于auto返回类型见条款3</span></span></span><br><span class="line"><span class="function">    </span>&#123; <span class="keyword">return</span> func(normalize(x)); &#125;</span><br><span class="line"></span><br><span class="line">    ...              <span class="comment">// 闭包类的其他功能</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><a id="more"></a><p>在这个例子中，lambda对x做的唯一的一件事就是把它转发给normalized函数。如果normalized区别对待左值和右值，写这个lambda的正确方式是把x完美转发给normalized，所以需要修改成以下这样，</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = </span><br><span class="line">    [](<span class="keyword">auto</span>&amp;&amp; param)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">          func(normalize(<span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(param)&gt;(param)));</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure><p>因为当把一个左值传给lambda时，decltype(x)的结果是一个左值引用，而左值引用作为std::forward的类型参数时，表明std::forward返回的是左值（见条款28）。而对于右值，decltype(x)的结果是一个右值引用，而不是一个非引用值，不过它们产生的结果一样。所以无论是左值还是右值，把decltype(x)传递给std::forward都能得到需要的结果。</p><p>再加上6个点，就可以接受任意多个参数了，</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = </span><br><span class="line">    [](<span class="keyword">auto</span>&amp;&amp;... params)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">          func(normalize(<span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...));</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure><h2 id="总结">总结</h2><ul><li>对需要完美转发的lambda的auto&amp;&amp;参数使用decltype</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;条款33-对需要stdforward的auto参数使用decltype&quot;&gt;条款33 对需要std::forward的auto&amp;amp;&amp;amp;参数使用decltype)&lt;/h2&gt;
+&lt;p&gt;从C++14开始，lambda可以在参数类型声明处使用auto，表明该lambda是个泛型lambda，参数的类型需要进行推导。这个特性的实现很直截了当：生成的闭包类中的()运算符函数是一个模板。例如，&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;auto&lt;/span&gt; f = [](&lt;span class=&quot;keyword&quot;&gt;auto&lt;/span&gt; x) &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; func(normalize(x)); &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;编译器生成的闭包类的函数调用运算符看起来是这样的,&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SomeCompilerGeneratedClassName&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;template&lt;/span&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;typename&lt;/span&gt; T&amp;gt;         &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(T x)&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt;          &lt;span class=&quot;comment&quot;&gt;// 关于auto返回类型见条款3&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; func(normalize(x)); &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ...              &lt;span class=&quot;comment&quot;&gt;// 闭包类的其他功能&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
+    
+      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
+    
+      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
+    
+    
+      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
+    
+      <category term="Lambda" scheme="https://natsu1211.com/tags/Lambda/"/>
+    
+  </entry>
   
   <entry>
     <title>读薄Effective Modern C++（条款32 使用初始化捕获来把对象移动到lambda闭包中）</title>
@@ -622,35 +654,6 @@ std::shared_ptr的非移动构造函数会增加这个计数，拷贝和赋值�
       <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
     
       <category term="noexcept" scheme="https://natsu1211.com/tags/noexcept/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读薄Effective Modern C++ (条款13 优先使用const_iterator而不是iterator)</title>
-    <link href="https://natsu1211.com/modern-cpp-13.html"/>
-    <id>https://natsu1211.com/modern-cpp-13.html</id>
-    <published>2018-11-20T15:21:26.000Z</published>
-    <updated>2019-02-11T09:59:03.504Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="条款13-优先使用const_iterator而不是iterator">条款13 优先使用const_iterator而不是iterator</h2><p>const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。<br><a id="more"></a></p><p>比如我们想在vector中找到1983并把它替换成1998，我们会写下以下代码, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it =</span><br><span class="line">    <span class="built_in">std</span>::find(values.begin(),values.end(), <span class="number">1983</span>);</span><br><span class="line">values.insert(it, <span class="number">1998</span>);</span><br></pre></td></tr></table></figure></p><p>这里因为并不会改变itertor所指向的数据，const_iterator应当是更合适的选择，然而在C++98中，std::find等函数只接受非const的iterator，并且没有简单的办法从非const容器获得const_iterator，在C++98中使用const_iterator只是自寻烦恼。<br>然而情况在C++11中大有不同，const_iterator容易获取并且容易使用。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; values; <span class="comment">// as before ...</span></span><br><span class="line"><span class="keyword">auto</span> it = <span class="built_in">std</span>::find(values.cbegin(),values.cend(), <span class="number">1983</span>); <span class="comment">// and cend</span></span><br><span class="line">values.insert(it, <span class="number">1998</span>);<span class="comment">// use cbegin</span></span><br></pre></td></tr></table></figure></p><p>需要注意的是，当你需要写出更为泛型的代码的时候，C++11对const_iterator的支持可能会略显不足， 比如我们要写一个在容器中寻找元素并进行替换的泛型函数，原生C数组，我们会希望使用非成员函数的版本来获取迭代器。 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> C, <span class="keyword">typename</span> V&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">findAndInsert</span><span class="params">(C&amp; container, <span class="keyword">const</span> V&amp; targetVal, <span class="keyword">const</span> V&amp; insertVal)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cbegin;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::cend;</span><br><span class="line">    <span class="keyword">const</span> V&amp; targetVal,</span><br><span class="line">    <span class="keyword">const</span> V&amp; insertVal)</span><br><span class="line">    <span class="keyword">auto</span> it = <span class="built_in">std</span>::find(cbegin(container), cend(container), targetVal);</span><br><span class="line">    container.insert(it, insertVal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>上面的代码需要C++14才会工作，因为C++11中没有提供cbegin和cend的非成员函数版本。 我们可以自己为C++11添加， <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">C</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">auto</span> <span class="title">cbegin</span>(<span class="title">const</span> <span class="title">C</span>&amp; <span class="title">container</span>)-&gt;<span class="title">decltype</span>(<span class="title">std</span>:</span>:begin(container))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::begin(container);        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="总结">总结</h2><ul><li>优先使用const_iterator而不是iterator</li><li>在泛型代码中，优先使用非成员函数版本的begin, end, rbegin ,rend函数</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;条款13-优先使用const_iterator而不是iterator&quot;&gt;条款13 优先使用const_iterator而不是iterator&lt;/h2&gt;
-&lt;p&gt;const_iterator在STL中等价于指向const的指针。被指向的数值是不能被修改的。标准的做法是应该使用const的迭代器的地方，也就是尽可能的在没有必要修改指针所指向的内容的地方使用const_iterator。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="PL" scheme="https://natsu1211.com/categories/PL/"/>
-    
-      <category term="Tips" scheme="https://natsu1211.com/categories/PL/Tips/"/>
-    
-      <category term="Memo" scheme="https://natsu1211.com/categories/Memo/"/>
-    
-    
-      <category term="C++" scheme="https://natsu1211.com/tags/C/"/>
-    
-      <category term="iterator" scheme="https://natsu1211.com/tags/iterator/"/>
     
   </entry>
   
