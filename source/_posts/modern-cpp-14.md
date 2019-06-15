@@ -9,7 +9,7 @@ categories:
 - [Memo]
 ---
 
-## 条款14 使用noexcept修饰不抛出异常的函数
+## 条款14 使用noexcept修饰不抛出异常的函数
 C++98引入了异常规范，用于显式表明该函数可能抛出的异常类型，语法如下
 ```cpp
 double func (char param) throw (int, char, exception);

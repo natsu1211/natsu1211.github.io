@@ -11,7 +11,7 @@ categories:
 - [Memo]
 ---
 
-## 读薄Effective Modern C++ (条款23 理解std::move和std::forward) 
+## 条款23 理解std::move和std::forward 
 
 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。
 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值的属性(value category)能够得到保持。

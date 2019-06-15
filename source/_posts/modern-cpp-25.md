@@ -10,7 +10,7 @@ categories:
 - [Memo]
 ---
 
-## 读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)
+## 条款25 对右值引用使用std::move，对通用引用使用std::forward
 右值引用只能绑定到能够被移动的对象，所以当看到一个右值应用作为函数参数时，你可以也应当对其使用std::move来获得更好的效率。
 
 而条款24告诉我们，通用引用有可能绑定到能够被移动的对象。条款23说明了这是std::forward做的事情，

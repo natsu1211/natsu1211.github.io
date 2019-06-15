@@ -10,7 +10,7 @@ categories:
 - [Memo]
 ---
 
-## 读薄Effective Modern C++（条款24 区分通用引用和右值引用）
+## 条款24 区分通用引用和右值引用
 
 T&&并不总是代表T的右值引用(Rvalue reference)，T&&也可能是一个T的通用引用(Universal reference)。    
 需要通过T&&所出现的语境来判断。     通用引用在两种语境出现。最常见的就是模板函数参数，
