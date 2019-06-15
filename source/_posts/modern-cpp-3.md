@@ -40,7 +40,7 @@ if(v[0] == 0)               // decltype(v[0]) is int&f
 ```
 
 decltype在我们无法显式的写出某个表达式的类型时候特别有用，
-例如我们要写一个获取列表容器在某个位置上的元素的泛型函数，我们无法知道这个容器内部的元素是什么类型，c++11中，我们可以借助尾置返回语法写出以下代码，
+例如我们要写一个获取列表容器在某个位置上的元素的泛型函数，我们无法知道这个容器内部的元素是什么类型，c++11中，我们可以借助尾置返回语法写出以下代码，
 ```cpp
 template<typename Container, typename Index>    // final
 auto                                            // C++11
@@ -50,7 +50,7 @@ access(Container&& c, Index i)                  // version
     return std::forward<Container>(c)[i];
 }
 ```
-c++14中我们可以写成，
+c++14中我们可以写成，
 ```cpp
 template<typename Container, typename Index>
 decltype(auto) access(Container&& c, Index i)
