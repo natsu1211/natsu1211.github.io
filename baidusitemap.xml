@@ -4,6 +4,184 @@
 
     
   <url>
+    <loc>https://natsu1211.com/modern-cpp-32.html</loc>
+    <lastmod>2019-06-15T12:31:51.067Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款32 使用初始化捕获来把对象移动到lambda闭包中）</title>
+        <pubTime>2019-06-15T09:17:11.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Lambda</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-26.html</loc>
+    <lastmod>2019-06-15T09:18:22.349Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款26 避免对通用引用进行重载)</title>
+        <pubTime>2019-06-01T14:36:29.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Universal reference</tag>
+         
+        <tag>Rvalue reference</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-25.html</loc>
+    <lastmod>2019-06-15T09:18:11.454Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)</title>
+        <pubTime>2019-03-27T15:48:34.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Universal reference</tag>
+         
+        <tag>Rvalue reference</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-24.html</loc>
+    <lastmod>2019-06-15T09:18:01.919Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款24 区分通用引用和右值引用）</title>
+        <pubTime>2019-02-20T18:23:33.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Universal reference</tag>
+         
+        <tag>Rvalue reference</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-23.html</loc>
+    <lastmod>2019-06-15T09:17:51.016Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款23 理解std::move和std::forward)</title>
+        <pubTime>2019-02-18T14:33:41.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Move semantic</tag>
+         
+        <tag>Value category</tag>
+         
+        <tag>Rvalue</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-14.html</loc>
+    <lastmod>2019-06-15T09:17:34.143Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)</title>
+        <pubTime>2018-12-01T09:49:51.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>noexcept</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://natsu1211.com/modern-cpp-31.html</loc>
     <lastmod>2019-06-15T09:10:19.533Z</lastmod>
     <data>
@@ -152,96 +330,6 @@
 
     
   <url>
-    <loc>https://natsu1211.com/modern-cpp-26.html</loc>
-    <lastmod>2019-06-02T06:14:03.189Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++（条款26 避免对通用引用进行重载)</title>
-        <pubTime>2019-06-01T14:36:29.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>Universal reference</tag>
-         
-        <tag>Rvalue reference</tag>
-         
-         
-           
-             
-              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
-          
-             
-              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
-          
-             
-              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://natsu1211.com/modern-cpp-25.html</loc>
-    <lastmod>2019-06-01T15:16:49.784Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++（条款25 对右值引用使用std::move，对通用引用使用std::forward)</title>
-        <pubTime>2019-03-27T15:48:34.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>Universal reference</tag>
-         
-        <tag>Rvalue reference</tag>
-         
-         
-           
-             
-              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
-          
-             
-              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
-          
-             
-              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://natsu1211.com/modern-cpp-24.html</loc>
-    <lastmod>2019-03-20T16:17:10.528Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++（条款24 区分通用引用和右值引用）</title>
-        <pubTime>2019-02-20T18:23:33.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>Universal reference</tag>
-         
-        <tag>Rvalue reference</tag>
-         
-         
-           
-             
-              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
-          
-             
-              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
-          
-             
-              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://natsu1211.com/modern-cpp-11.html</loc>
     <lastmod>2019-02-24T13:24:03.667Z</lastmod>
     <data>
@@ -252,38 +340,6 @@
         <tag>C++</tag>
          
         <tag>delete</tag>
-         
-         
-           
-             
-              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
-          
-             
-              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
-          
-             
-              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://natsu1211.com/modern-cpp-23.html</loc>
-    <lastmod>2019-02-20T18:24:04.398Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++ (条款23 理解std::move和std::forward)</title>
-        <pubTime>2019-02-18T14:33:41.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>Move semantic</tag>
-         
-        <tag>Value category</tag>
-         
-        <tag>Rvalue</tag>
          
          
            
@@ -620,34 +676,6 @@
         <tag>C++</tag>
          
         <tag>Type inference</tag>
-         
-         
-           
-             
-              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
-          
-             
-              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
-          
-             
-              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://natsu1211.com/modern-cpp-14.html</loc>
-    <lastmod>2019-02-11T10:01:45.863Z</lastmod>
-    <data>
-        <display>
-        <title>读薄Effective Modern C++ (条款14 使用noexcept修饰不抛出异常的函数)</title>
-        <pubTime>2018-12-01T09:49:51.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>noexcept</tag>
          
          
            

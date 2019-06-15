@@ -144,18 +144,18 @@
 
 
 
-  <meta name="description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
+  <meta name="description" content="条款23 理解std::move和std::forward 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值">
 <meta name="keywords" content="C++,Move semantic,Value category,Rvalue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
 <meta property="og:url" content="https://natsu1211.com/modern-cpp-23.html">
 <meta property="og:site_name" content="EverSummer">
-<meta property="og:description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
+<meta property="og:description" content="条款23 理解std::move和std::forward 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-20T18:24:04.398Z">
+<meta property="og:updated_time" content="2019-06-15T09:17:51.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward)">
-<meta name="twitter:description" content="读薄Effective Modern C++ (条款23 理解std::move和std::forward) 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Fo">
+<meta name="twitter:description" content="条款23 理解std::move和std::forward 移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值">
 
 
 
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-21 03:24:04" itemprop="dateModified" datetime="2019-02-21T03:24:04+09:00">2019-02-21</time>
+                <time title="修改时间：2019-06-15 18:17:51" itemprop="dateModified" datetime="2019-06-15T18:17:51+09:00">2019-06-15</time>
               
             
           </span>
@@ -475,7 +475,7 @@
       
 
       
-        <h2 id="读薄effective-modern-c-条款23-理解stdmove和stdforward">读薄Effective Modern C++ (条款23 理解std::move和std::forward)</h2>
+        <h2 id="条款23-理解stdmove和stdforward">条款23 理解std::move和std::forward</h2>
 <p>移动语义(Move Semantic)，表达的是资源所有权的转移。通过移动语义，使得C++能够通过移动（转移所有权）的方式来构造对象，它的目的是用于避免（某些时候）更为昂贵的拷贝构造。std::move用于帮助实现移动构造。 std::forward则用于实现完美转发(Perfect Forwarding)，使得参数在传递过程中左值或右值的属性(value category)能够得到保持。</p>
 <p>实际上，std::move不移动任何东西，std::forward不转发任何东西，在运行期间，它们什么事情都不会做，不会生成一个字节的可执行代码。它们做的只是类型转换，std::move无条件地把参数转换为右值，而std::forward在只在特定条件下才会执行右值转换。 <a id="more"></a> 一个接近但不完全符合标准的std::move实现如下, <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;</span><br><span class="line">move(T&amp;&amp; param)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> ReturnType = <span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;ReturnType&gt;(param);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>但是，std::move也不能保证移动一定会发生，比如一个const的右值就不能被移动。另外真正进行移动的是移动构造函数，而不是std::move。如上所示，std::move所做的仅仅是将参数转换为右值。</p>
@@ -671,7 +671,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -818,7 +818,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读薄effective-modern-c-条款23-理解stdmove和stdforward"><span class="nav-number">1.</span> <span class="nav-text">读薄Effective Modern C++ (条款23 理解std::move和std::forward)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条款23-理解stdmove和stdforward"><span class="nav-number">1.</span> <span class="nav-text">条款23 理解std::move和std::forward</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
