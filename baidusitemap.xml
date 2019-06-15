@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>https://natsu1211.com/modern-cpp-31.html</loc>
+    <lastmod>2019-06-15T09:10:19.533Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款31 避免使用lambda表达式的默认捕获模式）</title>
+        <pubTime>2019-06-08T17:46:13.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Lambda</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://natsu1211.com/modern-cpp-30.html</loc>
     <lastmod>2019-06-08T17:43:51.386Z</lastmod>
     <data>
