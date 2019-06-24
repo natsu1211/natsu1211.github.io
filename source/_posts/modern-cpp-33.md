@@ -1,5 +1,5 @@
 ---
-title: modern-cpp-33 读薄Effective Modern C++（条款33 对需要std::forward的auto&&参数使用decltype)
+title: 读薄Effective Modern C++（条款33 对需要std::forward的auto&&参数使用decltype)
 date: 2019-06-15 21:38:39
 tags:
 - [C++]
