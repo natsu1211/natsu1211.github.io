@@ -4,11 +4,39 @@
 
     
   <url>
-    <loc>https://natsu1211.com/modern-cpp-33.html</loc>
-    <lastmod>2019-06-15T14:19:29.969Z</lastmod>
+    <loc>https://natsu1211.com/modern-cpp-34.html</loc>
+    <lastmod>2019-06-24T17:32:41.352Z</lastmod>
     <data>
         <display>
-        <title>modern-cpp-33 读薄Effective Modern C++（条款33 对需要std::forward的auto&&参数使用decltype)</title>
+        <title>读薄Effective Modern C++（条款34 比起std::bind更倾向于使用lambda)</title>
+        <pubTime>2019-06-15T14:24:39.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>Lambda</tag>
+         
+         
+           
+             
+              <breadCrumb title="PL" url="https://natsu1211.com/categories/PL/"/>
+          
+             
+              <breadCrumb title="Tips" url="https://natsu1211.com/categories/PL/Tips/"/>
+          
+             
+              <breadCrumb title="Memo" url="https://natsu1211.com/categories/Memo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://natsu1211.com/modern-cpp-33.html</loc>
+    <lastmod>2019-06-15T14:55:29.793Z</lastmod>
+    <data>
+        <display>
+        <title>读薄Effective Modern C++（条款33 对需要std::forward的auto&&参数使用decltype)</title>
         <pubTime>2019-06-15T12:38:39.000Z</pubTime>
         
         <tag>C++</tag>
